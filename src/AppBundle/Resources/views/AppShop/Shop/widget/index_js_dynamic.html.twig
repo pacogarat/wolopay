@@ -1,0 +1,37 @@
+
+var injectInto = '.wolo-shop';
+
+var elements = document.getElementsByClassName(injectInto.substr(1));
+
+if (!elements[0])
+    new Error("A element with selector "+injectInto+" must be exist");
+
+var container = elements[0];
+
+function loadCss(url)
+{
+    if (document.getElementById(url))
+        return;
+
+    var link  = document.createElement('link');
+    link.id   = url;
+    link.rel  = 'stylesheet';
+    link.type = 'text/css';
+    link.href = url;
+    link.media = 'all';
+    container.parentElement.appendChild(link);
+}
+
+{% set themeTemplateAdd = "loadCss(\"URL_TO_REPLACE\");" %}
+{% include('@App/AppShop/Shop/partials/load_theme_available.html.twig') %}
+
+{% include '@App/AppShop/Shop/partials_js/properties_default.html.twig' %}
+
+var l_lang;
+
+{% if transaction.countryDetected %}
+
+    l_lang = '{{ transaction.countryDetected.language.id }}';
+
+{% endif %}
+

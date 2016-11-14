@@ -1,0 +1,275 @@
+<div class="well well-small-padding">
+    <div ng-controller="NotificationsController">
+        <div>
+            <form name="purchase_notification_search" ng-submit="loadSearch()">
+                <div class="search-container">
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'notification' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.purchase_notification_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'purchase' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.purchase_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'transaction' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.transaction_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'gamer' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.gamer_external_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'was_received' | translate }]}</label>
+                        <div class="input-group">
+                            <select ng-model="search.was_received" class="form-control">
+                                <option value=""></option>
+                                <option value="0" translate="no"></option>
+                                <option value="1" translate="yes"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'subscription' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.subscription_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <div>
+                            <button type="submit" class="btn btn-info btn-search" ng-disabled="purchase_notification_search.$invalid">
+                                {[{ 'search' | translate }]} <i class="fa fa-search"></i>
+                            </button>
+                            <button type="button" class="btn btn-warning btn-search" ng-click="search = {}" style="margin-left: 10px">
+                                {[{ 'clear' | translate }]} <i class="glyphicon glyphicon-remove"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div ng-if="thereAreData === false">
+            <div class="alert alert-warning">
+                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                {[{ 'no_data' | translate }]}
+            </div>
+        </div>
+        <div ng-if="thereAreData === true" >
+            <div class="table-responsive">
+                <table class="table table-hover table-striped-inv table-bordered">
+                    <thead>
+                        <tr><td colspan="100%"><input ng-model="searchText.$" placeholder="{[{ 'search_from_current_data' | translate}]}"  class="form-control"></td></tr>
+
+                        <tr>
+                            <th></th>
+                            <th ng-click="orderBy('id')" style="cursor: pointer;" data-translate="id"></th>
+                            <th ng-click="orderBy('created_at')" style="cursor: pointer;" data-translate="created"></th>
+                            <th ng-click="orderBy('notification.purchases')"  style="cursor: pointer;" data-translate="purchases"></th>
+                            <th ng-click="orderBy('notification.purchases.transaction')"  style="cursor: pointer;" data-translate="transaction"></th>
+
+                            <!--<th ng-click="orderBy('amount')" style="cursor: pointer;" data-translate="amount"></th>-->
+                            <th ng-click="orderBy('notification.purchases.transaction.gamer.gamer_external_id')"  style="cursor: pointer;" data-translate="gamer"></th>
+                            <th ng-click="" style="cursor: pointer;" data-translate="article"></th>
+                            <th ng-click="orderBy('attempts')"  style="cursor: pointer;" data-translate="attempts"></th>
+
+                            <th ng-click="orderBy('is_subscription')"  style="cursor: pointer;" data-translate="is_a_subscription"></th>
+                            <th ng-click="orderBy('is_ready_to_notify')"  style="cursor: pointer;" data-translate="ready_to_notify"></th>
+                            <th ng-click="orderBy('was_received')"  style="cursor: pointer;" data-translate="was_received"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="filter-table-selects-xxs">
+                        <td><!-- count --></td>
+                        <td><!-- notification_id --></td>
+                        <td><!-- created_at --></td>
+                        <td><!-- purchase_id --></td>
+                        <td><!-- transaction_id --></td>
+                        <!--<td>&lt;!&ndash; amount  &ndash;&gt;</td>-->
+                        <td><!-- gamer -->
+                            <select ng-model="searchText.purchases.gamer.gamer_external_id" class="form-control" >
+                                <option></option>
+                                <option ng-repeat="vble in notif_gamer">{[{ vble.gamer.gamer_external_id }]}</option>
+                            </select>
+                        </td>
+                        <td><!-- article -->
+                            <select ng-model="searchText.payment_detail_has_article.id" class="form-control" >
+                                <option></option>
+                                <option ng-repeat="vble in notif_articles" ng-value="vble.id">
+                                    {[{ vble.name | api_translation : vble.items_quantity}]}
+                                </option>
+                            </select>
+                        </td>
+                        <td style="text-align: center;"><!-- attempts -->
+                            <select ng-model="searchText.attempts" class="form-control" style="width: auto; display:inline-block">
+                                <option></option>
+                                <option ng-repeat="vble in notif_attempts">{[{ vble.attempts }]}</option>
+                            </select>
+                        </td>
+
+                        <td style="text-align: center;">
+                            <select ng-model="searchText.is_subscription" class="form-control" style="width: auto; display:inline-block">
+                                <option></option>
+                                <option data-translate="no" value="{[{ false }]}"></option>
+                                <option data-translate="yes" value="{[{ true }]}"></option>
+                            </select>
+                        </td>
+                        <td style="text-align: center;">
+                            <select ng-model="searchText.is_ready_to_notify" class="form-control" style="width: auto; display:inline-block">
+                                <option></option>
+                                <option data-translate="no" value="{[{ false }]}"></option>
+                                <option data-translate="yes" value="{[{ true }]}"></option>
+                            </select>
+                        </td>
+                        <td style="text-align: center;">
+                            <select ng-model="searchText.was_received" class="form-control" style="width: auto;">
+                                <option></option>
+                                <option data-translate="no" value="{[{ false }]}"></option>
+                                <option data-translate="yes" value="{[{ true }]}"></option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr ng-repeat="notification in notifications | filter: searchText | orderBy:predicate:reverse ">
+                        <td>{[{ $index + 1 }]}</td>
+                        <td>{[{notification.id}]}</td>
+                        <td style="text-align: center; font-size: 10px">{[{notification.created_at | date:'yyyy-MM-dd HH:mm:ss' }]}</td>
+                        <td><div ng-repeat="purchase in notification.purchases">{[{ purchase.id }]}</div></td>
+                        <td><div ng-repeat="purchase in notification.purchases">{[{ purchase.transaction_id}]}</div></td>
+                        <!--<td>{[{notification.amount | number:2 }]}  {[{ currency.symbol }]}</td>-->
+                        <td>{[{notification.purchases[0].gamer.gamer_external_id}]}</td>
+                        <td>{[{notification.payment_detail_has_article.name | api_translation | replace_our_vars: notification.payment_detail_has_article.items_quantity }]}</td>
+                        <td style="text-align: center;">{[{notification.attempts}]}</td>
+                        <td  style="text-align: center;" ng-bind-html="notification.is_subscription | true_false:'bootstrap'"></td>
+                        <td  style="text-align: center;" ng-bind-html="notification.is_ready_to_notify | true_false:'bootstrap'"></td>
+                        <td  style="text-align: center;" ng-bind-html="notification.was_received | true_false:'bootstrap'"></td>
+                        <td>
+                            <div class="btn-group btn-group-xs">
+                                <div class="btn btn-default" ng-click="open(notification)" data-tooltip="{[{ 'more_info' | translate }]}">
+                                    <i class="fa  fa-info-circle"></i>
+                                </div>
+                                <div class="btn btn-default" data-dialog-confirmation data-msg="purchase_notification.force_to_resend_msg" data-callback="forceResend(notification)" data-tooltip="{[{ 'purchase_notification.force_to_resend' | translate }]}">
+                                    <i class="fa fa-send"></i>
+                                </div>
+                                <a href="#transactions?transaction_id={[{notification.purchases[0].transaction_id}]}" has-permission="ROLE_ADMIN_TRANSACTIONS"  data-tooltip="{[{ 'link_to_transaction' | translate }]}" class="btn btn-default">
+                                    <i class="fa fa-list-alt"></i>
+                                </a>
+                                <a href="#purchases?purchase_id={[{notification.purchases[0].id}]}" has-permission="ROLE_ADMIN_PURCHASES"  data-tooltip="{[{ 'link_to_purchase' | translate }]}" class="btn btn-default">
+                                    <i class="fa fa-bullseye"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-include="'/bundles/app/client_admin/views/partials/end_pagination.html?v='+v"></div>
+        </div>
+    </div>
+</div>
+    <!-- end row -->
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3><span  data-translate="notification"></span>: {[{ notification.id }]}</h3>
+    </div>
+    <div class="modal-body">
+        <table class="table table-bordered">
+            <tr><td data-translate="created"></td><td>{[{notification.created_at | date:'yyyy-MM-dd HH:mm:ss' }]}</td></tr>
+            <tr><td data-translate="amount"></td><td>{[{notification.amount | currency:$root.currency.symbol}]}</td></tr>
+            <tr><td data-translate="purchases"></td>
+                <td>
+                    <table class="table table-bordered">
+                        <tr><th data-translate="id"></th><th data-translate="amount"></th></tr>
+                        <tbody ng-repeat="purchase in notification.purchases">
+                        <tr><td>{[{ purchase.id }]}</td><td>{[{ purchase.amount_game | number:2 }]} {[{ currency.symbol }]}</td></tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr><td data-translate="article"></td><td>{[{ notification.payment_detail_has_article.id }]}<br><img ng-src="{[{ notification.payment_detail_has_article.img }]}"></td></tr>
+            <tr><td data-translate="n_items"></td><td>{[{ notification.payment_detail_has_article.items_quantity }]}</td></tr>
+            <tr><td data-translate="is_a_subscription"></td><td ng-bind-html="notification.is_subscription | true_false:'bootstrap'"></td></tr>
+            <tr><td data-translate="ready_to_notify"></td><td ng-bind-html="notification.is_ready_to_notify | true_false:'bootstrap'"></td></tr>
+            <tr><td data-translate="attempts"></td><td>{[{notification.attempts}]}</td></tr>
+            <tr><td data-translate="was_received"></td><td ng-bind-html="notification.was_received | true_false:'bootstrap'"></td></tr>
+            <tr>
+                <td colspan="2">
+                    <h2 data-translate="attempts_log"></h2>
+                    <table class="table no-border">
+                        <tbody ng-repeat="request in notification.requests" style="border-top: 1px dotted #ddd;">
+                        <tr><td data-translate="date" style="padding-top: 15px"></td><td style="padding-top: 15px">{[{ request.request.date | date:'medium' }]}</td></tr>
+                        <tr><td data-translate="code"></td><td ng-bind-html="request.response.http_code | http_code"></td></tr>
+                        <tr><td data-translate="content"></td><td><pre style="word-wrap:break-word; max-width: 400px">{[{ request.response.content }]}</pre></td></tr>
+                        <tr><td data-translate="request"></td><td><div style="font-size: 0.7em; max-width: 400px">
+                            <div style="word-wrap:break-word;margin-bottom: 15px;">url: {[{ request.request.url }]}</div>
+                            <div style="word-wrap:break-word;margin-bottom: 15px">post: {[{ request.request.params }]}</div>
+                            <div style="word-wrap:break-word;margin-bottom: 15px">X-WSSE: {[{ request.request.auth }]}</div>
+                            <div style="word-wrap:break-word;margin-bottom: 15px" id="textToCopy">
+                                (bash) curl
+                                <input type="text" id="{[{request.request.auth}]}" class="form-control"
+                                       value='curl -vvv --data "{[{request.request.params}]}" "{[{ request.request.url }]}" -H "Authorization: Signature {[{ request.request.auth }]}" -H "Pragma: no-cache"  -H "Accept-Encoding: gzip, deflate" -H "Accept-Language: en-US,en;q=0.8,es;q=0.6" -H "User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36 Wolopay/1.0 (test:1)" -H "Accept: application/json, text/plain, */*"'>
+                                <div class="btn btn-default" ng-click="copyToClipboard2(request.request.auth)" data-tooltip="{[{ 'copy_curl_to_clipboard' | translate }]}">
+                                    <i class="fa  fa-clipboard"></i>
+                                </div>
+                            </div>
+
+                            </div></td></tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+
+
+        </table>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</script>
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="notificationResendInformModal.html">
+
+    <div class="modal-body sent-modal">
+        <div>
+            <h4>Request</h4>
+        </div>
+        <div>
+            <label>Url</label>
+            <div>{[{ sentInfo.request.url }]}</div>
+        </div>
+        <div>
+            <label>Post</label>
+            <div>{[{ sentInfo.request.params }]}</div>
+        </div>
+        <div>
+            <label>X-WSSE</label>
+            <div>{[{ sentInfo.request.auth }]}</div>
+        </div>
+
+        <div>
+            <h4 style="margin-top: 30px">Response <span ng-bind-html="sentInfo.response.http_code | http_code" style="float: right"></span></h4>
+        </div>
+        <div>
+            <label>HttpCode</label>
+            <div>{[{ sentInfo.response.http_code }]}</div>
+        </div>
+        <div>
+            <label>Content</label>
+            <div>{[{ sentInfo.response.content }]}</div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</script>

@@ -1,0 +1,103 @@
+<form class="form-horizontal validation" name="form_pre_configure" novalidate ng-controller="ConfiguratorPreConfigureController" ng-submit="form_pre_configure.$valid && submit()">
+    <fieldset>
+        <legend>
+            {[{ 'configurator.step0.title' | translate }]}
+
+            <wizard-next-button form-name="form_pre_configure"></wizard-next-button>
+        </legend>
+        <p>{[{ 'configurator.step0.desc' | translate }]}</p>
+
+        <div>
+            <div>
+                <div class="row" style="margin-top: 20px">
+
+                    <div class="col-md-3 col-md-offset-1" >
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">{[{ 'configurator.step0.table_app.title' | translate }]}</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td colspan="2">
+                                    <label>
+                                        <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="autoConfiguration.pretty_price_is_enabled">
+                                        <span >{[{ 'configurator.step0.table_app.pretty_price' | translate }]}</span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <label>
+                                        <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="autoConfiguration.cost_of_live_is_enabled">
+                                        <span >{[{ 'configurator.step0.table_app.cost_of_live' | translate }]}</span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-3">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th colspan="2">{[{ 'configurator.step0.table_final_prices.title' | translate }]}</th>
+                            </tr>
+                            </thead>
+                            <tr>
+                                <td colspan="2">
+                                    <label>
+                                        <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="autoConfiguration.tax_to_final_amount">
+                                        <span >{[{ 'configurator.step0.table_final_prices.add_iva' | translate }]}</span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <label>
+                                        <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="autoConfiguration.pay_methods_add_fee_to_final_amount">
+                                        <span >{[{ 'configurator.step0.table_final_prices.add_provider_fee' | translate }]}</span>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <label>
+                                        <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="autoConfiguration.wolopay_fee_to_final_amount">
+                                        <span >{[{ 'configurator.step0.table_final_prices.wolopay' | translate }]}</span>
+                                    </label>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div class="col-md-3" >
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">{[{ 'configurator.step0.table_pay_methods.title' | translate }]}</th>
+                                </tr>
+                            </thead>
+                            <tr>
+                                <td>{[{ 'configurator.step0.table_pay_methods.max_percent' | translate }]}</td>
+                                <td>
+                                    <div class="input-group" style="width: 135px;">
+                                        <input type="number" min="0" max="80" class="form-control" ng-model="autoConfiguration.pay_methods_max_fee_provider_percent" ng-model-options="{ debounce: 1000 }">
+                                        <div class="input-group-addon">%</div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+
+                        <em>
+                            {[{ 'configurator.step0.table_pay_methods.pm_available' | translate: {'available': payMethodsNum} }]}
+                        </em>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

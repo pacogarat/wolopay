@@ -1,0 +1,35 @@
+{% trans_default_domain "final_view" %}
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('css_glob/reset.css') }}">
+
+    {% stylesheets 'css_glob/reset.css'
+    "bundles/app/app_shop/css/payment/done.less"
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" media="screen" />
+    {% endstylesheets %}
+
+    <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+{% endblock %}
+{% block body %}
+    <div id="container">
+        <img id="img-state" src="{{ absolute_url(asset('bundles/app/app_shop/img/payment/state_'  ~ state ~ '.png')) }}" >
+
+        <div id="main">
+            <div id="content">
+
+                {% block content '' %}
+
+            </div>
+            <div id="contributors">
+                <img src="{{ absolute_url(asset('img/logo_113x25.png')) }}">
+
+                {% if (app.user.app  is defined ) and (app.user.app.logo) %}
+                    <img src="{{domain_main}}{% path app.user.app.logo, 'done' %}">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

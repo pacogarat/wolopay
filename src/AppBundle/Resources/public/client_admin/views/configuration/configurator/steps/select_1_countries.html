@@ -1,0 +1,57 @@
+<form class="form-horizontal validation" name="form_countries" novalidate ng-controller="ConfiguratorSelectCountriesController" ng-submit="form_countries.$valid && submit()">
+    <fieldset>
+        <legend>
+            {[{ 'configurator.step1.title' | translate }]} {[{ $root.configuratorCurrent.step }]}
+            <wizard-next-button form-name="form_countries"></wizard-next-button>
+        </legend>
+        <p>{[{ 'configurator.step1.desc' | translate }]}</p>
+
+        <div>
+            <div>
+                <div class="row" style="margin-top: 20px">
+
+                    <div class="col-md-10 col-md-offset-1" >
+
+                        <div class="row">
+
+                            <div class="col-md-2" style="border-right: 1px dashed #ccc">
+                                <div ng-repeat="country in continents" >
+                                    <label>
+                                        <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="country.continent.selected" ng-change="updateSelectedCountries()" ng-required="!someSelected()">
+                                        <span>{[{country.continent.name}]}</span>
+                                    </label>
+                                </div>
+
+                                <!--<div class="btn-group" style="margin-top: 20px">-->
+                                    <!--<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="addAllContinents()"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span></button>-->
+                                    <!--<button type="button" class="btn btn-default" aria-label="Center Align" ng-click="removeAllContinents()"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button>-->
+                                <!--</div>-->
+                            </div>
+
+                            <div class="col-md-9 col-md-offset-1">
+                                <div style="min-height: 45px">
+                                    <div ng-repeat="country in $root.configuratorCurrent.countries " style="float:left; width: 170px;">
+                                        <label ng-if="country.active">
+                                            <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="country.selected" ng-required="!someSelected()">
+                                            <span class="no-wrap" ng-class="{'text-info underline': isAOtherCountry(country) }" >{[{country.name}]}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <!--<div class="btn-group" style="margin-top: 20px">-->
+                                    <!--<button type="button" class="btn btn-default" aria-label="Left Align" ng-click="addAllCountriesAvailable()"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span></button>-->
+                                    <!--<button type="button" class="btn btn-default" aria-label="Center Align" ng-click="removeAllCountriesAvailable()"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button>-->
+                                <!--</div>-->
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div ng-if="!otherIsSelected()" class="alert alert-block alert-warning" style="margin-top: 20px">
+            <i class="fa-fw fa fa-info"></i> {[{ 'configurator.step1.warning_other' | translate }]}
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,57 @@
+{% extends "@App/Others/Default/FAQ/faq_layout.html.twig" %}
+{% block title %}FAQ, Perguntas Formuladas Frequentemente{% endblock %}
+{% block faq_txt %}
+
+    <h2 class="text-center">FAQ, Perguntas Frequentes</h2>
+
+    <h3 class="voffset4" id="sms_not_sendt">Enviei um SMS, mas não recebi a resposta.</h3>
+    <p>
+        Pode haver vários motivos para isso:
+    <ul>
+        <li> Não ter escrito o texto corretamente, ou enviar ao número errado; verifique e se havia algo mal, e envie novamente. </li>
+        <li> Ser pré-pago e não ter saldo suficiente.</li>
+        <li> Ter o número do seu celular em uma “lista negra” em nosso sistema, ou por solicitação do titular do contrato ou porque sua linha registrou não pagamentos em faturas anteriores.</li>
+        <li> Possuir o acesso aos serviços Premium bloqueado em sua operadora, geralmente ele vem bloqueado de forma padrão e neste caso o usuário de conectar-se com a central de atendimento ao cliente e solicitar a ativação.</li>
+        <li> Ter bloqueado o acesso aos serviços premium devido à solicitação do titular do contrato. </li>
+        <li> Sua operador não permitir o uso dos serviços Premium (muitas operadores virtuais não permitem). Você deverá escolher outro método de pagamento.</li>
+        <li> Algumas operadoras não permitirem o uso de SMS Premium em contratos empresariais, si este é o caso, o titular do contrato deve solicitar sua ativação. </li>
+    </ul>
+    </p>
+
+    <p> Se você acredita que não é por nenhum dos motivos anteriores, visite a nossa central de Suporte e preencha o formulário indicando o número de celular utilizado. Verificaremos o seu caso e entraremos em contato para explicar-lhe o que aconteceu.
+    </p>
+
+    <h3 id="cant_call">Não consegui ligar para o número que aparecia na minha tela.</h3>
+    <p>
+        Assim como o SMS, podem haver vários motivos:
+    <ul>
+        <li> Não teclar corretamente, verifique e tente novamente.</li>
+        <li> Ser pré-pago e não ter saldo suficiente.</li>
+        <li> Ter o número do seu celular em uma “lista negra” em nosso sistema, ou por solicitação do titular do contrato ou porque sua linha registrou não pagamentos em faturas anteriores.</li>
+        <li> Possuir o acesso aos serviços Premium bloqueado em sua operadora, geralmente ele vem bloqueado de forma padrão e neste caso o usuário de conectar-se com a central de atendimento ao cliente e solicitar a ativação.</li>
+        <li> Muitas empresas também bloqueiam o acesso a serviços premium de seus usuários, tanto de linhas fixa como móveis.</li>
+        <li> Ter bloqueado o acesso aos serviços premium devido à solicitação do titular do contrato. </li>
+        <li> Sua operador não permitir o uso dos serviços Premium (muitas operadores virtuais não permitem). Você deverá escolher outro método de pagamento.</li>
+        <li> Algunas operadoras no permiten el uso de servicios Premium en contratos de empresa; si es el caso, el titular del contrato es quien debe solicitar su activación.</li>
+    </ul>
+    </p>
+    <p>
+        Se você acredita que não é por nenhum dos motivos anteriores, visite a nossa central de Suporte e preencha o formulário indicando o número de celular utilizado. Verificaremos o seu caso e entraremos em contato para explicar-lhe o que aconteceu.
+    </p>
+    <h3 id="paypal_doesnt_work"> Paguei com PayPal, mas os créditos não aparecem na minha conta.</h3>
+    <p>
+        Será necessário que você nos envie a support@wolopay.net o identificador da transação, tanto de Wolopay como de PayPal, assim como o comprovante de pagamento de PayPal. Assim que os dados forem verificados entraremos em contato para informá-lo sobre o ocorrido e que a sua transação seja processada.
+    </p>
+
+    <h3 id="code_sms">Enviei um SMS (ou liguei por telefone) e tenho um código. Onde utilizá-lo?</h3>
+    <p>
+        Se você enviou um SMS com uma palavra chave, ou ligou ao telefone habitual do jogo, mas sem haver iniciado a compra do mesmo, não podemos vincular suas mensagem (ou chamada) à nenhuma transação, e por isso, não podemos notificar ao jogo para que os créditos sejam somados. Você deve entrar no jogo, ir à sessão de recarregar a conta, selecionar a forma de pagamento e as instruções, não enviar SMSM nem ligar, no segundo passo, o código deverá ser incluído, neste caso apenas um vez.
+    </p>
+
+    <h3 id="code_pre_inserted">Tinha um código e ao inseri-lo diz que já foi utilizado.</h3>
+    <p>
+        Visite nossa central de suporte, introduza os dados requeridos incluindo o código e seu e-mail, e comprovaremos se o código foi utilizado (e onde e quando), caso contrário, lhe daremos a solução por e-mail (um código novo).
+    </p>
+
+
+{% endblock %}

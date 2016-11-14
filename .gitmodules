@@ -1,0 +1,3 @@
+[submodule "doc/examples/lib"]
+	path = doc/examples/lib
+	url = https://github.com/Wolopay/wolopay-api-php.git

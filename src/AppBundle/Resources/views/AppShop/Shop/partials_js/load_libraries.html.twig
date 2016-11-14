@@ -1,0 +1,57 @@
+{% set normalLoad = false %}
+{% if loadJsTemplate is not defined %}
+    {% set loadJsTemplate = "<script type='text/javascript' src='{{asset_url}}'></script>" %}
+    {% set normalLoad = true %}
+{% endif %}
+
+{% if normalLoad %}
+    <script>
+{% endif %}
+    // chosen not available from mobile devices
+    if (window.innerWidth >= 700 && screen.width >= 700)
+    {
+
+{% javascripts
+    'bower_components/chosen/chosen.jquery.min.js'
+    'bower_components/angular-chosen-localytics/chosen.js'
+%}
+
+        {% if normalLoad %}
+            loadScript("{{asset_url}}");
+        {% else %}
+            {{ loadJsTemplate | evaluate | raw  }}
+        {% endif %}
+
+{% endjavascripts %}
+
+    }
+{% if normalLoad %}
+    </script>
+{% endif %}
+
+{% javascripts
+    'js_glob/libraries.js'
+    'js_glob/fos_js_routes.js'
+    'bower_components/jquery-touchswipe/jquery.touchSwipe.min.js'
+    'bower_components/gsap/src/minified/TweenMax.min.js'
+    'bower_components/angular-translate/angular-translate.min.js'
+    'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js'
+    'bower_components/chosen/chosen.jquery.min.js'
+    'bower_components/angular-chosen-localytics/chosen.js'
+    'bower_components/humanize-duration/humanize-duration.js'
+    'bower_components/angular-timer/dist/angular-timer.js'
+    'bower_components/moment/min/moment.min.js'
+    'bower_components/angular-animate/angular-animate.min.js'
+
+    '@AppBundle/Resources/public/app_shop/js/Slider.js'
+
+    '@AppBundle/Resources/public/app_shop/js/app/*.js'
+    '@AppBundle/Resources/public/app_shop/js/app/controller/*.js'
+    '@AppBundle/Resources/public/app_shop/js/app/directive/*.js'
+    '@AppBundle/Resources/public/app_shop/js/app/service/*.js'
+    '@AppBundle/Resources/public/app_shop/js/app/service/*/*.js'
+    '@AppBundle/Resources/public/app_shop/js/app/filter/*.js'
+
+%}
+    {{ loadJsTemplate | evaluate | raw  }}
+{% endjavascripts %}

@@ -1,0 +1,16 @@
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.test/shop/payment/begin/WOT_5745bf3ca68f8/es/15/458EC740-F6A2-4F6D-BE3D-80FBF3131250/ES?sms_id=1, GET: sms_id=1, POST: 
+[2016-05-25 15:05:50] app.DEBUG: Verifications to articleId: 458EC740-F6A2-4F6D-BE3D-80FBF3131250 - single_payment [] []
+[2016-05-25 15:05:50] app.DEBUG: PaymentDetailHasArticles begin 0 [] []
+[2016-05-25 15:05:50] app.DEBUG: Created a new PaymentDetailHasArticles [] []
+[2016-05-25 15:05:50] app.DEBUG: PaymeentDetailHasArticles end 1 [] []
+[2016-05-25 15:05:50] app.INFO: Created ipn url: 'http://sym2_pay_gateway.test/shop/payment/ipn/SINPAY_2016052515055745bf4e7db5a/es/WOT_5745bf3ca68f8/lygQxJY5uBPR7Oo' [] []
+[2016-05-25 15:05:50] app.INFO: Created new payment 'SINPAY_2016052515055745bf4e7db5a [] []
+[2016-05-25 15:05:50] app.INFO: redirecting http://sym2_pay_gateway.test/shop/sms/logic_mo_mt_code/es/WOT_5745bf3ca68f8/SINPAY_2016052515055745bf4e7db5a [] []
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.test/shop/payment/begin/WOT_575a93c53ebfe/es/15/FC372A7E-2A83-4785-8850-5CC02E4362F5/ES?sms_id=1, GET: sms_id=1, POST: 
+[2016-06-10 10:17:58] app.DEBUG: Verifications to articleId: FC372A7E-2A83-4785-8850-5CC02E4362F5 - single_payment [] []
+[2016-06-10 10:17:58] app.DEBUG: PaymentDetailHasArticles begin 0 [] []
+[2016-06-10 10:17:58] app.DEBUG: Created a new PaymentDetailHasArticles [] []
+[2016-06-10 10:17:58] app.DEBUG: PaymeentDetailHasArticles end 1 [] []
+[2016-06-10 10:17:59] app.INFO: Created ipn url: 'http://sym2_pay_gateway.test/shop/payment/ipn/SINPAY_201606101017575a93d6df2d6/es/WOT_575a93c53ebfe/xjdbHiuqOfNV78t' [] []
+[2016-06-10 10:17:59] app.INFO: Created new payment 'SINPAY_201606101017575a93d6df2d6 [] []
+[2016-06-10 10:17:59] app.INFO: redirecting http://sym2_pay_gateway.test/shop/sms/logic_mo_mt_code/es/WOT_575a93c53ebfe/SINPAY_201606101017575a93d6df2d6 [] []

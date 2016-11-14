@@ -1,0 +1,20 @@
+{% extends "::base_form_full_screen.html.twig" %}
+{% block title %}{{ 'form.gamer_data.title' | trans }}{% endblock %}
+{% block page_container %}
+
+    <h1>
+        {{ 'form.gamer_data.title' | trans }}
+    </h1>
+
+    {% include '@App/Partials/flash_msgs.html.twig' %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <div class="form-group text-right voffset4">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">{{'form.generic.submit' | trans }}</button>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

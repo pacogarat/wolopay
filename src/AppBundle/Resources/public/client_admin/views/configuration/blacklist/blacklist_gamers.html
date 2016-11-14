@@ -1,0 +1,26 @@
+<div ng-controller="BlackListedGamersCtrl">
+
+    <h3 translate="blacklist.gamers.title"></h3>
+    <p ng-bind-html="'blacklist.gamers.desc' | translate | nl2br "></p>
+
+    <form name="form_shop_blacklisted_external_users" class="form-horizontal validation" ng-submit="formValid() && setBlackListed(true, add_external_user_id)">
+        <div class="input-group" style="margin-top: 20px; max-width: 330px">
+            <input ng-model="add_external_user_id" required  type="text" class="form-control" >
+            <span class="input-group-btn">
+                <button class="btn btn-info" type="submit" ng-disabled="!formValid()" translate="blacklist.gamers.add_gamer"></button>
+            </span>
+        </div>
+        <div style="margin: 15px 0 5px; padding-top: 15px; border-top: 1px dashed #aaa">
+            <div ng-if="gamerBlacklisted.length == 0" class="alert alert-warning" translate="no_data">
+            </div>
+            <input type="text" class="form-control" ng-if="gamerBlacklisted.length > 0" ng-model="searchText.$" placeholder="{[{ 'search' | translate }]}" >
+            <div style="margin-top: 10px">
+                <button type="button" ng-repeat="gamer in gamerBlacklisted | filter: searchText" class="btn btn-default" style="margin: 3px">
+                    {[{ gamer.gamer_external_id }]}
+                    <i class="glyphicon glyphicon-remove" style="color: rgb(181, 0, 0)" ng-click="setBlackListed(false, gamer.gamer_external_id)"></i>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</div>

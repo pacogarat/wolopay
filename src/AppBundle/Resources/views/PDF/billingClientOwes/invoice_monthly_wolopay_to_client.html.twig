@@ -1,0 +1,128 @@
+{# client \AppBundle\Entity\Client #}
+{# finInvoice \AppBundle\Entity\FinInvoice #}
+{# storageCurrencies \AppBundle\Entity\NotPersisted\StorageCurrencyMoney #}
+{# money \AppBundle\Entity\NotPersisted\Money #}
+
+{% extends finInvoice.amountTotal|round == 0 ? '@App/PDF/summary_layout.html.twig' : '@App/PDF/invoice_layout.html.twig' %}
+
+{% block page %}
+
+    <div class="h2">Summary (overview of final calculation)</div>
+    <table style="width: 70%;" cellspacing="0" cellpadding="2">
+
+        <tr>
+            <th style="text-align: left">
+                Concept
+            </th>
+            <th style="text-align: left">
+                Currency
+            </th>
+            <th style="text-align: right">
+                Total
+            </th>
+        </tr>
+        <tr>
+            <td>
+                Monthly Fees
+            </td>
+            <td>
+                {{ client.woloPack.currency.id }}
+            </td>
+            <td class="num">
+                {{ client.woloPack.amountTotal  | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}
+            </td>
+        </tr>
+        {% if woloGatewayFeeSum %}
+            <tr>
+                <td>
+                    Gateways minimal fee
+                </td>
+                <td>
+                    {{ client.currencyEarnings.id }}
+                </td>
+                <td class="num">
+                    {{ woloGatewayFeeSum | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}
+                </td>
+            </tr>
+        {% endif %}
+
+        {% include '@App/PDF/partials/extra_concepts.html.twig' %}
+
+        {% if monthlyWoloIva %}
+            <tr>
+                <td>
+                    VAT {{ client.country.vat }}% over {{ monthlyWoloIvaOver | number_format(2,'.', ',') }} {{ client.woloPack.currency.id }}
+                </td>
+                <td>
+                    {{ client.currencyEarnings.id }}
+                </td>
+                <td class="num">
+                    {{ monthlyWoloIva | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}
+                </td>
+            </tr>
+        {% endif %}
+        <tr>
+            <td class="borderTop">
+                Invoice Total Including VAT
+            </td>
+            <td class="borderTop">
+                {{ finInvoice.currency.id }}
+            </td>
+            <td class="num borderTop">
+                {{ finInvoice.amountTotal  | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}
+            </td>
+        </tr>
+    </table>
+
+    <div style="padding-top: 50px">
+        {% include '@App/PDF/partials/deposit_details.html.twig' %}
+    </div>
+
+    {% if woloGatewayFeeSum %}
+        <div style="padding-top: 50px">
+            <div class="h3">
+                Gateway generated Turnover DETAIL
+            </div>
+            <div>
+                <table style="font-size: 0.8em; width: 50%" cellspacing="0" cellpadding="4">
+                    <tr>
+                        <th>
+                            Transactions
+                        </th>
+                        <th>
+                            Provider Gateway
+                        </th>
+                        <th>
+                            Gross
+                        </th>
+                    </tr>
+                    {% set grossTotal = 0 %}
+                    {% set vatTotal = 0 %}
+                    {% set payMethodsTotal = 0 %}
+                    {% set wolopayTotal = 0 %}
+                    {% set transactionTotal = 0 %}
+
+                    {% for payMethodName, money in storageCurrencies %}
+                        {% set wolopayTotal = wolopayTotal + money.extraData['amount_wolo_in_client_currency'] %}
+                        {% set transactionTotal = transactionTotal + money.extraData['transactions'] | length %}
+                        <tr >
+                            <td class="num">{{ money.extraData['transactions'] | length }}</td>
+                            <td>{{ payMethodName }}</td>
+                            <td class="num">{{ money.extraData['amount_wolo_in_client_currency'] | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <th class="borderTop num">{{ transactionTotal }}</th>
+                        <th class="borderTop"></th>
+                        <th class="num borderTop">{{ wolopayTotal | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+
+    <div style="padding-top: 50px">
+        Contact us at {{ email_billing }} for any inquiries regarding this invoice.
+    </div>
+
+{% endblock %}

@@ -1,0 +1,105 @@
+<form class="form-horizontal validation" name="form_prices" novalidate ng-controller="ConfiguratorSelectPricesController" ng-submit="form_prices.$valid && submit()">
+    <fieldset>
+        <legend>
+            {[{ 'configurator.step7.title' | translate }]}
+            <wizard-next-button form-name="form_prices"></wizard-next-button>
+        </legend>
+        <p class="newlines">{[{ 'configurator.step7.desc' | translate }]}</p>
+
+        <div>
+            <div>
+                <div class="row" style="margin-top: 20px">
+
+                    <div class="col-md-12" >
+                        <div class="row" style="margin-top: 18px;" >
+                            <div class="col-md-4">
+
+                                <div class="alert alert-block alert-info">
+                                    <i class="fa-fw fa fa-warning"></i> {[{ 'configurator.step7.update_price_by_article' | translate }]}
+                                    <label style="margin-top: 15px; display: block;">
+                                        <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="autoConfiguration.cost_of_live_is_enabled">
+                                        <span class="no-wrap">{[{ 'configurator.step0.table_app.cost_of_live' | translate }]}</span>
+                                    </label>
+                                    <label style="margin-top: 15px; display: block;">
+                                        <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="autoConfiguration.pretty_price_is_enabled">
+                                        <span class="no-wrap">{[{ 'configurator.step7.pretty_price' | translate }]}</span>
+                                    </label>
+                                </div>
+
+                                <table class="table" >
+                                    <thead>
+                                        <tr>
+                                            <td colspan="4">{[{ 'configurator.step7.article_value' | translate }]}</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="article in articles" ng-if="article.article_category.id != 'free'">
+                                            <td>{[{ article.name_label | api_translation | replace_our_vars: article.items_quantity}]}</td>
+                                            <td>=</td>
+                                            <td>
+                                                <div class="input-group" style="width: 135px;">
+                                                    <input type="number" class="form-control" ng-model="article.amount_standard" step="any" ng-change="modifyPriceByArticleAmountStandard(article)" min="-1" required ng-model-options="{ debounce: 500 }">
+                                                    <div class="input-group-addon">{[{ article.item.unitary_price_country.currency.symbol }]}</div>
+                                                </div>
+                                            </td>
+                                            <td>{[{ article.item.unitary_price_country.name }]}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div class="col-md-8">
+                                <div style="margin-bottom: 15px">
+                                    <div class="btn-group">
+                                        <button ng-repeat="country in countries" ng-class="{'active': $parent.countrySelected.id == country.id}" type="button" class="btn btn-default" aria-label="Left Align" ng-click="onChangeCountry(country)">{[{ country.name }]}</button>
+                                    </div>
+                                </div>
+
+                                <!--<div class="alert alert-block alert-info">-->
+                                    <!--<i class="fa-fw fa fa-warning"></i> {[{ 'configurator.step7.restore_by_country_desc' | translate }]}-->
+
+                                    <!--<div class="btn-group" style="margin-top: 10px">-->
+                                        <!--<button type="button" class="btn btn-info" aria-label="Left Align" ng-click="modifyPriceByCostOfLifeByCountry()">{[{ 'configurator.step7.restore_by_cost_of_life' | translate }]}</button>-->
+                                        <!--<button type="button" class="btn btn-info" aria-label="Left Align" ng-click="modifyPriceByCurrencyByCountry()">{[{ 'configurator.step7.restore_by_exchange' | translate }]}</button>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                <ul class="nav nav-tabs" style="margin: 25px 0 20px 0;" >
+                                    <li role="presentation" style="cursor: pointer;"  ng-repeat="category in categories" ng-class="{'active': category.level_category.id == $parent.appShopSelected.level_category.id}" ng-click="$parent.appShopSelected = category"><a>{[{ category.level_category.name }]}</a></li>
+                                </ul>
+
+                                <div ng-repeat="shop in appShops" class="row">
+                                    <fieldset class="col-md-12" style="padding-bottom: 35px" ng-if="shop.level_category.id == appShopSelected.level_category.id">
+                                        <!--<legend>{[{ shop.name }]}</legend>-->
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <h5 style="margin-bottom: 23px;">{[{ 'article_category.single_payment' | translate }]}</h5>
+
+                                            <div ng-repeat="article in articles | filter: {article_category: {id: 'single' }}">
+                                                <div ng-include="'/bundles/app/client_admin/views/configuration/configurator/steps/select_7_z1_prices.html?'+v"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5 col-md-offset-1">
+                                            <h5 style="margin-bottom: 23px;">{[{ 'article_category.subscription' | translate }]}</h5>
+                                            <div ng-repeat="article in articles | filter: {article_category: {id: 'subscription' }}">
+                                                <div ng-include="'/bundles/app/client_admin/views/configuration/configurator/steps/select_7_z1_prices.html?'+v"></div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+
+                                <div class="alert alert-block alert-info">
+                                    <i class="fa-fw fa fa-info"></i> {[{ 'configurator.step7.add_prices_with_vat' | translate }]}<br>
+                                    <i class="fa-fw fa fa-info"></i> {[{ 'configurator.step7.remove_article' | translate }]}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </fieldset>
+</form>

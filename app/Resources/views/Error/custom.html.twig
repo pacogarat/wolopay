@@ -1,0 +1,7 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div style="text-align: center">
+        <h1 style="position: fixed;text-align: center;width: 100%;text-shadow: 1px 2px 0 #ccc;">{{ error_message | default('error') | trans  }}</h1>
+    </div>
+{% endblock %}

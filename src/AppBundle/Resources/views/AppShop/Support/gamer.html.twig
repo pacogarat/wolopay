@@ -1,0 +1,25 @@
+{% extends "@App/AppShop/layout_secondary.html.twig" %}
+{% block title %}{{ 'support.title' | trans }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .form-group{
+            margin-bottom: 7px;
+        }
+        .alert{
+            margin: 0px 20px 20px 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block page %}
+    <div class="col-sm-12 voffset2">
+        {{ 'support.description' | trans | nl2br }}
+    </div>
+    <div class="col-sm-12 voffset5">
+        {% include '@App/AppShop/Support/contact_gamer_form.html.twig' with {'form': contactFrom}  %}
+    </div>
+
+    {% include '@App/Partials/analitycs_by_gamer_id.html.twig' with {'transaction': transaction } %}
+{% endblock %}

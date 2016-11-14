@@ -1,0 +1,17 @@
+<div ng-repeat="appShopArticle in article.app_shop_has_articles" ng-if="appShopSelected.level_category.id == appShopArticle.app_shop.level_category.id && appShopArticle.country.id == countrySelected.id" class="form-inline">
+    <div class="form-group" style="width: 100%">
+        <label ng-init="article.style = {'width': (article.article_category.id == 'subscription' ? '200px' : '135px')}" style="display: block; margin: 6px 0">
+            <div class="input-group" style="float: right; width: 100px; margin-left: 5px" ng-if="app.has_virtual_currency_enabled">
+                <input type="number" class="form-control" ng-model="appShopArticle.virtual_currency_amount" min="0">
+                <div class="input-group-addon">V</div>
+            </div>
+            <div class="input-group" ng-style="article.style" style="float: right">
+                <input type="number" class="form-control" ng-model="appShopArticle.current_amount_without_offer" required min="0">
+                <div class="input-group-addon">{[{ appShopArticle.country.currency.symbol }]} <span ng-if="article.article_category.id == 'subscription'"> {[{ article.periodicity }]} day/s </span></div>
+            </div>
+            <div class="no-wrap" style="padding-left: 15px;padding-top: 7px">
+                {[{ article.name_label | api_translation | replace_our_vars: article.items_quantity}]}
+            </div>
+        </label>
+    </div>
+</div>

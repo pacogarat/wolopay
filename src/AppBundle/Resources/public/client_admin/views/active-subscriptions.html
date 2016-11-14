@@ -1,0 +1,151 @@
+<div class="well well-small-padding">
+    <div ng-controller="ActiveSubscriptionsController">
+        <div>
+            <form name="active_subscriptions_search" ng-submit="loadSearch()">
+                <div class="search-container">
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'subscription' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.subscription_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'purchase' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.purchase_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'gamer' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.gamer_external_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <button type="submit" class="btn btn-info btn-search" ng-disabled="active_subscriptions_search.$invalid">{[{ 'search' | translate }]} <i class="fa fa-search"></i></button>
+                        <button type="button" class="btn btn-warning btn-search" ng-click="search = {}" style="margin-left: 10px">
+                            {[{ 'clear' | translate }]} <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div ng-if="thereAreData === false">
+            <div class="alert alert-warning">
+                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                {[{ 'no_data' | translate }]}
+            </div>
+        </div>
+        <div ng-if="thereAreData === true">
+            <div class="table-responsive">
+                <table class="table table-hover table-striped-inv table-bordered">
+                    <thead>
+                    <tr><td colspan="100%"><input ng-model="searchText.$" placeholder="{[{ 'search_from_current_data' | translate}]}"  class="form-control"></td></tr>
+                    <tr>
+                        <th></th>
+                        <th ng-click="orderBy('id')" data-translate="id" style="cursor: pointer;"></th>
+                        <th ng-click="orderBy('created_at')" style="cursor: pointer;" data-translate="created"></th>
+                        <th ng-click="orderBy('updated_at')" style="cursor: pointer;" data-translate="last_renewal"></th>
+                        <th data-translate="article"></th>
+                        <th ng-click="orderBy('gamer_external_id')"  style="cursor: pointer;" data-translate="gamer"></th>
+                        <th ng-click="orderBy('country_id')"  style="cursor: pointer;" data-translate="country"></th>
+                        <th ng-click="orderBy('n_completed_payments')"  style="cursor: pointer;"  data-translate="active_subscription.n_completed_payments"></th>
+                        <th ng-click="orderBy('amount_for_each_payment_to_complete')"  style="cursor: pointer;" data-translate="active_subscription.amount_for_each_payment_to_complete"></th>
+                        <th ng-click="orderBy('total_amount')"  style="cursor: pointer;" data-translate="total_amount"></th>
+                        <th ng-click="orderBy('total_amount_game')"  style="cursor: pointer;" data-translate="game_amount"></th>
+                        <th data-translate="actions"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="filter-table-selects-xxs">
+                        <td><!-- # --></td>
+                        <td><!-- subsId --></td>
+                        <td><!-- created  --></td>
+                        <td><!-- date renewal --></td>
+                        <td><!-- article -->
+                            <select ng-model="searchText.payment_detail.payment_detail_has_articles.id" class="form-control" >
+                                <option></option>
+                                <option ng-repeat="subs in subscriptions_articles" ng-value="subs.id">
+                                    {[{ subs.name | api_translation : subs.items_quantity}]}
+                                </option>
+                            </select>
+                        </td>
+                        <td><!-- gamer -->
+                            <select ng-model="searchText.gamer.gamer_external_id" class="form-control" >
+                                <option></option>
+                                <option ng-repeat="subs in subscriptions_gamer">{[{ subs.gamer_external_id }]}</option>
+                            </select>
+                        </td>
+                        <td style="text-align: center;"><!-- country -->
+                            <select ng-model="searchText.payment_detail.country.name" class="form-control" style="width: auto; display:inline-block">
+                                <option></option>
+                                <option ng-repeat="subs in subscriptions_country">{[{ subs.payment_detail.country.name }]}</option>
+                            </select>
+                        </td>
+                        <td style="text-align: center;"><!-- # payments -->
+                            <select ng-model="searchText.n_completed_payments" class="form-control" style="width: auto; display:inline-block">
+                                <option></option>
+                                <option ng-repeat="subs in subscriptions_renewals">{[{ subs.n_completed_payments }]}</option>
+                            </select>
+                        </td>
+                        <td><!-- amount each --></td>
+                        <td><!-- total paid --></td>
+                        <td><!-- game revenue --></td>
+                        <td><!-- buttons --></td>
+                    </tr>
+
+                    <tr ng-repeat="subscription in subscriptions | filter: searchText | orderBy:predicate:reverse ">
+                        <td>{[{$index + 1}]}</td>
+                        <td>{[{ subscription.id}]}</td>
+                        <td style="text-align: center; font-size: 10px">{[{ subscription.created_at | date:'yyyy-MM-dd HH:mm:ss' }]}</td>
+                        <td style="text-align: center; font-size: 10px">{[{ subscription.updated_at | date:'yyyy-MM-dd HH:mm:ss' }]}</td>
+                        <td>{[{ subscription.payment_detail.payment_detail_has_articles[0].name | api_translation : subscription.payment_detail.payment_detail_has_articles[0].items_quantity}]}</td>
+                        <td>{[{ subscription.gamer_external_id}]}</td>
+                        <td style="text-align: center;"><country-flag data-name="{[{ subscription.payment_detail.country.name}]}" data-state="{[{ subscription.payment_detail.country.id}]}"></country-flag></td>
+                        <td style="text-align: center;">{[{ subscription.n_completed_payments}]}</td>
+                        <td style="text-align: center;">{[{ subscription.amount_for_each_payment_to_complete | number:2 }]} {[{ currency.symbol}]}</td>
+                        <td style="text-align: center;" >{[{ subscription.amount_total | currency:currency.symbol }]}</td>
+                        <td style="text-align: center; font-weight: bold" data-currency="{[{ subscription.amount_game }]}"></td>
+                        <td>
+                            <div class="btn-group btn-group-xs">
+                                <a href="#transactions?transaction_id={[{subscription.transaction_id}]}" has-permission="ROLE_ADMIN_TRANSACTIONS"  data-tooltip="{[{ 'link_to_transaction' | translate }]}" class="btn btn-default">
+                                    <i class="fa fa-list-alt"></i>
+                                </a>
+                                <a href="#purchases?subscription_id={[{subscription.id}]}" has-permission="ROLE_ADMIN_PURCHASES"  data-tooltip="{[{ 'link_to_purchase' | translate }]}" class="btn btn-default">
+                                    <i class="fa fa-bullseye"></i>
+                                </a>
+                                <a href="#notifications?subscription_id={[{subscription.id}]}" has-permission="ROLE_ADMIN_NOTIFICATIONS" tooltip="{[{ 'link_to_notification' | translate }]}" class="btn btn-default">
+                                    <i class="fa fa-bell-o"></i>
+                                </a>
+                                <button class="btn btn-default" style="color: #de3700" has-permission="ROLE_ADMIN_SUBSCRIPTIONS_CANCELLATION" ng-click="cancel(subscription)" data-original-title="{[{ 'active_subscription.cancel' | translate}]}" data-tooltip="{[{ 'active_subscription.cancel' | translate }]}" rel="tooltip">
+                                    <i class="fa fa-power-off"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-include="'/bundles/app/client_admin/views/partials/end_pagination.html?v='+v"></div>
+        </div>
+
+
+        <!--MODAL WINDOW-->
+        <script type="text/ng-template" id="myModalContent.html">
+            <form name="cancel_subscription">
+                <div class="modal-header">
+                    <h3 class="modal-title">{[{ 'active_subscription.cancel_this_subscription' | translate}]}, {[{ subscription.transaction_id }]}</h3>
+                </div>
+                <div class="modal-body">
+                    <textarea ng-model="reason" required name="reason" id="reason-textarea" class="form-control" placeholder="{[{ 'active_subscription.reason' | translate}]}" rows="3"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" ng-click="ok(reason)" ng-disabled="cancel_subscription.$invalid" data-translate="ok"></button>
+                    <button class="btn btn-warning" ng-click="cancel()" data-translate="cancel"></button>
+                </div>
+            </form>
+        </script>
+
+    </div>
+</div>
+

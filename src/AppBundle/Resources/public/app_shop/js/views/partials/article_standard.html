@@ -1,0 +1,64 @@
+<div class="product-inner" id="article-{[{ appShopHasArticle.article.id }]}">
+    <div class="product-info-button no-mouse" ></div>
+    <div class="head">
+        <div class="height-adjust-content" >
+            <div class="name-box">
+                <div class="product-name-old no-wrap" ng-if="appShopHasArticle.offer && appShopHasArticle.current_items_quantity != appShopHasArticle.article.items_quantity"
+                     translate="{[{ appShopHasArticle.name_label.key }]}" translate-values="{[{ {number : (appShopHasArticle.article.items_quantity | number) } }]}">
+                </div>
+                <div class="product-name no-wrap" translate="{[{appShopHasArticle.name_label.key}]}" translate-values="{[{ {number: (appShopHasArticle.current_items_quantity | number) } }]}" >
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tags">
+        <div ng-if="appShopHasArticle.offer && appShopHasArticle.amount < appShopHasArticle.current_amount_without_offer" class="tag product-discount">
+            {[{ ((100 * appShopHasArticle.amount) / appShopHasArticle.current_amount_without_offer) - 100 | number:0 }]}%
+        </div>
+        <div ng-if="appShopHasArticle.offer && (appShopHasArticle.current_items_quantity == (2* appShopHasArticle.article.items_quantity))" class="tag product-discount">
+            2x1
+        </div>
+        <div ng-if="appShopHasArticle.offer && (appShopHasArticle.current_items_quantity == (3* appShopHasArticle.article.items_quantity))" class="tag product-discount">
+            3x1
+        </div>
+
+        <div ng-if="showRemainingUnits(appShopHasArticle.article) || showRemainingUnitsOffer(appShopHasArticle.offer)" class="min-tag articles-remaining">
+            &#60; {[{ getLowerNum(showRemainingUnits(appShopHasArticle.article), showRemainingUnitsOffer(appShopHasArticle.offer)) }]}
+        </div>
+        <div ng-if="showTimerOffer(appShopHasArticle.offer) || showTimerArticle(appShopHasArticle.article)" class="min-tag time"></div>
+        <div ng-if="appShopHasArticle.articles_extra.length > 0" class="min-tag gifts"></div>
+        <div ng-if="appShopHasArticle.article.periodicity > 0" class="min-tag subscription"></div>
+    </div>
+    <div class="add-cart" ng-if="addCartVisible(appShopHasArticle)">
+        <div>
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset('/img/1x1.png') }]}" ng-click="addCart(appShopHasArticle, $event)">
+        </div>
+    </div>
+    <div class="remove-cart" ng-if="appShopHasArticle.in_cart">
+        <div>
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset('/img/1x1.png') }]}" ng-click="removeCart(appShopHasArticle, $event)">
+        </div>
+    </div>
+    <div class="product-image" ng-style="{'background-image': 'url({[{ asset((appShopHasArticle.img | replace: '_shop': $root.options.productsImgFormat), false) }]})', 'background-repeat':'no-repeat', 'background-position-x':'center', 'background-position-y':'center'}">
+
+    </div>
+    <div class="footer">
+        <div class="price-box">
+            <div ng-if="appShopHasArticle.offer && appShopHasArticle.amount != appShopHasArticle.current_amount_without_offer && appShopHasArticle.current_amount_without_offer" class="product-prize-old">
+                {[{ appShopHasArticle.current_amount_without_offer | currency : appShopHasArticle.local_currency.symbol : appShopHasArticle.local_currency.decimal_places }]}
+            </div>
+            <div class="product-prize" ng-if="appShopHasArticle.amount !== null && appShopHasArticle.amount_range === null">
+                {[{ appShopHasArticle.amount | currency : appShopHasArticle.local_currency.symbol : appShopHasArticle.local_currency.decimal_places }]}
+            </div>
+            <div class="product-prize" ng-if="appShopHasArticle.amount_range !== null">
+                {[{ appShopHasArticle.amount_range.min | number }]} - {[{ appShopHasArticle.amount_range.max | number }]} {[{ appShopHasArticle.local_currency.symbol }]}
+            </div>
+        </div>
+        <div ng-if="appShopHasArticle.offer && appShopHasArticle.amount != appShopHasArticle.current_amount_without_offer && appShopHasArticle.current_amount_without_offer" class="product-prize-bg"></div>
+        <div ng-if="appShopHasArticle.offer && appShopHasArticle.amount != appShopHasArticle.current_amount_without_offer && appShopHasArticle.current_amount_without_offer" class="product-prize-bg-on"></div>
+    </div>
+
+    <div ng-include="asset('/bundles/app/app_shop/js/views/partials/article_tooltip.html')"></div>
+
+</div>
+

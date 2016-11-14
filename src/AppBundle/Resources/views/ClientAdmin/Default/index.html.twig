@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-us" data-ng-app="smartApp">
+<head>
+    <meta charset="utf-8">
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+    <title>Wolopay</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    {% stylesheets
+        'bundles/app/client_admin/css/bootstrap.less'
+        'bundles/app/client_admin/css/wolopay.less'
+        'bundles/app/client_admin/css/library/fontawesome/font-awesome.less'
+        'bundles/app/client_admin/css/smartadmin-production.less'
+        'bundles/app/client_admin/css/smartadmin-skin/smartadmin-skins.less'
+        'bundles/app/client_admin/css/smartadmin-rtl.min.css'
+        'bundles/app/client_admin/css/demo.min.css'
+        'bower_components/ui-select/dist/select.min.css'
+
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" media="screen" />
+    {% endstylesheets %}
+
+
+
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    <!-- GOOGLE FONT -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+    <!-- Specifying a Webpage Icon for Web Clip
+         Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+    <link rel="apple-touch-icon" href="{{ asset('bundles/app/client_admin/img/splash/sptouch-icon-iphone.png') }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('bundles/app/client_admin/img/splash/touch-icon-ipad.png') }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('bundles/app/client_admin/img/splash/touch-icon-iphone-retina.png') }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('bundles/app/client_admin/img/splash/touch-icon-ipad-retina.png') }}">
+
+    <!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Startup image for web apps -->
+    <link rel="apple-touch-startup-image" href="{{ asset('bundles/app/client_admin/img/splash/ipad-landscape.png') }}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+    <link rel="apple-touch-startup-image" href="{{ asset('bundles/app/client_admin/img/splash/ipad-portrait.png') }}" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+    <link rel="apple-touch-startup-image" href="{{ asset('bundles/app/client_admin/img/splash/iphone.png') }}" media="screen and (max-device-width: 320px)">
+
+</head>
+<body class="minified" data-ng-controller="SmartAppController">
+{#<!-- POSSIBLE CLASSES: minified, fixed-ribbon, fixed-header, fixed-width, top-menu#}
+     {#You can also add different skin classes such as "smart-skin-0", "smart-skin-1" etc...-->#}
+<!-- HEADER -->
+<header id="header">
+    {{ include('AppBundle:ClientAdmin/Default/includes:header.html.twig') }}
+</header>
+<!-- END HEADER -->
+
+{#<!-- Left panel : Navigation area -->#}
+{#<!-- Note: This width of the aside area can be adjusted through LESS variables -->#}
+<aside id="left-panel"><span>{{ include('AppBundle:ClientAdmin/Default/includes:left-panel.html.twig') }}</span></aside>
+<!-- END NAVIGATION -->
+
+{#<script id="message.html" type="text/ng-template">#}
+    {#<p>Here comes the <b>HTML</b> popover contents!!!</p>#}
+{#</script>#}
+
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+    <!-- RIBBON -->
+    <div id="ribbon" data-ribbon="">
+        {{ include('AppBundle:ClientAdmin/Default/includes:ribbon.html.twig') }}
+    </div>
+    <!-- END RIBBON -->
+
+    <div style="border-bottom: 1px solid #ccc;display: inline-block;width: 100%;" ng-if="$root.topBoxSelectors">
+        <form class="form-inline form-group" role="form" style="margin: 10px 0">
+            <div class="container">
+                <div class="row row-centered">
+                    <div class="col-sm-3 col-xs-3 col-centered" ng-if="$root.dateSelector" >
+                        <div class="input-group" style="width: 100%;">
+                            <select class="form-control" ng-model="$root.dateQuickSelector" ng-init="$root.dateQuickSelector = 14">
+                                <option data-translate="date_dropdown.quick_date_selector" value="-1"></option>
+                                <option value="0" data-translate="date_dropdown.today"></option>
+                                <option value="1" data-translate="date_dropdown.yesterday"></option>
+                                <option value="7" data-translate="date_dropdown.week"></option>
+                                <option value="14" data-translate="date_dropdown.2weeks"></option>
+                                <option value="30" data-translate="date_dropdown.month"></option>
+                                <option value="only_month_2" data-translate="date_dropdown.only_month_2"></option>
+                                <option value="last_month_1" data-translate="date_dropdown.1month"></option>
+                                <option value="last_month_2" data-translate="date_dropdown.2months"></option>
+                                <option value="last_month_3" data-translate="date_dropdown.3months"></option>
+                                <option value="last_month_6" data-translate="date_dropdown.6months"></option>
+                                <option value="365" data-translate="date_dropdown.year"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-3 col-centered" ng-if="$root.dateSelector">
+                        <div class="input-group" style="width: 100%;">
+                            <input id="dateFrom" type="text" placeholder="Date from" ng-click="dateFromActive = !(dateFromActive); $root.dateQuickSelector = '-1'" class="form-control" is-open="dateFromActive" datepicker-popup="yyyy/MM/dd" ng-model="$root.dateFrom" max-date="$root.dateTo" ng-required="true" date-options="{'starting-day': 1}" >
+                            <span class="input-group-addon  hidden-xs" ng-click="dateFromActive = !(dateFromActive)"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-centered" ng-if="$root.dateSelector">
+                        <div class="input-group" style="width: 100%;">
+                            <input type="text" placeholder="Date to" class="form-control" starting-day="1" datepicker-popup="yyyy/MM/dd" ng-model="$root.dateTo" min-date="$root.dateFrom" ng-click="dateToActive = !(dateToActive); $root.dateQuickSelector = '-1'" is-open="dateToActive" date-options="{'starting-day': 1}" >
+                            <span class="input-group-addon  hidden-xs" ng-click="dateToActive = !(dateToActive)"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-centered">
+                        <div class="input-group" style="width: 100%;">
+                            <select id="currency" ng-model="$root.currency" ng-options="currcy.name for currcy in currencies track by currcy.id" class="form-control" style="width: 100%;">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="view-container">
+        <div id="content" data-ng-view="" class="view-animate"></div>
+    </div>
+    <!-- END MAIN CONTENT -->
+
+</div>
+{#<!-- END MAIN PANEL -->#}
+
+{#<!-- PAGE FOOTER -->#}
+<div class="page-footer"><span>{{ include ('AppBundle:ClientAdmin/Default/includes:footer.html.twig') }}</span></div>
+{#<!-- END FOOTER -->#}
+
+{#<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)#}
+{#Note: These tiles are completely responsive,#}
+{#you can add as many as you like#}
+{#-->#}
+{#<div id="shortcut">#}
+    {#<span>#}
+        {#{{ include('@NviaAdminClient/Default/includes/shortcut.html.twig') }}#}
+    {#</span>#}
+{#</div>#}
+{#<!-- END SHORTCUT AREA -->#}
+
+{#<!--================================================== -->#}
+
+{#<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)#}
+{#<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>-->#}
+
+{#<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->#}
+{#<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>#}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
+
+{#<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>#}
+{#<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap.min.js"></script>#}
+
+
+<script>
+    if (!window.jQuery) {
+        document.write('<script src="/js/libs/jquery-2.0.2.min.js"><\/script>');
+    }
+</script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script>
+    if (!window.jQuery.ui) {
+        document.write('<script src="/js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+    }
+</script>
+<script>
+    var initVars = {
+        'apps': {{apps | serialize('json') | raw  }},
+        'currency': {{currency | serialize('json') | raw  }},
+        'currencies': {{currencies | serialize('json') | raw  }},
+        'dateFrom': new Date({{dateFrom.timestamp *1000}}),
+        'dateTo': new Date({{ dateTo.timestamp *1000}}),
+        tz: '{{dateTo.timezone}}',
+        'usernameId': '{{app.user.id}}',
+        'languageDefault': {{languageDefault | serialize('json') | raw  }},
+        'languages': {{languages | serialize('json') | raw  }},
+        d: {{ app.debug | serialize('json') | raw  }},
+        v: '{{ assets_version }}',
+        emails: {
+            finance: '{{email_finance}}'
+        }
+    };
+
+    var CKEDITOR_BASEPATH = '/bower_components/ckeditor/';
+
+    // Add locale settings from currency dates and numbers.
+    document.write('<script src="//cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_{{languageDefault.id}}.js"><\/script>');
+
+</script>
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/maps/modules/map.js"></script>
+<script src="https://code.highcharts.com/maps/modules/data.js"></script>
+<script src="https://code.highcharts.com/mapdata/custom/world.js"></script>
+
+
+{% javascripts
+    'js_glob/highcharts_motion.js'
+    'bower_components/ui-select/dist/select.min.js'
+    'bower_components/ckeditor/ckeditor.js'
+    'bower_components/angular-ckeditor/angular-ckeditor.min.js'
+
+    'bower_components/angular-loading-bar/build/loading-bar.min.js'
+    'bower_components/ngUpload/ng-upload.min.js'
+    'bower_components/angular-ui-sortable/sortable.min.js'
+    'bower_components/moment/min/moment.min.js'
+    'js_glob/moment-timezone-with-data-2010-2020.min.js'
+    'bower_components/angular-translate/angular-translate.min.js'
+    'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js'
+    'bower_components/angular-ui-validate/dist/validate.min.js'
+
+    'js_glob/datetimepicker-tpls-0.11.js'
+    'bower_components/angular-animate/angular-animate.min.js'
+
+    'bundles/app/client_admin/js/app.config.js'
+    'bundles/app/client_admin/js/plugin/jquery-touch/jquery.ui.touch-punch.min.js'
+    'bundles/app/client_admin/js/bootstrap/bootstrap.min.js'
+    'bundles/app/client_admin/js/notification/SmartNotification.min.js'
+    'bundles/app/client_admin/js/smartwidgets/jarvis.widget.min.js'
+
+    'bundles/app/client_admin/js/plugin/bootstrap-slider/bootstrap-slider.min.js'
+    'bundles/app/client_admin/js/plugin/msie-fix/jquery.mb.browser.min.js'
+    'bundles/app/client_admin/js/plugin/fastclick/fastclick.min.js'
+
+    'bundles/app/client_admin/js/libs/angular/angular-route.js'
+    'bundles/app/client_admin/js/libs/mgd/ui-utils.min.js'
+    'bundles/app/client_admin/js/app.js'
+
+    'bundles/app/client_admin/js/ng/ng.app.js'
+
+    'bundles/app/client_admin/js/ng/ui_interpolate.js'
+    'bundles/app/client_admin/js/ng/controller/*.js'
+    'bundles/app/client_admin/js/ng/controller/*/*.js'
+    'bundles/app/client_admin/js/ng/controller/*/*/*.js'
+    'bundles/app/client_admin/js/ng/directive/*.js'
+    'bundles/app/client_admin/js/ng/filters/*.js'
+    'bundles/app/client_admin/js/ng/service/*.js'
+    'bundles/app/client_admin/js/ng/ng.directives.js'
+
+%}
+
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<!--[if IE 8]>
+<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+<![endif]-->
+
+<!-- Your GOOGLE ANALYTICS CODE Below -->
+<script type="text/javascript">
+
+</script>
+
+</body>
+
+</html>

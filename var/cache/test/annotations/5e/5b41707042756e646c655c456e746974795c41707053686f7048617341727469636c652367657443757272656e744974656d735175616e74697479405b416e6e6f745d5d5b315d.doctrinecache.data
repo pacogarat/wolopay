@@ -1,0 +1,2 @@
+0
+a:3:{i:0;O:41:"JMS\Serializer\Annotation\VirtualProperty":0:{}i:1;O:30:"JMS\Serializer\Annotation\Type":1:{s:4:"name";s:7:"integer";}i:2;O:32:"JMS\Serializer\Annotation\Groups":1:{s:6:"groups";a:3:{i:0;s:21:"AppShopHasArticleFull";i:1;s:6:"Public";i:2;s:7:"Default";}}}

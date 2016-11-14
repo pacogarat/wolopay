@@ -1,0 +1,254 @@
+services:
+    nvia_shop_app.admin.app:
+        class: AppBundle\Admin\AppAdmin
+        arguments: [~, AppBundle\Entity\App, AppBundle:Admin\AppAdmin]
+        calls:
+            - [setContainer, ["@service_container"]]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Shop, label: App}
+
+    nvia_shop_app.admin.app_shop:
+        class: AppBundle\Admin\AppShopAdmin
+        arguments: [~, AppBundle\Entity\AppShop, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Shop, label: Shops}
+
+    nvia_shop_app.admin.article:
+        class: AppBundle\Admin\ArticleAdmin
+        arguments: [~, AppBundle\Entity\Article, AppBundle:Admin\ArticleAdmin]
+        calls:
+            - [setContainer, ["@service_container"]]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Shop, label: Article }
+
+    nvia_shop_app.admin.item:
+        class: AppBundle\Admin\ItemAdmin
+        arguments: [~, AppBundle\Entity\Item, SonataAdminBundle:CRUD]
+        calls:
+            - [setContainer, ["@service_container"]]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Shop, label: Item}
+
+    nvia_shop_app.admin.app_shop_has_articles:
+        class: AppBundle\Admin\AppShopHasArticlesAdmin
+        arguments: [~, AppBundle\Entity\AppShopHasArticle, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Shop, label: AppShopHasArticles}
+
+    nvia_shop_app.admin.article_has_pmpc:
+        class: AppBundle\Admin\ArticleHasPMPCAdmin
+        arguments: [~, AppBundle\Entity\ArticleHasPMPC, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ArticleHasPMPC}
+
+    nvia_shop_app.admin.shop_css:
+        class: AppBundle\Admin\ShopCssAdmin
+        arguments: [~, AppBundle\Entity\ShopCss, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Shop, label: Shop Css}
+
+
+    nvia_shop_app.admin.offer_programmer:
+        class: AppBundle\Admin\OfferProgrammerAdmin
+        arguments: [~, AppBundle\Entity\OfferProgrammer, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: OfferProgrammer}
+
+
+    nvia_app_shop.admin.transaction:
+        class: AppBundle\Admin\TransactionAdmin
+        arguments: [~, AppBundle\Entity\Transaction, AppBundle:Admin\TransactionAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: payments, label: Transactions}
+
+    nvia_app_shop.admin.payment:
+        class: AppBundle\Admin\PaymentAdmin
+        arguments: [~, AppBundle\Entity\Payment, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Payment}
+
+    nvia_app_shop.admin.payment_service_category:
+        class: AppBundle\Admin\PaymentServiceCategoryAdmin
+        arguments: [~, AppBundle\Entity\PaymentServiceCategory, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: PaymentServiceCategory}
+
+    nvia_app_shop.admin.purchase_notification:
+        class: AppBundle\Admin\PurchaseNotificationAdmin
+        arguments: [~, AppBundle\Entity\PurchaseNotification, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: PurchaseNotification}
+
+    nvia_app_shop.admin.promo:
+        class: AppBundle\Admin\PromoAdmin
+        arguments: [~, AppBundle\Entity\Promo, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Promo}
+
+    nvia_app_shop.admin.promo_code:
+        class: AppBundle\Admin\PromoCodeAdmin
+        arguments: [~, AppBundle\Entity\PromoCode, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: PromoCode}
+
+    nvia_api.admin.app_api_credentials:
+        class: AppBundle\Admin\AppApiCredentialsAdmin
+        arguments: [~, AppBundle\Entity\AppApiCredentials, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: AppApiCredentials}
+
+    nvia_common.admin.client:
+        class: AppBundle\Admin\ClientAdmin
+        arguments: [~, AppBundle\Entity\Client, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Common, label: Client}
+
+    nvia_common.admin.client_user:
+        class: AppBundle\Admin\ClientUserAdmin
+        calls:
+            - [ 'setUserManager', ['@fos_user.user_manager']]
+        arguments: [~, AppBundle\Entity\ClientUser, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Common, label: Client user }
+
+    nvia_common.admin.client_user_notification:
+        class: AppBundle\Admin\ClientUserNotificationAdmin
+        arguments: [~, AppBundle\Entity\ClientUserNotification, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Client notifications}
+
+
+    nvia_pay_method_config.admin.pay_method:
+            class: AppBundle\Admin\PayMethodAdmin
+            arguments: [~, AppBundle\Entity\PayMethod, SonataAdminBundle:CRUD]
+            calls:
+                - [setContainer, ["@service_container"]]
+            tags:
+                - {name: sonata.admin, manager_type: orm, group: PayMethods, label: PayMethods }
+    
+    nvia_pay_method_config.admin.provider:
+        class: AppBundle\Admin\ProviderAdmin
+        arguments: [~, AppBundle\Entity\Provider, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PayMethods, label: Providers }
+
+    nvia_pay_method_config.admin.pay_method_has_provider:
+        class: AppBundle\Admin\PayMethodHasProviderAdmin
+        arguments: [~, AppBundle\Entity\PayMethodHasProvider, SonataAdminBundle:CRUD]
+        calls:
+            - [setContainer, ["@service_container"]]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PayMethods, label: PMP All in one}
+
+    nvia_pay_method_config.admin.pay_method_provider_has_country:
+        class: AppBundle\Admin\PayMethodProviderHasCountryAdmin
+        arguments: [~, AppBundle\Entity\PayMethodProviderHasCountry, 'PixSortableBehaviorBundle:SortableAdmin']
+        calls:
+            - [ setPositionService, ["@pix_sortable_behavior.position"]]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PayMethods, label: PMP has country}
+
+
+    nvia_pay_method_config.admin.sms:
+        class: AppBundle\Admin\SMSAdmin
+        arguments: [~, AppBundle\Entity\SMS, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PayMethods, label: SMS}
+
+    nvia_pay_method_config.admin.sms_alias:
+        class: AppBundle\Admin\SMSAliasAdmin
+        arguments: [~, AppBundle\Entity\SMSAlias, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PayMethods, label: SMSAlias}
+
+    nvia_pay_method_config.admin.sms_operator:
+        class: AppBundle\Admin\SMSOperatorAdmin
+        arguments: [~, AppBundle\Entity\SMSOperator, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PayMethods, label: SMSOperator}
+
+    nvia_pay_method_config.admin.voice:
+        class: AppBundle\Admin\VoiceAdmin
+        arguments: [~, AppBundle\Entity\Voice, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: PayMethods, label: Voice}
+
+    nvia_app_shop.admin.purchase:
+        class: AppBundle\Admin\PurchaseAdmin
+        arguments: [~, AppBundle\Entity\Purchase, AppBundle:Admin\PurchaseAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Purchase}
+
+    app.admin.client_user_has_app:
+        class: AppBundle\Admin\ClientUserHasAppAdmin
+        arguments: [~, AppBundle\Entity\ClientUserHasApp, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ClientUserHasApp}
+
+
+    app.admin.offer:
+        class: AppBundle\Admin\OfferAdmin
+        arguments: [~, AppBundle\Entity\Offer, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Offers Types}
+
+    app.admin.app_has_pay_method_provider_country:
+        class: AppBundle\Admin\AppHasPayMethodProviderCountryAdmin
+        arguments: [~, AppBundle\Entity\AppHasPayMethodProviderCountry, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: AppHasPayMethodProviderCountry}
+
+    app.admin.subscription:
+        class: AppBundle\Admin\SubscriptionAdmin
+        arguments: [~, AppBundle\Entity\Subscription, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Subscription}
+
+
+    app.admin.single_payment:
+        class: AppBundle\Admin\SinglePaymentAdmin
+        arguments: [~, AppBundle\Entity\SinglePayment, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: SinglePayment}
+
+    app.admin.single_free_payment:
+        class: AppBundle\Admin\SingleFreePaymentAdmin
+        arguments: [~, AppBundle\Entity\SingleFreePayment, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: SingleFreePayment}
+
+    app.admin.single_custom_payment:
+        class: AppBundle\Admin\SingleCustomPaymentAdmin
+        arguments: [~, AppBundle\Entity\SingleCustomPayment, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: SingleCustomPayment}
+
+    app.admin.affiliate:
+        class: AppBundle\Admin\AffiliateAdmin
+        arguments: [~, AppBundle\Entity\Affiliate, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Affiliate}
+
+    app.admin.fin_invoice:
+        class: AppBundle\Admin\FinInvoiceAdmin
+        arguments: [~, AppBundle\Entity\FinInvoice, AppBundle:Admin\Invoice]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FinInvoice}
+
+    app.admin.fin_movement:
+        class: AppBundle\Admin\FinMovementAdmin
+        arguments: [~, AppBundle\Entity\FinMovement, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: FinMovement}
+
+    app.admin.client_document:
+        class: AppBundle\Admin\ClientDocumentAdmin
+        arguments: [~, AppBundle\Entity\ClientDocument, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: ClientDocument}
+
+    app.admin.job:
+        class: AppBundle\Admin\JobAdmin
+        arguments: [~, AppBundle\Entity\Job, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Jobs}

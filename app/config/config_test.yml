@@ -1,0 +1,50 @@
+imports:
+    - { resource: config.yml }
+    - { resource: parameters__test.yml }
+    - { resource: services_test.yml }
+    - { resource: config_test_override.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false
+
+swiftmailer:
+    disable_delivery: true
+
+parameters:
+    # Monolog\Logger to see levels
+    monolog.level: 100
+
+doctrine:
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        entity_managers:
+            default:
+                auto_mapping: true
+                dql:
+                    datetime_functions:
+                        date_format: AppBundle\Doctrine\CustomFunctions\SQLLite\DateFormatFunction
+                    string_functions:
+                        ifelse: AppBundle\Doctrine\IfElse
+
+                second_level_cache:
+                    enabled: false
+
+
+
+#monolog:
+#    handlers:
+#        custom:
+#            type: service
+#            id: shop.logger.transaction_handler
+#        applog:
+#            type: stream
+#            level: debug
+
+lexik_jwt_authentication:
+    private_key_path:   "%kernel.root_dir%/config/jwt/test/private.pem"   # path to the private key
+    public_key_path:    "%kernel.root_dir%/config/jwt/test/public.pem"    # path to the public key
+    pass_phrase:        '1234'

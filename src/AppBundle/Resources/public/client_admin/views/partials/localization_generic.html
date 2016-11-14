@@ -1,0 +1,25 @@
+
+<form name="form_localization" class="validation" id="form_localization" role="form">
+    <div class="modal-header">
+        <h3 class="modal-title">{[{ 'partials.localization_generic.title' | translate }]}</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>{[{ 'partials.localization_generic.desc' | translate }]}</label>
+            <div class="input-group" style="width: 100%" ng-repeat="language in languages">
+                <span class="input-group-addon" style="width: 50px;">{[{ language.id | uppercase }]}</span>
+                <input ng-required="language.id == 'en'" type="text" ng-model="label['translation_'+ language.id ]" class="form-control" >
+                <span ng-if="ckeditorAvailable" class="input-group-btn">
+                    <button class="btn btn-default" data-label-edit-ck-editor data-translation-object="label" data-language="language" type="button">
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-disabled="form_localization.$invalid" ng-click="ok()">{[{ 'ok' | translate }]}</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">{[{ 'cancel' | translate }]}</button>
+    </div>
+</form>

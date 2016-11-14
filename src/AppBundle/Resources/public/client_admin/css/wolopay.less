@@ -1,0 +1,324 @@
+@import "mixins";
+@import "wolopay_loading";
+@import "wolopay_general_purpose";
+@import "wolopay_highcharts_override";
+@import "plugin-select2";
+@import "wolopay_searchs";
+@import "wolopay_purchase_notifications";
+@import "wolopay_flags";
+
+body{
+    overflow-x: hidden;
+}
+
+// Datepicker custom
+.ui-datepicker-today, .ui-state-highlight{
+    background:#F0F0F0 !important;
+    a, a:hover{
+        color: #333 !important;
+    }
+}
+.ui-state-active{
+    background: #CCDBE8 !important;
+    a, a:hover{
+        color: #333 !important;
+    }
+}
+.css-class-to-highlight{
+    background-color: #A90329 !important;
+    a, a:hover{
+        color: #fff !important;
+        background-color: #A90329 !important;
+    }
+}
+// End Datepicker custom
+#view-container {
+    position: relative;
+}
+#content.ng-enter,
+#content.ng-leave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+#content.ng-enter,
+.box-opacity-event.ng-enter {
+    opacity: 0;
+    -webkit-transform: scale3d(0.5, 0.5, 0.5);
+    -moz-transform: scale3d(0.5, 0.5, 0.5);
+    transform: scale3d(0.5, 0.5, 0.5);
+}
+#content.ng-enter-active,
+.box-opacity-event.ng-enter-active {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    -moz-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+}
+#content.ng-leave,
+.box-opacity-event.ng-leave {
+    opacity: 1;
+    /*padding-left: 0px;*/
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+#content.ng-leave-active,
+.box-opacity-event.ng-leave-active {
+    opacity: 0;
+    /*padding-left: 100px;*/
+    -webkit-transform: translate3d(100px, 0, 0);
+    -moz-transform: translate3d(100px, 0, 0);
+    transform: translate3d(100px, 0, 0);
+}
+
+// Generic animation
+.ng-enter {
+    transition: all 0.5s linear;
+    opacity: 0;
+}
+.ng-enter-active {
+    opacity: 1;
+}
+.ng-leave, .fade.ng-leave{
+    position: fixed;
+    opacity: 1;
+}
+.ng-leave-active, .fade.ng-leave-active {
+    position: fixed;
+    opacity: 0;
+}
+
+// ALERTS
+#msg-container{
+    height: 0;
+    position: fixed;
+    width: 450px;
+    z-index: 9999;
+    left: 50%;
+    margin-left: -225px;
+    margin-top: 30px;
+
+    .error, .warning, .info{
+        cursor: pointer;
+        margin: 5px 0;
+        .border-radius(4px);
+        padding: 20px;
+        font-size: 1.1em;
+        line-height: 18px;
+        .inner-shadow(2px, 2px, 5px, 1px);
+        padding-left: 63px;
+        text-align: center;
+        background-position: 6% 50%;
+        background-repeat: no-repeat;
+    }
+    .error{
+        background-color: rgba(245,19,19,0.8);
+        border: 1px solid #000;
+        color: #fff;
+        text-shadow: 1px 1px 0 #222;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHOSURBVEhLrZa/SgNBEMZzh0WKCClSCKaIYOED+AAKeQQLG8HWztLCImBrYadgIdY+gIKNYkBFSwu7CAoqCgkkoGBI/E28PdbLZmeDLgzZzcx83/zZ2SSXC1j9fr+I1Hq93g2yxH4iwM1vkoBWAdxCmpzTxfkN2RcyZNaHFIkSo10+8kgxkXIURV5HGxTmFuc75B2RfQkpxHG8aAgaAFa0tAHqYFfQ7Iwe2yhODk8+J4C7yAoRTWI3w/4klGRgR4lO7Rpn9+gvMyWp+uxFh8+H+ARlgN1nJuJuQAYvNkEnwGFck18Er4q3egEc/oO+mhLdKgRyhdNFiacC0rlOCbhNVz4H9FnAYgDBvU3QIioZlJFLJtsoHYRDfiZoUyIxqCtRpVlANq0EU4dApjrtgezPFad5S19Wgjkc0hNVnuF4HjVA6C7QrSIbylB+oZe3aHgBsqlNqKYH48jXyJKMuAbiyVJ8KzaB3eRc0pg9VwQ4niFryI68qiOi3AbjwdsfnAtk0bCjTLJKr6mrD9g8iq/S/B81hguOMlQTnVyG40wAcjnmgsCNESDrjme7wfftP4P7SP4N3CJZdvzoNyGq2c/HWOXJGsvVg+RA/k2MC/wN6I2YA2Pt8GkAAAAASUVORK5CYII=") !important;
+
+    }
+    .warning{
+        background-color: rgba(224,171,11,0.8);
+        border: 1px solid #000;
+        color: #fff;
+        text-shadow: 1px 1px 0 #222;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGYSURBVEhL5ZSvTsNQFMbXZGICMYGYmJhAQIJAICYQPAACiSDB8AiICQQJT4CqQEwgJvYASAQCiZiYmJhAIBATCARJy+9rTsldd8sKu1M0+dLb057v6/lbq/2rK0mS/TRNj9cWNAKPYIJII7gIxCcQ51cvqID+GIEX8ASG4B1bK5gIZFeQfoJdEXOfgX4QAQg7kH2A65yQ87lyxb27sggkAzAuFhbbg1K2kgCkB1bVwyIR9m2L7PRPIhDUIXgGtyKw575yz3lTNs6X4JXnjV+LKM/m3MydnTbtOKIjtz6VhCBq4vSm3ncdrD2lk0VgUXSVKjVDJXJzijW1RQdsU7F77He8u68koNZTz8Oz5yGa6J3H3lZ0xYgXBK2QymlWWA+RWnYhskLBv2vmE+hBMCtbA7KX5drWyRT/2JsqZ2IvfB9Y4bWDNMFbJRFmC9E74SoS0CqulwjkC0+5bpcV1CZ8NMej4pjy0U+doDQsGyo1hzVJttIjhQ7GnBtRFN1UarUlH8F3xict+HY07rEzoUGPlWcjRFRr4/gChZgc3ZL2d8oAAAAASUVORK5CYII=") !important;
+
+    }
+    .info{
+        background-color: rgba(88,171,0,0.9);
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhLY2AYBfQMgf///3P8+/evAIgvA/FsIF+BavYDDWMBGroaSMMBiE8VC7AZDrIFaMFnii3AZTjUgsUUWUDA8OdAH6iQbQEhw4HyGsPEcKBXBIC4ARhex4G4BsjmweU1soIFaGg/WtoFZRIZdEvIMhxkCCjXIVsATV6gFGACs4Rsw0EGgIIH3QJYJgHSARQZDrWAB+jawzgs+Q2UO49D7jnRSRGoEFRILcdmEMWGI0cm0JJ2QpYA1RDvcmzJEWhABhD/pqrL0S0CWuABKgnRki9lLseS7g2AlqwHWQSKH4oKLrILpRGhEQCw2LiRUIa4lwAAAABJRU5ErkJggg==") !important;
+        border: 1px solid #000;
+        color: #eee;
+        text-shadow: 1px 1px 0 #222;
+    }
+
+}
+@media only screen and (max-width: 768px){
+    .project-selector span{
+        max-width: 100px;
+        width: 100px;
+        display: inline-block;
+    }
+    #msg-container{
+        width: 100%;
+        left:0;
+        margin: 20px 0 0 0;
+
+        .info , .warning, .error{
+            .border-radius(0);
+            border-left: 0;
+            border-right: 0;
+        }
+    }
+}
+
+#welcome-to{
+
+    margin-top: 3%;
+    background: -moz-radial-gradient(center, ellipse cover, rgba(242,246,248,1) 0%, rgba(216,225,231,0.74) 14%, rgba(181,198,208,0.35) 35%, rgba(194,210,220,0) 54%, rgba(224,239,249,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,rgba(242,246,248,1)), color-stop(14%,rgba(216,225,231,0.74)), color-stop(35%,rgba(181,198,208,0.35)), color-stop(54%,rgba(194,210,220,0)), color-stop(100%,rgba(224,239,249,0))); /* Chrome,Safari4+ */
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(242,246,248,1) 0%,rgba(216,225,231,0.74) 14%,rgba(181,198,208,0.35) 35%,rgba(194,210,220,0) 54%,rgba(224,239,249,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-radial-gradient(center, ellipse cover, rgba(242,246,248,1) 0%,rgba(216,225,231,0.74) 14%,rgba(181,198,208,0.35) 35%,rgba(194,210,220,0) 54%,rgba(224,239,249,0) 100%); /* Opera 12+ */
+    background: -ms-radial-gradient(center, ellipse cover, rgba(242,246,248,1) 0%,rgba(216,225,231,0.74) 14%,rgba(181,198,208,0.35) 35%,rgba(194,210,220,0) 54%,rgba(224,239,249,0) 100%); /* IE10+ */
+    background: radial-gradient(ellipse at center, rgba(242,246,248,1) 0%,rgba(216,225,231,0.74) 14%,rgba(181,198,208,0.35) 35%,rgba(194,210,220,0) 54%,rgba(224,239,249,0) 100%); /* W3C */
+    padding: 70px 0;
+
+    h1{
+        font-size: 3em;
+        text-shadow: 1px 1px 0 #fff;
+        text-align: center;
+    }
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+form.validation{
+    input:required, select:required, textarea:required {
+        background-image: url("@{base-url}/asterisk_moremargin.png");
+        background-position: right center;
+        background-repeat: no-repeat;
+    }
+
+    input:required, select:required, textarea:required{
+        &.ng-dirty, &.ng-invalid-force {
+            background-image: url("@{base-url}/asterisk_red.png");
+            background-position: right center;
+            background-repeat: no-repeat;
+        }
+
+        &.ng-valid.ng-dirty {
+            background-image: url("@{base-url}/asterisk_green.png");
+            background-position: right center;
+            background-repeat: no-repeat;
+        }
+    }
+
+    input, select, textarea{
+        &.ng-dirty, &.ng-invalid-force {
+            border-color: #A90329 !important;
+            background-color: #fff0f0 !important;
+        }
+
+        &.ng-valid.ng-dirty {
+            border-color: #7DC27D !important;
+            background-color: #f0fff0 !important;
+        }
+    }
+
+    select{
+        &.ng-dirty, &.ng-invalid-force {
+          background: url("@{base-url}/asterisk_red_moremargin.png") right center no-repeat #fff0f0 !important;
+        }
+
+        &.ng-valid.ng-dirty {
+          background: url("@{base-url}/asterisk_green_moremargin.png") right center no-repeat #f0fff0 !important;
+        }
+    }
+}
+
+.fuelux .wizard li.complete .badge{
+    background-color: #3c763d;
+    text-shadow: 1px 1px 0 #000;
+}
+
+// calendar asd
+.btn-info.active span{
+    color: #fff !important;
+}
+
+.datetimepicker-wrapper {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.datetimepicker-wrapper > input {
+    margin-bottom: 0 !important;
+    width: 130px;
+    text-align: center;
+}
+
+.datetimepicker-wrapper [ng-model=hours], [ng-model=minutes] {
+    width: 46px !important;
+}
+
+.full .modal-dialog{
+    width:auto;
+    margin-left:20px;
+    margin-right:20px;
+}
+
+.like-table-head{
+    padding: 8px 10px;;
+    font-size: inherit;
+    border-bottom: 1px solid #ccc;
+}
+.newlines{
+    white-space: pre-wrap;
+}
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+
+    .ng-enter{
+        opacity: 1 !important;
+    }
+}
+
+.ngViewport{
+    height: auto !important;
+}
+.ngCell{
+    .ngAggregateText{
+        left: 0px !important;
+    }
+}
+
+
+
+.ng-valid-date table thead tr:last-child{
+    height: 40px;
+}
+.btn-header i{
+    cursor: pointer;
+}
+
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+nav li.active i, .btn-header i:active, .ribbon-button-alignment i:active{
+    -webkit-animation:spin .5s linear;
+    -moz-animation:spin .5s linear;
+    animation:spin .5s linear;
+}
+
+//--- at the first load with mobile remove text from left bar
+body.mobile-view-activated nav li span, body.mobile-view-activated #nav_name_user, body.mobile-view-activated nav li b{
+    display: none;
+}
+// reset when show menu
+body.mobile-view-activated.hidden-menu nav li span{
+    display: inline;
+}
+body.mobile-view-activated.hidden-menu nav li b, body.mobile-view-activated.hidden-menu #nav_name_user{
+    display: inline-block;
+}
+//--- end
+
+
+// select 2
+
+
+.block{
+    display: block !important;
+}

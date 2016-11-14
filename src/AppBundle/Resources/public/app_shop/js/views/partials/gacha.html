@@ -1,0 +1,42 @@
+<div class="before-top">
+    <div class="left"></div>
+    <div class="rigth"></div>
+</div>
+
+<div class="close" ng-click="$root.gacha = null"></div>
+<div class="box">
+    <div class="left" class="height-adjust-content">
+        <img class="img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset(($root.gacha.img | replace: '_shop':'_shop_tooltip'), false) }]}">
+        <p translate="gacha.info"></p>
+    </div>
+    <div class="right">
+        <div class="articles">
+            <ul>
+                <li ng-repeat="article in $root.gacha.article.articles_gacha">
+                    <div class="remaining-box">
+                        <div>{[{ article.remaining_for_user }]}</div>
+                    </div>
+                    <div class="img-box height-adjust-content">
+                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset(article.possible_article.img, false) }]}">
+                    </div>
+
+                    <div>
+                        <div tooltip class="tooltip">
+                            <img class="img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset((article.possible_article.img | replace: '_shop':'_shop_tooltip'), false) }]}">
+                            <div class="tooltip-content">
+                                <h3 class="title" translate="{[{ article.possible_article.name_label.key }]}" translate-values="{[{ {number: (article.possible_article.items_quantity | number)} }]}"></h3>
+                                <div translate="{[{ article.possible_article.description_label.key }]}"  translate-values="{[{ { number: (article.possible_article.items_quantity | number) } }]}"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li ng-repeat="n in [] | range: (8 - $root.gacha.article.articles_gacha.length)" class="empty"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="after-bottom">
+    <div class="left"></div>
+    <div class="rigth"></div>
+</div>

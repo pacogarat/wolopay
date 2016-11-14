@@ -1,0 +1,30 @@
+imports:
+    - { resource: config_test.yml }
+
+doctrine:
+    dbal:
+        driver:   pdo_sqlite
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        memory:   false
+        path:     'C:\wamp\www\wolopay\var\cache\test.db'
+
+
+parameters:
+    doctrine.dbal.connection_factory.class: AppBundle\Tests\Lib\Doctrine\ConnectionFactoryTesting
+
+# Increment speed test, using memory like disk, we use this to work with selenium
+# sudo mkfs -q /dev/ram1 8192
+# sudo mkdir -p /ramcache
+# sudo mount /dev/ram1 /ramcache
+
+# OR
+
+# sudo mount -o size=1G -t tmpfs /ramcache
+
+
+# sudo df -H | grep ramcache
+# sudo chmod -R 777 /ramcache

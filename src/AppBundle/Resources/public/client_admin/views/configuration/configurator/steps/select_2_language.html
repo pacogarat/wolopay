@@ -1,0 +1,28 @@
+<div ng-controller="ConfiguratorSelectLanguageController" >
+
+    <form class="form-horizontal validation" name="form_language" novalidate ng-submit="form_language.$valid && submit()">
+        <fieldset>
+            <legend>
+                {[{ 'configurator.step2.title' | translate }]}
+                <wizard-next-button form-name="form_language"></wizard-next-button>
+            </legend>
+            <p>{[{ 'configurator.step2.desc' | translate }]}</p>
+            <div>
+
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-md-10 col-md-offset-1" >
+
+                        <div ng-repeat="language in $root.configuratorCurrent.languages">
+                            <label>
+                                <input type="checkbox" class="checkbox style-0" ng-model="language.selected" ng-required="!someSelected()">
+                                <span>{[{language.name}]} <span ng-if="language.id == 'en'">(*)</span></span>
+                            </label>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

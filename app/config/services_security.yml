@@ -1,0 +1,8 @@
+services:
+    s_transaction.security.authentication.provider:
+        class: AppBundle\Security\Authentication\Provider\STransactionProvider
+        arguments: ["", "@shop.logger.transaction_helper"]
+
+    s_transaction.security.authentication.listener:
+        class: AppBundle\Security\Firewall\STransactionListener
+        arguments: ["@security.token_storage", "@security.authentication.manager", "@templating"]

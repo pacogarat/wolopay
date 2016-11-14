@@ -1,0 +1,27 @@
+{# deposit \AppBundle\Entity\ClientDeposit #}
+<div class="h2">Notes</div>
+
+<br>
+
+{% include '@App/PDF/partials/extra_concepts_desc.html.twig' %}
+
+{% if balanceRequirementAdded %}
+    Deposit balance requirement increased: {{ balanceRequirementAdded | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}<br><br>
+{% endif %}
+
+{% if depositExtraPay %}
+    Deposit adjustment: {{ depositExtraPay | number_format(2,'.', ',') }}<br>
+{% endif %}
+
+Deposit balance: {{ deposit.amountBalance | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}<br>
+Deposit balance requirement: {{ deposit.amountBalanceRequirement | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}<br><br>
+
+{% if othersInvoices %}
+    The total is offset by {{ othersInvoices }} invoices.<br>
+{% endif %}
+
+{% if realTotal > 0 %}
+    We will make a transfer to your account of the amount: {{ realTotal | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}
+{% elseif othersInvoices %}
+    It would be a total of: {{ 0 | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}
+{% endif %}

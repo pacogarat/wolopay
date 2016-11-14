@@ -1,0 +1,57 @@
+third_parties:
+    resource: "routing__third_parties.yml"
+
+nvia_api_rest:
+    type: rest
+    prefix: /api
+    resource: "routing__api.yml"
+    defaults: {_format: json}
+    options:
+        expose: true
+
+
+nvia_shop_app:
+    resource: "@AppBundle/Controller/AppShop/"
+    type:     annotation
+    prefix:   /shop
+
+nvia_pay_methods:
+    resource: "@AppBundle/Controller/PaymentHosted/"
+    type:     annotation
+    prefix:   /shop
+
+backoffice_custom:
+    resource: "@AppBundle/Controller/Admin"
+    type:     annotation
+    prefix:   /backoffice
+
+clients_helper:
+    resource: "@AppBundle/Controller/ClientsHelper"
+    type:     annotation
+    prefix: /ClientsHelper
+
+
+others:
+    resource: "@AppBundle/Controller/Others/"
+    type:     annotation
+
+external_stores:
+    resource: "@AppBundle/Controller/ExternalStores/"
+    type:     annotation
+    prefix: /external-stores
+
+#
+# In a future :)
+#nvia_api_admin_client_rest:
+#    type: rest
+#    prefix: /api
+#    resource: "@NviaApiBundle/Resources/config/routing_admin_client.yml"
+
+nvia_admin_client:
+    resource: "@AppBundle/Controller/ClientAdmin"
+    type:     annotation
+    prefix:   /admin/
+
+_besimple_soap:
+    resource: "@BeSimpleSoapBundle/Resources/config/routing/webservicecontroller.xml"
+    prefix:   /ws

@@ -1,0 +1,116 @@
+var timer;
+angular.module('shopApp').directive('tooltip',
+    ['Device', '$rootScope', '$interval', '$timeout', function(Device, $rootScope, $interval, $timeout) {
+        return {
+            scope: {
+                autoRefresh: '=',
+                gacha: '=',
+                isArticle: '='
+            },
+            link : function(scope, element, attrs) {
+                var timerGacha ;
+
+                function getOffsetOfWoloShop(){
+
+                    var el = $('.wolo-shop');
+
+                    if (el.length > 0)
+                        return el.offset();
+
+                    return {top: 0, left: 0};
+                }
+
+
+                $(element.parent().parent()).mousemove(function(e){
+                    if (!$rootScope.device.hasMouse)
+                        return ;
+
+                    var $extraX = 0;
+
+                    if (($( window ).width() / 2) + 70  <  e.clientX)
+                        $extraX = -384;
+
+                    var extraOffset = getOffsetOfWoloShop();
+
+                    $("#tooltip").css({
+                        'top': (e.pageY + 20 - extraOffset.top) + 'px',
+                        'left': (e.pageX + 20  + $extraX - extraOffset.left)  +'px'
+                    });
+                });
+
+                element.parent().parent().bind('mouseenter', function() {
+
+                    if (!$rootScope.device.hasMouse)
+                        return ;
+
+                    function sync(){
+
+                        if ($.trim($(element).html()))
+                        {
+                            $("#tooltip").html( $(element).html());
+                            $("#tooltip").stop(true, true).delay(300).fadeIn();
+                        }
+                    }
+
+                    sync();
+
+                    if (timer)
+                        $interval.cancel(timer);
+
+                    if (attrs.autoRefresh)
+                        timer = $interval(sync, 1000);
+
+                    if (scope.isArticle)
+                    {
+                        timerGacha = $timeout(function(){
+                            $rootScope.$apply(function(){
+                                $rootScope.gacha = scope.gacha;
+                            });
+                        }, 500);
+                    }
+
+                });
+
+                element.parent().parent().bind('mouseleave', function() {
+                    $("#tooltip").stop(true, true).delay(100).fadeOut();
+                    $interval.cancel(timer);
+                    if (timerGacha)
+                        $timeout.cancel(timerGacha);
+                });
+
+                $('html').click(function() {
+
+                    if ($rootScope.device.hasMouse)
+                        return ;
+
+                    $("#tooltip").stop(true, true).delay(100).hide();
+                });
+
+                $(element).parent().siblings('.product-info-button').bind('click', function(e) {
+
+                    if ($rootScope.device.hasMouse)
+                        return ;
+
+                    e.stopPropagation();
+
+                    $("#tooltip").html($(element).html());
+                    var position = $(element).position();
+
+                    var $extraX = 20;
+
+                    if (($( window ).width() / 2) + 20 <  e.clientX)
+                        $extraX = -300;
+
+                    var extraOffset = getOffsetOfWoloShop();
+
+                    $("#tooltip").css({
+                        'top': (e.pageY - 15 - extraOffset.top) + 'px',
+                        'left': (e.pageX + $extraX - extraOffset.left) +'px'
+                    });
+
+                    $("#tooltip").stop(true, true).delay(100).toggle();
+                });
+            }
+
+        };
+    }]);

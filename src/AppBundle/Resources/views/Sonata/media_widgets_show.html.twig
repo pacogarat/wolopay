@@ -1,0 +1,31 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field %}
+    {% spaceless %}
+
+        {% if value %}
+            <div class="pull-left" style="margin-right: 20px">
+                <a href="{{ path('sonata_media_download', {'id': value.id }) }}" download>
+                    {% thumbnail value, 'admin' with {'class': 'img-polaroid media-object'} %}
+                </a>
+            </div>
+            <div style="padding-top: 20px">
+                <a href="{{ path('sonata_media_download', {'id': value.id }) }}" download>
+                    <i class="fa fa-download"></i>
+                    Download {{value.name}}
+                </a>
+            </div>
+            {% if sonata_admin_enabled is defined and sonata_admin_enabled %}
+            <div style="padding-top: 20px">
+                <a href="{{ url('admin_sonata_media_media_edit', {id: value.id}) }}">
+                    <i class="fa fa-info-circle"></i>
+                    More info about this file {{ value.name }}
+                </a>
+
+            </div>
+            {% endif %}
+        {% else %}
+            No data
+        {% endif %}
+    {% endspaceless %}
+{% endblock %}

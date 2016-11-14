@@ -1,0 +1,144 @@
+<!-- row -->
+<div class="row" ng-controller="ProjectConfigureController">
+    <!-- NEW WIDGET START -->
+    <article class="col-sm-12 col-md-12 col-lg-12">
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+            <!-- widget options:
+            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+            data-widget-colorbutton="false"
+            data-widget-editbutton="false"
+            data-widget-togglebutton="false"
+            data-widget-deletebutton="false"
+            data-widget-fullscreenbutton="false"
+            data-widget-custombutton="false"
+            data-widget-collapsed="true"
+            data-widget-sortable="false"
+
+            -->
+            <header>
+                <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                <h2>{[{ 'project.configure.title' | translate }]}</h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body">
+                    <form class="form-horizontal">
+
+                        <fieldset>
+                            <legend>{[{ 'project.configure.title' | translate }]}
+                            <span ng-if="project.id">, {[{ project.name }]}</span>
+                            </legend>
+                            <p class="newlines"></p>
+                        </fieldset>
+                    </form>
+
+                    <div style="margin-bottom: 20px">
+                        {[{ 'project.configure.desc' | translate }]}
+                    </div>
+
+                    <form class="validation" name="form_app" action="/admin/api/app" method="post" ng-upload="uploadComplete(content)">
+                        <input type="hidden" name="id" id="project_id" ng-model="project.id" value="{[{ project.id }]}">
+                        <div class="form-group">
+                            <label>{[{ 'project.configure.form.name' | translate }]} *</label>
+                            <input type="text" name="name" placeholder="{[{ 'project.configure.form.name_place_holder' | translate }]}"  ng-model="project.name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>{[{ 'project.configure.form.url_home_site' | translate }]} *</label>
+                            <input type="url" name="url_home_site" placeholder="{[{ 'project.configure.form.url_home_site' | translate }]}" ng-model="project.url_home_site"  class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>{[{ 'project.configure.form.url_notification_payment' | translate }]} *</label>
+                            <input type="url" name="url_notification_payment" placeholder="{[{ 'project.configure.form.url_notification_payment' | translate }]}" ng-model="project.url_notification_payment" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>{[{ 'project.configure.form.url_notification_subscription' | translate }]}</label>
+                            <input type="url" name="url_notification_subscription" placeholder="{[{ 'project.configure.form.url_notification_subscription' | translate }]}" ng-model="project.url_notification_subscription" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>{[{ 'project.configure.form.owner_email' | translate }]} *</label>
+                            <input type="email" name="owner_email" placeholder="{[{ 'project.configure.form.owner_email' | translate }]}" ng-model="project.owner_email" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>{[{ 'project.configure.form.administration_email' | translate }]}</label>
+                            <input type="email" name="administration_email" placeholder="{[{ 'project.configure.form.administration_email' | translate }]}" required ng-model="project.administration_email" class="form-control" ng-required="false">
+                        </div>
+
+                        <div class="form-group">
+                            <label>{[{ 'project.configure.form.end_user_support_email' | translate }]}</label>
+                            <input type="email" name="end_user_support_email" placeholder="{[{ 'project.configure.form.end_user_support_email' | translate }]}" required ng-model="project.end_user_support_email" class="form-control" ng-required="false">
+                        </div>
+
+                        <div class="form-group">
+                            <label>{[{ 'project.configure.form.technical_email' | translate }]}</label>
+                            <input type="email" name="technical_email" placeholder="{[{ 'project.configure.form.technical_email' | translate }]}" ng-model="project.technical_email" class="form-control" ng-required="false">
+                        </div>
+
+                        <div class="form-group">
+                            <label>{[{ 'project.configure.form.external_app_id' | translate }]}</label>
+                            <input type="text" name="external_app_id" placeholder="{[{ 'project.configure.form.external_app_id' | translate }]}" ng-model="project.external_app_id" class="form-control" ng-required="false">
+                        </div>
+
+                        <div class="form-group">
+                            <label>{[{ 'project.configure.form.logo' | translate }]} *</label>
+                            <input type="file" name="logo" placeholder="{[{ 'project.configure.form.logo' | translate }]}" ng-model="project.logo" class="form-control" valid-file ng-required="!project.id" ng-class="{'ng-invalid-force': !project.id && !project.image.img}" accept="image/x-png, image/gif, image/jpeg">
+                            <img src="/img/1x1.png" ng-src="{[{ project.logo.img }]}" ng-if="project.logo.img">
+                        </div>
+
+                        <div class="form-group" ng-if="!project.id || !project.active">
+                            <div style="margin: 10px 0" >
+                                {[{ 'project.configure.form.countries' | translate }]} *
+                            </div>
+                            <div class="col-md-2" style="border-right: 1px dashed #ccc">
+                                <div ng-repeat="country in continents" >
+                                    <label>
+                                        <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="country.continent.selected" ng-change="updateSelectedCountries()"  ng-required="!someSelected()">
+                                        <span>{[{country.continent.name}]}</span>
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-9 col-md-offset-1">
+                                <div class="row" style="min-height: 45px">
+                                    <div ng-repeat="country in countries " style="float:left; width: 170px;">
+                                        <label ng-if="country.active">
+                                            <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="country.selected" ng-required="!someSelected()" name="country_{[{ $index }]}" id="country_{[{ $index }]}"  value="{[{country.id}]}">
+                                            <span class="no-wrap">{[{country.name}]}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 30px;margin-top: 20px" class="col-md-12">
+                            <button type="submit" ng-disabled="form_app.$invalid" class="btn btn-info btn-lg" style="padding: 6px 50px">{[{ 'end' | translate }]} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="well">
+            <a href="#/projects/list" class="btn btn-default">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> {[{ 'project.go_back_to_project_list' | translate }]}
+            </a>
+        </div>
+    </article>
+</div>

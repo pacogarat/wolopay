@@ -1,0 +1,57 @@
+<!-- User info -->
+<div class="login-info" >
+    <span> <!-- User image size is adjusted inside CSS, it should stay as is -->
+
+        <a href="javascript:void(0);" id="show-shortcut" tooltip-placement="right" tooltip="{{ app.user.name }}">
+            <img src="{{ asset('bundles/app/client_admin/img/avatars/male.png') }}" class="online" >
+            <span id="nav_name_user">
+                {{ app.user.name }}
+            </span>
+        </a>
+
+    </span>
+</div>
+
+<!-- end user info -->
+
+{#<!-- NAVIGATION : This navigation is also responsive#}
+
+{#To make this navigation dynamic please make sure to link the node#}
+{#(the reference to the nav > ul) after page load. Or the navigation#}
+{#will not initialize.#}
+{#-->#}
+<navigation>
+    <nav:item data-view="/dashboard" data-icon="fa fa-lg fa-fw fa-home" title="menu.dashboard"></nav:item>
+
+    <nav:group data-icon="fa fa-lg fa-fw fa-bar-chart-o" title="menu.analitycs" has-permission="ROLE_ADMIN_ANALITYCS">
+        <nav:item data-view="/analytics/transactions-purchases" title="menu.analytics.transactions_purchases"></nav:item>
+        <nav:item data-view="/analytics/user-levels" title="menu.analytics.users_levels"></nav:item>
+        <nav:item data-view="/analytics/payment-methods" title="menu.analytics.payment_methods"></nav:item>
+        <nav:item data-view="/analytics/continents-countries" title="menu.analytics.continents_countries"></nav:item>
+        <nav:item data-view="/analytics/articles-shops" title="menu.analytics.articles_shops"></nav:item>
+    </nav:group>
+
+    <nav:item data-view="/transactions" data-icon="fa fa-lg fa-fw fa-list-alt" has-permission="ROLE_ADMIN_TRANSACTIONS" title="menu.transactions"></nav:item>
+    <nav:item data-view="/purchases" data-icon="fa fa-lg fa-fw fa-bullseye" has-permission="ROLE_ADMIN_PURCHASES" title="menu.purchases"></nav:item>
+    <nav:item data-view="/active-subscriptions" data-icon="fa fa-lg fa-fw fa-recycle" has-permission="ROLE_ADMIN_SUBSCRIPTIONS" title="menu.active_subscriptions"></nav:item>
+    <nav:item data-view="/notifications" data-icon="fa fa-lg fa-fw fa-bell-o" has-permission="ROLE_ADMIN_NOTIFICATIONS" title="menu.notifications"></nav:item>
+    <nav:item data-view="/configuration/shop/test" data-icon="fa fa-lg  fa-fw fa-car" title="menu.config.shop_test" has-permission="ROLE_ADMIN_SHOP_TEST"></nav:item>
+
+    <nav:group data-icon="fa fa-lg fa-fw fa-gear" title="menu.configuration" has-permission="ROLE_ADMIN_CONFIGURE">
+        <nav:item data-view="/configuration/configurator/wizard" title="menu.config.configurator"></nav:item>
+        <nav:item data-view="/configuration/offers/list" title="menu.config.offers"></nav:item>
+
+        <nav:item data-view="/configuration/promo-codes/list" title="menu.config.promo_codes"></nav:item>
+        <nav:item data-view="/configuration/blacklist/index" title="menu.config.blacklist"></nav:item>
+    </nav:group>
+    <nav:item data-view="/credentials" data-icon="fa fa-lg fa-fw fa-key" has-permission="ROLE_ADMIN_CREDENTIALS" title="menu.credentials"></nav:item>
+    <nav:group data-icon="fa fa-lg fa-fw fa-code" title="menu.documentation" >
+        <nav:item data-view="/docs/payment-methods" title="menu.pay_methods"></nav:item>
+    </nav:group>
+
+    {# hidden to auto add in breadcrum #}
+    <nav:item data-view="/projects/list" title="menu.projects" style="display:none"></nav:item>
+
+
+</navigation>
+<span class="minifyme" data-action="minifyMenu"> <i class="fa fa-arrow-circle-left hit"></i> </span>

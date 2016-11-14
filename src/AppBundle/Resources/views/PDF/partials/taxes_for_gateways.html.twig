@@ -1,0 +1,32 @@
+<style>
+    .lll td {
+        border-bottom: 1px solid  #808080
+    }
+</style>
+
+<table style="font-size: 0.8em; width: 60%; margin-top: 25px" cellspacing="0" cellpadding="4"
+       xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <tr>
+        <th style="text-align: left">
+            Country
+        </th>
+        <th style="text-align: left">
+            Currency
+        </th>
+        <th style="text-align: right">
+            Amount tax
+        </th>
+    </tr>
+    {% for country in storageWoloGatewayByCountry %}
+        {% for obj in country.currencies %}
+            {% if loop.first == true %}
+                    <tr class="lll" ><td></td><td></td><td></td></tr>
+            {% endif %}
+            <tr >
+                <td>{{ country.country.name }} ({{ country.country.vat }}%) </td>
+                <td>{{ obj.currency.name }} ({{ obj.currency.id }}) </td>
+                <td class="num">{{ obj.value | number_format(2,'.', ',') }} {{ obj.currency.symbol }}</td>
+            </tr>
+        {% endfor %}
+    {% endfor %}
+</table>

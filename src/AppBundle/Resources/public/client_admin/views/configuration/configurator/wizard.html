@@ -1,0 +1,109 @@
+
+<div ng-controller="ConfiguratorContainerCtrl">
+    <!-- widget grid -->
+    <section id="widget-grid" >
+        <div class="well">
+
+            <div class="widget-body fuelux">
+
+                <div class="wizard">
+                    <ul class="steps">
+                        <li ng-class="{ 'active': stepActive(0), 'complete': stepCompleted(0) }" data-ng-click="goStep(0)" >
+                            <span class="badge badge-info">0</span><span data-translate="configurator.step_0"></span><span class="chevron"></span>
+                        </li>
+
+                        <li ng-class="{ 'active': stepActive(1), 'complete': stepCompleted(1) }" data-ng-click="goStep(1)" >
+                            <span class="badge badge-info">1</span><span data-translate="configurator.step_1"></span><span class="chevron"></span>
+                        </li>
+                        <li ng-class="{ 'active': stepActive(2), 'complete': stepCompleted(2)}" data-ng-click="goStep(2)" >
+                            <span class="badge">2</span><span data-translate="configurator.step_2"></span><span class="chevron"></span>
+                        </li>
+                        <li ng-class="{ 'active': stepActive(3), 'complete': stepCompleted(3)}" data-ng-click="goStep(3)">
+                            <span class="badge">3</span><span data-translate="configurator.step_3"></span><span class="chevron"></span>
+                        </li>
+                        <li ng-class="{ 'active': stepActive(4), 'complete': stepCompleted(4)}" data-ng-click="goStep(4)">
+                            <span class="badge">4</span><span data-translate="configurator.step_4"></span><span class="chevron"></span>
+                        </li>
+                        <!--<li ng-class="{ 'active': stepActive(5), 'complete': stepCompleted(5)}" data-ng-click="goStep(5)">-->
+                            <!--<span class="badge">5</span><span data-translate="configurator.step_5"></span><span class="chevron"></span>-->
+                        <!--</li>-->
+
+                        <li ng-class="{ 'active': stepActive(5), 'complete': stepCompleted(5) }" data-ng-click="goStep(5)">
+                            <span class="badge">5</span><span data-translate="configurator.step_6"></span><span class="chevron"></span>
+                        </li>
+                        <li ng-class="{ 'active': stepActive(6), 'complete': stepCompleted(6) }" data-ng-click="goStep(6)">
+                            <span class="badge">6</span><span data-translate="configurator.step_7"></span><span class="chevron"></span>
+                        </li>
+
+                        <li ng-class="{ 'active': stepActive(7), 'complete': stepCompleted(7) }" data-ng-click="goStep(7)">
+                            <span class="badge">7</span><span data-translate="configurator.step_8"></span><span class="chevron"></span>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- row -->
+    <div class="row">
+
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+                <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
+
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                    <h2>{[{ 'configurator.wizard' | translate }]} {[{app.name}]}</h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body" style="padding-bottom: 40px">
+                        <div ng-if="configuratorCurrent.step == 0" ng-include="'/bundles/app/client_admin/views/configuration/configurator/steps/select_0_pre_configure.html?v='+v"></div>
+                        <div ng-if="configuratorCurrent.step == 1" ng-include="'/bundles/app/client_admin/views/configuration/configurator/steps/select_1_countries.html?v='+v"></div>
+                        <div ng-if="configuratorCurrent.step == 2" ng-include="'/bundles/app/client_admin/views/configuration/configurator/steps/select_2_language.html?v='+v"></div>
+                        <div ng-if="configuratorCurrent.step == 3" ng-include="'/bundles/app/client_admin/views/configuration/configurator/steps/select_3_items.html?v='+v"></div>
+                        <div ng-if="configuratorCurrent.step == 4" ng-include="'/bundles/app/client_admin/views/configuration/configurator/steps/select_4_articles.html?v='+v"></div>
+                        <!--<div ng-if="configuratorCurrent.step == 5" ng-include="'/bundles/app/client_admin/views/configuration/configurator/steps/select_5_pay_methods.html?v='+v"></div>-->
+                        <div ng-if="configuratorCurrent.step == 5" ng-include="'/bundles/app/client_admin/views/configuration/configurator/steps/select_6_articles_in_shops.html?v='+v"></div>
+                        <div ng-if="configuratorCurrent.step == 6" ng-include="'/bundles/app/client_admin/views/configuration/configurator/steps/select_7_prices.html?v='+v"></div>
+                        <div ng-if="configuratorCurrent.step == 7" ng-include="'/bundles/app/client_admin/views/configuration/configurator/steps/select_8_sms.html?v='+v"></div>
+                        <div ng-if="configuratorCurrent.step == 8">
+                            <h1>{[{ 'configurator.end.title' | translate }]} <i class="fa fa-check-circle fa-5" style="color: #009900"></i></h1>
+                            <p class="newlines">{[{ 'configurator.end.desc' | translate }]} </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="col-sm-0 col-md-0 col-lg-6">
+        </article>
+    </div>
+
+</div>

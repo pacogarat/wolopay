@@ -1,0 +1,61 @@
+<style>
+    .separator-date td{
+        border-top: 1px dashed #aaa !important;
+    }
+</style>
+<!-- row -->
+
+<div ng-controller="InvoicesController">
+
+    <div style="margin-bottom: 20px">
+        <p ng-bind-html="'merchant.invoices.desc' | translate:({email: emails.finance}) |nl2br "></p>
+    </div>
+
+    <table class="table table-hover table-striped-inv table-bordered" style="margin-bottom: 20px" >
+        <thead>
+        <tr>
+            <td colspan="100%">
+                <div class="btn-group">
+                    <input type="button" ng-repeat="year in yearsAvailable" class="btn btn-ln btn-default" ng-class="{selected: year == currentYear}" value="{[{ year }]}" ng-click="onChangeCurrentYear(year)">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="100%">
+                <input ng-model-options="{debounce: 100}" ng-model="searchText.$" data-translate="search" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <th data-translate="date"></th>
+            <th data-translate="merchant.invoices.invoice_number"></th>
+            <th data-translate="title"></th>
+            <th data-translate="amount"></th>
+            <th data-translate="file"></th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="invoice in invoices | filter:searchText" ng-class="{'separator-date': activateSeparator(invoices[$index],invoices[$index-1])}">
+                <td>{[{ invoice.reference_date | date }]}</td>
+                <td>{[{ invoice.invoice_number }]}</td>
+                <td>{[{ invoice.title }]}</td>
+                <td>{[{ invoice.amount_total | currency: invoice.currency.symbol }]} </td>
+
+                <td>
+                    <a href="{[{ invoice.document.img }]}" download>
+                        <img src="/img/icons/pdf_20-22.png" style="cursor: pointer;">
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="100%">
+                    <div ng-if="invoices.length == 0">
+                        <div class="alert alert-warning">
+                            <span class="glyphicon glyphicon-exclamation-sign"></span>
+                            {[{ 'no_data' | translate }]}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

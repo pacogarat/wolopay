@@ -1,0 +1,47 @@
+meta_title: 'Payments Online | WoloPay'
+meta_description: 'online payment, online payment provider, payment solution for games, online, mobile'
+meta_keywords: ''
+menu_about_us: 'About Us'
+menu_why_us: 'Why Us'
+menu_the_platform: 'The Platform'
+menu_technical_solutions: 'Technical Solutions'
+menu_our_clients: 'Our Clients'
+menu_contact: Contact
+title_paygw_intro: 'WORLDWIDE PAYMENT FOR YOUR PRODUCT'
+subtitle_paygw_intro: 'Wolopay allows you to manage your products’s payments all over the world with the best conditions. A Trustful, Proven and Simple Tool.'
+read_more: 'Read More'
+why_us_title1: 'It’s Easy To Integrate'
+why_us_subtitle1: 'It’s a solution specially designed for your product.'
+why_us_title2: 'Personalizing Your Payment Platform'
+why_us_subtitle2: 'Boost your paying users by using a reliable and user-friendly tool.'
+why_us_title3: 'Payment Method Personalised By Country'
+why_us_subtitle3: 'Speak their language and master their payment habits to reach them easily.'
+why_us_title4: 'Manage Your Products All Over The World'
+why_us_subtitle4: 'With the best conditions a trustful, proven and simple tool.'
+about_us_title: 'About Us'
+about_us_longtext: "Wolopay is a Payment Service Provider (PSP),\r\npart of the Nvia Group, a leading company in the online and SMS marketing world since 2001. </br></br>\r\n\r\nRanked 15th online advertiser in 2011 in Spain, our average monthly investment in advertising is 3 million €. </br></br>\r\n\r\nWith headquarters in Madrid, Santiago de Chile, Singapore and Johannesburg, \r\nNvia is present in all continents covering more than 90 countries with daily transactions.</br></br>\r\n\r\nHaving local offices in 15 countries gives us a deep insight of local markets, their necessities and their special features.</br></br>\r\n\r\nDuring our more than 10 years experience in the tech market we have developed our own tools, \r\nfully tested thanks to our 8 million transactions per month."
+why_us_title: 'Why Us'
+why_us_text1: '- Wolopay benefits from direct connections with more than 70 Mobile Carriers around the world which means:'
+why_us_direct_negotiation: 'Direct Negotiation'
+why_us_no_intermediaries: 'No Intermediaries'
+why_us_better_conditions: 'Better Conditions For Our Clients'
+why_us_longtext: "- We’re more than a payment method We’re advertisers. We’re email marketing.\r\nWe’re affiliate networking… This means that we can offer better conditions than a simple payment method.</br></br>\r\n\r\n- Best pay-outs for your product. No set-up fees, no monthly fees</br></br>\r\n\r\n- Your clients will be able to choose between 3,000 payment options through 350 different payment methods available \r\nin more than 90 countries on all continents.</br></br>\r\n\r\n- Did you know that very few people in Latam and Asia use credit cards? </br></br>\r\n\r\n- Do you want to be like other companies, that only offer European/US payment methods \r\nhoping Latam and Asia clients will accept them?</br></br>\r\n\r\n<strong>We Offer The Payment Method That People \r\nActually Use in Each Country.</strong>"
+the_platform_title: 'The Platform'
+the_platform_text_fully: "<strong>FULLY CUSTOMIZABLE</strong></br>\r\nIt’s important for your clients to trust the payment method. \r\nWolopay allows you to choose the most suitable options for your product:"
+the_platform_look_feel_text: "<strong>Look & Feel (CSS driven):</strong> Make it look like your brand or product.</br>\r\n<strong>Payment method icons:</strong> Choose from our catalogue.</br>\r\n<strong>Use your Logo:</strong> PayGW is a white-label service. You’re clients will only see your logo when paying.</br>\r\n<strong>Make Offers and promotions:</strong> PayGW allows to create “Offers and Promotional Codes” of the game products easily.</br>\r\n<strong>Names of items (Coins, Swords, Credits, etc.):</strong> Customize the products you want to sell.</br>\r\n<strong>Packs of items (100 Coins, 2 Swords...):</strong> Include profitable packages amongst the payment options.</br>\r\n<strong>Lots of countries / Lots of languages:</strong> Is your product distributed all around the world? Use the same payment system for all of them.</br>\r\n<strong>Customize price per country:</strong> Users pay more if they can use their own currency. Don’t loose conversions"
+the_platform_clients_buy_text: "<strong>Clients want to buy, they don’t want to decipher the payment method!</strong></br></br>\r\n- One single step with all the instructions in sight.</br>\r\n- Most common options clearly highlighted.</br>\r\n- Simple checkout process.</br>\r\n- Compatibility with all systems: Works on all browsers and OS including iOS and Android.</br>\r\n- Possibility of including product offers with special icons to attract player’s attention.</br>\r\n- Localized in 16 languages.</br>\r\n- Integrated support and 24/7 trouble-shooting resolution service in the user’s language. </br>"
+technical_solution_title: 'Technical Solution'
+technical_solution_subtitle: 'Easy to configure and Integrate...'
+technical_solution_longtext: "- Wolopay’s team will configure the parameters according to client’s needs\r\n(items, packs, prices, etc.).</br>\r\n- The game makes one HTTP request and, once the transaction has finished, Wolopay sends the status back via HTTP as well.</br>\r\n- The client only needs to make an HTTP request with a few parameters.\r\n«Instruction-only» possibility for full in-game integration.</br>\r\n- Secure connections certified by GoDaddy"
+our_clients_title: 'Our Clients'
+contact_title: Contact
+contact_subtitle: 'Would Like to Contact'
+contact_summary: '<strong> Let''s Have a Meeting!</strong> Leave your contact details and we will contact you.'
+footer_copyright: '@2014 All right reserved.'
+footer_privacy_policy: 'Privacy Policy'
+footer_terms: 'Terms Of Use'
+forms.contact_simple.name.placeholder: Name
+forms.contact_simple.email.placeholder: Email
+forms.contact_simple.phone.placeholder: Phone
+forms.contact_simple.message.placeholder: Message
+forms.contact_simple.submit: 'Send Message'

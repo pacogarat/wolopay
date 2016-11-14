@@ -1,0 +1,47 @@
+{# shopCss \AppBundle\Entity\ShopCss #}
+var jwt = '{{ jwtString }}';
+
+var propertiesDefault = {
+    language: {{ languageDefault | serialize('json') | raw   }},
+    languages: {{ languages | serialize('json') | raw  }},
+    transactionId: '{{ app.user.id }}',
+    nodeServer : '{{nodeServer}}',
+    d: {{ app.debug | serialize('json') | raw  }},
+    domainMain: '{{ domain_main }}',
+    shoppingCartMaxItems: {{shopping_cart_max_items}},
+    shoppingCartMaxPriceEur: {{shopping_cart_max_price_eur}},
+    app: {{ app.user.app | serialize('json', appSerializeContext) | raw }},
+    v: '{{ assets_version }}'
+
+    {% if completed is not defined %}
+        ,articleSelected :{{ app.user.selectedArticle | serialize('json', articleSerializeContext) | raw  }},
+        country :{{ countryDefault | serialize('json') | raw   }},
+        countries :{{ countriesAvailable | serialize('json') | raw   }},
+        articleTab :{{ articleTabDefault | serialize('json', appTabContext) | raw }},
+        appId:'{{ app.user.app.id }}',
+        gamerId:'{{ transaction.gamer.id }}',
+        gamerExternalId:'{{ transaction.gamer.gamerExternalId }}',
+        levelCategoryId:{{ app.user.levelCategory.id }},
+        tutorialEnabled:{{ app.user.tutorialEnabled | serialize('json') | raw }},
+        tutorialPromoCode:{{ app.user.tutorialPromoCode.code | default(null) | serialize('json') | raw   }},
+        fixedCountry:{{ fixedCountry | serialize('json') | raw  }},
+        returnUrl:{{ app.user.return | serialize('json') | raw  }},
+        isModule:{{ shopCss.modular | serialize('json') | raw }},
+        productsRows:{{ shopCss.productRows }},
+        payMethodsRows:{{ shopCss.payMethodRows }},
+        firstPayMethods:{{ transaction.firstPayMethods | serialize('json') | raw }},
+        fixedLanguage: {{ transaction.fixedLanguage | serialize('json') | raw }},
+        hasCategories: {{ transaction.hasCategories | serialize('json') | raw }},
+        hasCart: {{ transaction.hasCart | serialize('json') | raw }},
+        hasPayMethodsSection: {{ transaction.hasPayMethodsSection | serialize('json') | raw }},
+        externalStore: {{ transaction.externalStore | serialize('json') | raw }},
+        templateProducts: {{ shopCss.templateProducts | serialize('json') | raw }},
+        templatePayMethods: {{ shopCss.templatePayMethods | serialize('json') | raw }},
+        productsImgFormat: {{ shopCss.productsImgFormat | serialize('json') | raw }} || '_shop',
+        payMethodsImgFormat: {{ shopCss.payMethodsImgFormat | serialize('json') | raw }} || '_shop',
+        forceGenericPMPC: {% if transaction.forceGenericPMPC %}{id: {{ transaction.forceGenericPMPC | serialize('json') | raw }} } {% else %} null {% endif %},
+        externalStore_pmp: {{  externalStore_pmp | serialize('json', externalStore_pmpContext) | raw }}
+    {% endif %}
+
+} ;
+

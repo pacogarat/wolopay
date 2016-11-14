@@ -1,0 +1,20 @@
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.test/shop/payment/begin/WOT_5745beeb04eff/es/17/41B5D957-3F8C-406D-A985-B634E6CC2BD0/ES?voice_id=1, GET: voice_id=1, POST: 
+[2016-05-25 15:04:28] app.DEBUG: Verifications to articleId: 41B5D957-3F8C-406D-A985-B634E6CC2BD0 - single_payment [] []
+[2016-05-25 15:04:28] app.DEBUG: PaymentDetailHasArticles begin 0 [] []
+[2016-05-25 15:04:28] app.DEBUG: Created a new PaymentDetailHasArticles [] []
+[2016-05-25 15:04:28] app.DEBUG: PaymeentDetailHasArticles end 1 [] []
+[2016-05-25 15:04:29] app.INFO: Created ipn url: 'http://sym2_pay_gateway.test/shop/payment/ipn/SINPAY_2016052515045745befcc75ac/es/WOT_5745beeb04eff/PsqWkbTzKUvRZQ9' [] []
+[2016-05-25 15:04:29] app.INFO: Created new payment 'SINPAY_2016052515045745befcc75ac [] []
+[2016-05-25 15:04:29] app.INFO: redirecting http://sym2_pay_gateway.test/shop/voice/logic_vo_vt_code/es/WOT_5745beeb04eff/SINPAY_2016052515045745befcc75ac [] []
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.dev/shop/payment/begin/simple_transaction/WOT_5746acd983500/en/338, GET: , POST: 
+[2016-05-26 07:59:22] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINCUSTPAY_2016052607595746acda79d12/en/WOT_5746acd983500/ECdQtNhMFXToRrJ' [] []
+[2016-05-26 07:59:22] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINCUSTPAY_2016052607595746acda79d12/en/WOT_5746acd983500/ECdQtNhMFXToRrJ' [] []
+[2016-05-26 07:59:22] app.INFO: Created new payment 'SINCUSTPAY_2016052607595746acda79d12' and redirecting http://sym2_pay_gateway.dev/shop/voice/logic_vo_vt_code/en/WOT_5746acd983500/SINCUSTPAY_2016052607595746acda79d12 [] []
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.test/shop/payment/begin/WOT_575a9370acacd/es/17/89A97832-B369-4EAE-A96B-1F162075FD1A/ES?voice_id=1, GET: voice_id=1, POST: 
+[2016-06-10 10:16:38] app.DEBUG: Verifications to articleId: 89A97832-B369-4EAE-A96B-1F162075FD1A - single_payment [] []
+[2016-06-10 10:16:38] app.DEBUG: PaymentDetailHasArticles begin 0 [] []
+[2016-06-10 10:16:38] app.DEBUG: Created a new PaymentDetailHasArticles [] []
+[2016-06-10 10:16:38] app.DEBUG: PaymeentDetailHasArticles end 1 [] []
+[2016-06-10 10:16:38] app.INFO: Created ipn url: 'http://sym2_pay_gateway.test/shop/payment/ipn/SINPAY_201606101016575a9386aa45d/es/WOT_575a9370acacd/ETHSLaARPdg25zI' [] []
+[2016-06-10 10:16:39] app.INFO: Created new payment 'SINPAY_201606101016575a9386aa45d [] []
+[2016-06-10 10:16:39] app.INFO: redirecting http://sym2_pay_gateway.test/shop/voice/logic_vo_vt_code/es/WOT_575a9370acacd/SINPAY_201606101016575a9386aa45d [] []

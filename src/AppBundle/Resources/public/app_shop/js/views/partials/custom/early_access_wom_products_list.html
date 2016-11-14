@@ -1,0 +1,50 @@
+<div ng-if="$root.gacha && hasCategories && firstPayMethods" ng-include="asset('/bundles/app/app_shop/js/views/partials/gacha.html')" class="gacha"></div>
+<div data-ng-controller="ArticlesListCtrl">
+    <div ng-if="hasCategories && itemsTabsAvailable.length > 0" >
+        <div class="categories">
+            <div style="height: 100%">
+                <ul>
+                    <li ng-repeat="itemTab in itemsTabsAvailable" ng-click="selectItemTab(itemTab)" ng-class="{'selected': itemTab.selected}">
+                        <div class="height-adjust-content">
+                            <img style="vertical-align:middle" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-ng-src="{[{ asset((itemTab.image.img ), false) }]}" ng-if="itemTab.image.img">
+                            <span translate="{[{itemTab.name_label.key}]}"></span>
+                        </div>
+                        <div>
+                            <div tooltip class="tooltip" ng-if="itemTab.description_label.key">
+                                <span translate="{[{ itemTab.description_label.key }]}"></span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="after-categories"><div class="left"></div><div class="right"></div></div>
+    </div>
+    <div class="products">
+        <div class="search">
+            <i ng-click="activeOrDisableSearch()"></i>
+            <div ng-class="{'active': $root.searchActive }">
+                <input type="text" name="search" ng-model="$root.search" ng-model-options='{ debounce: 600 }'>
+            </div>
+        </div>
+
+        <div class="arrow-left"><span><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset('/img/1x1.png') }]}"></span></div>
+        <div class="arrow-right"><span><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset('/img/1x1.png') }]}"></span></div>
+
+        <div class="gradient-left"></div>
+        <div class="gradient-right"></div>
+
+
+        <div class="outer-wrapper">
+            <div class="inner-wrapper">
+                <div data-ng-repeat="n in [] | range:productsRows" class="separator separator_{[{n}]}">
+                    <div data-ng-repeat="appShopHasArticle in $root.current.appShopHasArticlesFiltered" ng-if="$index % productsRows === n" class="product item" ng-class="{'in-cart': appShopHasArticle.in_cart, 'selected': current.appShopHasArticle.article.id == appShopHasArticle.article.id }"  data-ng-click="activateArticle(appShopHasArticle)" id="article-{[{ appShopHasArticle.article.id }]}">
+                        <!--<div ng-if="isModule" ng-include="asset('/bundles/app/app_shop/js/views/partials/article_module.html')" class="product-box"></div>-->
+                        <div ng-include="asset('/bundles/app/app_shop/js/views/partials/custom/early_access_wom_article_standard.html')" class="product-box"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

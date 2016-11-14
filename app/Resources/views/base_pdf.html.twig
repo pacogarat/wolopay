@@ -1,0 +1,61 @@
+{# client \AppBundle\Entity\Client #}
+{# finInvoice \AppBundle\Entity\FinInvoice #}
+{# storageCurrencies \AppBundle\Entity\NotPersisted\StorageCurrencyMoney #}
+{# money \AppBundle\Entity\NotPersisted\Money #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            font-size: 13px;
+        }
+
+        .extra_padding{
+            padding-left: 20px;
+        }
+
+        th{
+            text-align: center;
+        }
+
+        table .num{
+            text-align: right;
+        }
+
+        table .borderTop{
+            border-top: 1px solid #333;
+            padding-top: 10px;
+        }
+
+        .h1{
+            font-weight: bold;
+            font-size: 1.4em;
+        }
+
+        .h2{
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .h3{
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        div.page {
+            overflow: hidden;
+            page-break-before: always;
+        }
+
+    </style>
+
+</head>
+<body >
+    <div style="padding-top: 30px">
+        {% block body '' %}
+    </div>
+</body>
+</html>

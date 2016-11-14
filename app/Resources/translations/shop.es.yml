@@ -1,0 +1,25 @@
+gacha:
+  info: Estos son los articulos que contiene el cofre, compralo y gana uno de ellos.
+days_replace: '{[{ days }]} dias'
+weeks_replace: '{[{ weeks }]} semanas'
+months_replace: '{[{ months }]} meses'
+years_replace: '{[{ years }]} años'
+days: Dias
+continue: 'continuar'
+select_paymethod: ' Selecciona la forma de pago '
+select_article: 'selecciona el articulo'
+waiting_payment_confirmation: 'Esperando confirmación de pago'
+waiting_payment_confirmation_desc: 'Necesitas finalizar la compra en la nueva página'
+articles_remaining: Articulos Restantes:
+
+article_categories:
+    single:
+        description: 'Articulos de pago unico'
+    subscription:
+        description: 'Articulos de subscripcion'
+
+feedback:
+    send: Enviar
+
+promo_code:
+    or_write_your_code: 'O introduce tu código promocional:'

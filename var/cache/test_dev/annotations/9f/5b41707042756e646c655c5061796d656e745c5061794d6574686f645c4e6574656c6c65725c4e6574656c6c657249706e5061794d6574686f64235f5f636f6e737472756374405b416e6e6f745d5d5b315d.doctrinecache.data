@@ -1,0 +1,2 @@
+0
+a:1:{i:0;O:41:"JMS\DiExtraBundle\Annotation\InjectParams":1:{s:6:"params";a:2:{s:4:"live";O:35:"JMS\DiExtraBundle\Annotation\Inject":3:{s:5:"value";s:21:"%payments.adyen.live%";s:8:"required";N;s:6:"strict";b:1;}s:6:"locale";O:35:"JMS\DiExtraBundle\Annotation\Inject":3:{s:5:"value";s:8:"%locale%";s:8:"required";N;s:6:"strict";b:1;}}}}

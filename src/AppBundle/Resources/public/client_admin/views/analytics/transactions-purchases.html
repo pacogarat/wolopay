@@ -1,0 +1,204 @@
+</div><div ng-controller="AnalyticsTransactionsPurchasesController" >
+    <!-- widget grid -->
+    <section id="widget-grid" >
+        <div class="row">
+        </div>
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-ana-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-crosshairs"></i> </span>
+                        <h2 data-translate="analitycs.transaction_purchases.title_revenue"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.transaction_purchases.title_revenue_tooltip' | translate}]}"></i>
+                        </span>
+
+
+
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="flotcontainer_analitycs_1_1" class="chart-large" style="height: 300px"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-xs-4 col-md-4">
+                                    <div id="flotcontainer_analitycs_1_2" style="height: 150px"></div>
+                                </div>
+                                <div class="col col-xs-4 col-md-4">
+                                    <div id="flotcontainer_analitycs_1_4" style="height: 150px"></div>
+                                </div>
+                                <div class="col col-xs-4 col-md-4">
+                                    <div id="flotcontainer_analitycs_1_3" style="height: 150px"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-6">
+
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-ana-2" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                        <h2 data-translate="analitycs.transaction_purchases.title_revenue_by_weekday"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.transaction_purchases.title_revenue_by_weekday_tooltip' | translate}]}"></i>
+                        </span>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+
+                            <div class="padding-10">
+                                <div id="flotcontainer_analitycs_2" class="chart-large" style="height: 232px;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="col-sm-12 col-md-12 col-lg-6">
+
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-ana-5" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                        <h2 data-translate="analitycs.transaction_purchases.title_revenue_by_hours_gamer_local_time" ng-if="revenue_by_hours_gamer_local_country"></h2>
+                        <h2 data-translate="analitycs.transaction_purchases.title_revenue_by_hours_admin_local" ng-if="!revenue_by_hours_gamer_local_country"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.transaction_purchases.title_revenue_by_hours_tooltip' | translate}]}"></i>
+                        </span>
+
+                        <div style="float: right; padding: 5px 10px 0 0">
+                            <span class="onoffswitch-title" data-translate="analitycs.transaction_purchases.gamer_local_time"></span>
+                            <span class="onoffswitch">
+                                <input type="checkbox" name="start_interval" ng-model="revenue_by_hours_gamer_local_country" ng-change="revenueByHours()" ng-init="revenue_by_hours_gamer_local_country = false" class="onoffswitch-checkbox" id="start_interval">
+                                <label class="onoffswitch-label" for="start_interval">
+                                    <span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </span>
+                        </div>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+
+                            <div class="padding-10">
+
+                                <div id="flotcontainer_analitycs_3" class="chart-large" style="height: 232px;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="row">
+            <article class="col-sm-12">
+
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-ana-4" data-widget-colorbutton="false" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                        <h2 data-translate="analitycs.transaction_purchases.title_revenue"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.transaction_purchases.title_revenue_tooltip' | translate}]}"></i>
+                        </span>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget edit box -->
+                        <div class="jarviswidget-editbox">
+                            <!-- This area used as dropdown edit box -->
+
+                        </div>
+                        <!-- end widget edit box -->
+                        <!-- widget content -->
+                        <div class="widget-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="100%">
+                                            <input ng-model-options="{debounce: 100}" ng-model="searchText.$" placeholder="{[{ 'search' | translate}]}"  class="form-control">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th ng-click="orderBy('date_format')" style="cursor: pointer;" data-translate="date"></th>
+                                        <th ng-click="orderBy('transactions')" style="cursor: pointer;" data-translate="transactions"></th>
+                                        <th ng-click="orderBy('unique_users')" style="cursor: pointer;"  data-translate="analitycs.unique_users"></th>
+
+                                        <th ng-click="orderBy('purchases')" style="cursor: pointer;" data-translate="purchases"></th>
+                                        <th ng-click="orderBy('cr')" style="cursor: pointer;"  data-translate="cr"></th>
+
+                                        <th ng-click="orderBy('n_unique_users_by_purchase')" style="cursor: pointer;"  data-translate="n_unique_users_by_purchase"></th>
+                                        <th>
+                                            <span data-translate="analitycs.transaction_purchases.amount_game_vs_unique_users" ng-click="orderBy('amount_game_vs_unique_users')" style="cursor: pointer;"></span>
+                                            <i class="glyphicon glyphicon-info-sign" tooltip="{[{ 'analitycs.transaction_purchases.amount_game_vs_unique_users_desc' | translate }]}"></i>
+                                        </th>
+                                        <th ng-click="orderBy('amount_total')"  style="cursor: pointer;" data-translate="total_amount"></th>
+                                        <th ng-click="orderBy('amount_game')"  style="cursor: pointer;" data-translate="game_amount"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="countryStats in table | filter:searchText | orderBy:predicate:reverse">
+                                        <td>{[{countryStats.date_format}]}</td>
+                                        <td>{[{countryStats.transactions | number}]}</td>
+                                        <td>{[{countryStats.unique_users | number}]}</td>
+                                        <td>{[{countryStats.purchases | number}]}</td>
+
+                                        <td>{[{countryStats.cr | number:2}]}%</td>
+
+                                        <td>{[{countryStats.n_unique_users_by_purchase | number}]}</td>
+                                        <td>{[{countryStats.amount_game_vs_unique_users | currency:currency.symbol}]}</td>
+                                        <td>{[{countryStats.amount_total| currency:currency.symbol }]}</td>
+                                        <td>{[{countryStats.amount_game| currency:currency.symbol }]}</td>
+                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td data-translate="TOTAL" class="total_text"></td>
+                                            <td>{[{tableTotal.transactions | number}]}</td>
+                                            <td>≃ {[{tableTotal.unique_users | number}]}</td>
+                                            <td>{[{tableTotal.purchases | number}]}</td>
+
+                                            <td>{[{tableTotal.cr | number:2}]}%</td>
+
+                                            <td>≃ {[{tableTotal.n_unique_users_by_purchase | number}]}</td>
+                                            <td>≃ {[{tableTotal.amount_game_vs_unique_users | currency:currency.symbol}]}</td>
+                                            <td>{[{tableTotal.amount_total| currency:currency.symbol }]}</td>
+                                            <td>{[{tableTotal.amount_game| currency:currency.symbol }]}</td>
+                                        </tr>
+                                    </tfoot>
+
+                                </table>
+                                <div style="padding-bottom: 20px; text-align: right; color: #888">
+                                    <em data-translate="dashboard.pay_method_stats_bugs"></em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+</div>
+

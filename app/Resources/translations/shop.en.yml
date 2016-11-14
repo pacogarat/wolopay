@@ -1,0 +1,134 @@
+
+play_remaining_lap: "You have {[{ lapsMax }]} runs used {[{ lap }]}"
+gacha:
+  info: These are the items contained in the box, buy it and win one of them.
+  play: Play
+
+  gacha_box:
+      animation:
+          title: These are the items contained in the box, buy it and win one of them.
+
+units: '{[{units}]} Units'
+days: Days
+continue: 'continue'
+select_paymethod: 'Select a pay method'
+select_article: 'Select an article'
+waiting_payment_confirmation: 'Waiting payment confirmation'
+waiting_payment_confirmation_desc: 'You need to complete the purchase in the new page'
+items_increase: Extra Items:
+amount_discount: Price discount:
+articles_remaining: Remaing amount:
+time_left: Time left:
+article_extra: Extra {[{quantity}]} article/s below
+subscription_periodicity: Subscription
+
+days_replace: "{[{ days }]} days"
+months_replace: "{[{ months }]} months"
+years_replace: "{[{ years }]} years"
+
+sms:
+    select_operator:
+        title: 'Select your phone operator'
+
+promo_code:
+    tab: 'Discounts'
+    title: 'Write a valid code'
+    submit: 'Send'
+    invalid_code: 'Invalid code'
+    code_ok: 'Code is valid'
+    title_won: 'You won this gift'
+    or_write_your_code: 'Or write your promotional code'
+
+article_categories:
+    single:
+        description: 'Single payment items'
+    subscription:
+        description: 'Items subscription'
+
+infos:
+    payment_received: The payment has been received, you can close the window and see the summary
+
+errors:
+    500: 'There is a problem in the store, we are working to fix it.'
+    country_not_valid: 'Your current country is not available to buy, sorry :(. Contact with the game to express your need.'
+
+warnings:
+    session_expired: 'Your session has been expired you need to reopen this page from the game.'
+    no_articles: This section haven't articles
+    shopping_cart_max_items: You've reached the maximum of items
+    shopping_cart_max_price: You've reached the maximum allowed price for the shopping cart
+    cant_choose_article: To select this article, remove all articles from your shopping cart.
+
+expired:
+    title: Your session has been expired
+    desc: If you want to buy a item you must go to the game page and start again.
+pending:
+    title: Your payment is pending
+    desc: 'Your account payment needs to be verified by payment provider. Reason: "{[{ reason }]}"'
+completed:
+    title: Congratulations! You have successfully completed the purchase.
+    desc:   |
+          The product will be automatically added to your game account.
+
+    game_web: Web Page
+    ip: Your Ip
+    merchant: Merchant
+    transaction_id: Transaction Id
+    payment_status: Payment status
+    product: Product
+    n_articles: Nº Articles
+    payment_type: Payment Type
+    provider: Provider
+    amount: Amount
+
+    payment_status_category:
+        200: Completed
+        201: Subscription Active
+
+    payment_type_category:
+        single_free_payment: Free Payment
+        single_payment: Single Payment
+        subscription: Subscription
+
+footer:
+    legal_terms: Legal terms
+    support_center: Support center
+    faq: FAQ
+    tutorial: Tutorial
+    feedback: Feedback
+    promo_code: Coupon
+
+feedback:
+    title_window: FeedBack, thanks for your help
+    before_u_go: Before you go, can you take a survey?
+    select_a_main_problem: Select the issue that has not made the purchase
+    select_the_pay_method_u_will_pay: Do you select a payment method with which you had problems?
+    pay_method_u_will_pay: What payment means you would have paid?
+    suggestion: Do you have any suggestions?
+    thanks_for_your_help: Thanks for your help!
+    send: Send
+
+    options:
+        not_interested: Not interested
+        i_will_pay_if_there_was_a_offer: I'll pay if there was a offer
+        i_didnt_found_a_valid_payment_method: I didn't found my payment method
+        it_crash_on_pay: It crash on pay
+        other: Other
+
+tutorial:
+    standard:
+        bar_tab: You can choose different payment methods changing tab.
+        select_article: Now select a product what you want.
+        select_paymethod: Select your favourite paymethod.
+        buy: When you finish click this button to get the article
+        support: If you have any problems with your purchase you can write to us and we will resolve your problem
+
+    promo:
+        bar_free_tab: Select this category
+        insert_code: "Insert this code: {[{ code }]}"
+        close_window: Now you can close this window
+
+cart:
+    title: Shopping Cart
+    empty: Shopping cart is empty
+    clear: Clear

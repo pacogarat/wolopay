@@ -1,0 +1,18 @@
+{% extends "::base_form_full_screen.html.twig" %}
+{% block page_container %}
+    <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+    </style>
+
+    {% include '@App/Partials/flash_msgs.html.twig' %}
+    {{ form_start(singupFrom) }}
+    {{ form_widget(singupFrom) }}
+    <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top: 40px">Sign up</button>
+    {{ form_end(singupFrom) }}
+
+
+{% endblock %}

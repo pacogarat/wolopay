@@ -1,0 +1,25 @@
+<div style="margin-top: 5px" >
+    <div style="color: #666">
+        <div class="text-center" ng-if="!visible" style="cursor: pointer" ng-click="$parent.visible = true">
+            <i class="fa fa-lg fa-plus-square-o" ></i>
+            <span style="font-style: italic" data-translate="more_info"></span>
+        </div>
+        <div class="text-center" ng-if="visible" style="cursor: pointer" ng-click="$parent.visible = false">
+            <i class="fa fa-lg fa-minus-square-o" ></i>
+            <span style="font-style: italic" data-translate="less_info">Less info</span>
+        </div>
+    </div>
+
+    <table class="table table-hover" ng-if="visible" style="margin-top: 25px">
+        <thead ng-if="data[0] && !noHeader">
+        <tr>
+            <th data-ng-repeat="col2 in data[0]" class="text-center">{[{ col2 | numberIfItIsPossible }]}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr data-ng-repeat="row in data track by $index" ng-if="$index != 0 || noHeader">
+            <td data-ng-repeat="col in row track by $index" ng-class="{'text-center': $index != 0}" style="max-width: 100px;" class="no-wrap">{[{ col | numberIfItIsPossible }]}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>

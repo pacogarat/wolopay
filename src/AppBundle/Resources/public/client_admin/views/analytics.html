@@ -1,0 +1,200 @@
+<div ng-controller="AnalyticsController" >
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="well" style="padding: 10px 0 0 0;">
+                    <form action="" class="smart-form">
+                        <section style="margin-top: 10px">
+                            <div class="row" id="conf-analitycs">
+
+                                <div class="inline-group col col-sm-12" style="text-align: center">
+                                    <div style="text-align: center; width: auto;display: inline-block;">
+                                        <label class="radio" >
+                                            <input type="radio" name="radio-inline" ng-model="dateFormat" value="days" checked="checked">
+                                            <i></i>Day
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="radio-inline" ng-model="dateFormat" value="weeks">
+                                            <i></i>Week
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="radio-inline" ng-model="dateFormat" value="months">
+                                            <i></i>Month
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- widget grid -->
+        <section id="widget-grid" >
+            <div class="row">
+            </div>
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-12">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-ana-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-crosshairs"></i> </span>
+                            <h2 data-translate="analitycs.conversions_per_transaction"></h2>
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="flotcontainer_analitycs_1_1" class="chart-large" style="height: 232px"></div>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 20px 0 10px 0">
+                                    <div class="col col-xs-4 col-md-4">
+                                        <div id="flotcontainer_analitycs_1_2" style="height: 50px"></div>
+                                    </div>
+                                    <div class="col col-xs-4 col-md-4">
+                                        <div id="flotcontainer_analitycs_1_3" style="height: 50px"></div>
+                                    </div>
+                                    <div class="col col-xs-4 col-md-4">
+                                        <div id="flotcontainer_analitycs_1_4" style="height: 50px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-6">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-ana-2" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                            <h2 data-translate="analitycs.providers"></h2>
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body">
+
+                                <div class="padding-10">
+                                    <div id="flotcontainer_analitycs_2" class="chart-large" style="height: 232px;"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-sm-12 col-md-12 col-lg-6">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-ana-5" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                            <h2 data-translate="analitycs.articles"></h2>
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body">
+
+                                <div class="padding-10">
+                                    <div id="flotcontainer_analitycs_5" class="chart-large" style="height: 232px;"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-12">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-ana-3" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
+                            <h2 data-translate="analitycs.unique_users"></h2>
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body">
+
+                                <div class="padding-10">
+                                    <div id="flotcontainer_analitycs_3" class="chart-large" style="height: 232px"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="row">
+                <article class="col-sm-12">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-ana-4" data-widget-colorbutton="false" data-widget-editbutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                            <h2 data-translate="analitycs.revenue"></h2>
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <!-- This area used as dropdown edit box -->
+
+                            </div>
+                            <!-- end widget edit box -->
+                            <!-- widget content -->
+                            <div class="widget-body">
+
+                                <table class="table table-hover table-striped-inv">
+                                    <thead>
+                                    <tr><td colspan="8"><input ng-model="searchText" placeholder="{[{ 'search' | translate}]}"  class="form-control"></td></tr>
+                                    <tr>
+                                        <th ng-click="orderBy('date_format')" style="cursor: pointer;" data-translate="date"></th>
+                                        <th ng-click="orderBy('country')" style="cursor: pointer;" data-translate="country"></th>
+                                        <th ng-click="orderBy('purchases')" style="cursor: pointer;" data-translate="purchases"></th>
+                                        <th ng-click="orderBy('gamers')"  style="cursor: pointer;" data-translate="analitycs.gamers"></th>
+                                        <th ng-click="orderBy('amount_total')"  style="cursor: pointer;" data-translate="total_amount"></th>
+                                        <th ng-click="orderBy('amount_provider')"  style="cursor: pointer;" data-translate="provider_amount"></th>
+                                        <th ng-click="orderBy('amount_wolopay')"  style="cursor: pointer;" data-translate="wolopay_amount"></th>
+                                        <th ng-click="orderBy('amount_game')"  style="cursor: pointer;" data-translate="game_amount"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="countryStats in table | filter:searchText | orderBy:predicate:reverse">
+                                        <td>{[{countryStats.date_format}]}</td>
+                                        <td>{[{countryStats.country}]}</td>
+                                        <td>{[{countryStats.purchases}]}</td>
+                                        <td>{[{countryStats.gamers}]}</td>
+                                        <td>{[{countryStats.amount_total| number:2}]} {[{ currency.symbol }]}</td>
+                                        <td>{[{countryStats.amount_provider| number:2}]} {[{ currency.symbol }]}</td>
+                                        <td>{[{countryStats.amount_wolopay| number:2}]} {[{ currency.symbol }]}</td>
+                                        <td>{[{countryStats.amount_game| number:2}]} {[{ currency.symbol }]}</td>
+                                    </tr>
+                                    </tbody>
+
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+</div>
+

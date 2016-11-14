@@ -1,0 +1,40 @@
+<div class="well well-light" ng-controller="DocsPayMethodsController">
+
+    <h1>Payment Methods</h1>
+    <div style="margin: 30px 0">Payment methods table, Countries and currencies available.</div>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Fee Percent</th>
+            <th>Logo</th>
+            <!--<th style="width: 350px;">Countries Available</th>-->
+            <th style="width: 50%;">Countries and Currencies Available</th>
+
+            <!--<th>Direct payment</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="payMethod in payMethods">
+            <td>{[{ payMethod.id }]}</td>
+            <td>{[{ payMethod.name }]}</td>
+            <td>{[{ payMethod.pay_category.name }]}</td>
+            <td class="text-center">≈{[{ paymethodFee(payMethod) }]}%</td>
+            <td class="text-center"><img ng-src="{[{payMethod.img}]}"></td>
+            <!--<td ng-init="countries = getCountriesByPayMethod(payMethod)"><span ng-repeat="country in countries track by $index">{[{country}]} </span></td>-->
+            <td ng-init="currencies = getCurrenciesOfPayMethod(payMethod)">
+                <span ng-repeat="currency in currencies track by $index">{[{currency}]} </span>
+            </td>
+
+            <!--<td ng-bind-html="(hasDirectPayment(payMethod)) | true_false:'bootstrap'">-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+</div>

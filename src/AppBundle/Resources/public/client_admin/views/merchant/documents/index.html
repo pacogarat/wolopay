@@ -1,0 +1,49 @@
+<!-- row -->
+<div class="row">
+    <!-- NEW WIDGET START -->
+    <!-- widget grid -->
+    <section id="widget-grid" >
+        <article class="col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-gear"></i> </span>
+                    <h2>{[{ 'merchant.documents.title' | translate }]}</h2>
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body" ng-init="section = 'invoices'">
+
+                        <ul class="nav nav-tabs" style="margin-top: 20px">
+                            <li role="presentation" style="cursor: pointer;"  ng-class="{'active': section == 'invoices'}" ng-click="section = 'invoices'">
+                                <a data-translate="merchant.invoices.title"></a>
+                            </li>
+
+                            <li role="presentation" style="cursor: pointer;"  ng-class="{'active': section == 'documents'}" ng-click="section = 'documents'">
+                                <a data-translate="merchant.documents.title"></a>
+                            </li>
+
+                        </ul>
+                        <div style="margin: 20px; ">
+                            <div ng-if="section == 'invoices'" ng-include="'/bundles/app/client_admin/views/merchant/documents/invoices.html?v='+v"></div>
+                            <div ng-if="section == 'documents'" ng-include="'/bundles/app/client_admin/views/merchant/documents/documents.html?v='+v"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+    </section>
+</div>

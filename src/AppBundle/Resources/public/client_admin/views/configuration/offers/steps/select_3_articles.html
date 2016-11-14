@@ -1,0 +1,59 @@
+<div ng-controller="OfferSelectArticlesController" >
+
+    <form class="form-horizontal validation" name="form_articles" novalidate ng-submit="form_articles.$valid && ($root.offerCurrent.step = 4)">
+        <fieldset>
+            <legend>
+                {[{ 'offer.step3.title' | translate }]}<br>
+                <em>{[{ 'offer.step3.desc' | translate }]}</em>
+            </legend>
+            <div class="form-group">
+
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1" >
+                        <div class="row">
+                            <div class="col-md-6" >
+                                <h3 style="margin-top: 0">{[{ 'article_category.single_payment' | translate }]}</h3>
+                                <div ng-repeat="article in $root.offerCurrent.articles | filter:{article_category: {id: 'single_payment'}}">
+
+                                    <label style="min-width: 200px">
+                                        <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="article.selected" ng-required="!someSelected()">
+                                        <span>{[{article.name_label.translation_en | stringReplace:'\{\[\{number\}\]\}':article.items_quantity}]}</span>
+                                    </label>
+
+                                    <!--<button type="button" popover-placement="right" popover-html-unsafe="{[{ $parent.tableInfo( article.app_shop_has_articles ) }]}" class="btn btn-default btn-xs">-->
+                                        <!--<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>-->
+                                    <!--</button>-->
+
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="col-md-6" >
+                                <h3 style="margin-top: 0">{[{ 'article_category.subscription' | translate }]}</h3>
+                                <div ng-repeat="article in $root.offerCurrent.articles | filter:{article_category: {id: 'subscription'}}">
+
+                                    <label ng-init="number=article.number" style="min-width: 200px">
+                                        <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="article.selected" ng-required="!someSelected()">
+                                        <span>{[{ article.name_label.translation_en | stringReplace:'\{\[\{number\}\]\}':article.items_quantity }]}</span>
+                                    </label>
+
+                                    <!--<button type="button" popover-placement="right" popover-html-unsafe="{[{ $parent.tableInfo( article.app_shop_has_articles ) }]}" class="btn btn-default btn-xs">-->
+                                        <!--<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>-->
+                                    <!--</button>-->
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 20px">
+                            <button type="submit" ng-disabled="form_articles.$invalid" class="btn btn-info btn-lg" style="padding: 6px 50px">{[{ 'next' | translate }]} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,70 @@
+@import "../../themes/mixins";
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    color: #444;
+}
+#container{
+    max-width: 703px;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+#img-state{
+    left:50%;
+    margin: -6px 0 0 -40px;
+    position: absolute
+}
+#main{
+    margin-top: 35px;
+    padding: 45px 25px 20px 25px;
+    background:  url('/bundles/app/app_shop/img/payment/bg_clear_blue.png') center;
+    width: 640px;
+}
+#content{
+    min-height: 218px;
+    text-align: center;
+    background: #fff;
+    padding: 30px 10px 10px 10px ;
+    border: 1px solid #C3D4D9;
+    margin-bottom: 15px;
+
+    h1{
+        font-size: 1.4em;
+        margin: 30px 0 ;
+        font-weight: normal;
+    }
+
+    #description{
+        line-height: 24px;
+    }
+}
+
+#contributors{
+
+    text-align: center;
+
+    img{
+        margin: 0 5px;
+    }
+}
+@media only screen and (max-width: 568px){
+    #main{
+        padding: 45px 0px 20px 0px;
+    }
+    #content{
+        border-left: 0px;
+        border-right: 0px;
+    }
+}
+@media only screen and (min-width: 567px){
+    #main{
+        .border-radius(10px);
+        -webkit-box-shadow: 5px 5px 12px 0px rgba(50, 50, 50, 0.38);
+        -moz-box-shadow:    5px 5px 12px 0px rgba(50, 50, 50, 0.38);
+        box-shadow:         5px 5px 12px 0px rgba(50, 50, 50, 0.38);
+    }
+    #content{
+        .border-radius(6px);
+    }
+}

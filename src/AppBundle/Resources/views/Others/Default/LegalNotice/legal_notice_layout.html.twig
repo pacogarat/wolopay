@@ -1,0 +1,17 @@
+{% extends "::base_bootstrap.html.twig" %}
+{% block title %}{% endblock %}
+{% block page_container %}
+    <style>
+        body{
+            font-size: 1.6em;
+        }
+        h1{
+            margin: 40px 0;
+        }
+
+    </style>
+    <div class="container voffset3">
+        {% block page '' %}
+    </div>
+    <div class="voffset3"></div>
+{% endblock %}

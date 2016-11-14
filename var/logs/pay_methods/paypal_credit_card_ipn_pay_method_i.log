@@ -1,0 +1,43 @@
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.dev/shop/payment/begin/simple_transaction/WOT_573ef15c6ac31/en/6, GET: , POST: 
+[2016-05-20 11:13:33] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINCUSTPAY_201605201113573ef15d31f27/en/WOT_573ef15c6ac31/eB6luZqwKV7iGOQ' [] []
+[2016-05-20 11:13:33] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINCUSTPAY_201605201113573ef15d31f27/en/WOT_573ef15c6ac31/eB6luZqwKV7iGOQ' [] []
+[2016-05-20 11:13:33] app.INFO: Created new payment 'SINCUSTPAY_201605201113573ef15d31f27' and redirecting http://sym2_pay_gateway.dev/shop/credit-card/credit_card/en/WOT_573ef15c6ac31/SINCUSTPAY_201605201113573ef15d31f27 [] []
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.dev/shop/payment/begin/simple_transaction/WOT_573f31cb8d6f2/en/6, GET: , POST: 
+[2016-05-20 15:48:28] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINCUSTPAY_201605201548573f31cc764cb/en/WOT_573f31cb8d6f2/8C71GXtLdcmjEFB' [] []
+[2016-05-20 15:48:28] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINCUSTPAY_201605201548573f31cc764cb/en/WOT_573f31cb8d6f2/8C71GXtLdcmjEFB' [] []
+[2016-05-20 15:48:28] app.INFO: Created new payment 'SINCUSTPAY_201605201548573f31cc764cb' and redirecting http://sym2_pay_gateway.dev/shop/credit-card/credit_card/en/WOT_573f31cb8d6f2/SINCUSTPAY_201605201548573f31cc764cb [] []
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.dev/shop/payment/begin/WOT_575ac7194d7a8/en/129/488c41e7-2ef8-11e6-bdad-902b3456f033/ES, GET: , POST: 
+[2016-06-10 15:24:16] app.DEBUG: Verifications to articleId: 488c41e7-2ef8-11e6-bdad-902b3456f033 - single_payment [] []
+[2016-06-10 15:24:16] app.DEBUG: PaymentDetailHasArticles begin 0 [] []
+[2016-06-10 15:24:16] app.DEBUG: Created a new PaymentDetailHasArticles [] []
+[2016-06-10 15:24:16] app.DEBUG: ExtraCost: AppBundle\Payment\Util\CartExtraCost\ExtraCostsRules\ExtraCostByPMPCRule [N/A] [] []
+[2016-06-10 15:24:16] app.DEBUG: PaymeentDetailHasArticles end 1 [] []
+[2016-06-10 15:24:16] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINPAY_201606101524575adba037eb2/en/WOT_575ac7194d7a8/hVPe1amF4B9zvl3' [] []
+[2016-06-10 15:24:16] app.INFO: Created new payment 'SINPAY_201606101524575adba037eb2 [] []
+[2016-06-10 15:24:16] app.INFO: redirecting http://sym2_pay_gateway.dev/shop/credit-card/credit_card/en/WOT_575ac7194d7a8/SINPAY_201606101524575adba037eb2 [] []
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.dev/shop/payment/begin/WOT_575ac7194d7a8/en/129/488c41e7-2ef8-11e6-bdad-902b3456f033/ES, GET: , POST: 
+[2016-06-10 15:57:52] app.DEBUG: Verifications to articleId: 488c41e7-2ef8-11e6-bdad-902b3456f033 - single_payment [] []
+[2016-06-10 15:57:52] app.DEBUG: PaymentDetailHasArticles begin 0 [] []
+[2016-06-10 15:57:52] app.DEBUG: Created a new PaymentDetailHasArticles [] []
+[2016-06-10 15:57:52] app.DEBUG: ExtraCost: AppBundle\Payment\Util\CartExtraCost\ExtraCostsRules\ExtraCostByPMPCRule [N/A] [] []
+[2016-06-10 15:57:52] app.DEBUG: PaymeentDetailHasArticles end 1 [] []
+[2016-06-10 15:57:52] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINPAY_201606101557575ae38097696/en/WOT_575ac7194d7a8/OGNorMIs97tKieT' [] []
+[2016-06-10 15:57:52] app.INFO: Created new payment 'SINPAY_201606101557575ae38097696 [] []
+[2016-06-10 15:57:52] app.INFO: redirecting http://sym2_pay_gateway.dev/shop/credit-card/credit_card/en/WOT_575ac7194d7a8/SINPAY_201606101557575ae38097696 [] []
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.dev/shop/payment/begin/simple_transaction/WOT_575e6b98c3fa7/en/170, GET: , POST: 
+[2016-06-13 08:15:21] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINCUSTPAY_201606130815575e6b998f42e/en/WOT_575e6b98c3fa7/C0l2IwS9KRBdhgr' [] []
+[2016-06-13 08:15:21] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINCUSTPAY_201606130815575e6b998f42e/en/WOT_575e6b98c3fa7/C0l2IwS9KRBdhgr' [] []
+[2016-06-13 08:15:22] app.INFO: Created new payment 'SINCUSTPAY_201606130815575e6b998f42e' and redirecting http://sym2_pay_gateway.dev/shop/credit-card/credit_card/en/WOT_575e6b98c3fa7/SINCUSTPAY_201606130815575e6b998f42e [] []
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.dev/shop/payment/begin/WOT_575e790a32466/en/49/e38360e8-3146-11e6-bdad-902b3456f033/ES, GET: , POST: 
+[2016-06-13 09:13:02] app.DEBUG: Verifications to articleId: e38360e8-3146-11e6-bdad-902b3456f033 - single_payment [] []
+[2016-06-13 09:13:02] app.DEBUG: PaymentDetailHasArticles begin 0 [] []
+[2016-06-13 09:13:02] app.DEBUG: Created a new PaymentDetailHasArticles [] []
+[2016-06-13 09:13:02] app.DEBUG: ExtraCost: AppBundle\Payment\Util\CartExtraCost\ExtraCostsRules\ExtraCostByPMPCRule [N/A] [] []
+[2016-06-13 09:13:02] app.DEBUG: PaymeentDetailHasArticles end 1 [] []
+[2016-06-13 09:13:02] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINPAY_201606130913575e791eb3f48/en/WOT_575e790a32466/HbAIM3ufYoazVj7' [] []
+[2016-06-13 09:13:02] app.INFO: Created new payment 'SINPAY_201606130913575e791eb3f48 [] []
+[2016-06-13 09:13:02] app.INFO: redirecting http://sym2_pay_gateway.dev/shop/credit-card/credit_card/en/WOT_575e790a32466/SINPAY_201606130913575e791eb3f48 [] []
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.dev/shop/payment/begin/simple_transaction/WOT_575e7e3a647b1/en/49, GET: , POST: 
+[2016-06-13 09:34:52] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINCUSTPAY_201606130934575e7e3bd7760/en/WOT_575e7e3a647b1/hNPXKIC6E5uRSL0' [] []
+[2016-06-13 09:34:52] app.INFO: Created ipn url: 'http://sym2_pay_gateway.dev/shop/payment/ipn/SINCUSTPAY_201606130934575e7e3bd7760/en/WOT_575e7e3a647b1/hNPXKIC6E5uRSL0' [] []
+[2016-06-13 09:34:52] app.INFO: Created new payment 'SINCUSTPAY_201606130934575e7e3bd7760' and redirecting http://sym2_pay_gateway.dev/shop/credit-card/credit_card/en/WOT_575e7e3a647b1/SINCUSTPAY_201606130934575e7e3bd7760 [] []

@@ -1,0 +1,305 @@
+{% extends base_template %}
+
+{% block sonata_breadcrumb %}
+    <div class="hidden-xs">
+
+        <ol class="nav navbar-top-links breadcrumb">
+
+            <li>
+                <a href="#">Billing</a>
+            </li>
+            <li class="active">
+                <span>Pending invoices</span>
+            </li>
+        </ol>
+
+    </div>
+{% endblock sonata_breadcrumb %}
+
+{% block content %}
+    <style>
+
+        .total{
+            padding-top: 10px;
+            font-size: 2em;
+            color: red;
+            text-shadow: 1px 0 1px #000;
+        }
+        .to-pay{
+            color: #008000;
+        }
+        blockquote{
+            padding: 0 20px;
+        }
+        .state.approved{
+            background-color: rgba(18, 184, 0, 0.29);
+        }
+        .state.declined{
+            background-color: rgba(255, 0, 0, 0.28);
+        }
+        .border-less td, .border-less th{
+            border:none !important;
+        }
+
+        input:required, select:required, textarea:required {
+            background-image: url("/bundles/app/client_admin/img/asterisk_moremargin.png");
+            background-position: right center;
+            background-repeat: no-repeat;
+        }
+
+        input:invalid, select:invalid, textarea:invalid {
+            background: rgba(255, 0, 0, 0.1);
+        }
+
+    </style>
+    <section class="content" ng-app="billingApp">
+        <div class="row">
+        {% set curretInvoiceClientDate = '' %}
+
+        {% for invoice in invoices %}
+            {% if invoice.externalCompanyNotWolopay.id ~ (invoice.referenceDate|date('Y-m-d')) != curretInvoiceClientDate %}
+                {% set curretInvoiceClientDate = invoice.externalCompanyNotWolopay.id ~ (invoice.referenceDate|date('Y-m-d')) %}
+                </div>
+                <div class="row box box-primary" id="{{curretInvoiceClientDate}}" style="padding: 20px" >
+                    <blockquote>
+                        <h1>
+                            <strong>
+                                {% if invoice.approvedAt %}
+                                    <button class="btn btn-success disabled">Approved</button>
+                                {% elseif invoice.declinedAt %}
+                                    <button class="btn btn-danger disabled">Declined</button>
+                                {% endif %}
+                            </strong>
+
+                            {{ invoice.externalCompanyNotWolopay.nameCompany }} {{ invoice.referenceDate|date('M Y') }}
+
+                            <div class="btn-group pull-right state" style="" >
+
+                                <button type="button" class="btn btn-success">
+                                    <a style="color: white;" href="{{ path('billing_invoices_pending_approve', {client_id: invoice.externalCompanyNotWolopay.id, date_reference: invoice.referenceDate |date('Y-m-d') }) }}">
+                                        <i class="fa fa-thumbs-up"></i>
+                                        Approve
+                                    </a>
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <a style="color: #fff;" href="{{ path('billing_invoices_pending_decline', {client_id: invoice.externalCompanyNotWolopay.id, date_reference: invoice.referenceDate |date('Y-m-d') }) }}">
+
+                                        <i class="fa fa-thumbs-down"></i>
+                                        Decline
+                                    </a>
+                                </button>
+                                <button type="button" class="btn btn-warning" onclick="javascript:getExtraConceptDataFromCurrentReference('{{curretInvoiceClientDate}}', '{{ path('billing_invoices_regenerate', {client_id: invoice.externalCompanyNotWolopay.id, date_reference: invoice.referenceDate |date('Y-m-d') }) }}') ">
+                                        <i class="fa fa-refresh"></i>
+                                        Regenerate
+
+                                </button>
+                            </div>
+                        </h1>
+                        <em>Created: <b>{{ invoice.createdAt | date }}</b><br>
+                            {% if invoice.approvedAt %}
+                                Forward to client: <b>{{ invoice.forwardForClientToAt | date }}</b>
+                            {% endif %}
+                        </em>
+
+                    </blockquote>
+
+            {% endif %}
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <h5>Title: {{ invoice.title }}</h5>
+                        <table style="margin-top: 10px">
+                            <tr>
+                                <th>Invoice ID</th>
+                                <td>{{ invoice.invoiceNumber }}</td>
+                            </tr>
+                            <tr>
+                                <th>Company From</th>
+                                <td>{{ invoice.companyFrom.nameCompany }}</td>
+                            </tr>
+                            <tr>
+                                <th>Company To</th>
+                                <td>{{ invoice.companyTo.nameCompany }}</td>
+                            </tr>
+                            <tr>
+                                <th>Total</th>
+                                <td class="total {% if invoice.externalCompanyNotWolopay.id == invoice.companyTo.id %}to-pay{% endif %}" style="font-size: 2em">{{ invoice.amountTotal }} {{ invoice.currency.id }}</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="col-xs-3">
+                        <div>
+                            <a href="{{ path('sonata_media_download', {'id': invoice.document.id }) }}" download style="white-space: nowrap;">
+                                {% thumbnail invoice.document, 'admin' with {'class': 'img-polaroid media-object'} %}
+                                <br>
+                                <i class="fa fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div ng-controller="invoiceCtrl" ng-init="typeOwes = '{% if invoice.externalCompanyNotWolopay.id == invoice.companyTo.id %}clientOwesWolopayExtraConcepts{% else %}wolopayOwesClientExtraConcepts{% endif %}'">
+                        <div ng-include="'billing_invoice_extra_cost.html'" ng-init="extraConcepts = {{ invoice.extraConcepts | json_encode }} || []"></div>
+                    </div>
+                </div>
+            </div>
+            {% if invoice.clientDocuments.isEmpty == false or invoice.finMovements.isEmpty == false  %}
+                <div class="col-md-4">
+
+                    {% if invoice.clientDocuments.isEmpty == false %}
+
+                        <h3>Documents</h3>
+                        <table class="table">
+                            <tr>
+                                <th>Description</th>
+                                <th>Document</th>
+                            </tr>
+                            {% for clientDocument in invoice.clientDocuments %}
+                                {# clientDocument \AppBundle\Entity\ClientDocument #}
+                                <tr>
+                                    <td>
+                                        {{ clientDocument.title }}
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('sonata_media_download', {'id': clientDocument.document.id }) }}" download style="white-space: nowrap;">
+                                            {% thumbnail clientDocument.document, 'admin' with {'class': 'img-polaroid media-object', 'style': 'width: 50px' } %}
+
+                                            <i class="fa fa-download"></i> Download
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+
+                    {% endif %}
+                    {% if invoice.finMovements.isEmpty == false %}
+
+                        <h3>Movements Assoc</h3>
+                        <table class="table">
+                            <tr>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Total</th>
+                            </tr>
+                        {# finMovement \AppBundle\Entity\FinMovement #}
+                        {% for finMovement in invoice.finMovements %}
+                            <tr>
+                                <td>{{ finMovement.companyTo.nameCompany }}</td>
+                                <td>{{ finMovement.companyFrom.nameCompany }}</td>
+                                <td class="num total {% if finMovement.isFromWolopay %} to-pay{% endif %}">
+                                    {{ finMovement.amountTotal | number_format(2,'.', ',') }} {{ finMovement.currency.symbol }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+        {% endfor %}
+        </div>
+
+        {% verbatim %}
+
+        <script type="text/ng-template" id="billing_invoice_extra_cost.html">
+
+            <form >
+                <table class="table border-less" style="width: 270px; margin-top: 15px">
+                    <tbody ng-repeat="extraConcept in extraConcepts" class="form-group">
+                    <tr>
+                        <td>
+                            <input type="text" class="form-control" ng-model="extraConcept.name" required placeholder="name">
+                        </td>
+                        <td>
+                            <div class="btn btn-danger" ng-click="removeExtraConcept(extraConcept)">
+                                Remove
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" class="form-control" ng-model="extraConcept.money.amount" required placeholder="amount" step="0.01"></td>
+                        <td>
+                            <select class="form-control"  ng-model="extraConcept.money.currency.id" required>
+                                <option ng-repeat="currency in currencies" value="{{ currency.id }}" ng-selected="extraConcept.money.currency.id == currency.id">{{ currency.id }}</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <textarea class="form-control" ng-model="extraConcept.description" placeholder="Long description" style="width: 270px !important;">
+                            </textarea>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tr>
+                        <td colspan="2" style="text-align: right">
+                            <div class="btn btn-default" ng-click="addExtraConcept()">
+                                <i class="fa fa-plus"></i> Extra concept
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="data-extra-cost hidden" data-type="{{typeOwes}}">{{ extraConcepts }}</div>
+
+
+            </form>
+        </script>
+        {% endverbatim %}
+    </section>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_es.js"></script>
+    <script>
+        var currencies = {{ currencies | serialize('json') | raw }};
+    </script>
+    {% verbatim %}
+
+        <script>
+            function getExtraConceptDataFromCurrentReference(idBlock, url)
+            {
+                var result = true;
+                $('#'+idBlock+' form').each(function( index ) {
+                    if (!this.checkValidity())
+                        result = false;
+                });
+
+                if (result == false)
+                {
+                    return;
+                }
+
+                var extra='?';
+                $('#'+idBlock+' .data-extra-cost').each(function( index ) {
+                    extra+= $(this).data('type') + '=' + encodeURIComponent($(this).text()) + '&';
+                });
+
+                window.location.href = url + extra;
+            }
+
+            var app = angular.module('billingApp', []);
+            app.controller('invoiceCtrl', function($scope) {
+                console.log('angular is loaded');
+                $scope.extraConcepts = [];
+                $scope.currencies = currencies;
+                $scope.addExtraConcept = function()
+                {
+                    $scope.extraConcepts.push({money: {currency: {id: 'EUR' }}});
+                };
+
+                $scope.removeExtraConcept = function(item)
+                {
+                    $scope.extraConcepts.splice($scope.extraConcepts.indexOf(item), 1);
+                };
+            });
+        </script>
+
+    {% endverbatim %}
+{% endblock %}

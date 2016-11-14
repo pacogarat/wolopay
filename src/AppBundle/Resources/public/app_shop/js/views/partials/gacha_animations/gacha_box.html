@@ -1,0 +1,46 @@
+<div ng-controller="GachaCtrl" ng-if="status.payment_process">
+    <div class="finished-animation" ng-if="lapsMax > 0 && close == false">
+        <audio controls id="soundWheelStart" style="display: none">
+            <source ng-src="{[{ asset('/bundles/app/app_shop/others/sounds/start_wheel.mp3') }]}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <audio controls id="soundWheelEnd" style="display: none">
+            <source ng-src="{[{ asset('/bundles/app/app_shop/others/sounds/won.wav') }]}" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+        <div class="wrapper">
+            <div class="close" ng-click="$parent.close = true"></div>
+
+            <div class="top"></div>
+            <div class="title" data-translate="gacha.gacha_box.animation.title"></div>
+            <div class="articles">
+                <div class="outer">
+                    <div class="selector"><div></div></div>
+                    <ul style="left: 0px">
+                        <li ng-repeat="article in objects track by $index" ng-class="{'the-best-article': article.best_article == 1, 'second-best-article': article.best_article == 2, 'third-best-article': article.best_article == 3}">
+                            <div class="box-img height-adjust-content">
+                                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset(article.img, false) }]}">
+                            </div>
+                            <h4 class="no-wrap" translate="{[{ article.name_label.key }]}" translate-values="{[{ {number : (article.items_quantity ) } }]}"></h4>
+                        </li>
+                    </ul>
+                </div>
+                <div class="attempts">
+                    <span translate="play_remaining_lap" translate-values="{[{ { lapsMax: lapsMax, lap: lap } }]}"></span>
+                </div>
+                <div ng-if="lap < lapsMax" class="button-box">
+                    <button ng-class="{'selected': playActive}" ng-disabled="playActive" ng-click="playGacha()"><span translate="play"></span></button>
+                </div>
+
+                <div ng-if="articlesWon.length > 0" class="won">
+                    <ul>
+                        <li ng-repeat="article in articlesWon track by $index" ng-if="$index < 1">
+                            <h3 translate="{[{ article.name_label.key }]}" translate-values="{[{ {number : (article.items_quantity ) } }]}"></h3>
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset(article.img, false) }]}">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

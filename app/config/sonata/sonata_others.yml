@@ -1,0 +1,18 @@
+# lexik bundle into sonata admin
+ibrows_sonata_translation:
+    defaultDomain: messages
+    editable:
+        mode: inline         # Mode of editable, can be popup or inline
+        type: textarea       # Type of input. Can be text|textarea|select|date|checklist and more
+        emptytext: Empty     # text to display on empty translations
+        placement: top       # ingnored for inline mode
+
+lexik_translation:
+    grid_input_type: textarea
+    grid_list_n_rows: 100
+    fallback_locale: '%locale%'            # (required) default locale to use
+    managed_locales: '%locale_available%'    # (required) locales that the bundle have to manage
+    resources_registration:
+        type:                 all     # resources type to register: "all", "files" or "database"
+        managed_locales_only: false    # will only load resources for managed locales
+

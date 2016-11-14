@@ -1,0 +1,9 @@
+ <!-- Directive in controller file -->
+<div style="margin: 30px 0">
+    <div style="padding-bottom: 20px ">
+        <div class="btn-group">
+            <button type="button" ng-disabled="credentials.length > 10" ng-click="credentials.push({})" class="btn btn-default "><span class="fa fa-plus-circle" aria-hidden="true" style="color: #008000;"></span></button>
+            <button type="button" ng-disabled="credentials.length <= 1 && !credential.id" ng-click="delete(providerName, credential)"  class="btn btn-default"><span class="fa fa-minus-circle" aria-hidden="true" style="color: red;"></span></button>
+        </div>
+    </div>
+</div>

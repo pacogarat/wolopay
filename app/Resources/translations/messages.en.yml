@@ -1,0 +1,181 @@
+email_was_sent_and_we_will_contact: The message has been sent and we will contact you soon
+email_was_sent: Email was sent
+errors:
+    message_800: Sorry, you're not allowed to buy from your country. Please contact the game at {[{end_user_support_email}]} for further information
+    message_801: Sorry, your account is banned. Please contact the game at {[{end_user_support_email}]} for further information
+    message_802: Sorry, your IP is banned. Please contact the game at {[{end_user_support_email}]} for further information
+
+credit_card:
+    title: Purchase by credit card
+    step_1_desc: Select a credit card type
+    step_2_desc: Insert credit card info
+
+    footer: Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias.
+payment:
+
+    gamer_email:
+        date: Date:
+        subject: New purchase notification
+        web_page: Web Page:
+        merchant: Merchant:
+        transaction_id: Invoice number:
+        payment_type: Payment type:
+        product: Product:
+
+        your_ip: Your ip:
+        payment_status: Payment status:
+
+        n_articles: Nº Articles:
+        pay_method: Pay method:
+        completed: Completed
+        country: Country:
+        price_before_tax: Price before taxes:
+        taxes: Taxes:
+        total_price: Total:
+
+        any_troubles: You have a problem with this payment?
+
+        dont_read_well: If you do not read well this mail, click here please
+    done:
+        standard:
+            title: Enjoy your product!!
+            description: |
+                            Congratulations! You have finished the process successfully.
+                            The product will be added to your game account automatically.
+
+    cancel:
+        standard:
+            title: Cancellation order by the user
+            description: |
+                            You may continue shopping in the store
+
+    begin:
+        error: Houston we have a problem...
+
+    gamer:
+        id: 'Gamer ID'
+support:
+    title:  Support Center
+    description:  |
+              Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos.
+
+generic_pin:
+    title: Insert your pin code
+    description: Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor %article% (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos.
+    legal_text: Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos.
+
+
+sms:
+    follow_instructions: Follow this easy steps
+
+    logic_mo_mt_code:
+        sing_up_text: 'Send %text% to number %number%'
+        title: Purchase by mobile
+        step_1: Step 1
+        step_1_desc: "Send a text message to get '%article%'"
+        step_2: Step 2
+        step_2_desc: Enter the text message received
+
+voice:
+    follow_instructions: Follow Instructions
+
+    logic_vo_vt_code:
+        sing_up_text: 'Call at %number%'
+        title: Purchase by voice
+        step_1: Step 1
+        step_1_desc: "You must make a call for '%article%'"
+        step_2: Step 2
+        step_2_desc: Enter the received code
+        legal_text:  |
+                    I am FAKE TEXT. This is not a subscription service. The price of the message is 1.45 € including taxes. A.T.S. SA
+                    Apdo. Correos 18070 Madrid 28080. informacion@atssa.es. Customer Atn. 902501737
+
+form:
+    generic:
+        submit: Send
+        success: The action was succesful
+
+    demo:
+        gamer:
+            label: Gamer id
+        email:
+            label: Email
+        css:
+            label: Theme
+        level_category:
+            label: Gamer level
+        language:
+            label: Default language
+        fixed_country:
+            label: Auto localize country and fixed it
+        fixed_language:
+            label: Fixed language
+        first_pay_methods:
+            label: First choose payMethod
+        countries:
+            label: Countries Available
+        methods:
+            label: Ways to pay
+        selected_tab_category:
+            label: Pre selected Tab
+        selected_article:
+            label: Pre selected article
+        articles:
+            label: Articles available
+        pay_methods:
+            label: PayMethods available
+        custom_param:
+            label: Custom param notification
+        tutorial_enabled:
+            label: Tutorial Enabled
+        return:
+            label: Custom success url
+        url_notification:
+            lable: Override url notification
+
+    support:
+        gamer:
+
+            transaction:
+                label:  Transaction
+            name:
+                label:  Name
+            mobile:
+                label:  Mobile
+            email:
+                label:  Email
+            subject:
+                label:  Subject
+
+                ask:
+                    label: Ask
+
+                suggestion:
+                    label: Suggestion
+
+                other:
+                    label: Other
+
+                purchase:
+                    label: Ask about purchase
+
+            comment:
+                label: Comment
+
+            submit:
+                label: Make your question
+
+            success: The question has been sendt
+
+    gamer_email_type:
+        title: Email is required for this paymethod
+        desc: Some providers require your email to notify each payment, This action prevent some frauds
+        email.label: Your email
+        submit.label: Send
+
+    generic_requirements:
+        title: This provider required information extra
+        desc: Some providers require information extra to make a payment
+
+    gamer_data:
+        title: Update your personal data

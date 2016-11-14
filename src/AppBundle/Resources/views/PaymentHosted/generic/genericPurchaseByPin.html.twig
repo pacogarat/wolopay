@@ -1,0 +1,36 @@
+{% extends '@App/PaymentHosted/layout_pay_method_hosted.html.twig' %}
+{% block page %}
+
+    <div class="row voffset3">
+        <div class="col-md-12">
+            <h1>{{ 'generic_pin.title' | trans }} <img src="{% path pmpc.payMethod.imgIcon, 'shop' %}"></h1>
+
+            {{ 'generic_pin.description' | trans({'%article%' : articleName }) | raw}}
+
+            <div>
+
+                <div class="row voffset3">
+                    <div class="col-md-12">
+                        {{ form_start(form) }}
+                            {{ form_widget(form) }}
+
+                            <div class="input-group" >
+                                <span class="input-group-btn">
+                                    <input type="submit" class="btn btn-primary" value="{{ 'form.generic.submit' | trans }}">
+                                </span>
+                            </div>
+
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="voffset5">
+                {{ 'generic_pin.legal_text' | trans({'%amount%' : appShopHasArticle.currentAmount, '%currency%' : pmpc.currency.symbol}) }}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

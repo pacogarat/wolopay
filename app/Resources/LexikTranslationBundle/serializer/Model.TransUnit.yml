@@ -1,0 +1,6 @@
+Lexik\Bundle\TranslationBundle\Model\TransUnit:
+    exclusion_policy: ALL
+    properties :
+        key :
+            expose : true
+            groups: [ Private, Default, LexikKey ]

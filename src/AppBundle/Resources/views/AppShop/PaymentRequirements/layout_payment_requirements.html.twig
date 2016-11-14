@@ -1,0 +1,34 @@
+{# pmpc \AppBundle\Entity\PayMethodProviderHasCountry #}
+{% extends "@App/AppShop/layout_secondary.html.twig" %}
+{% block title %}{{ 'form.gamer_email_type.title' | trans }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .form-group{
+            margin-bottom: 7px;
+        }
+        .alert{
+            margin: 0px 20px 20px 20px;
+        }
+    </style>
+{% endblock %}
+{% block page %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-sm-12 voffset2">
+                {% block title_desc '' %}
+            </div>
+            <div style="max-width: 700px; margin: 0 auto">
+                {% block page_main '' %}
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 40px">
+        <div class="col-sd-6">
+            {% if (transaction.app.logo) %}
+                <img src="{{domain_main}}{% path transaction.app.logo, 'shopping' %}">
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

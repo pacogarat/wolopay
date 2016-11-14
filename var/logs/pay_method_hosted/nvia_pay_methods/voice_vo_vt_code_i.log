@@ -1,0 +1,8 @@
+[2016-05-25 15:04:33] app.INFO: Code is valid: '596155' [] []
+[2016-05-25 15:04:35] app.INFO: Response to process this payment (http://sym2_pay_gateway.test/shop/payment/ipn/SINPAY_2016052515045745befcc75ac/es/WOT_5745beeb04eff/PsqWkbTzKUvRZQ9?voice_code_id=596155) was '200' [] []
+[2016-05-25 15:04:35] app.INFO: All was right! redirecting to payment_done [] []
+[2016-05-26 07:59:23] app.INFO: --- Request info PATH: /shop/voice/logic_vo_vt_code/en/WOT_5746acd983500/SINCUSTPAY_2016052607595746acda79d12, GET: , POST:  [] []
+[2016-05-26 07:59:23] app.INFO: --- Summary User info, ip:127.0.0.1, Browser: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36 --- [] []
+[2016-06-10 10:16:43] app.INFO: Code is valid: '778642' [] []
+[2016-06-10 10:16:45] app.INFO: Response to process this payment (http://sym2_pay_gateway.test/shop/payment/ipn/SINPAY_201606101016575a9386aa45d/es/WOT_575a9370acacd/ETHSLaARPdg25zI?voice_code_id=778642) was '200' [] []
+[2016-06-10 10:16:45] app.INFO: All was right! redirecting to payment_done [] []

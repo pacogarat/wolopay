@@ -1,0 +1,135 @@
+{
+    "name": "Wolopay",
+    "license": "MIT",
+    "type": "project",
+    "description": "Payments",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": { "": "src/"},
+        "files": ["src/AppBundle/Helper/PHPFunctions.php"],
+        "exclude-from-classmap": ["/Tests/", "/tests/", "/Test/", "/test/"]
+    },
+    "autoload-dev": {
+        "psr-4": {"AppBundle\\Tests\\": "tests"}
+    },
+    "repositories":[{
+        "type": "git",
+        "url": "https://github.com/MGDSoft/LexikTranslationBundle"
+    }],
+    "require": {
+        "php": ">=5.5.0",
+        "symfony/symfony": "2.8.*",
+        "doctrine/orm": "^2.4.8",
+        "doctrine/doctrine-bundle": "~1.4",
+        "symfony/assetic-bundle": "~2.3",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/monolog-bundle": "~2.4",
+        "sensio/distribution-bundle": "~5.0",
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "incenteev/composer-parameter-handler": "~2.0",
+
+        "lexik/translation-bundle": "dev-wolo4.0.0",
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*@dev",
+
+        "sonata-project/admin-bundle": "~2.3",
+        "sonata-project/core-bundle": "~2.3",
+        "sonata-project/doctrine-orm-admin-bundle": "~2.3",
+        "sonata-project/media-bundle": "~2.3",
+        "ibrows/sonata-translation-bundle" : "~1.1",
+        "pixassociates/sortable-behavior-bundle": "^1.0",
+
+        "stof/doctrine-extensions-bundle": "~1.2",
+
+        "friendsofsymfony/rest-bundle": "1.7.*",
+        "jms/serializer-bundle": "~1.0",
+        "nelmio/api-doc-bundle": "2.12.*",
+        "escapestudios/wsse-authentication-bundle": "2.2.*",
+        "jms/di-extra-bundle": "~1.7",
+        "lexik/jwt-authentication-bundle": "1.5.*",
+        "gfreeau/get-jwt-bundle": "~1.0.5",
+        "friendsofsymfony/jsrouting-bundle": "@stable",
+        "misd/guzzle-bundle": "~1.1",
+        "braincrafted/bootstrap-bundle": "~2.0",
+        "gregwar/captcha-bundle": "2.*",
+
+        "twbs/bootstrap": "3.0.*",
+        "wisembly/elephant.io": "~3.0",
+        "cbschuld/browser.php": "dev-master",
+
+        "doctrine/migrations": "~1.1",
+        "doctrine/doctrine-migrations-bundle": "1.1.*",
+        "besimple/soap": "^0.2.6",
+        "paypal/rest-api-sdk-php": "*",
+        "willdurand/faker-bundle": "^1.2",
+        "fzaninotto/faker": "^1.5",
+        "google/apiclient": "^1.1",
+        "facebook/php-sdk-v4": "~5.0",
+        "knplabs/knp-snappy-bundle": "^1.3",
+        "gregwar/rst": "^1.0",
+        "knplabs/knp-markdown-bundle": "~1.3",
+        "geshi/geshi": "dev-master",
+        "symfony/proxy-manager-bridge": "~2.3",
+        "ocramius/proxy-manager": "~1.0",
+        "matthiasnoback/symfony-console-form": "^2.0",
+        "phpoffice/phpexcel": "dev-master",
+        "eightpoints/guzzle-bundle": "^4.5"
+    },
+
+    "require-dev": {
+        "sensio/generator-bundle": "~3.0",
+        "raulfraile/ladybug-bundle": "@stable",
+        "facebook/webdriver": "dev-master",
+        "brianium/paratest": "dev-master",
+        "liuggio/fastest": "1.2.1",
+        "symfony/var-dumper": "~2.6",
+        "phpunit/phpunit": "4.7.*",
+        "symfony/phpunit-bridge": "^3.0"
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "SymfonyStandard\\Composer::hookRootPackageInstall"
+        ],
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install",
+            "cd node_app && npm install",
+            "bower install"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles",
+            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install",
+            "cd node_app && npm install",
+            "bower install"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin",
+        "preferred-install": "dist",
+        "github-oauth": {
+            "github.com": "3adb823c9ca6cf3e373c0c587eb8753450a46e3d"
+        }
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-bin-dir": "bin",
+        "symfony-var-dir": "var",
+        "symfony-web-dir": "web",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        },
+        "branch-alias": {
+            "dev-master": "2.5-dev"
+        }
+    }
+}

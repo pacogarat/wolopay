@@ -1,0 +1,332 @@
+<div ng-controller="PaymentMethodController" >
+    <!-- widget grid -->
+    <section id="widget-grid" >
+
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-payment-method-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                        <h2 data-translate="analitycs.payment_methods.title_revenue_by_payment"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.payment_methods.title_revenue_by_payment_tooltip' | translate}]}"></i>
+                        </span>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+
+                            <div style="padding: 0 10px 10px 10px">
+                                <div id="flotcontainer_payment_methods_1" class="chart-large" style="height: 400px;"></div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="100%">
+                                            <input ng-model="searchText.$" placeholder="{[{ 'search' | translate}]}" class="form-control">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="btn-group btn-group-xs">
+                                                <button class="btn btn-default" type="submit" ng-click="collapse('ALL', false)">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                                <button class="btn btn-default" type="submit" ng-click="collapse('ALL', true)">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <button class="btn btn-default" type="submit" ng-click="chartShowAll()">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </th>
+                                        <th ng-click="orderBy('date_format')" data-translate="date"></th>
+                                        <th></th>
+
+                                        <th ng-click="orderBy('pay_method')" style="cursor: pointer;" data-translate="name"></th>
+                                        <th ng-click="orderBy('pay_method_attempt')" style="cursor: pointer;" data-translate="attempts"></th>
+                                        <th ng-click="orderBy('num_purchases')" style="cursor: pointer;" data-translate="purchases"></th>
+                                        <th ng-click="orderBy('purchases_vs_attempt')" style="cursor: pointer;" data-translate="analitycs.payment_methods.purchases_vs_attempt"></th>
+                                        <th ng-click="orderBy('unique_users')" style="cursor: pointer;" data-translate="analitycs.unique_users"></th>
+                                        <th ng-click="orderBy('amount_total')"  style="cursor: pointer;" data-translate="total_amount"></th>
+                                        <th ng-click="orderBy('amount_total_avg')" style="cursor: pointer;" data-translate="analitycs.payment_methods.total_amount_avg"></th>
+                                        <th ng-click="orderBy('amount_game')" style="cursor: pointer;" data-translate="revenue"></th>
+                                        <th ng-click="orderBy('amount_game_avg')" style="cursor: pointer;" data-translate="analitycs.payment_methods.revenue_avg"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody ng-repeat="payMethod in table | filter:searchText | orderBy:'date_format':true" ng-if="payMethod.group || (!payMethod.collapsed && payMethod.group && searchText.$)">
+                                        <tr class="td-grouped" ng-include="'table_ini_show.html'" >
+
+                                        </tr>
+                                        <tr ng-repeat="payMethod in payMethod.rows | filter:searchText | orderBy:predicate:reverse" ng-if="!$parent.$parent.payMethod.collapsed || searchText.$"  ng-include="'table_ini_show.html'"></tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-payment-method-2" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-crosshairs"></i> </span>
+                        <h2 data-translate="analitycs.payment_methods.title_conversions"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.payment_methods.title_conversions' | translate}]}"></i>
+                        </span>
+                        <div style="float: right; padding: 5px 10px 0 0">
+                            <span class="onoffswitch-title" data-translate="analitycs.payment_methods.group_pay_method_country"></span>
+                            <span class="onoffswitch" >
+                                <input type="checkbox" name="pay_method_country" ng-model="payMethodByCountryEnabledCopy" ng-change="changePayMethodByCountryEnabledCopy(payMethodByCountryEnabledCopy)" ng-init="loading = false;payMethodByCountryEnabled = false; " class="onoffswitch-checkbox" id="start_interval2" >
+                                <label class="onoffswitch-label" for="start_interval2">
+                                    <span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </span>
+
+                            <i class="fa fa-refresh rotate-animation" ng-if="loading" style="margin-left: 10px"></i>
+                        </div>
+
+                        <div style="float: right; padding: 5px 10px 0 0">
+                            <span class="onoffswitch-title" data-translate="analitycs.payment_methods.group_country_pay_method"></span>
+                            <span class="onoffswitch" >
+                                <input type="checkbox" name="country" ng-model="countryByPayMethodEnabledCopy" ng-change="changeCountryByPayMethodEnabledCopy(countryByPayMethodEnabledCopy)" ng-init="loading = false;countryByPayMethodEnabled = false; " class="onoffswitch-checkbox" id="start_interval" >
+                                <label class="onoffswitch-label" for="start_interval">
+                                    <span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </span>
+
+                        </div>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+
+                            <div class="row">
+                                <div style="padding: 0 10px 0 10px" class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <td colspan="100%">
+                                                <input ng-model="searchTextAll.$" ng-model-options="{debounce: 100}" data-translate="search" class="form-control">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th ng-if="countryByPayMethodEnabled || payMethodByCountryEnabled">
+                                                <div class="btn-group btn-group-xs">
+                                                    <button class="btn btn-default" type="submit" ng-click="collapseWithCountry(false)">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                    <button class="btn btn-default" type="submit" ng-click="collapseWithCountry(true)">
+                                                        <i class="fa fa-minus"></i>
+                                                    </button>
+                                                </div>
+                                            </th>
+                                            <th ng-if="countryByPayMethodEnabled" data-translate="country"></th>
+                                            <th ng-click="orderBy('pay_method','All')" style="cursor: pointer;" data-translate="name"></th>
+                                            <th class="text-center"  ng-click="orderBy('pay_method_attempt','All')" style="cursor: pointer;" data-translate="attempts"></th>
+                                            <th data-translate="analitycs.payment_methods.attempts_by_date"></th>
+
+                                            <th class="text-center" ng-click="orderBy('num_purchases','All')" style="cursor: pointer;" data-translate="purchases"></th>
+                                            <th data-translate="analitycs.payment_methods.purchases_by_date"></th>
+
+                                            <th class="text-center" ng-click="orderBy('purchases_vs_attempt','All')" data-translate="analitycs.payment_methods.purchases_vs_attempt" style="cursor: pointer;" ></th>
+                                            <th class="text-center" ng-click="orderBy('unique_users','All')" data-translate="analitycs.unique_users" style="cursor: pointer;" ></th>
+                                            <th class="text-center" ng-click="orderBy('amount_total_avg','All')" data-translate="analitycs.payment_methods.total_amount_avg" style="cursor: pointer;" ></th>
+                                            <th class="text-center" ng-click="orderBy('amount_game_avg','All')" data-translate="analitycs.payment_methods.revenue_avg" style="cursor: pointer;" ></th>
+
+                                            <th class="text-center" ng-click="orderBy('amount_total','All')"  style="cursor: pointer;" data-translate="total_amount"></th>
+                                            <th class="text-center" ng-click="orderBy('amount_game','All')" style="cursor: pointer;" data-translate="revenue"></th>
+                                            <th data-translate="analitycs.payment_methods.revenue_by_date"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody ng-if="!countryByPayMethodEnabled && !payMethodByCountryEnabled " ng-repeat="payMethod2 in tableAll | filter: searchTextAll | orderBy: predicateAll :reverseAll" data-on-finish-render="ngRepeatFinished">
+                                            <tr ng-include="'table_all_show.html'">
+                                            </tr>
+                                        </tbody>
+                                        <tbody ng-if="countryByPayMethodEnabled" ng-repeat="country in tableAllWithCountry | filter: searchTextAll | orderBy: predicateAll :reverseAll" >
+                                            <tr class="td-grouped" >
+                                                <td>
+                                                    <div class="btn-group btn-group-xs">
+                                                        <button ng-if="country.collapsed"  class="btn btn-default" type="submit" ng-click="country.collapsed = false">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                        <button ng-if="!country.collapsed" class="btn btn-default" type="submit" ng-click="country.collapsed = true">
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                                <td>{[{ country.country || 'Unknown' }]} </td>
+                                                <td></td>
+                                                <td class="text-center">{[{ country.pay_method_attempt }]}</td>
+                                                <td class="text-center">
+                                                    <div data-high-sparkline data-type="area" ng-model="country.pay_method_attempt_evolution" class="sparkline txt-color-blue" style="width: 100px; height:20px;">
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">{[{ country.num_purchases }]}</td>
+                                                <td class="text-center">
+                                                    <div data-high-sparkline data-type="area" ng-model="country.num_purchases_evolution" class="sparkline txt-color-blue" style="width: 100px; height:20px;">
+                                                    </div>
+                                                </td>
+                                                <td class="text-center">{[{ country.purchases_vs_attempt | number:2 }]}%</td>
+                                                <td class="text-center">{[{ country.unique_users | number:0 }]}</td>
+                                                <td class="text-center">
+                                                    <span ng-if="!country.amount_total_avg">-</span>
+                                                    <span ng-if="country.amount_total_avg">{[{ country.amount_total_avg | currency:$root.currency.symbol}]}</span>
+                                                </td>
+                                                <td class="text-center">
+                                                    <span ng-if="!country.amount_game_avg">-</span>
+                                                    <span ng-if="country.amount_game_avg">{[{ country.amount_game_avg | currency:$root.currency.symbol}]}</span>
+                                                </td>
+
+                                                <td class="text-center">{[{ country.amount_total | currency:$root.currency.symbol }]}</td>
+                                                <td class="text-center">{[{ country.amount_game | currency:$root.currency.symbol }]}</td>
+                                                <td class="text-center">
+                                                    <div data-high-sparkline data-type="column" ng-model="country.amount_game_evolution" class="sparkline txt-color-blue" style="width: 100px; height:20px;">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr ng-repeat-start="payMethod2 in country.pay_methods | filter: searchTextAll | orderBy: predicateAll :reverseAll " style="display: none" data-on-finish-render="ngRepeatFinished"></tr>
+                                            <tr ng-include="'table_all_show.html'" ng-if="!country.collapsed || searchTextAll.$" ></tr>
+                                            <tr ng-repeat-end style="display: none"></tr>
+
+                                        </tbody>
+
+                                         <tbody ng-if="payMethodByCountryEnabled" ng-repeat="country in tableAllWithCountryReverse | filter: searchTextAll | orderBy: predicateAll :reverseAll " >
+                                             <tr class="td-grouped" >
+                                                 <td>
+                                                     <div class="btn-group btn-group-xs">
+                                                         <button ng-if="country.collapsed"  class="btn btn-default" type="submit" ng-click="country.collapsed = false">
+                                                             <i class="fa fa-plus"></i>
+                                                         </button>
+                                                         <button ng-if="!country.collapsed" class="btn btn-default" type="submit" ng-click="country.collapsed = true">
+                                                             <i class="fa fa-minus"></i>
+                                                         </button>
+                                                     </div>
+                                                 </td>
+                                                 <td>{[{ country.pay_method }]} </td>
+                                                 <td class="text-center">{[{ country.pay_method_attempt }]}</td>
+                                                 <td class="text-center">
+                                                     <div data-high-sparkline data-type="area" ng-model="country.pay_method_attempt_evolution" class="sparkline txt-color-blue" style="width: 100px; height:20px;">
+                                                     </div>
+                                                 </td>
+                                                 <td class="text-center">{[{ country.num_purchases }]}</td>
+                                                 <td class="text-center">
+                                                     <div data-high-sparkline data-type="area" ng-model="country.num_purchases_evolution" class="sparkline txt-color-blue" style="width: 100px; height:20px;">
+                                                     </div>
+                                                 </td>
+                                                 <td class="text-center">{[{ country.purchases_vs_attempt | number:2 }]}%</td>
+                                                 <td class="text-center">{[{ country.unique_users | number:0 }]}</td>
+                                                 <td class="text-center">
+                                                     <span ng-if="!country.amount_total_avg">-</span>
+                                                     <span ng-if="country.amount_total_avg">{[{ country.amount_total_avg | currency:$root.currency.symbol}]}</span>
+                                                 </td>
+                                                 <td class="text-center">
+                                                     <span ng-if="!country.amount_game_avg">-</span>
+                                                     <span ng-if="country.amount_game_avg">{[{ country.amount_game_avg | currency:$root.currency.symbol}]}</span>
+                                                 </td>
+
+                                                 <td class="text-center">{[{ country.amount_total | currency:$root.currency.symbol }]}</td>
+                                                 <td class="text-center">{[{ country.amount_game | currency:$root.currency.symbol }]}</td>
+                                                 <td class="text-center">
+                                                     <div data-high-sparkline data-type="column" ng-model="country.amount_game_evolution" class="sparkline txt-color-blue" style="width: 100px; height:20px;">
+                                                     </div>
+                                                 </td>
+                                             </tr>
+                                             <tr ng-repeat-start="payMethod2 in country.countries | filter: searchTextAll | orderBy: predicateAll :reverseAll " style="display: none" data-on-finish-render="ngRepeatFinished"></tr>
+                                             <tr ng-include="'table_all_show.html'" ng-if="!country.collapsed || searchTextAll.$" ></tr>
+                                             <tr ng-repeat-end style="display: none"></tr>
+                                         </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+</div>
+
+<script type="text/ng-template" id="table_ini_show.html">
+    <td>
+        <div ng-if="!payMethod.group" style="background: {[{ payMethod.color }]}; width: 30px; height: 30px; border: 1px solid #888"></div>
+        <div ng-if="payMethod.group" class="btn-group btn-group-xs">
+            <button ng-if="payMethod.collapsed"  class="btn btn-default" type="submit" ng-click="collapse(payMethod.date_format, false)">
+                <i class="fa fa-plus"></i>
+            </button>
+            <button ng-if="!payMethod.collapsed" class="btn btn-default" type="submit" ng-click="collapse(payMethod.date_format, true)">
+                <i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </td>
+    <td><span ng-if="payMethod.group">{[{ payMethod.date_format }]}</span></td>
+    <td>
+        <div ng-if="!payMethod.group" class="btn-group btn-group-xs">
+            <button class="btn btn-default" type="submit" ng-click="chartHideShowSerie(payMethod.pay_method)">
+                <i class="glyphicon glyphicon-stats txt-color-darken"></i>
+            </button>
+
+            <button class="btn btn-default" type="submit" ng-click="eyeSlash(payMethod)">
+                <i class="fa fa-eye-slash"></i>
+            </button>
+        </div>
+    </td>
+
+    <td>{[{ payMethod.pay_method }]}</td>
+    <td>{[{ payMethod.pay_method_attempt }]}</td>
+    <td>{[{ payMethod.num_purchases  }]}</td>
+    <td>{[{ payMethod.purchases_vs_attempt | number: 2  }]}%</td>
+    <td>{[{ payMethod.unique_users | number: 0  }]}</td>
+    <td>{[{ payMethod.amount_total | currency:$root.currency.symbol }]}</td>
+    <td>{[{ payMethod.amount_total_avg | currency:$root.currency.symbol }]}</td>
+    <td>{[{ payMethod.amount_game | currency:$root.currency.symbol }]}</td>
+    <td>{[{ payMethod.amount_game_avg | currency:$root.currency.symbol }]}</td>
+</script>
+
+<script type="text/ng-template" id="table_all_show.html">
+    <td ng-if="countryByPayMethodEnabled || payMethodByCountryEnabled"></td>
+    <td ng-if="countryByPayMethodEnabled"></td>
+    <td ng-if="payMethodByCountryEnabled">{[{ payMethod2.country }]}</td>
+    <td ng-if="!payMethodByCountryEnabled">{[{ payMethod2.pay_method }]}</td>
+    <td class="text-center">{[{ payMethod2.pay_method_attempt }]}</td>
+    <td class="text-center">
+        <div data-high-sparkline data-type="area" ng-model="payMethod2.pay_method_attempt_evolution" class="sparkline txt-color-blue" style="width: 100px; height:20px;">
+        </div>
+    </td>
+    <td class="text-center">{[{ payMethod2.num_purchases }]}</td>
+    <td class="text-center">
+        <div data-high-sparkline data-type="area" ng-model="payMethod2.num_purchases_evolution" class="sparkline txt-color-blue" style="width: 100px; height:20px;">
+        </div>
+    </td>
+    <td class="text-center">{[{ payMethod2.purchases_vs_attempt | number:2 }]}%</td>
+    <td class="text-center">{[{ payMethod2.unique_users | number:0 }]}</td>
+    <td class="text-center">
+        <span ng-if="!payMethod2.amount_total_avg">-</span>
+        <span ng-if="payMethod2.amount_total_avg">{[{ payMethod2.amount_total_avg | currency:$root.currency.symbol}]}</span>
+    </td>
+    <td class="text-center">
+        <span ng-if="!payMethod2.amount_game_avg">-</span>
+        <span ng-if="payMethod2.amount_game_avg">{[{ payMethod2.amount_game_avg | currency:$root.currency.symbol}]}</span>
+    </td>
+
+    <td class="text-center">{[{ payMethod2.amount_total | currency:$root.currency.symbol }]}</td>
+    <td class="text-center">{[{ payMethod2.amount_game | currency:$root.currency.symbol }]}</td>
+    <td class="text-center">
+        <div data-high-sparkline data-type="column" ng-model="payMethod2.amount_game_evolution" class="sparkline txt-color-blue" style="width: 100px; height:20px;">
+        </div>
+    </td>
+</script>

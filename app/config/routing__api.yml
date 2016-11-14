@@ -1,0 +1,70 @@
+nvia_api_default:
+    type: rest
+    prefix: /v1
+    resource: AppBundle\Controller\Api\DefaultController
+    name_prefix:  api_default_
+
+nvia_api_security:
+    type: rest
+    prefix: /
+    resource: AppBundle\Controller\Api\SecurityController
+    name_prefix:  api_security_
+
+nvia_api_country:
+    type: rest
+    prefix: /v1
+    resource: AppBundle\Controller\Api\CountryController
+    name_prefix:  api_country_
+
+nvia_api_article:
+    type: rest
+    prefix: /v1
+    resource: AppBundle\Controller\Api\ArticleController
+    name_prefix:  api_article_
+
+nvia_api_app_tab:
+    type: rest
+    prefix: /v1
+    resource: AppBundle\Controller\Api\TabController
+    name_prefix:  api_article_tab_
+
+nvia_pay_method:
+    type: rest
+    prefix: /v1
+    resource: AppBundle\Controller\Api\PayMethodController
+    name_prefix:  api_pay_method_
+
+nvia_transaction:
+    type: rest
+    prefix: /v1
+    resource: AppBundle\Controller\Api\TransactionController
+    name_prefix:  api_transaction_
+
+nvia_purchase_notification:
+    type: rest
+    prefix: /v1
+    resource: AppBundle\Controller\Api\PurchaseNotificationController
+
+nvia_sms_operator:
+    type: rest
+    prefix: /v1
+    resource: AppBundle\Controller\Api\SMSOperatorController
+    name_prefix:  api_sms_operator_
+
+nvia_promo_code:
+    type: rest
+    prefix: /v1
+    resource: AppBundle\Controller\Api\PromoCodeController
+    name_prefix:  api_promo_code_
+
+nvia_gamer:
+    type: rest
+    prefix: /v1
+    resource: AppBundle\Controller\Api\GamerController
+    name_prefix:  api_gamer_
+
+item_tab:
+    type: rest
+    prefix: /v1
+    resource: AppBundle\Controller\Api\ItemTabController
+    name_prefix:  item_tab_

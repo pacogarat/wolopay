@@ -1,0 +1,2 @@
+0
+a:4:{i:0;O:30:"Doctrine\ORM\Mapping\OneToMany":6:{s:8:"mappedBy";s:3:"app";s:12:"targetEntity";s:39:"\AppBundle\Entity\AppWalletVirtualRange";s:7:"cascade";a:1:{i:0;s:3:"all";}s:5:"fetch";s:4:"LAZY";s:13:"orphanRemoval";b:0;s:7:"indexBy";N;}i:1;O:28:"Doctrine\ORM\Mapping\OrderBy":1:{s:5:"value";a:1:{s:10:"valueLower";s:3:"ASC";}}i:2;O:32:"JMS\Serializer\Annotation\Expose":0:{}i:3;O:32:"JMS\Serializer\Annotation\Groups":1:{s:6:"groups";a:2:{i:0;s:10:"AdminStep0";i:1;s:10:"WalletConf";}}}

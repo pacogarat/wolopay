@@ -1,0 +1,14 @@
+parameters:
+    selenium_server: 'http://localhost:4444/wd/hub'
+    domain_main: 'http://sym2_pay_gateway.test'
+
+    client_paypal_email: mgarcia@nviasms.com
+    client_paypal_password: Makalister11
+
+    client_rixty_username: Makalister
+    client_rixty_password: pw4742
+
+    payments.rixty.user:     '169f8139-a300-4892-9f44-31a9ab1b4d64'
+    payments.rixty.password: '96e2b7d709df80'
+    payments.rixty.live:     false
+    force_env_test_to_test_dev: true

@@ -1,0 +1,127 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+        AppBundle\Entity\AppApiCredentials: plaintext
+        AppBundle\Entity\Transaction: plaintext
+
+    role_hierarchy:
+
+        # SONATA
+        ROLE_APP_ADMIN_FIN_MOVEMENT_ALL:
+            - ROLE_APP_ADMIN_FIN_MOVEMENT_LIST
+            - ROLE_APP_ADMIN_FIN_MOVEMENT_VIEW
+            - ROLE_APP_ADMIN_FIN_MOVEMENT_CREATE
+            - ROLE_APP_ADMIN_FIN_MOVEMENT_EDIT
+            - ROLE_APP_ADMIN_FIN_MOVEMENT_DELETE
+            - ROLE_APP_ADMIN_FIN_MOVEMENT_EXPORT
+
+        ROLE_APP_ADMIN_FIN_INVOICE_ALL:
+            - ROLE_APP_ADMIN_FIN_INVOICE_LIST
+            - ROLE_APP_ADMIN_FIN_INVOICE_VIEW
+            - ROLE_APP_ADMIN_FIN_INVOICE_CREATE
+            - ROLE_APP_ADMIN_FIN_INVOICE_EDIT
+            - ROLE_APP_ADMIN_FIN_INVOICE_DELETE
+            - ROLE_APP_ADMIN_FIN_INVOICE_EXPORT
+
+        ROLE_APP_ADMIN_CLIENT_DOCUMENT_ALL:
+            - ROLE_APP_ADMIN_CLIENT_DOCUMENT_LIST
+            - ROLE_APP_ADMIN_CLIENT_DOCUMENT_VIEW
+            - ROLE_APP_ADMIN_CLIENT_DOCUMENT_CREATE
+            - ROLE_APP_ADMIN_CLIENT_DOCUMENT_EDIT
+            - ROLE_APP_ADMIN_CLIENT_DOCUMENT_DELETE
+            - ROLE_APP_ADMIN_CLIENT_DOCUMENT_EXPORT
+
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_TRANSLATOR, ROLE_ADMIN, ROLE_SONATA_ADMIN, ROLE_ADMIN_CLIENT, ROLE_ALLOWED_TO_SWITCH, ROLE_TEST, ROLE_SONATA_FIN_MOVEMENT, ROLE_SONATA_STATS_INTERNAL, ROLE_SONATA_BILLING_INVOICES_PENDING_ALL]
+        ROLE_SONATA_FIN_MOVEMENT: [ROLE_SONATA_ADMIN, ROLE_APP_ADMIN_FIN_MOVEMENT_ALL, ROLE_APP_ADMIN_FIN_INVOICE_ALL, ROLE_SONATA_STATS_INTERNAL, ROLE_APP_ADMIN_CLIENT_DOCUMENT_ALL]
+        ROLE_SONATA_STATS_INTERNAL: [ROLE_SONATA_ADMIN, ROLE_SONATA_STATS_INTERNAL_ALL]
+
+
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+        api_user:
+            entity: { class: AppBundle\Entity\AppApiCredentials, property: codeKey }
+
+        transaction_prov:
+            entity: { class: AppBundle\Entity\Transaction, property: id }
+
+    firewalls:
+
+        gettoken:
+            pattern:  ^/api/jwtokens$
+            stateless: true
+            provider: api_user
+            gfreeau_get_jwt:
+                # this is the default config
+                username_parameter: apiCode
+                password_parameter: apiSecret
+                post_only: true
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        api:
+            pattern:   ^/api/v.*
+            stateless: true
+            provider: api_user
+
+            http_basic: ~
+            lexik_jwt: ~ # check token in Authorization Header, with a value prefix of 'Bearer'
+            wsse:
+                realm: "%api_wsse_realm%" #identifies the set of resources to which the authentication information will apply (WWW-Authenticate)
+                profile: "%api_wsse_profile%" #WSSE profile (WWW-Authenticate)
+                lifetime: "%api_wsse_lifetime%"
+
+                encoder:
+                    algorithm: "%api_wsse_algorithm%"
+                    encodeHashAsBase64: "%api_wsse_encodehashasbase64%"
+                    iterations: "%api_wsse_iterations%"
+
+
+        shop:
+            stateless: true
+            pattern:    ^/shop/.*
+            s_transaction: true
+            provider: transaction_prov
+
+        main:
+            switch_user: true
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+                default_target_path: /admin/
+
+            remember_me:
+                key:      "%secret%"
+                lifetime: 31536000 # 365 days in seconds
+                path:     /
+                domain:   ~ # Defaults to the current domain from $_SERVER
+
+            logout:
+                path:   /logout
+                target: /admin
+            anonymous:    true
+
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/backoffice/, roles: [ROLE_SUPER_ADMIN, ROLE_SONATA_ADMIN] }
+        - { path: ^/translator/, role: ROLE_TRANSLATOR }
+        - { path: ^/admin/, role: ROLE_ADMIN_CLIENT }
+        - { path: ^/shop/payment/done_static/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/shop/payment/cancel_static/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/shop/payment/ipn_static/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/shop/sms/ipn_static, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/shop/sms_fortuno/ipn_static, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/shop/sms_fortuno/billing, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/shop/voice/ipn_static, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/demo$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/demo_test$, role: ROLE_TEST }
+        - { path: ^/shop/, role: ROLE_TRANSACTION }
+        - { path: ^/api/v[0-9]+, role: ROLE_API }

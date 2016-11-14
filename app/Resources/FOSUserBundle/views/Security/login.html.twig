@@ -1,0 +1,80 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .form-signin .form-signin-heading,
+        .form-signin .checkbox {
+            margin-bottom: 10px;
+        }
+        .form-signin .checkbox {
+            font-weight: normal;
+        }
+        .form-signin .form-control {
+            position: relative;
+            height: auto;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+        .form-signin input[type="text"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        form, input{
+            text-align: center;
+        }
+
+    </style>
+
+    <div class="container col-md-4 col-md-offset-4 voffset3">
+
+        {% if error %}
+            <div class="alert alert-danger text-center">
+                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            </div>
+        {% endif %}
+
+
+        <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post" role="form">
+            
+            <h2 class="form-signin-heading">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</h2>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="{{ 'security.login.username'|trans({},'FOSUserBundle') }}" required autofocus>
+            <input type="password" class="form-control" placeholder="{{ 'security.login.password'|trans({},'FOSUserBundle') }}" id="password" name="_password"  required>
+
+            <label class="checkbox" for="remember_me">
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on"> {{ 'security.login.remember_me'|trans }}
+            </label>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">{{ 'security.login.submit'|trans }}</button>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            <img src="{{ asset("img/logo_200x50.png") }}" style="margin-top: 50px">
+        </form>
+
+    </div> <!-- /container -->
+
+
+{% endblock fos_user_content %}

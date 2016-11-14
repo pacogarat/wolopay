@@ -1,0 +1,123 @@
+<div ng-controller="TransactionsController">
+    <div class="well well-small-padding">
+        <div>
+            <form name="transactions_search" ng-submit="loadSearch()">
+                <div class="search-container">
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'transaction' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.transaction_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'purchase' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.purchase_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'country' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.country_client_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'gamer' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.gamer_external_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <button type="submit" class="btn btn-info btn-search" ng-disabled="transactions_search.$invalid">{[{ 'search' | translate }]} <i class="fa fa-search"></i></button>
+                        <button type="button" class="btn btn-warning btn-search" ng-click="search = {}" style="margin-left: 10px">
+                            {[{ 'clear' | translate }]} <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div ng-if="thereAreData === false">
+            <div class="alert alert-warning">
+                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                {[{ 'no_data' | translate }]}
+            </div>
+        </div>
+        <div ng-if="thereAreData === true" class="table-responsive">
+            <table class="table table-hover table-striped-inv table-bordered">
+                <thead>
+                <tr>
+                    <td colspan="100%">
+                        <input ng-model="searchText.$" placeholder="{[{ 'search_from_current_data' | translate}]}" class="form-control" ng-model-options="{debounce: 1000}">
+                    </td>
+                </tr>
+                <tr class="filter-table-selects-xxs">
+                    <th></th>
+                    <th ng-click="orderBy('begin_at')" style="cursor: pointer;" data-translate="begin"></th>
+                    <!--<th ng-click="orderBy('end_at')"  style="cursor: pointer;" data-translate="end"></th>-->
+                    <th ng-click="orderBy('id')"  style="cursor: pointer;" data-translate="transaction"></th>
+                    <th ng-click="orderBy('status_category.name')"  style="cursor: pointer;" data-translate="state"></th>
+                    <!--<th ng-click="orderBy('reason')"  style="cursor: pointer;" data-translate="reason"></th>-->
+                    <th ng-click="orderBy('country_detected.name')"  style="width:10%; cursor: pointer;" data-translate="country"></th>
+                    <th ng-click="orderBy('gamer.gamer_external_id')"  style="cursor: pointer;" data-translate="gamer"></th>
+                    <th ng-click="orderBy('level_category.name')"  style="cursor: pointer;" data-translate="shop"></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="filter-table-selects-xxs">
+                    <td><!-- # --></td>
+                    <td><!-- created --></td>
+                    <td><!-- transactionId --></td>
+                    <td><!-- state  -->
+                        <select ng-model="searchText.status_category.name" class="form-control" style="width: auto">
+                            <option></option>
+                            <option ng-repeat="transaction in transactions_status">{[{ transaction.status_category.name }]}</option>
+                        </select>
+                    </td>
+                    <td style="text-align: center;"><!-- country -->
+                        <select ng-model="searchText.country_detected.name" class="form-control" style="width: auto; display: inline-block">
+                            <option></option>
+                            <option ng-repeat="transaction in transactions_country">{[{ transaction.country_detected.name }]}</option>
+                        </select>
+                    </td>
+                    <td><!-- gamer -->
+                        <select ng-model="searchText.gamer.gamer_external_id" class="form-control" style="width: auto">
+                            <option></option>
+                            <option ng-repeat="transaction in transactions_gamer">{[{ transaction.gamer.gamer_external_id }]}</option>
+                        </select>
+                    </td>
+                    <td><!-- shop -->
+                        <select ng-model="searchText.level_category.name" class="form-control" style="width: auto">
+                            <option></option>
+                            <option ng-repeat="transaction in transactions_shops">{[{ transaction.level_category.name }]}</option>
+                        </select>
+                    </td>
+                    <td><!-- buttons --></td>
+                </tr>
+                <tr ng-repeat="transaction in transactions | filter: searchText | orderBy:predicate:reverse ">
+                    <td>{[{$index + 1}]}.</td>
+                    <td style="text-align: center; font-size: 10px">{[{transaction.begin_at | date:'yyyy-MM-dd HH:mm:ss' }]}</td>
+                    <td>{[{transaction.id}]}</td>
+                    <td><transaction-status data-state="{[{transaction.status_category.id}]}"></transaction-status></td>
+                    <td style="text-align: center;"><country-flag data-name="{[{ transaction.country_detected.name }]}" data-state="{[{ transaction.country_detected.id }]}"></country-flag></td>
+                    <td>{[{transaction.gamer.gamer_external_id}]}</td>
+                    <td>{[{transaction.level_category.name}]}</td>
+                    <td>
+                        <div class="btn-group btn-group-xs" ng-if="transaction.status_category.id >= 200 && transaction.status_category.id < 300">
+                            <a href="#purchases?transaction_id={[{transaction.id}]}" has-permission="ROLE_ADMIN_PURCHASES" tooltip="{[{ 'link_to_purchase' | translate }]}" class="btn btn-default">
+                                <i class="fa fa-bullseye"></i>
+                            </a>
+                            <a href="#notifications?transaction_id={[{transaction.id}]}" has-permission="ROLE_ADMIN_NOTIFICATIONS" tooltip="{[{ 'link_to_notification' | translate }]}" class="btn btn-default">
+                                <i class="fa fa-bell-o"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+
+            <div ng-include="'/bundles/app/client_admin/views/partials/end_pagination.html?v='+v"></div>
+        </div>
+    </div>
+</div>

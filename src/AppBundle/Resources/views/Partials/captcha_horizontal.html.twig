@@ -1,0 +1,14 @@
+{% block captcha_widget %}
+    {% spaceless %}
+        <div class="row-fluid">
+            <div class="fixed" style="width: 100px">
+                <img src="{{ captcha_code }}" title="captcha" width="{{ captcha_width }}" height="{{ captcha_height }}" style="border: 1px solid #ccc; float: left" />
+            </div>
+            <div class="hero-unit filler">
+                {{ form_widget(form,{'attr': {'style': 'float:left; margin-left:10px; width: 150px'}}) }}
+            </div>
+        </div>
+        <div style="clear: both"></div>
+
+    {% endspaceless %}
+{% endblock %}

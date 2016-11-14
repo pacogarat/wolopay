@@ -1,0 +1,6 @@
+{# transaction \AppBundle\Entity\Transaction #}
+
+    {% include '@App/AppShop/Shop/partials/shop_body.html.twig' with
+        {'box_windows': block('box_windows'), 'top_options': block('top_options'),
+        'menu': block('menu'),'page': block('page'),'extra_footer': block('extra_footer')
+    } %}

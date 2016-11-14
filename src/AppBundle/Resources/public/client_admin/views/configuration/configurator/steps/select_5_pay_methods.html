@@ -1,0 +1,75 @@
+<form class="form-horizontal validation" name="form_pay_methods" novalidate ng-controller="ConfiguratorSelectPayMethodsController" ng-submit="form_pay_methods.$valid && submit()">
+    <fieldset>
+        <legend>
+            {[{ 'configurator.step5.title' | translate }]}
+            <wizard-next-button form-name="form_pay_methods" invalid="!hasSomeArticleConfigured()"></wizard-next-button>
+        </legend>
+        <p class="newlines">{[{ 'configurator.step5.desc' | translate }]}</p>
+
+        <div>
+            <div>
+                <div class="row" style="margin-top: 20px">
+
+                    <div class="col-md-10 col-md-offset-1" >
+                        
+                        <div class="btn-group">
+                            <button ng-repeat="country in countries" ng-class="{'active': $parent.search.id == country.id}" type="button" class="btn btn-default" aria-label="Left Align" ng-click="$parent.search = country">{[{ country.name }]}</button>
+                        </div>
+
+                        <div style="min-height: 45px; margin-top: 20px;">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td>{[{ 'configurator.step5.col_pay_method' | translate }]}</td>
+                                        <td>{[{ 'configurator.step5.col_pay_category' | translate }]}</td>
+                                        <td class="text-center">{[{ 'configurator.step5.col_fee' | translate }]}</td>
+                                        <td class="text-center">{[{ 'configurator.step5.col_minimal' | translate }]}</td>
+                                        <td class="text-center">{[{ 'configurator.step5.col_active' | translate }]}</td>
+                                    </tr>
+                                </thead>
+                                <tr ng-repeat="pay_method in pay_methods | filter: search.name" ng-if="pay_method.name != 'Promo'">
+                                    <td>
+                                        <img ng-src="{[{ pay_method.img }]}" style="height: 40px;">
+                                    </td>
+                                    <td>
+                                        {[{pay_method.name}]}
+                                    </td>
+                                    <td>
+                                        {[{pay_method.pay_category.name}]}
+                                    </td>
+                                    <td class="text-center" ng-init="extraFee = paymethodEachPayment(pay_method)">
+                                        {[{ paymethodFeePercent(pay_method) }]}% <span ng-if="extraFee">+ {[{ extraFee }]}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        {[{ paymethodMinimal(pay_method) }]}
+                                    </td>
+
+                                    <td class="text-center">
+                                        <label>
+                                            <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="$parent.pay_method['selected_'+search.id]" ng-required="!someSelected()">
+                                            <span></span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="5"></td>
+                                        <td>
+                                            <div class="btn-group" style="margin: 20px 0">
+                                                <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="selectAll()"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span></button>
+                                                <button type="button" class="btn btn-default" aria-label="Center Align" ng-click="removeAll()"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>

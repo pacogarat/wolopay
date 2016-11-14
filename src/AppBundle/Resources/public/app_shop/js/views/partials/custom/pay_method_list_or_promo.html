@@ -1,0 +1,12 @@
+<div class="left-pay-methods">
+    <div ng-include="asset('/bundles/app/app_shop/js/views/partials/pay_methods_list.html')"></div>
+</div>
+<div data-ng-controller="PromoCodeCtrl">
+    <div class="promo-custom">
+        <p>{[{ 'promo_code.or_write_your_code'  | translate }]}</p>
+        <form ng-submit="submitAndPurchase()">
+            <input type="text" id="promo-code-input" ng-model="code" placeholder="{[{ 'promo_code.title' | translate }]}">
+            <input type="submit" value="{[{ 'promo_code.submit' | translate }]}">
+        </form>
+    </div>
+</div>

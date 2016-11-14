@@ -1,0 +1,2 @@
+0
+a:1:{i:0;O:36:"JMS\DiExtraBundle\Annotation\Service":12:{s:2:"id";s:25:"shop.subscription.started";s:6:"parent";N;s:6:"public";N;s:5:"scope";N;s:6:"shared";N;s:10:"deprecated";N;s:9:"decorates";N;s:21:"decoration_inner_name";N;s:8:"abstract";N;s:12:"environments";a:0:{}s:8:"autowire";N;s:15:"autowiringTypes";N;}}

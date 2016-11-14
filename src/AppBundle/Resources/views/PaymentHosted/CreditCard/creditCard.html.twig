@@ -1,0 +1,249 @@
+{% extends '@App/PaymentHosted/layout_pay_method_hosted.html.twig' %}
+{% block page %}
+
+    <style>
+
+        .credit-cards-logos{
+            cursor: pointer;
+            border: 3px solid #fff;
+        }
+        .credit-cards-logos, .form-credit-card{
+            transition: 0.5s linear;
+        }
+        .credit-cards-logos.selected{
+            border: 3px solid #00c329;
+            margin: 0px 80px;
+        }
+        .credit-card-container{
+            margin-bottom: 20px;
+            margin-left: 50px;
+        }
+        .credit-card-front, .credit-card-end{
+            max-width: 400px;
+            min-height: 220px;
+        }
+        .credit-card-front{
+            background-color: #FCFCFC;
+            border-radius: 8px;
+            border: 1px solid #bbb;
+            padding: 30px;
+            margin-top: -187px;
+        }
+        .credit-card-end{
+            background-color: #ededed;
+            border-radius: 8px;
+            border: 1px solid #c6c6c6;
+            min-resolution: 200px;
+            margin-left: 200px;
+        }
+        .credit-card-end .in{
+            padding: 20px;
+            clear: both;
+            float: right;
+            width: 195px;
+        }
+        .credit-card-end:before{
+            display: block;
+            width: 100%;
+            height: 50px;
+            content: '';
+            background: #a2a2a2;
+            margin-top: 50px;
+            border: 1px solid #777;
+        }
+        ul.help-block{
+            padding-left: 0;
+        }
+        ul li{
+            list-style-type: none;
+        }
+        .button-box{
+            margin: 30px 50px;
+            text-align: right;
+        }
+
+
+
+    </style>
+
+    <div class="row voffset3">
+        <div class="col-md-12">
+            <h1>{{ 'credit_card.title' | trans }} </h1>
+            <h3>{{'sms.follow_instructions' | trans }}</h3>
+
+            <div>
+                <blockquote>
+                    <span class="text-info">{{ 'sms.logic_mo_mt_code.step_1' | trans }}.</span> {{ 'credit_card.step_1_desc' | trans }}
+                </blockquote>
+
+                <div style="height: 100px;">
+                {% for form in formsAvailable  %}
+                    <div id="logo-{{form.name}}" class="credit-cards-logos" onclick="select('{{form.name}}')" style="display: inline-block">
+                        <img src="{{ asset('bundles/app/payment_hosted/img/'~ form.name |lower ~'.png') }}">
+                    </div>
+                {% endfor %}
+                </div>
+
+                <blockquote>
+                    <span class="text-info">{{ 'sms.logic_mo_mt_code.step_2' | trans }}.</span> {{ 'credit_card.step_2_desc' | trans }}
+                </blockquote>
+
+                <div class="row voffset3">
+                    {% for form in formsAvailable %}
+                        <form method="post" role="form" id="form-{{form.name}}" class="form-credit-card" style="min-width: 600px">
+                            <div class="credit-card-container">
+                                <div class="credit-card-end">
+                                    <div class="in">
+                                        <div class="form-group {% if form.form_view.cvv.vars.errors|length %}has-error{% endif %}">
+                                            {{ form_label(form.form_view.cvv) }}
+                                            <div class="input-group">
+                                            <span class="input-group-addon" id="sizing-addon2">
+                                                 <i class="glyphicon glyphicon-lock"></i>
+                                            </span>
+                                            {{ form_widget(form.form_view.cvv) }}
+                                            </div>
+                                            <div class="text-danger">
+                                                {{ form_errors(form.form_view.cvv) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="credit-card-front">
+
+                                    <div class="row " style="display: inline-block; margin-bottom: 17px">
+                                        <div class="col-xs-8 {% if form.form_view.cardNumber.vars.errors|length %}has-error{% endif %}" style="min-width: ">
+                                            {{ form_label(form.form_view.cardNumber) }}
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                     <i class="glyphicon glyphicon-credit-card"></i>
+                                                </span>
+                                                {{ form_widget(form.form_view.cardNumber) }}
+                                            </div>
+                                            <div class="text-danger">
+                                                {{ form_errors(form.form_view.cardNumber) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-4 {% if form.form_view.expireDate.vars.errors|length %}has-error{% endif %}">
+                                            {{ form_label(form.form_view.expireDate) }}
+                                            {{ form_widget(form.form_view.expireDate) }}
+                                            <div class="text-danger">
+                                                {{ form_errors(form.form_view.expireDate) }}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="row " style="display: inline-block; margin-bottom: 17px">
+                                        <div class="col-xs-6 {% if form.form_view.ownerFirstName.vars.errors|length %}has-error{% endif %}">
+                                            {{ form_label(form.form_view.ownerFirstName) }}
+                                            <div class="input-group">
+                                            <span class="input-group-addon">
+                                                 <i class="glyphicon glyphicon-user"></i>
+                                            </span>
+                                                {{ form_widget(form.form_view.ownerFirstName) }}
+                                            </div>
+                                            <div class="text-danger">
+                                                {{ form_errors(form.form_view.ownerFirstName) }}
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 {% if form.form_view.ownerLastName.vars.errors|length %}has-error{% endif %}">
+                                            {{ form_label(form.form_view.ownerLastName) }}
+                                            <div class="input-group">
+                                            <span class="input-group-addon">
+                                                 <i class="glyphicon glyphicon-user"></i>
+                                            </span>
+                                                {{ form_widget(form.form_view.ownerLastName) }}
+                                            </div>
+                                            <div class="text-danger">
+                                                {{ form_errors(form.form_view.ownerLastName) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                {{ form_rest(form.form_view) }}
+                            </div>
+
+                            <div class="button-box">
+                                <button type="submit" class="btn btn-primary btn-lg" style="min-width: 150px;;" aria-label="Left Align">
+                                    <span class="glyphicon glyphicon-send" aria-hidden="true"></span> {{ 'form.generic.submit' | trans }}
+                                </button>
+                            </div>
+
+                        </form>
+
+                        <div class="text-danger">{{ form_errors(form.form_view) }}</div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div style="margin: 20px">
+            {{ 'credit_card.footer' | trans }}
+        </div>
+
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{ asset('js_glob/jquery.maskedinput.min.js') }}"></script>
+
+    <script>
+        function select(name)
+        {
+            hideAll();
+
+            var logo = document.getElementById("logo-"+name);
+            logo.className="credit-cards-logos selected";
+
+            var elem = document.getElementById("form-"+name);
+            elem.style.display = "block";
+
+            setTimeout(function(){elem.style.opacity = "1";}, 100);
+        }
+
+        function hideAll()
+        {
+            var forms = document.getElementsByClassName("form-credit-card");
+            for (i = 0; i < forms.length; i++) {
+                forms[i].style.opacity = "0";
+                forms[i].style.display ="none" ;
+            }
+
+            var creditCardsLogos = document.getElementsByClassName("credit-cards-logos");
+            for (i = 0; i < creditCardsLogos.length; i++) {
+                creditCardsLogos[i].className ="credit-cards-logos";
+            }
+        }
+
+        function format()
+        {
+            $("input[data-mask]").each(function( index, element ) {
+                element=$(element);
+
+                var obj = {};
+                if (element.attr('placeholder'))
+                    obj.placeholder = element.attr('placeholder');
+
+                element.mask(element.attr('data-mask'), obj);
+            });
+        }
+
+        hideAll();
+        format();
+        {% if beforeSelected %}
+            select('{{beforeSelected}}');
+        {% endif %}
+
+
+
+    </script>
+
+
+{% endblock %}

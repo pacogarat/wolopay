@@ -1,0 +1,38 @@
+{% trans_default_domain "default" %}
+<form method="post" action="#" id="form-contact" class="contact-form row" >
+    {{ form_errors(form) }}
+    <div>
+        <div class="half">
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form_errors(form.name) }}
+                    {{ form_widget(form.name) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_errors(form.email) }}
+                    {{ form_widget(form.email) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_errors(form.phone) }}
+                    {{ form_widget(form.phone) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    {{ form_errors(form.message) }}
+                    {{ form_widget(form.message) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <label></label>
+                    <button type="submit" data-toggle="modal" data-target="#alertModal" class="btn btn-primary btn-block btn-xl">Send <i class="ion-android-arrow-forward"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {{ form_rest(form) }}
+
+</form>

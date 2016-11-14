@@ -1,0 +1,11 @@
+imports:
+    - { resource: config_prod.yml }
+
+web_profiler:
+    toolbar: true
+
+framework:
+    profiler: { only_exceptions: false }
+    router:
+        resource: "%kernel.root_dir%/config/routing_prod_benchmark.yml"
+        strict_requirements: true

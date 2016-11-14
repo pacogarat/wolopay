@@ -1,0 +1,61 @@
+imports:
+    - { resource: config.yml }
+
+framework:
+    validation:
+        cache: apc
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                metadata_cache_driver:
+                    type: service
+                    id: app.doctrine.apc_cache
+                result_cache_driver: apc
+                query_cache_driver: apc
+
+
+
+parameters:
+    # Monolog\Logger to see levels
+    monolog.level: 200 # INFO lvl
+#    assetic.filter.uglifyjs2.mangle: true # uglifyjs compression vars (FUTURE OPTIMIZATION not necessary at this moment)
+
+assetic:
+    filters:
+        uglifyjs2:
+            # the path to the uglifyjs executable
+            bin: "%node_uglify_exe%"
+            apply_to: "\.js$"
+
+monolog:
+    handlers:
+        custom:
+            type: service
+            id: shop.logger.transaction_handler
+        applog:
+            type: stream
+            level: info
+        main:
+            type:         fingers_crossed
+            action_level: error
+            handler:      grouped
+            excluded_404:
+                - ^/
+        grouped:
+            type:    group
+            members: [streamed, buffered]
+        streamed:
+            type:  stream
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        buffered:
+            type:    buffer
+            handler: swift
+        swift:
+            type:       swift_mailer
+            from_email: "%email_app%"
+            to_email:   "%email_developers%"
+            subject:    "An Error Occurred! env %kernel.environment%"
+            level:      debug

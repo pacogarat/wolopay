@@ -1,0 +1,21 @@
+// import default vars
+@import "../module_1_vars_ini";
+
+// get final vars, concatenate vars
+@import "../module_2_vars_second";
+
+// get default css
+@import "../module_3_style";
+
+@import "../module_chosen";
+@import "../default_animation";
+
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
+@FONT: 'Open Sans', sans-serif;
+
+@font-face {
+    font-family: ~"@{FONT}";
+    font-weight: normal;
+    font-style: normal;
+}

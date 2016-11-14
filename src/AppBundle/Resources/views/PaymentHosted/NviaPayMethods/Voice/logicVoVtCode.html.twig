@@ -1,0 +1,56 @@
+{% extends '@App/PaymentHosted/NviaPayMethods/layout_nvia_methods.html.twig' %}
+{% block stylesheets %}
+    <style>
+        .container{
+            background: url({{asset('bundles/app/app_shop/img/nvia_pay_methods/telephone_operator.jpg')}}) no-repeat top right;
+        }
+    </style>
+    {{ parent() }}
+{% endblock %}
+{% block page %}
+
+    <div class="row voffset3">
+        <div class="col-md-12">
+            <h1>{{ 'voice.logic_vo_vt_code.title' | trans }} <img src="{% path voice.payMethodProviderHasCountry.payMethodHasProvider.payMethod.imgIcon, 'shop' %}"></h1>
+            <h3>{{'voice.follow_instructions' | trans }}</h3>
+            <blockquote class="voffset3">
+                <span class="text-info">{{ 'voice.logic_vo_vt_code.step_1' | trans }}.</span>
+                {{ 'voice.logic_vo_vt_code.step_1_desc' | trans({'%article%' : articleName }) | raw}}
+            </blockquote>
+            <div class="voffset4">
+                <h3>{{ 'voice.logic_vo_vt_code.sing_up_text' | trans({'%number%' : '<span class="text-info">' ~ voice.number ~ '</span>'}) | raw }}</h3>
+            </div>
+            <div>
+                <blockquote>
+                    <span class="text-info">{{ 'voice.logic_vo_vt_code.step_2' | trans }}.</span> {{ 'voice.logic_vo_vt_code.step_2_desc' | trans }}
+                </blockquote>
+
+                <div class="row voffset3">
+                    <form id="app_shop_form_type_sms_code_code" class="form-inline" method="post" role="form">
+                        <div class="col-md-5">
+                            <div class="input-group" >
+                                {{ form_widget(form.code, {'attr': {'class': 'form-control'}}) }}
+                                <span class="input-group-btn">
+                                    <input type="submit" class="btn btn-primary" value="{{ 'form.generic.submit' | trans }}">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-danger">
+                            {{ form_errors(form.code) }}
+                        </div>
+
+                        {{ form_rest(form) }}
+                    </form>
+                    <div class="text-danger">{{ form_errors(form) }}</div>
+                </div>
+
+            </div>
+
+            <div class="voffset5">
+                {{ 'voice.logic_vo_vt_code.legal_text' | trans({'%amount%' : voice.amount, '%number%' : voice.number, '%currency%' : voice.payMethodProviderHasCountry.currency.symbol}) }}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'SonataAdminBundle:CRUD:base_list_field.html.twig' %}
+
+{% block field%}
+    <span class="label
+        {% if (object.statusCategory.id is constant('AppBundle\\Entity\\Enum\\TransactionStatusCategoryEnum::COMPLETED_ID') or object.statusCategory.id == 201) -%}
+            label-success
+        {% elseif object.statusCategory.id is constant('AppBundle\\Entity\\Enum\\TransactionStatusCategoryEnum::FAILED_ID')  -%}
+            label-danger
+        {% elseif object.statusCategory.id is constant('AppBundle\\Entity\\Enum\\TransactionStatusCategoryEnum::PENDING_PAYMENT_ID')  -%}
+            label-info
+        {% elseif object.statusCategory.id is constant('AppBundle\\Entity\\Enum\\TransactionStatusCategoryEnum::BLOCKED_ID')  -%}
+            label-warning
+        {% else %}
+            label-default
+        {% endif %}
+    ">
+        {{ object.statusCategory.name }}
+    </span>
+{% endblock %}

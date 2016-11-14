@@ -1,0 +1,83 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+{% block side_bar_before_nav %}
+    {% if is_granted('ROLE_SONATA_STATS_INTERNAL_ALL') %}
+
+        <ul class="sidebar-menu">
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bar-chart-o"></i><span> Stats</span> <i class="fa pull-right fa-angle-left"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a href="{{ path('stats_pay_to_clients_summary') }}">
+                            <i class="fa fa-angle-double-right"></i><span> Stats to pay clients</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('stats_vat_index') }}">
+                            <i class="fa fa-angle-double-right"></i><span> Stats Vat</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    {% endif %}
+    {% if is_granted('ROLE_SONATA_BILLING_INVOICES_PENDING_ALL') %}
+        <ul class="sidebar-menu">
+            <li class="treeview-menu" style="display: block">
+                <a href="{{ path('billing_invoices_pending_list') }}">
+                    <i class="fa fa-bar-chart-o"></i><span> Pending invoices ({{ render(controller('AppBundle:Admin/BillingInvoiceAdmin:count')) }})</span> <i class="fa pull-right fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+    {% endif %}
+{% endblock %}
+
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+        $(document).on("keypress",".select2-input",function(event){
+
+            if (event.ctrlKey || event.metaKey || event.shiftKey) {
+                var id =$(this).parents("div[class*='select2-container']").attr("id").replace("s2id_","");
+                var element =$("#"+id);
+                if (event.which == 97){
+                    var selected = [];
+                    element.find("option").each(function(i,e){
+                        selected[selected.length]=$(e).attr("value");
+                    });
+                    element.select2("val", selected);
+                } else if (event.which == 100){
+                    element.select2("val", "");
+                }
+            }
+        });
+    </script>
+
+{% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+    <style>
+
+        table .form-control, table .input-group .form-control{
+            width: auto !important;
+        }
+        .mosaic-inner-box-default{
+            text-align: center;
+        }
+        .mosaic-inner-box-default img{
+            width: auto !important;
+        }
+        .sonata-medium-date div.select2-container{
+            width: auto !important;
+        }
+        
+    </style>
+    <script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
+
+{% endblock %}

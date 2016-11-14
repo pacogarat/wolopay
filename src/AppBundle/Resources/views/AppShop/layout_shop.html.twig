@@ -1,0 +1,73 @@
+{# transaction \AppBundle\Entity\Transaction #}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wolopay</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/favicon.ico') }}">
+    <link rel="icon" href="{{ absolute_url(asset('img/favicon.ico')) }}" />
+
+    {% stylesheets
+        '@AppBundle/Resources/public/app_shop/themes/theme_iframe.less'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" media="screen" />
+    {% endstylesheets %}
+    {{ include('@App/AppShop/Shop/partials/load_theme_available.html.twig') }}
+
+    {% block header '' %}
+
+
+</head>
+
+<body>
+
+    {% include '@App/AppShop/Shop/partials/shop_body.html.twig' with
+        {'box_windows': block('box_windows'), 'top_options': block('top_options'),
+        'menu': block('menu'),'page': block('page'),'extra_footer': block('extra_footer')
+    } %}
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script async src="//cdn.socket.io/socket.io-1.1.0.js"></script>
+
+    {% javascripts 'bower_components/angular-animate/angular-animate.min.js.map' output='js/angular-animate.min.js.map'%}
+    {% endjavascripts %}
+
+    <script>
+        function loadScript(url)
+        {
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = url;
+            head.appendChild(script);
+        }
+
+        {% include '@App/AppShop/Shop/partials_js/properties_default.html.twig' %}
+
+        {% if transaction.externalStore == constant('AppBundle\\Entity\\Enum\\ExternalStoreEnum::FACEBOOK') %}
+            {% include '@App/AppShop/Shop/external_stores/facebook_static.html.twig' %}
+        {% endif %}
+
+    </script>
+    {% include '@App/AppShop/Shop/partials_js/country_detect.html.twig' %}
+
+    {% block javascript_end_body_before_exe '' %}
+
+    {% include '@App/AppShop/Shop/partials_js/load_libraries.html.twig' %}
+
+
+    {% include '@App/Partials/analitycs_by_gamer_id.html.twig' with {'transaction': app.user } %}
+
+    <script>
+        $(document).ready(function(){
+            angular.element(document).ready(function() {
+                angular.bootstrap(document, ['shopApp']);
+            });
+        });
+    </script>
+
+</body>
+</html>

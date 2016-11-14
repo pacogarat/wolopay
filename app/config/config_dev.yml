@@ -1,0 +1,50 @@
+imports:
+    - { resource: config.yml }
+
+framework:
+    router:
+        resource: "%kernel.root_dir%/config/routing_dev.yml"
+        strict_requirements: true
+    profiler: { only_exceptions: false }
+
+web_profiler:
+    toolbar: "%debug_toolbar%"
+    intercept_redirects: "%debug_redirects%"
+
+parameters:
+    # Monolog\Logger to see levels
+    monolog.level: 100
+
+monolog:
+    handlers:
+        custom:
+            type: service
+            id: shop.logger.transaction_handler
+            channels: ["!event", "!doctrine"]
+        applog:
+            type: stream
+            level: debug
+            channels: ["!event", "!doctrine"]
+        console:
+            type:   console
+            bubble: false
+        # uncomment to get logging in your browser
+        # you may have to allow bigger header sizes in your Web server configuration
+#        firephp:
+#            type:   firephp
+#            level:  info
+#        chromephp:
+#            type:   chromephp
+#            level:  info
+
+assetic:
+    use_controller: "%use_assetic_controller%"
+
+# Override email to %email_developers%
+swiftmailer:
+    delivery_address: "%email_info_wolopay%"
+
+raul_fraile_ladybug:
+    theme: modern # select the theme: base, modern or custom themes
+    expanded: false # true to expand all the variables tree by default
+    silenced: false # true to ignore all ladybug calls

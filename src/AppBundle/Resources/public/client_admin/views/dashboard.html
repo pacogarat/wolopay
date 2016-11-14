@@ -1,0 +1,569 @@
+<div ng-controller="DashboardController" ng-cloak class="ng-cloak">
+    <div ng-if="dashboard === false" id="welcome-to">
+        <h1>
+            <span translate-cloak data-translate="dashboard.welcome_to_wolopay" style="display: inline-block;"></span>
+            <img class="hidden-phone hidden-tablet" src="/img/wolopay.gif">
+        </h1>
+    </div>
+    <div ng-if="dashboard">
+        <div class="row">
+            <div class="col-sm-4 col-md-4 col-lg-2 hidden-md ">
+                <h1 class="page-title txt-color-blueDark"><i class="fa-fw fa fa-home"></i> <e data-translate="menu.dashboard"></e></h1>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-10">
+                <ul id="sparks" class="" style="margin-bottom: 28px;">
+                    <li class="sparks-info hidden-xs" >
+                        <h5> <div data-translate="dashboard.total"></div> <span class="txt-color-blue">{[{ stats.amounts_total_pos_sum | number: 2 || "0" }]} {[{ $root.currency.symbol }]}</span></h5>
+                        <div id="amount-total-sparkline" data-high-sparkline data-opts='jsonSparkLine'  data-type="area" ng-model="amountsTotalSpark" class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm hidden-xs" style="height:36px;">
+                        </div>
+                    </li>
+
+                    <li class="sparks-info">
+                        <h5> <div data-translate="dashboard.refunds"></div> <span class="txt-color-red">{[{ stats.refundsAmount_total | number: 2 || "0" }]} {[{ $root.currency.symbol }]}</span></h5>
+                        <div id="refunds-sparkline" data-high-sparkline data-opts='jsonSparkLine2'  data-type="area" ng-model="amountsRefundsSpark" class="sparkline txt-color-red hidden-mobile hidden-md hidden-sm hidden-xs" style="height:36px;">
+                        </div>
+                    </li>
+
+                    <li class="sparks-info">
+                        <h5> <div data-translate="dashboard.my_income"></div> <span class="txt-color-blue">{[{ stats.amounts_game_sum | number: 2 || "0" }]} {[{ $root.currency.symbol }]}</span></h5>
+                        <div id="purchases-sparkline" data-high-sparkline data-opts='jsonSparkLine'  data-type="area" ng-model="amountsGameSpark" class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm hidden-xs" style="height:36px;">
+                        </div>
+                    </li>
+
+                    <li class="sparks-info hidden-xs">
+                        <h5> <div data-translate="dashboard.table.tax_total"></div> <span class="txt-color-blue">{[{ stats.amounts_taxes_sum | number: 2 || "0" }]} {[{ $root.currency.symbol }]}</span></h5>
+                        <div id="taxes-sparkline" data-high-sparkline data-opts='jsonSparkLine'  data-type="area" ng-model="amountsTaxesSpark" class="sparkline txt-color-blue hidden-mobile hidden-md hidden-sm hidden-xs" style="height:36px;">
+                        </div>
+                    </li>
+
+                    <li class="sparks-info">
+                        <h5> <div data-translate="dashboard.transactions"></div> <span class="txt-color-purple"><i class="fa fa-arrow-circle-up"></i>&nbsp;{[{ (stats.transactions_sum || "0" ) | number}]}</span></h5>
+                        <div ng-model="transactionsSpark" data-opts='jsonSparkLine' data-high-sparkline data-type="area" class="sparkline txt-color-purple hidden-mobile hidden-md hidden-sm hidden-xs" style="height:36px;">
+                        </div>
+                    </li>
+                    <li class="sparks-info">
+                        <h5> <div data-translate="dashboard.purchases"></div> <span class="txt-color-greenDark"><i class="fa fa-shopping-cart"></i>&nbsp;{[{ ( stats.purchases_sum || "0" ) | number }]}</span></h5>
+                        <div ng-model="purchasesSpark" data-high-sparkline data-type="area" data-opts='jsonSparkLine'  class="sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm hidden-xs" style="height:36px;">
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+        <!-- row -->
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="">
+
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-12">
+                    <!-- new widget -->
+                    <div style="min-height: 38px; color: #333;border: 1px solid #C2C2C2;background: #fafafa; margin-bottom:15px;">
+                        <header>
+                            <ul class="list-inline" style="margin: 0">
+                                <li data-ng-repeat="act in actualApps" style="padding:9px 10px 9px 10px; border-right: 1px dashed #ccc">
+                                    <span class="square-color" style="background: {[{act.color}]};"></span>
+                                    {[{ act.name }]}
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-xs" ng-click="chartShowHideSerie(act)">
+                                            <i class="glyphicon glyphicon-stats txt-color-darken"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs" ng-init="app.only=false" ng-click="chartOnlyShowHideSerie(act)">
+                                            <i class="fa fa-eye-slash"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </header>
+                    </div>
+
+                </article>
+            </div>
+
+            <!-- row -->
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-12">
+                    <!-- new widget -->
+                    <div class="jarviswidget" id="wid-id-0" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+                        <!-- widget options:
+                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                        data-widget-colorbutton="false"
+                        data-widget-editbutton="false"
+                        data-widget-togglebutton="false"
+                        data-widget-deletebutton="false"
+                        data-widget-fullscreenbutton="false"
+                        data-widget-custombutton="false"
+                        data-widget-collapsed="true"
+                        data-widget-sortable="false"
+
+                        -->
+                        <header>
+                            <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                            <h2 data-translate="dashboard.game_amount_by_game"></h2>
+
+                            <ul class="nav nav-tabs pull-right in" id="myTab">
+                                <!--<li class="active">-->
+                                <!--<a data-toggle="tab" href="#s1"><i class="fa fa-clock-o"></i> <span class="hidden-mobile hidden-tablet">Live Stats</span></a>-->
+                                <!--</li>-->
+
+                                <!--<li>-->
+                                <!--<a data-toggle="tab" href="#s2"><i class="fa fa-facebook"></i> <span class="hidden-mobile hidden-tablet">Social Network</span></a>-->
+                                <!--</li>-->
+
+                                <li class="active">
+                                    <a data-toggle="tab" href="#s3"><i class="fa fa-dollar"></i> <span class="hidden-mobile hidden-tablet"></span></a>
+                                </li>
+                            </ul>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+
+                            <div class="widget-body">
+                                <!-- content -->
+                                <div id="myTabContent" class="tab-content">
+
+                                    <div class="tab-pane active" id="s3">
+
+                                        <div class="padding-10-v">
+                                            <div id="flotcontainer_dashboard_1" class="chart-large" style="height: 294px"></div>
+
+                                            <div style="color: #666; margin-top: 10px" ng-init="tableGameAmountsShow = false" >
+                                                <div class="text-center" ng-if="!tableGameAmountsShow" style="cursor: pointer" ng-click="$parent.tableGameAmountsShow = true">
+                                                    <i class="fa fa-lg fa-plus-square-o" ></i>
+                                                    <span style="font-style: italic" data-translate="more_info"></span>
+                                                </div>
+                                                <div class="text-center" ng-if="tableGameAmountsShow" style="cursor: pointer" ng-click="$parent.tableGameAmountsShow = false">
+                                                    <i class="fa fa-lg fa-minus-square-o" ></i>
+                                                    <span style="font-style: italic" data-translate="less_info">Less info</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="table-responsive" ng-if="tableGameAmountsShow" style="margin-top: 25px">
+                                                <table class="table table-hover">
+
+                                                    <thead>
+                                                        <tr>
+                                                            <th translate="date"></th>
+                                                            <th ng-repeat="app in actualApps">
+                                                                {[{ app.name }]}
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat="(dateIndex, stat) in stats.apps[actualApps[0].id].amounts_game">
+                                                        <th ng-if="$index == 0" ng-repeat="(date, value) in stats.apps[actualApps[0].id].amounts_game[dateIndex]">
+                                                            {[{ date }]}
+                                                        </th>
+                                                        <td ng-repeat="app in actualApps">
+                                                            <span ng-repeat="(date, value) in stats.apps[app.id].amounts_game[dateIndex]">
+                                                                {[{ value | currency:currency.symbol }]}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                    <tfoot>
+                                                    <tr>
+                                                        <td data-translate="TOTAL" class="total_text"></td>
+                                                        <td ng-repeat="app in actualApps">
+                                                            {[{ stats.apps[app.id].amounts_game_sum | currency:currency.symbol }]}
+                                                        </td>
+                                                    </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </div>
+                                    <!-- end s3 tab pane -->
+                                </div>
+
+                                <!-- end content -->
+                            </div>
+
+                        </div>
+                        <!-- end widget div -->
+                    </div>
+                </article>
+            </div>
+
+            <!-- row by david -->
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-4">
+                    <!-- new widget -->
+                    <div class="jarviswidget" id="wid-id-00" data-widget-editbutton="false" data-widget-colorbutton="false" data-widget-deletebutton="false">
+                        <!-- widget options:
+                        usage: <div class="jarviswidget" id="wid-id-00" data-widget-editbutton="false">
+                        data-widget-colorbutton="false"
+                        data-widget-editbutton="false"
+                        data-widget-togglebutton="false"
+                        data-widget-deletebutton="false"
+                        data-widget-fullscreenbutton="false"
+                        data-widget-custombutton="false"
+                        data-widget-collapsed="true"
+                        data-widget-sortable="false"
+                        -->
+                        <header>
+                            <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                            <h2 data-translate="dashboard.game_amount_by_affiliate"></h2>
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <div class="widget-body">
+                                <!-- content -->
+                                <div id="myTabContent_00" class="tab-content">
+                                    <div class="tab-pane active" id="s3_00">
+                                        <div class="padding-10-v">
+                                            <div id="flotcontainer_affiliates_1" class="chart-large" style="height: 232px"></div>
+                                            <table-below data="affiliateAmountTable"></table-below>
+                                        </div>
+                                    </div>
+                                    <!-- end s3 tab pane -->
+                                </div>
+                                <!-- end content -->
+                            </div>
+
+                        </div>
+                        <!-- end widget div -->
+                    </div>
+                </article>
+                <article class="col-sm-12 col-md-12 col-lg-4">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-dash-3" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
+                            <h2 data-translate="dashboard.number_of_transactions"></h2>
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body">
+
+                                <div class="padding-10-v">
+                                    <div id="flotcontainer_dashboard_3" class="chart-large" style="height: 232px"></div>
+                                </div>
+
+                                <table-below data="transactionsTable"></table-below>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-sm-12 col-md-12 col-lg-4">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-dash-4" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
+                            <h2 data-translate="dashboard.number_of_purchases"></h2>
+
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body">
+
+                                <div class="padding-10-v">
+                                    <div id="flotcontainer_dashboard_4" class="chart-large" style="height: 232px"></div>
+                                </div>
+
+                                <table-below data="purchasesTable"></table-below>
+
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="row">
+                <!-- end widget -->
+                <article class="col-sm-12 col-md-12 col-lg-12">
+                    <!-- new widget -->
+                    <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" >
+
+                        <!-- widget options:
+                        usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                        data-widget-colorbutton="false"
+                        data-widget-editbutton="false"
+                        data-widget-togglebutton="false"
+                        data-widget-deletebutton="false"
+                        data-widget-fullscreenbutton="false"
+                        data-widget-custombutton="false"
+                        data-widget-collapsed="true"
+                        data-widget-sortable="false"
+
+                        -->
+
+                        <header>
+                            <span class="widget-icon"> <i class="fa fa-map-marker"></i> </span>
+                            <h2 data-translate="dashboard.map_title"></h2>
+
+                        </header>
+
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget edit box -->
+                            <div class="jarviswidget-editbox">
+                                <div>
+                                    <label>Title:</label>
+                                    <input type="text" />
+                                </div>
+                            </div>
+                            <!-- end widget edit box -->
+
+                            <div class="widget-body no-padding">
+                                <!-- content goes here -->
+
+                                <div id="wold_map_over_view"></div>
+                                <div style="margin: 10px">
+                                    <table-below data="purchasesCountryTable" no-header = "1"></table-below>
+                                </div>
+
+                                <!-- end content -->
+
+                            </div>
+
+                        </div>
+                        <!-- end widget div -->
+                    </div>
+                    <!-- end widget -->
+                </article>
+            </div>
+            <div class="row">
+                <article class="col-sm-12 col-md-12 col-lg-12">
+
+                    <!-- Widget ID (each widget will need unique ID)-->
+                    <div class="jarviswidget" id="wid-id-dashboard_dashboard" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                        <header>
+                            <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                            <h2 data-translate="dashboard.pay_method_stats"></h2>
+                            <span class="widget-icon">
+                                <i class="fa fa-info-circle" data-tooltip="{[{'dashboard.pay_method_stats_tooltip' | translate}]}"></i>
+                            </span>
+                            <div class="widget-toolbar" ng-if="loading">
+                                <i class="fa fa-refresh rotate-animation" style="margin-left: 10px"></i>
+                            </div>
+                            <div class="widget-toolbar">
+                                <span class="onoffswitch-title" data-translate="dashboard.add_pay_method"></span>
+                                <span class="onoffswitch" >
+                                    <input type="checkbox" name="country" ng-model="$parent.showPayMethods" class="onoffswitch-checkbox" id="start_interval" ng-change="tableSummaryLoadTimeout()" >
+                                    <label class="onoffswitch-label" for="start_interval">
+                                        <span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+
+
+                                </span>
+                            </div>
+
+                            <div class="widget-toolbar">
+                                <button type="button" class="btn btn-success" ng-click="tableReviewToCSV()">
+                                    <i class="fa fa-file-excel-o"></i>
+                                </button>
+                            </div>
+
+                        </header>
+                        <!-- widget div-->
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" id="table_review">
+                                        <thead>
+                                        <tr>
+                                            <td colspan="100%">
+                                                <input ng-model-options="{debounce: 100}" ng-model="searchText.$" placeholder="{[{ 'search' | translate}]}" class="form-control">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <div class="btn-group btn-group-xs">
+                                                    <button class="btn btn-default" type="submit" ng-click="collapse(tableReview, 'ALL', false)">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                    <button class="btn btn-default" type="submit" ng-click="collapse(tableReview, 'ALL', true)">
+                                                        <i class="fa fa-minus"></i>
+                                                    </button>
+                                                </div>
+                                            </th>
+                                            <th ng-click="orderBy('date')" style="cursor: pointer;" data-translate="date"></th>
+                                            <th ng-click="orderBy('app')" style="cursor: pointer;" data-translate="app"></th>
+                                            <th ng-click="orderBy('country_name')" style="cursor: pointer;" data-translate="country"></th>
+                                            <th ng-show="showPayMethods" ng-click="orderBy('pay_method')" style="cursor: pointer;" data-translate="dashboard.table.pay_method"></th>
+                                            <th ng-click="orderBy('n_transactions')" style="cursor: pointer;" data-translate="dashboard.table.n_transactions"></th>
+                                            <th ng-click="orderBy('n_unique_users')" style="cursor: pointer;" data-translate="dashboard.table.n_unique_users"></th>
+                                            <th ng-click="orderBy('n_clicked')" style="cursor: pointer;" data-translate="dashboard.table.n_clicked"></th>
+                                            <th ng-click="orderBy('n_purchases')" style="cursor: pointer;" data-translate="dashboard.table.n_purchases"></th>
+                                            <th ng-click="orderBy('n_unique_users_by_purchase')" style="cursor: pointer;" data-translate="n_unique_users_by_purchase"></th>
+                                            <th ng-click="orderBy('cr')" style="cursor: pointer;" data-translate="cr"></th>
+                                            <th ng-click="orderBy('payout_vs_purchases')" style="cursor: pointer;" data-translate="dashboard.table.payout_vs_purchases"></th>
+                                            <th ng-click="orderBy('payout_vs_transactions')" style="cursor: pointer;" data-translate="dashboard.table.payout_vs_transactions"></th>
+                                            <th ng-click="orderBy('amount_total')"  style="cursor: pointer;" data-translate="dashboard.table.total"></th>
+                                            <th ng-click="orderBy('amount_game')"  style="cursor: pointer;" data-translate="dashboard.table.game_total"></th>
+                                            <th ng-click="orderBy('amount_tax')"  style="cursor: pointer;" data-translate="dashboard.table.tax_total"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody ng-repeat="date in tableReview | orderBy:'date':true">
+                                            <tr class="td-grouped-1">
+                                                <td>
+                                                    <div class="btn-group btn-group-xs" ng-hide="searchText.$">
+                                                        <button ng-if="date.collapsed" class="btn btn-default" type="submit" ng-click="date.collapsed = false">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                        <button ng-if="!date.collapsed" class="btn btn-default" type="submit" ng-click="date.collapsed = true">
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <span ng-if="date.past=='true'"><div style="color: #FF0000; font-weight: bold">{[{date.date}]}*</div></span>
+                                                    <span ng-if="date.past=='false'"><div style="color: #000000; font-weight: bold">{[{date.date}]}</div></span>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td ng-show="showPayMethods"></td>
+                                                <td> <span ng-show="showPayMethods">≃</span> {[{date.n_transactions}]}</td>
+                                                <td> <span ng-show="showPayMethods">≃</span> {[{date.n_unique_users }]}</td>
+                                                <td>{[{date.n_clicked | number }]}</td>
+
+
+                                                <td>{[{date.n_purchases | number }]}</td>
+                                                <td>{[{date.n_unique_users_by_purchase | number }]}</td>
+
+                                                <td><span ng-if="date.cr">{[{date.cr | number:2}]}%</span><span ng-if="!date.cr">-</span> </td>
+                                                <td><span ng-if="date.payout_vs_purchases">{[{date.payout_vs_purchases | currency:currency.symbol }]}</span><span ng-if="!date.payout_vs_purchases">-</span> </td>
+                                                <td><span ng-if="date.payout_vs_transactions">{[{date.payout_vs_transactions | currency:currency.symbol }]}</span><span ng-if="!date.payout_vs_transactions">-</span> </td>
+                                                <td>{[{date.amount_total | currency:currency.symbol }]}</td>
+                                                <td>{[{date.amount_game | currency:currency.symbol }]}</td>
+                                                <td>{[{date.amount_tax | currency:currency.symbol }]}</td>
+                                            </tr>
+                                            <tr class="td-grouped-2" ng-repeat-start="app in date.appsTable | filter:searchText | orderBy:predicate:reverse" ng-if="!date.collapsed || searchText.$">
+                                                <td>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group btn-group-xs" ng-hide="searchText.$">
+                                                        <button ng-if="app.collapsed" class="btn btn-default" type="submit" ng-click="app.collapsed = false">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                        <button ng-if="!app.collapsed" class="btn btn-default" type="submit" ng-click="app.collapsed = true">
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+
+                                                <td>{[{app.name }]}</td>
+                                                <td></td>
+                                                <td ng-show="showPayMethods"></td>
+
+                                                <td><span ng-show="showPayMethods">≃ </span>{[{app.n_transactions}]}</td>
+                                                <td><span ng-show="showPayMethods">≃ </span>{[{app.n_unique_users }]}</td>
+                                                <td>{[{app.n_clicked | number }]}</td>
+
+                                                <td>{[{app.n_purchases | number }]}</td>
+                                                <td>{[{app.n_unique_users_by_purchase | number  }]}</td>
+
+                                                <td><span ng-if="app.cr">{[{app.cr | number:2 }]}%</span><span ng-if="!app.cr">-</span> </td>
+                                                <td><span ng-if="app.payout_vs_purchases">{[{app.payout_vs_purchases | currency:currency.symbol  }]}</span><span ng-if="!app.payout_vs_purchases">-</span> </td>
+                                                <td><span ng-if="app.payout_vs_transactions">{[{app.payout_vs_transactions | currency:currency.symbol  }]}</span><span ng-if="!app.payout_vs_transactions">-</span> </td>
+
+                                                <td>{[{app.amount_total | currency:currency.symbol }]}</td>
+                                                <td>{[{app.amount_game | currency:currency.symbol }]}</td>
+                                                <td>{[{app.amount_tax | currency:currency.symbol }]}</td>
+                                            </tr>
+                                            <tr class="td-grouped-3" ng-repeat-start="country in app.countriesTable | filter:searchText | orderBy:predicate:reverse" ng-if="(!app.collapsed && !date.collapsed) || searchText.$">
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <div class="btn-group btn-group-xs" ng-hide="searchText.$" ng-if="showPayMethods" >
+                                                        <button ng-if="country.collapsed" class="btn btn-default" type="submit" ng-click="country.collapsed = false">
+                                                            <i class="fa fa-plus"></i>
+                                                        </button>
+                                                        <button ng-if="!country.collapsed" class="btn btn-default" type="submit" ng-click="country.collapsed = true">
+                                                            <i class="fa fa-minus"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+
+                                                <td>{[{country.country_name || 'unknown' | translate }]}</td>
+                                                <td ng-show="showPayMethods"></td>
+                                                <td>{[{country.n_transactions}]}</td>
+                                                <td>{[{country.n_unique_users }]}</td>
+                                                <td>{[{country.n_clicked }]}</td>
+
+                                                <td>{[{country.n_purchases }]}</td>
+                                                <td>{[{country.n_unique_users_by_purchase | number }]}</td>
+
+                                                <td><span ng-if="country.cr">{[{country.cr | number:2  }]}%</span><span ng-if="!country.cr">-</span> </td>
+                                                <td><span ng-if="country.payout_vs_purchases">{[{country.payout_vs_purchases | currency:currency.symbol  }]}</span><span ng-if="!country.payout_vs_purchases">-</span> </td>
+                                                <td><span ng-if="country.payout_vs_transactions">{[{country.payout_vs_transactions | currency:currency.symbol  }]}</span><span ng-if="!country.payout_vs_transactions">-</span> </td>
+
+                                                <td>{[{country.amount_total | currency:currency.symbol }]}</td>
+                                                <td>{[{country.amount_game | currency:currency.symbol }]}</td>
+                                                <td>{[{country.amount_tax | currency:currency.symbol }]}</td>
+                                            </tr>
+                                            <tr ng-repeat-start="pay_method in country.pay_methodsTable | filter:searchText | orderBy:predicate:reverse" ng-if="showPayMethods && (!app.collapsed && !date.collapsed && !country.collapsed) || searchText.$">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+
+                                                <td>{[{pay_method.name || '-' }]}</td>
+                                                <td>{[{pay_method.n_transactions | number }]}</td>
+                                                <td>{[{pay_method.n_unique_users | number}]}</td>
+                                                <td>{[{pay_method.n_clicked | number}]}</td>
+
+                                                <td>{[{pay_method.n_purchases | number }]}</td>
+                                                <td>{[{pay_method.n_unique_users_by_purchase | number }]}</td>
+                                                <td><span ng-if="pay_method.cr">{[{pay_method.cr | number:2 }]}%</span><span ng-if="!pay_method.cr">-</span> </td>
+                                                <td><span ng-if="pay_method.payout_vs_purchases">{[{pay_method.payout_vs_purchases | currency:currency.symbol  }]}</span><span ng-if="!pay_method.payout_vs_purchases">-</span> </td>
+                                                <td><span ng-if="pay_method.payout_vs_transactions">{[{pay_method.payout_vs_transactions | currency:currency.symbol  }]}</span><span ng-if="!pay_method.payout_vs_transactions">-</span> </td>
+
+                                                <td>{[{pay_method.amount_total | currency:currency.symbol }]}</td>
+                                                <td>{[{pay_method.amount_game | currency:currency.symbol }]}</td>
+                                                <td>{[{pay_method.amount_tax | currency:currency.symbol }]}</td>
+                                            </tr>
+                                            <tr ng-repeat-end style="display: none"></tr>
+                                            <tr ng-repeat-end style="display: none"></tr>
+                                            <tr ng-repeat-end style="display: none"></tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3" data-translate="TOTAL" class="total_text"></td>
+                                                <td></td>
+                                                <td ng-show="showPayMethods"></td>
+                                                <td>{[{tableReviewTotals.n_transactions | number }]}</td>
+                                                <td>{[{tableReviewTotals.n_unique_users | number  }]}</td>
+                                                <td>{[{tableReviewTotals.n_clicked | number  }]}</td>
+
+                                                <td>{[{tableReviewTotals.n_purchases | number  }]}</td>
+                                                <td>{[{tableReviewTotals.n_unique_users_by_purchase | number }]}</td>
+                                                <td><span ng-if="tableReviewTotals.cr">{[{tableReviewTotals.cr | number:2 }]}%</span><span ng-if="!tableReviewTotals.cr">-</span> </td>
+                                                <td><span ng-if="tableReviewTotals.payout_vs_purchases">{[{tableReviewTotals.payout_vs_purchases | currency:currency.symbol  }]}</span><span ng-if="!tableReviewTotals.payout_vs_purchases">-</span> </td>
+                                                <td><span ng-if="tableReviewTotals.payout_vs_transactions">{[{tableReviewTotals.payout_vs_transactions | currency:currency.symbol  }]}</span><span ng-if="!tableReviewTotals.payout_vs_transactions">-</span> </td>
+
+                                                <td>{[{tableReviewTotals.amount_total | currency:currency.symbol }]}</td>
+                                                <td>{[{tableReviewTotals.amount_game | currency:currency.symbol }]}</td>
+                                                <td>{[{tableReviewTotals.amount_tax | currency:currency.symbol }]}</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                            <div style="padding-bottom: 20px; text-align: right; color: #888">
+                                <em data-translate="dashboard.pay_method_stats_bugs"></em>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+</div>

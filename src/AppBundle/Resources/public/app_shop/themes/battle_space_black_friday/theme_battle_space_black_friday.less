@@ -1,0 +1,47 @@
+// import default vars
+@import "../default_1_vars_ini";
+
+// override default vars
+@THEME_FOLDER: "battle_space_black_friday";
+@TUTORIAL_BOX_BACKGROUND: rgba(0,0,0,0.9);
+@PRICE_BOX_MARGIN_TOP: 38px;
+@CONTINUE_ANIMATION_BOX_SHADOW_START: inset 0px 0px 95px 15px rgba(255,255,255, 0.2);
+@CONTINUE_ANIMATION_BOX_SHADOW_END: inset 0px 0px 95px 15px rgba(255,255,255, 0.8);
+@PRODUCT_PRICE_OLD_MARGIN_TOP: -32px;
+@PRODUCT_NAME_OLD_COLOR: #D30707;
+@MOBILE_BACKGROUND_COLOR: #295464;
+
+// get final vars, concatenate vars
+@import "../default_2_vars_second";
+
+@BODY_BACKGROUND: 'none';
+
+// get default css
+@import "../default_3_style";
+
+@import "../default_chosen";
+@import "../default_animation";
+
+// If you want override css below
+
+@font-face {
+    font-family: ~"@{FONT}";
+    src: url('@{FILES_PATH}/fonts/Vera-webfont.eot');
+    src: url('@{FILES_PATH}/fonts/Vera-webfont.eot?#iefix') format('embedded-opentype'),
+    url('@{FILES_PATH}/fonts/Vera-webfont.woff') format('woff'),
+    url('@{FILES_PATH}/fonts/Vera-webfont.ttf') format('truetype'),
+    url('@{FILES_PATH}/fonts/Vera-webfont.svg#bitstream_vera_sansroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media only screen and (min-width: 961px){
+    .wolo-container{
+        .section .register-cash {
+            margin-top: 23px;
+        }
+        #button-actions{
+            margin-top: -10px;
+        }
+    }
+}

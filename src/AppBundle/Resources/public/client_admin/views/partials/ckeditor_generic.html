@@ -1,0 +1,18 @@
+<div class="modal-header">
+    <h3 class="modal-title">{[{ 'configurator.step3.form.description' | translate }]}, {[{language.id}]}</h3>
+</div>
+<div class="modal-body">
+    <div ckeditor="{allowedContent: true, extraPlugins: 'colorbutton,justify,font', entities: false, toolbar: [
+                                    [ 'Source'],
+                                    [ 'Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat'],
+                                    ['TextColor', 'BGColor'],
+                                    ['Font','FontSize'],
+                                    ['JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock'],
+                                    ['NumberedList','BulletedList'],
+                                    ['Image','Table']
+                                ] }" ng-model="text"></div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok(text)">{[{ 'ok' | translate }]}</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">{[{ 'cancel' | translate }]}</button>
+</div>

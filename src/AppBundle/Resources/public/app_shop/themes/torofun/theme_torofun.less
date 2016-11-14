@@ -1,0 +1,73 @@
+// import default vars
+@import "../default_1_vars_ini";
+
+// override default vars
+@THEME_FOLDER: "torofun";
+@PRODUCT_BACKGROUND_SELECTED: "#48b700";
+@FOOTER_BACKGROUND_COLOR: rgba(42,91,117,0.5);
+@FOOTER_BORDER: 2px solid #333;
+@FOOTER_BOX_SHADOW: 6px 6px 9px 0px rgba(10, 10, 10, 0.75);
+
+@TUTORIAL_BOX_BORDER:  2px solid #fff;
+@TUTORIAL_BOX_BACKGROUND: rgba(44,113,150,0.9);
+
+@TOOLTIP_COLOR: #fff;
+@TOOLTIP_BORDER: 2px solid #fff;
+@TOOLTIP_BACKGROUND: rgba(44,113,150,0.9);
+@TAB_ON_IMG_EXTENSION_MOBILE: 'png';
+@REGISTER_CASH_PADDING_TOP: 5px;
+
+// get final vars, concatenate vars
+@import "../default_2_vars_second";
+
+// get default css
+@import "../default_3_style";
+
+@import "../default_chosen";
+@import "../default_animation";
+
+.wolo-container{
+    #tab-menu .article-tab{
+        margin-top: 3px;
+    }
+}
+
+// If you want override css below
+@media only screen and (min-width: 961px){
+    .wolo-container{
+        .article-tab{
+            padding-left: 50px;
+        }
+        .section .products{
+            margin-top: 15px;
+        }
+        .section .pay-methods{
+            margin-bottom: 0 !important;
+        }
+        .section-custom{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+        .arrow-left{
+            margin-left: 0px !important;
+        }
+        .arrow-right{
+            margin-right: 0px !important;
+        }
+        .price-box .product-prize{
+            margin-top: -5px !important;
+        }
+    }
+}
+
+@font-face {
+    font-family: ~"@{FONT}";
+    src: url('@{FILES_PATH}/fonts/Vera-webfont.eot');
+    src: url('@{FILES_PATH}/fonts/Vera-webfont.eot?#iefix') format('embedded-opentype'),
+    url('@{FILES_PATH}/fonts/Vera-webfont.woff') format('woff'),
+    url('@{FILES_PATH}/fonts/Vera-webfont.ttf') format('truetype'),
+    url('@{FILES_PATH}/fonts/Vera-webfont.svg#bitstream_vera_sansroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+

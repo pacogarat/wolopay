@@ -1,0 +1,152 @@
+<!-- row -->
+<div class="row" ng-controller="ShopTestCtrl">
+    <!-- NEW WIDGET START -->
+    <!-- widget grid -->
+    <section id="widget-grid" >
+        <article class="col-md-6 col-lg-3">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-gear"></i> </span>
+                    <h2>{[{ 'shop_test.title_configure' | translate }]}</h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body">
+
+                        <form name="form_shop_test" class="form-horizontal validation" target="shop_test_iframe" ng-submit="send()">
+                            <div>
+                                <label class="control-label" for="gamer_id" data-translate="shop_test.form.gamer_id"></label> *
+                                <input type="text" id="gamer_id" name="gamer_id" class="form-control" ng-model="petitions.gamer_id" required>
+                            </div>
+                            <div>
+
+                                <label class="control-label" for="level_category_id" data-translate="shop_test.form.shop"></label> *
+                                <select id="level_category_id" name="level_category_id" class="form-control" ng-model="petitions.level_category_id" required ng-change="calculateArticles()">
+                                    <option></option>
+                                    <option ng-repeat="shop in shops" value="{[{ shop.level_category.id }]}">{[{shop.name}]}</option>
+                                </select>
+                            </div>
+
+
+                            <div ng-if="advanced_options" style="margin-bottom: 10px">
+
+                                <div>
+                                    <label class="control-label"  for="country" data-translate="shop_test.form.country"></label>
+                                    <select id="country" name="country" class="form-control" ng-model="petitions.country" ng-change="calculateArticles()" ng-options="country.id as (country.name + ' (' + country.id + ') ') for country in countries">
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="control-label" for="language"  data-translate="shop_test.form.language"></label>
+                                    <select id="language" name="language" class="form-control" ng-model="petitions.language">
+                                        <option ng-repeat="language in languages" value="{[{language.id}]}">{[{language.name}]}</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="control-label" for="selected_tab"  data-translate="shop_test.form.selected_tab"></label>
+                                    <select id="selected_tab" name="selected_tab" class="form-control" ng-model="petitions.selected_tab" ng-change="calculateArticles()">
+                                        <option ng-repeat="tab in tabs" value="{[{tab.name_unique}]}">{[{tab.name}]}</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="control-label" for="selected_article"  data-translate="shop_test.form.selected_article"></label>
+                                    <select id="selected_article" name="selected_article" class="form-control" ng-model="petitions.selected_article">
+                                        <option ng-repeat="article in articles" value="{[{article.id}]}">{[{article.name_label | api_translation:article.items_quantity}]}</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div style="text-align: center; margin-top: 20px" ng-init="advanced_options = false">
+                                <div class="btn-group btn-group-xs"  style="">
+                                    <button class="btn btn-default" type="button" ng-if="!advanced_options" ng-click="$parent.advanced_options = !advanced_options; calculateArticles()">
+                                        <i class="fa fa-plus"></i> <span data-translate="shop_test.form.advanced_options"></span>
+                                    </button>
+                                    <button class="btn btn-default" type="button" ng-if="advanced_options" ng-click="$parent.advanced_options = !advanced_options">
+                                        <i class="fa fa-minus"></i> <span data-translate="shop_test.form.less_advanced_options"></span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row" style="text-align: center; margin: 20px 0 15px" >
+
+                                <div class="btn-group btn-group-md">
+                                    <button class="btn btn-info" type="submit" ng-click="loadIframe(410)" ng-disabled="form_articles_in_shop.$invalid">
+                                        <i class="glyphicon glyphicon-phone"></i> <span data-translate="mobile"></span>
+                                    </button>
+                                    <button class="btn btn-info" type="submit" ng-click="loadIframe(768)" ng-disabled="form_articles_in_shop.$invalid">
+                                        <i class="glyphicon glyphicon-resize-horizontal"></i> <span data-translate="tablet"></span>
+                                    </button>
+                                    <button class="btn btn-info" type="submit" ng-click="loadIframe()" ng-disabled="form_articles_in_shop.$invalid">
+                                        <i class="glyphicon glyphicon-fullscreen"></i> <span data-translate="computer"></span>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                        <div class="row" style="margin: 20px 0 15px; display: inline-block;border-top: 1px dashed #aaa;" >
+                            <h3 translate="shop_test.title_ignore_users"></h3>
+                            <p translate="shop_test.ignore_users_desc"></p>
+
+                            <form name="form_shop_test_add_external_users" class="form-horizontal validation" ng-submit="formValid() && setForTest(true, add_external_user_id)">
+                                <div class="input-group" style="margin-top: 10px">
+                                    <input ng-model="add_external_user_id" required  type="text" class="form-control" >
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="submit" ng-disabled="!formValid()" translate="shop_test.add_external_user"></button>
+                                    </span>
+                                </div>
+                                <div class="row" style="margin-top: 20px">
+                                    <div class="col-md-12">
+                                        <button type="button" ng-repeat="gamer in gamersIgnored" class="btn btn-default" style="margin: 3px">
+                                            {[{ gamer.gamer_external_id }]}
+                                            <i class="glyphicon glyphicon-remove" style="color: rgb(181, 0, 0)" ng-click="setForTest(false, gamer.gamer_external_id)"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- NEW WIDGET START -->
+        <article class="col-md-6 col-lg-9">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                    <h2>{[{ 'shop_test.title_view' | translate }]}</h2>
+                </header>
+
+                <!-- widget content -->
+                <div class="widget-body" style="text-align: center">
+                    <div id="shop_test" style="margin: 0 auto;">
+                        <iframe name="shop_test_iframe" id="shop_test_iframe" srcdoc="<div style='text-align: center;margin: 10% auto; background: #fff;border: 2px solid #666;-webkit-border-radius: 100px;-moz-border-radius: 100px;border-radius: 100px;-moz-background-clip: padding;-webkit-background-clip: padding-box;background-clip: padding-box;-webkit-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.25);-moz-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.25);box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.25);padding: 30px 20px 20px 20px;text-align:center; width: 250px;'><img src='/img/logo_200x50.png'></div></div>" style="min-height:900px; border: 1px solid #ccc; width: 100%;background: url('/img/transparent.gif')" src="/img/logo_200x50.png" >
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</div>

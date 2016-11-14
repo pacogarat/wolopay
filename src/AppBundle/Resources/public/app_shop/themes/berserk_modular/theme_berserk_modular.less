@@ -1,0 +1,46 @@
+// import default vars
+@import "../modular_1_vars_ini";
+
+// override default vars
+
+@THEME_FOLDER: "berserk_modular";
+@PRODUCT_NAME_OLD_COLOR: #DDD;
+@PRODUCT_NAME_FONT_SIZE: 1.3em;
+@TOOLTIP_BACKGROUND: rgba(252, 233, 202, 1);
+@TOOLTIP_BORDER: 2px solid #515151;
+@TOOLTIP_LEFT_BORDER: 1px dotted #515151;
+@TOOLTIP_TEXT_SHADOW: #ccc;
+@TOOLTIP_COLOR: #111;
+@OFFER_TIMER_COLOR: #FF1414;
+@OFFER_TIMER_TEXT_SHADOW: none;
+@MOBILE_BACKGROUND_COLOR: #A78F69;
+
+// get final vars, concatenate vars
+@import "../modular_2_vars_second";
+
+@FONT: 'custom_font';
+
+// get default css
+@import "../modular_3_style";
+
+@import "../default_chosen";
+@import "../default_animation";
+
+
+// If you want override css below
+.wolo-container #tab-menu .tab:not(:first-child)
+{
+    margin-left: -20px;
+}
+
+@font-face {
+    font-family: ~"@{FONT}";
+    src: url('@{FILES_PATH}/fonts/pro_light.eot');
+    src: url('@{FILES_PATH}/fonts/pro_light.eot?#iefix') format('embedded-opentype'),
+        url('@{FILES_PATH}/fonts/pro_light.woff2') format('woff2'),
+        url('@{FILES_PATH}/fonts/pro_light.woff') format('woff'),
+        url('@{FILES_PATH}/fonts/pro_light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+

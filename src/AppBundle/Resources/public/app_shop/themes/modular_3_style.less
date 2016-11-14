@@ -1,0 +1,160 @@
+@import "default_3_style.less";
+
+// mobile
+@media only screen and (max-width: 960px){
+    .wolo-container{
+
+        .categories{
+            display: none;
+        }
+
+        .arrow-left,.arrow-right{
+            background: none !important;
+            margin: 0 !important;
+
+            img{
+                margin: 0;
+            }
+        }
+        .arrow-left{
+            img{
+                margin-left: 9px;
+            }
+        }
+        .arrow-right{
+            img{
+                margin-left: -9px;
+            }
+        }
+    }
+}
+//high screen
+@media only screen and (min-width: 961px){
+    .wolo-container{
+
+        .cart-summary{
+            width: 550px;
+            left: 50%;
+            margin-left: -298px;
+        }
+
+
+        .section .products when (@REMOVE_ALL_IMAGES = false){
+            background: url("@{FILES_PATH}/img/products_bg.jpg");
+        }
+
+        .categories{
+            & when (@REMOVE_ALL_IMAGES = false) {
+                background: url("@{FILES_PATH}/img/category.jpg") no-repeat top;
+            }
+
+            height: @CATEGORIES_BOX_HEIGHT;
+            overflow: hidden;
+
+            ul{
+                height: 100%;
+                width: 100%;
+                padding: 2px 0 1px 15px;
+                font-size: 1.5em;
+                font-weight: bold;
+                color: #fff;
+                list-style-type: none;
+                .box-sizing(border-box);
+
+                display: inline-block;
+
+                li{
+                    cursor: pointer;
+                    height: 100%;
+                    padding: 3px 20px 0;
+                    border-right: 1px dotted #4E1C1D;
+                    text-shadow: 1px 1px 0 #4E1C1D;
+                    display: inline-block;
+
+                    img{
+                        -webkit-filter: grayscale(1); /* Old WebKit */
+                        filter: grayscale(1);
+                    }
+
+                    &:hover, &.selected{
+                        background-color: rgba(255, 255, 255, 0.14);
+                        img{
+                            -webkit-filter: none; /* Old WebKit */
+                            filter: none;
+                        }
+                    }
+                }
+
+                .height-adjust-content{
+                    height: 100%;
+                }
+            }
+        }
+
+        .pay-methods when (@REMOVE_ALL_IMAGES = false) {
+            background: url("@{FILES_PATH}/img/paymethods_bg.png");
+        }
+        .register-cash when (@REMOVE_ALL_IMAGES = false) {
+            background: url("@{FILES_PATH}/img/body_bottom_bg.png") top center;
+            background-repeat: no-repeat;
+        }
+        .before-second, .before-first{
+            & when (@HAS_GACHA) and (@REMOVE_ALL_IMAGES = false) {
+                background: url("@{FILES_PATH}/img/separator.png") repeat-x;
+                height: @SEPARATOR_FIRST;
+            }
+        }
+        .after-categories {
+            & when (@REMOVE_ALL_IMAGES = false) {
+                background: url("@{FILES_PATH}/img/after_categories_separator.png") repeat-x;
+            }
+            height: @SEPARATOR_AFTER_CATEGORIES_HEIGHT;
+        }
+
+        .arrow-left{
+            img{
+                margin: @ARROW_IMG_LEFT_MARGIN_DESKTOP;
+            }
+        }
+
+        .arrow-right{
+            img{
+                margin: @ARROW_IMG_RIGHT_MARGIN_DESKTOP;
+            }
+        }
+    }
+
+}
+
+
+.wolo-container{
+
+    .wolo-container .cart span b{
+        padding-top: 2px;
+    }
+
+    .arrow-left, .arrow-right{
+        position: absolute;
+    }
+
+    .arrow-left, .arrow-right {
+        img{
+            width: 38px;
+            height: 39px;
+        }
+    }
+
+    .arrow-left when (@REMOVE_ALL_IMAGES = false){
+        background: url("@{FILES_PATH}/img/arrow_left_box.png") no-repeat;
+    }
+
+    .arrow-right when (@REMOVE_ALL_IMAGES = false){
+        background: url("@{FILES_PATH}/img/arrow_right_box.png") no-repeat;
+    }
+
+
+    // If you want override css below
+    #total_amount{
+        font-size: 1.3em;
+    }
+}

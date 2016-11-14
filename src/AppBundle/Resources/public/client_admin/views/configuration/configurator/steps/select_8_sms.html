@@ -1,0 +1,133 @@
+<form class="form-horizontal validation" name="form_sms" novalidate ng-controller="ConfiguratorSelectSMSController" ng-submit="form_sms.$valid && submit()">
+    <fieldset>
+        <legend>
+            {[{ 'configurator.step8.title' | translate }]}
+            <wizard-next-button form-name="form_sms"></wizard-next-button>
+        </legend>
+        <p class="newlines">{[{ 'configurator.step8.desc' | translate }]}</p>
+
+        <div ng-if="empty" class="alert alert-block alert-info" >
+            <i class="fa-fw fa fa-info"></i> {[{ 'configurator.step8.no_special_pay_methods' | translate }]}
+        </div>
+
+        <div ng-cloak>
+            <div>
+                <div class="row" style="margin-top: 30px" >
+
+                    <div class="col-md-12" >
+
+                        <div style="margin-bottom: 20px; text-align: left">
+                            <div class="btn-group">
+                                <button ng-repeat="country in countries" ng-if="!country.realCountryConfigured" ng-class="{'active': $parent.countrySelected.id == country.id}" type="button" class="btn btn-default" aria-label="Left Align" ng-click="onChangeCountry(country, country)">{[{ country.name }]}</button>
+                            </div>
+
+                            <div ng-if="hasSomeOther">
+                                <h3>Others</h3>
+
+                                <div class="btn-group">
+                                    <button ng-repeat="country in countries" ng-if="country.realCountryConfigured" ng-class="{'active': $parent.countrySelected.id == country.id}" type="button" class="btn btn-default" aria-label="Left Align" ng-click="onChangeCountry(country, country.realCountryConfigured)">{[{ country.name }]} {[{ country.realCountryConfigured.name }]}</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 20px">
+
+                    <div class="col-md-8 col-md-offset-2" >
+
+                        <div ng-if="!payMethodCustomsAvailableByCountry && !loading " class="alert alert-block alert-info" >
+                            <i class="fa-fw fa fa-info"></i> {[{ 'configurator.step8.no_special_pay_methods_by_country' | translate }]}
+                        </div>
+                        <div ng-if="payMethodCustomsAvailableByCountry">
+
+                            <div class="row" style="font-weight: bold;margin-bottom: 24px">
+                                <div class="col-md-3 col-md-offset-2">{[{ 'configurator.step8.col_payment_type' | translate }]}</div>
+                                <div class="col-md-3">{[{ 'configurator.step8.col_sms_operator' | translate }]}</div>
+                                <div class="col-md-2">{[{ 'configurator.step8.col_price' | translate }]}</div>
+                                <div class="col-md-2">{[{ 'configurator.step8.col_fee' | translate }]}</div>
+                            </div>
+                            <div ng-repeat="smsOrVoice in customsAvailableByCountryGrouped">
+                                <div ng-if="smsOrVoice.type == 'sms'" class="row" style="margin-top: 4px; border-bottom: 1px solid #eee; padding-top: 10px">
+                                    <div class="col-md-2"><img ng-src="{[{ smsOrVoice.img }]}" height="40" width="80"></div>
+                                    <div class="col-md-3">{[{ 'configurator.step8.sms_payments' | translate }]}</div>
+                                    <div class="col-md-3">{[{ smsOrVoice.operator.name }]}</div>
+                                    <div class="col-md-2"><span class="btn btn-xs btn-success">{[{ smsOrVoice.amount }]} {[{ smsOrVoice.currency.symbol }]}</span></div>
+                                    <div class="col-md-2">{[{ smsOrVoice.fee_provider_percent }]}%</div>
+                                </div>
+                                <div ng-if="smsOrVoice.type == 'voice'" class="row" style="margin-top: 4px; border-bottom: 1px solid #eee; padding-top: 10px">
+                                    <div class="col-md-2"><img ng-src="{[{ smsOrVoice.img }]}" height="40" width="80"></div>
+                                    <div class="col-md-3">{[{ 'configurator.step8.voice_payments' | translate }]}</div>
+                                    <div class="col-md-2 col-md-offset-3"><span class="btn btn-xs btn-success">{[{ smsOrVoice.amount }]} {[{ smsOrVoice.currency.symbol }]}</span></div>
+                                    <div class="col-md-2">{[{ smsOrVoice.fee_provider_percent }]}%</div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top: 40px">
+
+                                <ul class="nav nav-tabs" style="margin: 15px 0 30px 0;" >
+                                    <li role="presentation" style="cursor: pointer;"  ng-repeat="category in categories" ng-class="{'active': category.level_category.id == tab.id}" ng-click="$parent.tab = category.level_category"><a>{[{ category.level_category.name }]}</a></li>
+                                </ul>
+
+                                <div class="col-md-12" >
+                                    <div ng-repeat="shop in appShops" class="row">
+                                        <fieldset class="col-md-12" style="margin-bottom: 15px; padding-bottom: 15px; overflow: hidden; overflow-x: auto;" ng-if="shop.level_category.id == tab.id">
+                                            <!--<legend>{[{ shop.name }]}</legend>-->
+                                            <div class="col-md-12">
+                                                <div style="font-weight: bold; padding-bottom: 10px; padding-left: 200px">
+                                                    <div style="display: inline;white-space: nowrap"  ng-repeat="smsOrVoice in customsAvailableByCountryGrouped" >
+                                                        <div ng-if="smsOrVoice.type == 'sms'" style="white-space: nowrap; text-align: center;text-overflow: ellipsis;display: inline-block;width: 150px;overflow: hidden; text-align: center">{[{ smsOrVoice.amount }]} {[{ smsOrVoice.currency.symbol }]} {[{ smsOrVoice.operator.name }]}</div>
+                                                        <div ng-if="smsOrVoice.type == 'voice'" style="white-space: nowrap; text-align: center;text-overflow: ellipsis;display: inline-block;width: 150px;overflow: hidden; text-align: center">{[{ smsOrVoice.amount }]} {[{ smsOrVoice.currency.symbol }]} Voice</div>
+                                                    </div>
+                                                </div>
+                                                <div ng-repeat="article in articles | filter: single">
+
+                                                    <div ng-repeat="appShopArticle in article.app_shop_has_articles" ng-if="shop.level_category.id == appShopArticle.app_shop.level_category.id && ((!countrySelected.realCountryConfigured && appShopArticle.country.id == countrySelected.id) || (countrySelected.realCountryConfigured && appShopArticle.country.id == countrySelected.realCountryConfigured.id))" class="form-inline">
+                                                        <div style="border-bottom: 1px solid #ddd;padding-top: 5px">
+                                                            <div style="position: absolute;width: 200px;overflow: hidden; ">
+                                                                <div style="float: left;width: 110px;overflow: hidden;vertical-align: top; white-space: nowrap; text-overflow: ellipsis;">
+                                                                    {[{ article.name_label | api_translation | replace_our_vars: article.items_quantity}]}
+                                                                </div>
+                                                                <div style="width: 60px;overflow: hidden;vertical-align: top; white-space: nowrap">
+                                                                    {[{ appShopArticle.current_amount_without_offer }]} {[{ appShopArticle.country.currency.symbol }]}
+                                                                </div>
+                                                            </div>
+                                                            <div style="margin-left: 200px">
+                                                                <div style="display: inline; white-space: nowrap" ng-repeat="smsOrVoice in customsAvailableByCountryGrouped">
+                                                                    <div ng-if="smsOrVoice.type == 'sms'" style="display: inline-block;width: 150px;overflow: hidden;text-align: center;">
+                                                                        <label>
+                                                                            <input type="checkbox" class="checkbox style-0" ng-model="appShopArticle['selected_sms_'+smsOrVoice.id]" ng-change="checkboxSelectedPayMethod(appShopArticle, smsOrVoice, appShopArticle['selected_sms_'+smsOrVoice.id], 'selected_sms_')">
+                                                                            <span></span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div ng-if="smsOrVoice.type == 'voice'" style="display: inline-block;width: 150px;overflow: hidden; text-align: center" >
+                                                                        <label>
+                                                                            <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="appShopArticle['selected_voice_' + smsOrVoice.id]" ng-change="checkboxSelectedPayMethod(appShopArticle, smsOrVoice, appShopArticle['selected_voice_'+smsOrVoice.id], 'selected_voice_')">
+                                                                            <span></span>
+                                                                        </label>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </fieldset>
+</form>

@@ -1,0 +1,64 @@
+{# client \AppBundle\Entity\Client #}
+{# finInvoice \AppBundle\Entity\FinInvoice #}
+{# storageCurrencies \AppBundle\Entity\NotPersisted\StorageCurrencyMoney #}
+{# money \AppBundle\Entity\NotPersisted\Money #}
+{% extends 'base_pdf.html.twig' %}
+{% block body %}
+<div>
+    <div style="clear: both;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 70%;">
+                    {{ finInvoice.companyFrom.nameCompany }}<br>
+                    CIF: {{ finInvoice.companyFrom.cif }}<br>
+                    {{ finInvoice.companyFrom.address }}<br>
+                    {{ finInvoice.companyFrom.country.name }} PC: {{ finInvoice.companyFrom.postalCode }}
+                </td>
+                <td style="text-align: center; padding-right: 50px">
+                    <img src="{{kernel_root_dir}}/../web{% path finInvoice.companyFrom.logo, 'pdf' %}" style="clear: both;">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="padding: 50px 0 100px 0">
+
+        {#Client details#}
+        <table>
+            <tr>
+                <td style="width: 55%;font-weight: bold; font-size: 1.2em">
+                    {{ finInvoice.companyTo.nameCompany }}<br>
+                    Attn. Finance Department<br>
+                    {{ finInvoice.companyTo.address }}<br>
+                    {{ finInvoice.companyTo.postalCode }}<br>
+                    {{ finInvoice.companyTo.country.name }}
+                </td>
+                <td>
+                    <table style="width: 100%">
+                        <tr>
+                            <td>Invoice Number:</td>
+                            <td class="extra_padding">{{ finInvoice.invoiceNumber }}</td>
+                        </tr>
+                        <tr>
+                            <td>Invoice Date:</td>
+                            <td class="extra_padding">{{ finInvoice.createdAt |date }}</td>
+                        </tr>
+                        <tr>
+                            <td>Description:</td>
+                            <td class="extra_padding">{{ finInvoice.title }}</td>
+                        </tr>
+                        <tr>
+                            <td>Period:</td>
+                            <td class="extra_padding">{{ finInvoice.referenceDate | date('M Y') }}</td>
+                        </tr>
+                        <tr>
+                            <td>VAT Number:</td>
+                            <td class="extra_padding">{{ finInvoice.companyTo.vatNumber }}</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    {% block page '' %}
+{% endblock %}

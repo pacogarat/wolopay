@@ -1,0 +1,8 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+
+{% block field %}
+    <div style="overflow-x: scroll; width: 1100px;">
+        <pre style="width: 10000px;">{{ value | print_r  }}</pre>
+    </div>
+{% endblock %}

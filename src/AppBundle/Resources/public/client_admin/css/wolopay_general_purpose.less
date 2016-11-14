@@ -1,0 +1,116 @@
+.modified{
+    background: #FFEA82;
+}
+
+.square-color{
+    padding: 0 10px;
+    border: 1px solid #333;
+    margin: 0 5px;
+}
+
+.table{
+    &.dashed td{
+        border-top: 1px dashed #ccc;
+    }
+    &.no-border td{
+        border-top: 0px !important;
+    }
+    tfoot{
+        td{
+            border-top: 1px dashed #bbb !important;
+            padding-top: 13px !important;
+        }
+        .total_text{
+            text-align: right;
+            font-weight: bold;
+        }
+    }
+}
+
+@ARTICLE_CATEGORY_SINGLE_PURCHASE_COLOR: #528194;
+@ARTICLE_CATEGORY_SUBSCRIPTION_PURCHASE_COLOR: #3c763d;
+@ARTICLE_CATEGORY_FREE_PURCHASE_COLOR: #FD9520;
+
+.article-category-single_payment, .article-category-subscription, .article-category-free{
+    text-shadow: 1px 1px 0 #666;
+    color: #fff;
+    border-color: #666;
+
+    &:hover{
+        text-shadow: 1px 1px 0 #fff;
+    }
+}
+
+.article-category-single_payment{
+    background: lighten(@ARTICLE_CATEGORY_SINGLE_PURCHASE_COLOR, 20%);
+
+    &.extra-options{
+        background: @ARTICLE_CATEGORY_SINGLE_PURCHASE_COLOR;
+    }
+}
+.article-category-subscription{
+    background: lighten(@ARTICLE_CATEGORY_SUBSCRIPTION_PURCHASE_COLOR, 20%);
+
+    &.extra-options{
+        background: @ARTICLE_CATEGORY_SUBSCRIPTION_PURCHASE_COLOR;
+    }
+}
+.article-category-free{
+    background: lighten(@ARTICLE_CATEGORY_FREE_PURCHASE_COLOR, 20%);
+
+    &.extra-options{
+        background: @ARTICLE_CATEGORY_FREE_PURCHASE_COLOR;
+    }
+}
+
+.extra-options{
+    background: #FFF5Eb;
+}
+// GENERAL PURPOSE
+.well-small-padding{
+    padding: 10px;
+}
+.clear-left{
+    clear: left;
+}
+.bold{
+    font-weight: bold;
+}
+.underline{
+    text-decoration: underline;
+}
+.no-wrap{
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    clear: none;
+}
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+@COLOR-NG-GRID-GROUPED: #FFF5Eb;
+
+.td-grouped, .td-grouped-1{
+    background: lighten(@COLOR-NG-GRID-GROUPED, 0%)  !important;
+}
+.td-grouped-2{
+    background: lighten(@COLOR-NG-GRID-GROUPED, 2%)  !important;
+}
+.td-grouped-3{
+    background: lighten(@COLOR-NG-GRID-GROUPED, 3%)  !important;
+}
+.padding-10-v {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}

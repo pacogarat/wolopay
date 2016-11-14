@@ -1,0 +1,72 @@
+{# transaction \AppBundle\Entity\Transaction #}
+
+    // preload
+    container.innerHTML = "<div style='background: #FFFFCC;border: 2px solid #666; -webkit-border-radius: 100px !important; -moz-border-radius: 100px !important; border-radius: 100px !important; -moz-background-clip: padding;-webkit-background-clip: padding-box;background-clip: padding-box;-webkit-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.25);-moz-box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.25);box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.25);padding: 30px 20px 15px 20px;text-align:center; width: 180px; margin:10% auto 0 auto; '><img src='{{ absolute_url(asset('/img/wolopay.gif')) }}' width='100' height='100'><div style='padding-bottom:10px; text-shadow: 1px 1px 0 #fff; font-size: 18px; color: #333;'>♠ <em>Loading</em> ♠</div></div><div style='margin-top: 5%; text-align:center'><img src='{{domain_main}}"+propertiesDefault.app.logo.img+"'></div>";
+
+    // change scope from this generic scripts
+    var $Previous= window.$, jQueryPrevious = window.jQuery, angularPrevious = window.angular, ioPrevious = window.io;
+    window.angular = null;
+    {{ 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' | injectExternalContent | raw }}
+    {{ 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js' | injectExternalContent | raw }}
+    {{ 'https://cdn.socket.io/socket.io-1.1.0.js' | injectExternalContent | raw }}
+
+
+
+    // lang can be setted in js_dynamic
+    if (!l_lang)
+    {
+        if (navigator.userLanguage) // Explorer
+            l_lang = navigator.userLanguage;
+        else if (navigator.language) // FF
+            l_lang = navigator.language;
+        else
+            l_lang = "en";
+
+        l_lang = l_lang.substring(0,2).toLowerCase();
+    }
+
+    var script = '';
+    function loadScript(site, callback)
+    {
+        callback = callback || function(){};
+        var r = new XMLHttpRequest();
+
+        r.open("GET", site, true);
+        r.onreadystatechange = function () {
+            console.log(site, r.readyState , r.status );
+            if (r.readyState != 4 || r.status != 200)
+                return;
+
+            script+=r.responseText;
+            callback(r.responseText);
+
+        };
+        r.send();
+    }
+
+    loadScript('//cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_'+l_lang+'.js', exe($, jQuery, angular));
+
+    function exe($, jQuery, angular)
+    {
+        console.log("script exec");
+
+        {% include '@App/AppShop/Shop/partials_js/load_libraries.html.twig' with { loadJsTemplate: '{{ absolute_url(asset_url) | injectExternalContent | raw }}'} %}
+
+        container = $(container);
+        container.load('{{ domain_main ~ '/cache/show_shop.html' }}', function(){
+            angular.bootstrap(container, ['shopApp']);
+
+
+            // restore generic scripts
+            window.angular = angularPrevious;
+            window.$ = $Previous;
+            window.jQuery = jQueryPrevious;
+            window.io = ioPrevious;
+        });
+
+
+    }
+
+
+    {#exe();#}
+

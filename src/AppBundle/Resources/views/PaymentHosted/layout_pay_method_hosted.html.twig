@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    {% stylesheets
+        "css_glob/bootstrap_extra.css"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+    {% endstylesheets %}
+</head>
+<body>
+<div class="container voffset3">
+    <div class="row">
+        <div class="col-md-12">
+            {% block page %}{% endblock %}
+        </div>
+
+    </div>
+    {% block sponsors %}
+
+        <div class="row voffset5">
+            <div class="col-sm-3 col-sm-offset-3">
+                <img src="{% path appp.logo, 'shop_done' %}">
+            </div>
+            <div class="col-sm-5">
+                <img src="{{ asset('img/logo_200x50.png') }}">
+            </div>
+        </div>
+    {% endblock %}
+</div>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://phpunit.de/manual/current/en/appendixes.configuration.html -->
+
+<phpunit
+    backupGlobals               = "false"
+    backupStaticAttributes      = "false"
+    colors                      = "true"
+    convertErrorsToExceptions   = "true"
+    convertNoticesToExceptions  = "true"
+    convertWarningsToExceptions = "true"
+    processIsolation            = "false"
+    stopOnFailure               = "false"
+    syntaxCheck                 = "false"
+    bootstrap                   = "app/autoload.php"
+    cacheTokens                 = "false"
+        >
+
+    <testsuites>
+        <testsuite name="unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="functional">
+            <directory>tests/Functional</directory>
+        </testsuite>
+        <testsuite name="E2E">
+            <directory>tests/E2E</directory>
+            <directory>tests/E2E/WolopaySDK/</directory>
+        </testsuite>
+        <testsuite name="local">
+            <directory>tests/Unit</directory>
+            <directory>tests/Functional</directory>
+            <directory>tests/E2E/WolopaySDK/</directory>
+            <file>tests/E2E/VoicePaymentTest.php</file>
+            <file>tests/E2E/PromoPaymentTest.php</file>
+            <file>tests/E2E/SMSPaymentTest.php</file>
+            <file>tests/E2E/ShopCartTest.php</file>
+            <file>tests/E2E/ShopTest.php</file>
+            <file>tests/E2E/ShopTutorialTest.php</file>
+        </testsuite>
+    </testsuites>
+
+    <php>
+        <server name="KERNEL_DIR" value="app/" />
+        <!-- DEPRECATIONS TO 2.8 to 3.0 -->
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
+    </php>
+
+    <filter>
+        <whitelist>
+            <directory>../src</directory>
+            <exclude>
+                <directory>src/*/*Bundle/Resources</directory>
+                <directory>src/*/*Bundle/Tests</directory>
+                <directory>src/*/Bundle/*Bundle/Resources</directory>
+                <directory>src/*/*Bundle/Tests/Functional</directory>
+                <directory>src/*/*Bundle/Tests/Unit</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+</phpunit>

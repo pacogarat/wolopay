@@ -1,0 +1,99 @@
+<html>
+<head>
+    <style>
+        #widget{
+            border: 1px solid #ccc;
+            height: 63px;
+            overflow: hidden;
+            -webkit-border-radius: 25px;
+            -moz-border-radius: 25px;
+            border-radius: 25px;
+            -webkit-box-shadow: 0px 0px 30px -10px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px 0px 30px -10px rgba(0,0,0,0.75);
+            box-shadow: 0px 0px 30px -10px rgba(0,0,0,0.75);
+        }
+        #pay-methods{
+            height: 63px;
+            overflow: hidden;
+            z-index: -1;
+            background: #fff;
+        }
+
+        #large{
+            width: 9999px;
+            position: relative;
+            -webkit-transition: left 0.5s ease; /* For Safari 3.1 to 6.0 */
+            transition: left 0.5s ease;
+            left: 0;
+        }
+        .pay-method{
+            float: left;
+            height: 63px;
+            border-right: 1px dashed #ccc;
+            cursor: pointer;
+            z-index: 1;
+        }
+        .pay-method:hover{
+            background: #C7FFB3; /* Old browsers */
+        }
+
+        #widget .left, #widget .right{
+            width: 65px;
+            height: 63px;
+            z-index: 3;
+            cursor: pointer;
+        }
+
+        #widget .left{
+            float: left;
+            background: url('{{asset('bundles/app/app_shop/img/widgets/arrow_left.png')}}') center no-repeat #eee;
+            border-right: 1px solid #ccc;
+        }
+
+        #widget .right{
+            float: right;
+            background: url('{{asset('bundles/app/app_shop/img/widgets/arrow_right.png')}}') center no-repeat #eee;
+            border-left: 1px solid #ccc;
+        }
+    </style>
+    <script>
+        var position = 0,
+            move = 131,
+            number = {{ pmpcs | length }}
+        ;
+
+        function moveCarousel(increase)
+        {
+            var pmWidth = document.getElementById('pay-methods').offsetWidth;
+            var extra = pmWidth % move > 110  ? -1 : 0;
+
+            if (increase && position < 0)
+                position+= move;
+            else if (!increase && (position > ((-1*move * (number + extra)) + (Math.floor(pmWidth/move)*move))))
+                position-= move;
+
+            document.getElementById('large').style.left = position+'px';
+        }
+
+        function openNewTab(id)
+        {
+            window.open("{{ url('widget_select_pmpc', {'transaction_id': transaction.id}) }}/"+id);
+        }
+
+    </script>
+</head>
+<body>
+    <div id="widget">
+        <div class="left" onclick="moveCarousel(true)"></div>
+        <div class="right" onclick="moveCarousel(false)"></div>
+        <div id="pay-methods">
+            <div id="large">
+            {% for pmpc in pmpcs  %}
+                <div class="pay-method" onclick="openNewTab({{pmpc.id}})"><img src="{% path pmpc.payMethod.imgIcon, 'shop' %}"></div>
+            {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

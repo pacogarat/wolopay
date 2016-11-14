@@ -1,0 +1,57 @@
+<form class="validation" name="form_adyen_credentials" ng-submit="submit('adyen', providers.adyen)">
+
+    <div ng-repeat="credential in providers.adyen" ng-include="'form_adyen.html'">
+    </div>
+
+    <button type="submit" ng-disabled="form_adyen_credentials.$invalid" class="btn btn-info btn-lg" style="padding: 6px 50px">{[{ 'save' | translate }]} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
+
+</form>
+
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="form_adyen.html">
+    <div class="form-group">
+        <label translate="merchant.pay_methods.forms.apps"></label>
+        <ui-select multiple name="app_mod_{[{credential.$$hashKey}]}" ng-model="credential.apps" theme="select2" style="width: 100%;" ui-validate="{appsRepeated: 'isValidAppsFromProvider(providers.adyen)', appsNullRepeated: 'isValidAppsFromProviderNull(providers.adyen)'}"  >
+            <ui-select-match>
+                <div>{[{ $item.name }]}</div>
+            </ui-select-match>
+            <ui-select-choices repeat="app in apps | filter: {$: $select.search}">
+                <div>{[{ app.name }]}</div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="alert alert-danger" role="alert"  ng-if="form_adyen_credentials['app_mod_' + credential.$$hashKey].$error.appsNullRepeated || form_adyen_credentials['app_mod_'+credential.$$hashKey].$error.appsRepeated">
+        <div ng-show="form_adyen_credentials['app_mod_{[{credential.$$hashKey}]}'].$error.appsRepeated" translate="merchant.pay_methods.forms.errors.apps_repeated"></div>
+        <div ng-show="form_adyen_credentials['app_mod_{[{credential.$$hashKey}]}'].$error.appsNullRepeated" translate="merchant.pay_methods.forms.errors.apps_null_repeated"></div>
+    </div>
+
+
+    <div class="form-group">
+        <label>Merchant Account*</label>
+        <input type="text" name="name" placeholder=""  ng-model="credential.details.merchant_account" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label>Skin code*</label>
+        <input type="text" name="name" placeholder=""  ng-model="credential.details.skin_code" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label>HMAC key*</label>
+        <input type="text" name="name" placeholder=""  ng-model="credential.details.hmac_key" required class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Header Authorization</label>
+        <input type="text" name="name" placeholder=""  ng-model="credential.details.authorization" class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Api user*</label>
+        <input type="text" name="name" placeholder=""  ng-model="credential.details.api_user" required class="form-control">
+    </div>
+    <div class="form-group">
+        <label>Api password*</label>
+        <input type="text" name="name" placeholder=""  ng-model="credential.details.api_password" required class="form-control">
+    </div>
+
+    <footer-buttons provider-name="'adyen'" credential="credential" credentials="providers.adyen" delete="delete"></footer-buttons>
+
+</script>

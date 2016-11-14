@@ -1,0 +1,1851 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d2ce50a9-54c5-4959-90af-013acc8c4b32" name="Default" comment="improve doc">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/examples/lib" afterPath="$PROJECT_DIR$/doc/examples/lib" />
+    </list>
+    <ignored path="wolopay.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="wolopay" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="security.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="42" column="53" selection-start="1833" selection-end="1847" vertical-scroll-proportion="0.0" vertical-offset="674" max-vertical-offset="2793">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="composer.json" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/composer.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="19" column="16" selection-start="567" selection-end="567" vertical-scroll-proportion="-14.777778" vertical-offset="0" max-vertical-offset="2961">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppKernel.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="89" column="21" selection-start="2919" selection-end="2941" vertical-scroll-proportion="-2.3333333" vertical-offset="1701" max-vertical-offset="2919">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="205" column="21" selection-start="6943" selection-end="6986" vertical-scroll-proportion="0.0" vertical-offset="3676" max-vertical-offset="4452">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parameters.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="28" selection-start="230" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1764">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Version20160912105927.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20160912105927.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="46" selection-start="682" selection-end="694" vertical-scroll-proportion="0.5706522" vertical-offset="0" max-vertical-offset="1113">
+              <folding>
+                <marker date="1473677967454" expanded="true" signature="584:608" placeholder="ALTER TABLE app_document..." />
+                <marker date="1473677967454" expanded="true" signature="671:694" placeholder="DROP TABLE a..." />
+                <marker date="1473677967454" expanded="true" signature="721:750" placeholder="DROP TABLE m..." />
+                <marker date="1473677967454" expanded="true" signature="777:892" placeholder="ALTER TABLE client_api_credential..." />
+                <marker date="1473677967454" expanded="true" signature="919:1225" placeholder="ALTER TABLE app..." />
+                <marker date="1473677967454" expanded="true" signature="1252:1344" placeholder="ALTER TABLE article..." />
+                <marker date="1473677967454" expanded="true" signature="1697:2263" placeholder="CREATE TABLE..app_document..." />
+                <marker date="1473677967454" expanded="true" signature="2290:3098" placeholder="CREATE TABLE..monthly_app_report..." />
+                <marker date="1473677967454" expanded="true" signature="3125:3272" placeholder="ALTER TABLE app_document..." />
+                <marker date="1473677967454" expanded="true" signature="3299:3399" placeholder="ALTER TABLE app_document..." />
+                <marker date="1473677967454" expanded="true" signature="3426:3537" placeholder="ALTER TABLE app_document..." />
+                <marker date="1473677967454" expanded="true" signature="3564:3681" placeholder="ALTER TABLE monthly_app_report..." />
+                <marker date="1473677967454" expanded="true" signature="3708:3824" placeholder="ALTER TABLE monthly_app_report..." />
+                <marker date="1473677967454" expanded="true" signature="3851:4193" placeholder="ALTER TABLE app..." />
+                <marker date="1473677967454" expanded="true" signature="4220:4335" placeholder="ALTER TABLE article..." />
+                <marker date="1473677967454" expanded="true" signature="4362:4395" placeholder="ALTER TABLE client_api_credential..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/services.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="109" column="0" selection-start="3920" selection-end="3920" vertical-scroll-proportion="0.0" vertical-offset="1799" max-vertical-offset="2562">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services_security.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/services_security.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="63" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="273">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services_sonata.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/services_sonata.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="0" selection-start="2292" selection-end="2292" vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="5439">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="services_form.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/services_form.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="27" selection-start="37" selection-end="37" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="231">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="FrameworkCommandLineHistory">
+    <commandsHistory>
+      <command text="s doctrine:database:create" />
+      <command text="s doctrine:schema:create" />
+      <command text="s doctrine:fixtures:load" />
+      <command text="s cache:clear" />
+      <command text="c install" />
+      <command text="s doctrine:schema:update --force " />
+      <command text="s doctrine:fixtures:load" />
+      <command text="s cache:clear" />
+      <command text="s doctrine:generate:entities AppBundle:TransactionMultiApp" />
+      <command text="s cache:clear" />
+      <command text="s lexik:translations:import  --globals " />
+      <command text="s assets:install  --symlink " />
+      <command text="s lexik:translations:import  --globals " />
+      <command text="s shop:simulate:payment_complete -h" />
+      <command text="s shop:simulate:payment_complete 12 --getLastPayment=1 -h" />
+      <command text="s shop:simulate:payment_complete 12 --getLastPayment=1 " />
+      <command text="s cache:clear" />
+      <command text="s doctrine:schema:update --force " />
+      <command text="s cache:clear" />
+      <command text="s doctrine:schema:update --force " />
+      <command text="s cache:clear" />
+      <command text="s doctrine:schema:update --force " />
+      <command text="s doctrine:schema:update --dump-sql " />
+      <command text="s doctrine:schema:update --force " />
+      <command text="s cache:clear" />
+    </commandsHistory>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="purse" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/public/app_shop/themes/default_3_style.less" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/public/app_shop/themes/modular_3_style.less" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/public/app_shop/themes/piece_wallet.less" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/public/app_shop/js/app/controller/ng.articles_ctrl.js" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/public/app_shop/themes/default_animation.less" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/public/app_shop/themes/piece_cart.less" />
+        <option value="$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadPayMethodHasProvider.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/GamerWallet.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Repository/GamerWalletRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/AppShop/Shop/partials_js/properties_default.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Payment/Util/GamerWalletService.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/AppShop/Shop/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/AppShop/ShopController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Currency.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/Elements/GamerIdType.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/Elements/GamerIdWithExternalIdType.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/DataTransformer/GamerExternalIdToStringCreateIfNotExistTransformer.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Validator/Constraints/SameClientValidator.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Repository/TransactionRepository.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/SuperClass/AbstractAppShopBase.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/AppShop.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Transaction.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/TransactionMultiApp.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/TransactionMultiAppConfByApp.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Validator/Constraints/TransactionGeneralValidator.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Command/TransactionCreateCommand.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/SuperClass/AbstractTransactionBase.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/Api/TransactionController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Validator/Constraints/DifferentAppsValidator.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/Type/Api/TransactionMultiAppConfByAppApiType.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/Type/Api/TransactionMultiAppApiType.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Validator/Constraints/SameClient.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/ClientAdmin/AppController.php" />
+        <option value="$PROJECT_DIR$/doc/tutoriales/insert_new_shop_theme.md" />
+        <option value="$PROJECT_DIR$/app/DoctrineMigrations/Version20160419151829.php" />
+        <option value="$PROJECT_DIR$/doc/tutoriales/insert_new_theme_in_shop.md" />
+        <option value="$PROJECT_DIR$/doc/tutoriales/payment_integration.md" />
+        <option value="$PROJECT_DIR$/doc/tutoriales/paymethod_integration.md" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/doc/diagrams/payment_prepare_ipn.puml" />
+        <option value="$PROJECT_DIR$/doc/diagrams/payment_ipn_callback_static_flow.puml" />
+        <option value="$PROJECT_DIR$/doc/diagrams/payment_prepare_flow.puml" />
+        <option value="$PROJECT_DIR$/doc/diagrams/payment_ipn_callback_flow.puml" />
+        <option value="$PROJECT_DIR$/doc/tutoriales/new_paymethod_integration.md" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/ClientAdmin/Default/includes/left-panel.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/parameters.yml" />
+        <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/app/config/services_sonata.yml" />
+        <option value="$PROJECT_DIR$/app/config/services_security.yml" />
+        <option value="$PROJECT_DIR$/app/AppKernel.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP5.5" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1920" />
+    <option name="y" value="24" />
+    <option name="width" value="1920" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Default">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="wolopay">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/AppBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="wolopay">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/AppBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="DataFixtures/ORM">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Tests" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="wolopay">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="wolopay">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="wolopay">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="AppBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="wolopay">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="AppBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Controller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="wolopay">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="AppBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Controller">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="Admin">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="wolopay">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Changed Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="wolopay">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/AppBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="wolopay">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src/AppBundle">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="DataFixtures/ORM">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wolopay" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wolopay" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wolopay" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="recentsLimit" value="5" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="212" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="232" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="242" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1096" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="358" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="362" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="385" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="677" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="FullScreen" value="false" />
+    <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
+    <property name="options.lastSelected" value="preferences.keymap" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="LayoutCode.rearrangeEntriesLESS" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="SearchEverywhereHistory" value="-.&#10;/&#10;-&#10;=&#10;$" />
+    <property name="LayoutCode.rearrangeEntriesHTML" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJavaScript" value="false" />
+    <property name="LayoutCode.rearrangeEntries&lt;Generic&gt;" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/doc/diagrams" />
+      <recent name="$PROJECT_DIR$/doc/tutoriales" />
+      <recent name="$PROJECT_DIR$/src/AppBundle/Validator/Constraints" />
+      <recent name="$PROJECT_DIR$/src/AppBundle/Entity/SuperClass" />
+      <recent name="$PROJECT_DIR$/src/AppBundle/Resources/views/Others/Default" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/doc/diagrams" />
+      <recent name="$PROJECT_DIR$/src/AppBundle/Entity/Repository" />
+      <recent name="$PROJECT_DIR$/src/AppBundle/Resources/public/app_shop/themes/berserk_modular/img" />
+      <recent name="$PROJECT_DIR$/app/Resources/PixSortableBehaviorBundle/views" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHPUnit.TransactionControllerTest.testGetTransactionOK">
+    <configuration default="false" name="ArticleServiceTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="AppBundle\Tests\Unit\Payment\Service\Helper\ArticleServiceTest" file="$PROJECT_DIR$/tests/Unit/Service/ArticleServiceTest.php" scope="Class" />
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TransactionsControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="AppBundle\Tests\Functional\Controller\ClientAdmin\TransactionsControllerTest" file="$PROJECT_DIR$/tests/Functional/Controller/ClientAdmin/TransactionsControllerTest.php" scope="Class" />
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="DefaultControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="AppBundle\Tests\Functional\Controller\ClientAdmin\DefaultControllerTest" file="$PROJECT_DIR$/tests/Functional/Controller/ClientAdmin/DefaultControllerTest.php" scope="Class" />
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TransactionControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="AppBundle\Tests\Functional\Controller\Api\TransactionControllerTest" file="$PROJECT_DIR$/tests/Functional/Controller/Api/TransactionControllerTest.php" scope="Class" />
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TransactionControllerTest.testGetTransactionOK" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="AppBundle\Tests\Functional\Controller\Api\TransactionControllerTest" file="$PROJECT_DIR$/tests/Functional/Controller/Api/TransactionControllerTest.php" method="testGetTransactionOK" scope="Method" />
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="c0159a11-943a-4e6a-a888-5988718357d9" server_name="pg_miguel">
+      <method />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="PHPUnit.ArticleServiceTest" />
+      <item index="1" class="java.lang.String" itemvalue="PHPUnit.TransactionsControllerTest" />
+      <item index="2" class="java.lang.String" itemvalue="PHPUnit.DefaultControllerTest" />
+      <item index="3" class="java.lang.String" itemvalue="PHPUnit.TransactionControllerTest" />
+      <item index="4" class="java.lang.String" itemvalue="PHPUnit.TransactionControllerTest.testGetTransactionOK" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="PHPUnit.TransactionControllerTest.testGetTransactionOK" />
+        <item index="1" class="java.lang.String" itemvalue="PHPUnit.TransactionControllerTest" />
+        <item index="2" class="java.lang.String" itemvalue="PHPUnit.DefaultControllerTest" />
+        <item index="3" class="java.lang.String" itemvalue="PHPUnit.TransactionsControllerTest" />
+        <item index="4" class="java.lang.String" itemvalue="PHPUnit.ArticleServiceTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d2ce50a9-54c5-4959-90af-013acc8c4b32" name="Default" comment="" />
+      <created>1455006830878</created>
+      <updated>1455006830878</updated>
+    </task>
+    <task id="LOCAL-00001" summary="- Symfony 2.6 updated to 2.7 long support&#10;- Translations new features&#10;- gacha box theme&#10;- unique purchases in admin&#10;- PurchaseNotification moved&#10;- Notification in payment cancellation(pending almost finished) &#10;">
+      <created>1455015347477</created>
+      <updated>1455015347477</updated>
+    </task>
+    <task id="LOCAL-00002" summary="App Notification in payment cancellation">
+      <created>1455020311087</created>
+      <updated>1455020311087</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix admin item quantity">
+      <created>1455031141576</created>
+      <updated>1455031141576</updated>
+    </task>
+    <task id="LOCAL-00004" summary="valentines day&#10;fix error in support">
+      <created>1455103019439</created>
+      <updated>1455103019439</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix gacha animation text wrap">
+      <created>1455109092163</created>
+      <updated>1455109092163</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fix parameter json">
+      <created>1455188315647</created>
+      <updated>1455188315647</updated>
+    </task>
+    <task id="LOCAL-00007" summary="copy client user">
+      <created>1455211923101</created>
+      <updated>1455211923101</updated>
+    </task>
+    <task id="LOCAL-00008" summary="composer updated">
+      <created>1455212319452</created>
+      <updated>1455212319452</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fix background berserk">
+      <created>1455299090822</created>
+      <updated>1455299090822</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Facebook external store">
+      <created>1455875733753</created>
+      <updated>1455875733753</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Pending tigo">
+      <created>1456145333512</created>
+      <updated>1456145333512</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Little fixes in designs">
+      <created>1456152477840</created>
+      <updated>1456152477840</updated>
+    </task>
+    <task id="LOCAL-00013" summary="new_home">
+      <created>1456748683379</created>
+      <updated>1456748683379</updated>
+    </task>
+    <task id="LOCAL-00014" summary="prevent errors token from the future">
+      <created>1456748860106</created>
+      <updated>1456748860106</updated>
+    </task>
+    <task id="LOCAL-00015" summary="new_home">
+      <created>1456760618538</created>
+      <updated>1456760618538</updated>
+    </task>
+    <task id="LOCAL-00016" summary="new_home">
+      <created>1456762029408</created>
+      <updated>1456762029409</updated>
+    </task>
+    <task id="LOCAL-00017" summary="prefix collision">
+      <created>1456762884195</created>
+      <updated>1456762884195</updated>
+    </task>
+    <task id="LOCAL-00018" summary="facebook payment">
+      <created>1456763361685</created>
+      <updated>1456763361685</updated>
+    </task>
+    <task id="LOCAL-00019" summary="facebook payment">
+      <created>1456764162910</created>
+      <updated>1456764162910</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fix home">
+      <created>1456764526587</created>
+      <updated>1456764526587</updated>
+    </task>
+    <task id="LOCAL-00021" summary="fix home">
+      <created>1456764673526</created>
+      <updated>1456764673526</updated>
+    </task>
+    <task id="LOCAL-00022" summary="migration">
+      <created>1456764924036</created>
+      <updated>1456764924036</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fix home">
+      <created>1456765401790</created>
+      <updated>1456765401790</updated>
+    </task>
+    <task id="LOCAL-00024" summary="home ended">
+      <created>1456848467003</created>
+      <updated>1456848467003</updated>
+    </task>
+    <task id="LOCAL-00025" summary="home ended">
+      <created>1456849495135</created>
+      <updated>1456849495135</updated>
+    </task>
+    <task id="LOCAL-00026" summary="home ended">
+      <created>1456849855328</created>
+      <updated>1456849855328</updated>
+    </task>
+    <task id="LOCAL-00027" summary="home ended">
+      <created>1456850602445</created>
+      <updated>1456850602445</updated>
+    </task>
+    <task id="LOCAL-00028" summary="home ended">
+      <created>1456850856265</created>
+      <updated>1456850856265</updated>
+    </task>
+    <task id="LOCAL-00029" summary="set prod url">
+      <created>1456852641439</created>
+      <updated>1456852641439</updated>
+    </task>
+    <task id="LOCAL-00030" summary="home ended">
+      <created>1456852952462</created>
+      <updated>1456852952462</updated>
+    </task>
+    <task id="LOCAL-00031" summary="affiliate + transaction + purchases in same row for bigger screens">
+      <created>1456853906129</created>
+      <updated>1456853906129</updated>
+    </task>
+    <task id="LOCAL-00032" summary="affiliate + transaction + purchases in same row for bigger screens">
+      <created>1456907784417</created>
+      <updated>1456907784417</updated>
+    </task>
+    <task id="LOCAL-00033" summary="improve documentation">
+      <created>1456912436897</created>
+      <updated>1456912436897</updated>
+    </task>
+    <task id="LOCAL-00034" summary="affiliate pie improved">
+      <created>1456914181497</created>
+      <updated>1456914181497</updated>
+    </task>
+    <task id="LOCAL-00035" summary="fix sparkline">
+      <created>1456917607956</created>
+      <updated>1456917607956</updated>
+    </task>
+    <task id="LOCAL-00036" summary="improved forms and home with axterix&#10;added email to client post sent form finish form">
+      <created>1456921063961</created>
+      <updated>1456921063961</updated>
+    </task>
+    <task id="LOCAL-00037" summary="utf8 ? WTF">
+      <created>1456943297379</created>
+      <updated>1456943297379</updated>
+    </task>
+    <task id="LOCAL-00038" summary="info controller">
+      <created>1456947322451</created>
+      <updated>1456947322451</updated>
+    </task>
+    <task id="LOCAL-00039" summary="load more">
+      <created>1457002757980</created>
+      <updated>1457002757980</updated>
+    </task>
+    <task id="LOCAL-00040" summary="fix items quantity in purchase details">
+      <created>1457003282097</created>
+      <updated>1457003282097</updated>
+    </task>
+    <task id="LOCAL-00041" summary="fix">
+      <created>1457003466856</created>
+      <updated>1457003466856</updated>
+    </task>
+    <task id="LOCAL-00042" summary="select article">
+      <created>1457019581409</created>
+      <updated>1457019581409</updated>
+    </task>
+    <task id="LOCAL-00043" summary="select article">
+      <created>1457025775486</created>
+      <updated>1457025775486</updated>
+    </task>
+    <task id="LOCAL-00044" summary="tigo">
+      <created>1457026075064</created>
+      <updated>1457026075064</updated>
+    </task>
+    <task id="LOCAL-00045" summary="improve mobile devices and tablets&#10;Selected article auto select article tab&#10;if SelectArticleTab not correspond with SelectArticle Throw exception">
+      <created>1457095342918</created>
+      <updated>1457095342918</updated>
+    </task>
+    <task id="LOCAL-00046" summary="improve mobile devices and tablets&#10;home added devices test">
+      <created>1457108908828</created>
+      <updated>1457108908828</updated>
+    </task>
+    <task id="LOCAL-00047" summary="enable disable chosen depend if its mobile/tablet or not">
+      <created>1457109514447</created>
+      <updated>1457109514447</updated>
+    </task>
+    <task id="LOCAL-00048" summary="fix paymentDetailHasArticles fit to paymentDetail TOTAL">
+      <created>1457350322578</created>
+      <updated>1457350322578</updated>
+    </task>
+    <task id="LOCAL-00049" summary="added a better log in paypal">
+      <created>1457350344725</created>
+      <updated>1457350344725</updated>
+    </task>
+    <task id="LOCAL-00050" summary="improved mobile version in home">
+      <created>1457350399888</created>
+      <updated>1457350399889</updated>
+    </task>
+    <task id="LOCAL-00051" summary="fix tigo">
+      <created>1457361297275</created>
+      <updated>1457361297275</updated>
+    </task>
+    <task id="LOCAL-00052" summary="improve shops forms &amp;&amp; sing up forms">
+      <created>1457365346899</created>
+      <updated>1457365346900</updated>
+    </task>
+    <task id="LOCAL-00053" summary="fix step 3 in wizard">
+      <created>1457370619479</created>
+      <updated>1457370619479</updated>
+    </task>
+    <task id="LOCAL-00054" summary="fix step 3 in wizard">
+      <created>1457370871833</created>
+      <updated>1457370871833</updated>
+    </task>
+    <task id="LOCAL-00055" summary="fix tigo">
+      <created>1457445795046</created>
+      <updated>1457445795046</updated>
+    </task>
+    <task id="LOCAL-00056" summary="fix tigo">
+      <created>1457516507548</created>
+      <updated>1457516507548</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Home lightbox example cache">
+      <created>1457523416283</created>
+      <updated>1457523416283</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Nginx Reverse proxy configuration trusted_proxies">
+      <created>1457541324749</created>
+      <updated>1457541324749</updated>
+    </task>
+    <task id="LOCAL-00059" summary="added cache">
+      <created>1457548268474</created>
+      <updated>1457548268474</updated>
+    </task>
+    <task id="LOCAL-00060" summary="added some caches in api&#10;Tigo&#10;Improve load store in home">
+      <created>1457610076476</created>
+      <updated>1457610076476</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Tigo">
+      <created>1457611438941</created>
+      <updated>1457611438941</updated>
+    </task>
+    <task id="LOCAL-00062" summary="api doc change url">
+      <created>1457612309744</created>
+      <updated>1457612309744</updated>
+    </task>
+    <task id="LOCAL-00063" summary="comment time when it was cached">
+      <created>1457621822807</created>
+      <updated>1457621822808</updated>
+    </task>
+    <task id="LOCAL-00064" summary="recached all static pages after deploy">
+      <created>1457624027243</created>
+      <updated>1457624027243</updated>
+    </task>
+    <task id="LOCAL-00065" summary="fix recached all static pages after deploy">
+      <created>1457624414973</created>
+      <updated>1457624414973</updated>
+    </task>
+    <task id="LOCAL-00066" summary="fix recached all static pages after deploy">
+      <created>1457625007129</created>
+      <updated>1457625007129</updated>
+    </task>
+    <task id="LOCAL-00067" summary="fix recached all static pages after deploy">
+      <created>1457625634532</created>
+      <updated>1457625634532</updated>
+    </task>
+    <task id="LOCAL-00068" summary="fix recached all static pages after deploy">
+      <created>1457627925960</created>
+      <updated>1457627925960</updated>
+    </task>
+    <task id="LOCAL-00069" summary="wizard improved style + select_4 added img preview">
+      <created>1457700777677</created>
+      <updated>1457700777678</updated>
+    </task>
+    <task id="LOCAL-00070" summary="add selected tab in home">
+      <created>1457713028970</created>
+      <updated>1457713028970</updated>
+    </task>
+    <task id="LOCAL-00071" summary="home wolopay">
+      <created>1457716224936</created>
+      <updated>1457716224936</updated>
+    </task>
+    <task id="LOCAL-00072" summary="fix payment widget">
+      <created>1457717930544</created>
+      <updated>1457717930544</updated>
+    </task>
+    <task id="LOCAL-00073" summary="change cache for lightbox">
+      <created>1457719078997</created>
+      <updated>1457719078997</updated>
+    </task>
+    <task id="LOCAL-00074" summary="fix home on load in laptops">
+      <created>1457720759898</created>
+      <updated>1457720759898</updated>
+    </task>
+    <task id="LOCAL-00075" summary="fix recached all static pages after deploy">
+      <created>1457721512256</created>
+      <updated>1457721512256</updated>
+    </task>
+    <task id="LOCAL-00076" summary="removed video home&#10;">
+      <created>1457945630126</created>
+      <updated>1457945630126</updated>
+    </task>
+    <task id="LOCAL-00077" summary="fix video home">
+      <created>1457947624325</created>
+      <updated>1457947624325</updated>
+    </task>
+    <task id="LOCAL-00078" summary="css">
+      <created>1457956254629</created>
+      <updated>1457956254629</updated>
+    </task>
+    <task id="LOCAL-00079" summary="enabled lazy services improve symfony speed!!">
+      <created>1457979750918</created>
+      <updated>1457979750918</updated>
+    </task>
+    <task id="LOCAL-00080" summary="remove lazy services :S">
+      <created>1457980219430</created>
+      <updated>1457980219430</updated>
+    </task>
+    <task id="LOCAL-00081" summary="moved static files for transaction js to var/cache/$env">
+      <created>1457981317675</created>
+      <updated>1457981317675</updated>
+    </task>
+    <task id="LOCAL-00082" summary="remove external shops pay methods from normal shop">
+      <created>1458033298792</created>
+      <updated>1458033298792</updated>
+    </task>
+    <task id="LOCAL-00083" summary="fix facebook">
+      <created>1458060816291</created>
+      <updated>1458060816291</updated>
+    </task>
+    <task id="LOCAL-00084" summary="improve speed starting container &amp;&amp; wizard set product prices load by country&#10;">
+      <created>1458213727525</created>
+      <updated>1458213727525</updated>
+    </task>
+    <task id="LOCAL-00085" summary="fix finished page not displayed">
+      <created>1458319974769</created>
+      <updated>1458319974769</updated>
+    </task>
+    <task id="LOCAL-00086" summary="update your data">
+      <created>1458563320263</created>
+      <updated>1458563320263</updated>
+    </task>
+    <task id="LOCAL-00087" summary="trying to improve angularjs but ...">
+      <created>1458577885062</created>
+      <updated>1458577885062</updated>
+    </task>
+    <task id="LOCAL-00088" summary="kibana">
+      <created>1458577942771</created>
+      <updated>1458577942771</updated>
+    </task>
+    <task id="LOCAL-00089" summary="has cart remove icon if is false">
+      <created>1458580148670</created>
+      <updated>1458580148670</updated>
+    </task>
+    <task id="LOCAL-00090" summary="visualization images items &amp;&amp; articles">
+      <created>1458637473629</created>
+      <updated>1458637473629</updated>
+    </task>
+    <task id="LOCAL-00091" summary="initial admin improve speed">
+      <created>1458638880812</created>
+      <updated>1458638880812</updated>
+    </task>
+    <task id="LOCAL-00092" summary="improve speed api">
+      <created>1458642223912</created>
+      <updated>1458642223912</updated>
+    </task>
+    <task id="LOCAL-00093" summary="fix youtube home">
+      <created>1459151851318</created>
+      <updated>1459151851318</updated>
+    </task>
+    <task id="LOCAL-00094" summary="billing">
+      <created>1459151977511</created>
+      <updated>1459151977511</updated>
+    </task>
+    <task id="LOCAL-00095" summary="billing">
+      <created>1459155409332</created>
+      <updated>1459155409332</updated>
+    </task>
+    <task id="LOCAL-00096" summary="fix youtube home">
+      <created>1459155506597</created>
+      <updated>1459155506597</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Improved monthly client invoices">
+      <created>1459414053572</created>
+      <updated>1459414053572</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Remove unneeded">
+      <created>1459415522495</created>
+      <updated>1459415522495</updated>
+    </task>
+    <task id="LOCAL-00099" summary="fix text">
+      <created>1459415747309</created>
+      <updated>1459415747309</updated>
+    </task>
+    <task id="LOCAL-00100" summary="little fixes">
+      <created>1459420001077</created>
+      <updated>1459420001077</updated>
+    </task>
+    <task id="LOCAL-00101" summary="added filter">
+      <created>1459421215365</created>
+      <updated>1459421215365</updated>
+    </task>
+    <task id="LOCAL-00102" summary="fix count of pending invoices">
+      <created>1459421515002</created>
+      <updated>1459421515002</updated>
+    </task>
+    <task id="LOCAL-00103" summary="flags">
+      <created>1459435737801</created>
+      <updated>1459435737801</updated>
+    </task>
+    <task id="LOCAL-00104" summary="pending">
+      <created>1459766482357</created>
+      <updated>1459766482357</updated>
+    </task>
+    <task id="LOCAL-00105" summary="HOT fix">
+      <created>1459766640828</created>
+      <updated>1459766640828</updated>
+    </task>
+    <task id="LOCAL-00106" summary="doc updated">
+      <created>1459766964675</created>
+      <updated>1459766964675</updated>
+    </task>
+    <task id="LOCAL-00107" summary="doc updated">
+      <created>1459767200317</created>
+      <updated>1459767200317</updated>
+    </task>
+    <task id="LOCAL-00108" summary="pending">
+      <created>1460103049890</created>
+      <updated>1460103049890</updated>
+    </task>
+    <task id="LOCAL-00109" summary="facebook load FB for normal shop">
+      <created>1460104017651</created>
+      <updated>1460104017651</updated>
+    </task>
+    <task id="LOCAL-00110" summary="facebook load FB for normal shop">
+      <created>1460104376144</created>
+      <updated>1460104376144</updated>
+    </task>
+    <task id="LOCAL-00111" summary="facebook load FB for normal shop">
+      <created>1460104623140</created>
+      <updated>1460104623140</updated>
+    </task>
+    <task id="LOCAL-00112" summary="facebook load FB for normal shop">
+      <created>1460104890550</created>
+      <updated>1460104890550</updated>
+    </task>
+    <task id="LOCAL-00113" summary="facebook load FB for normal shop">
+      <created>1460105634881</created>
+      <updated>1460105634882</updated>
+    </task>
+    <task id="LOCAL-00114" summary="facebook load FB for normal shop">
+      <created>1460106545735</created>
+      <updated>1460106545735</updated>
+    </task>
+    <task id="LOCAL-00115" summary="facebook load FB for normal shop">
+      <created>1460114066912</created>
+      <updated>1460114066912</updated>
+    </task>
+    <task id="LOCAL-00116" summary="lightbox">
+      <created>1460129403129</created>
+      <updated>1460129403129</updated>
+    </task>
+    <task id="LOCAL-00117" summary="pending">
+      <created>1460557379189</created>
+      <updated>1460557379190</updated>
+    </task>
+    <task id="LOCAL-00118" summary="fix for berserk">
+      <created>1460557559178</created>
+      <updated>1460557559178</updated>
+    </task>
+    <task id="LOCAL-00119" summary="fix for berserk">
+      <created>1460558341512</created>
+      <updated>1460558341512</updated>
+    </task>
+    <task id="LOCAL-00120" summary="fix for berserk">
+      <created>1460564232933</created>
+      <updated>1460564232933</updated>
+    </task>
+    <task id="LOCAL-00121" summary="pending">
+      <created>1460710924820</created>
+      <updated>1460710924820</updated>
+    </task>
+    <task id="LOCAL-00122" summary="fix berserk">
+      <created>1460711140658</created>
+      <updated>1460711140659</updated>
+    </task>
+    <task id="LOCAL-00123" summary="pmpcs">
+      <created>1461001305009</created>
+      <updated>1461001305014</updated>
+    </task>
+    <task id="LOCAL-00124" summary="fix lightbox">
+      <created>1461052826827</created>
+      <updated>1461052826827</updated>
+    </task>
+    <task id="LOCAL-00125" summary="little fixes">
+      <created>1461056664237</created>
+      <updated>1461056664237</updated>
+    </task>
+    <task id="LOCAL-00126" summary="internal payment Notification">
+      <created>1461059151273</created>
+      <updated>1461059151273</updated>
+    </task>
+    <task id="LOCAL-00127" summary="idc modular&#10;+ fix cart">
+      <created>1461063917841</created>
+      <updated>1461063917841</updated>
+    </task>
+    <task id="LOCAL-00128" summary="added">
+      <created>1461068244177</created>
+      <updated>1461068244177</updated>
+    </task>
+    <task id="LOCAL-00129" summary="little fixes admin table responsives">
+      <created>1461075884927</created>
+      <updated>1461075884927</updated>
+    </task>
+    <task id="LOCAL-00130" summary="lightbox added +40px &#10;">
+      <created>1461080427912</created>
+      <updated>1461080427912</updated>
+    </task>
+    <task id="LOCAL-00131" summary="added configuration for extraCosts">
+      <created>1461239603982</created>
+      <updated>1461239603983</updated>
+    </task>
+    <task id="LOCAL-00132" summary="fix wizard buttons">
+      <created>1461246891863</created>
+      <updated>1461246891863</updated>
+    </task>
+    <task id="LOCAL-00133" summary="extra costs">
+      <created>1461591975316</created>
+      <updated>1461591975316</updated>
+    </task>
+    <task id="LOCAL-00134" summary="fix neteller &amp;&amp; promo">
+      <created>1461594117603</created>
+      <updated>1461594117603</updated>
+    </task>
+    <task id="LOCAL-00135" summary="fix neteller &amp;&amp; promo">
+      <created>1461597339370</created>
+      <updated>1461597339370</updated>
+    </task>
+    <task id="LOCAL-00136" summary="improve animation cart">
+      <created>1461599227127</created>
+      <updated>1461599227127</updated>
+    </task>
+    <task id="LOCAL-00137" summary="Blacklist all proxies by default&#10;&#10;improve animation cart&#10;">
+      <created>1461658384347</created>
+      <updated>1461658384347</updated>
+    </task>
+    <task id="LOCAL-00138" summary="purchase little optimization">
+      <created>1461659543348</created>
+      <updated>1461659543348</updated>
+    </task>
+    <task id="LOCAL-00139" summary="country Detected purchase">
+      <created>1461660989466</created>
+      <updated>1461660989466</updated>
+    </task>
+    <task id="LOCAL-00140" summary="prevent load same data multiple times">
+      <created>1461663378169</created>
+      <updated>1461663378169</updated>
+    </task>
+    <task id="LOCAL-00141" summary="text for transaction-purchases">
+      <created>1461668877753</created>
+      <updated>1461668877753</updated>
+    </task>
+    <task id="LOCAL-00142" summary="Security for JWT, + tutorial fixes">
+      <created>1461685130161</created>
+      <updated>1461685130161</updated>
+    </task>
+    <task id="LOCAL-00143" summary="tooltip movement improved">
+      <created>1461686431699</created>
+      <updated>1461686431699</updated>
+    </task>
+    <task id="LOCAL-00144" summary="symfony update 28">
+      <created>1461836581800</created>
+      <updated>1461836581801</updated>
+    </task>
+    <task id="LOCAL-00145" summary="symfony update 28">
+      <created>1461937854998</created>
+      <updated>1461937854998</updated>
+    </task>
+    <task id="LOCAL-00146" summary="metal assault theme">
+      <created>1461945326757</created>
+      <updated>1461945326758</updated>
+    </task>
+    <task id="LOCAL-00147" summary="metal assault theme">
+      <created>1461945652704</created>
+      <updated>1461945652704</updated>
+    </task>
+    <task id="LOCAL-00148" summary="fix themes">
+      <created>1461946383310</created>
+      <updated>1461946383310</updated>
+    </task>
+    <task id="LOCAL-00149" summary="fix themes">
+      <created>1461947081287</created>
+      <updated>1461947081287</updated>
+    </task>
+    <task id="LOCAL-00150" summary="fix moment bower dependecy">
+      <created>1462350957242</created>
+      <updated>1462350957243</updated>
+    </task>
+    <task id="LOCAL-00151" summary="Fix G2A singlecustomPayment&#10;Fix promocode nusesbycountry can be null">
+      <created>1462457809288</created>
+      <updated>1462457809288</updated>
+    </task>
+    <task id="LOCAL-00152" summary="fix moment bower dependecy">
+      <created>1462460155105</created>
+      <updated>1462460155105</updated>
+    </task>
+    <task id="LOCAL-00153" summary="fix sparkline">
+      <created>1462467411794</created>
+      <updated>1462467411794</updated>
+    </task>
+    <task id="LOCAL-00154" summary="fix translations">
+      <created>1462525003329</created>
+      <updated>1462525003329</updated>
+    </task>
+    <task id="LOCAL-00155" summary="cost of live change">
+      <created>1462526111964</created>
+      <updated>1462526111964</updated>
+    </task>
+    <task id="LOCAL-00156" summary="test cost of live">
+      <created>1462526492485</created>
+      <updated>1462526492485</updated>
+    </task>
+    <task id="LOCAL-00157" summary="fix neteller">
+      <created>1462868540251</created>
+      <updated>1462868540251</updated>
+    </task>
+    <task id="LOCAL-00158" summary="fix html">
+      <created>1462872517030</created>
+      <updated>1462872517030</updated>
+    </task>
+    <task id="LOCAL-00159" summary="symfony update for vulnerabilities...&#10;&#10;http://symfony.com/blog/cve-2016-2403-unauthorized-access-on-a-misconfigured-ldap-server-when-using-an-empty-password&#10;http://symfony.com/blog/cve-2016-4423-large-username-storage-in-session">
+      <created>1462874445536</created>
+      <updated>1462874445536</updated>
+    </task>
+    <task id="LOCAL-00160" summary="fix admin">
+      <created>1462875198861</created>
+      <updated>1462875198861</updated>
+    </task>
+    <task id="LOCAL-00161" summary="pending">
+      <created>1463561175461</created>
+      <updated>1463561175462</updated>
+    </task>
+    <task id="LOCAL-00162" summary="dashboard affiliate, pettition from victor">
+      <created>1463562897872</created>
+      <updated>1463562897872</updated>
+    </task>
+    <task id="LOCAL-00163" summary="fix faq shop">
+      <created>1463563473979</created>
+      <updated>1463563473979</updated>
+    </task>
+    <task id="LOCAL-00164" summary="fix faq">
+      <created>1463563892367</created>
+      <updated>1463563892367</updated>
+    </task>
+    <task id="LOCAL-00165" summary="pending">
+      <created>1464100830022</created>
+      <updated>1464100830022</updated>
+    </task>
+    <task id="LOCAL-00166" summary="add all pmpcs from provider">
+      <created>1464163643845</created>
+      <updated>1464163643845</updated>
+    </task>
+    <task id="LOCAL-00167" summary="jobs in home">
+      <created>1464165857243</created>
+      <updated>1464165857243</updated>
+    </task>
+    <task id="LOCAL-00168" summary="migration added">
+      <created>1464166429698</created>
+      <updated>1464166429698</updated>
+    </task>
+    <task id="LOCAL-00169" summary="clear cache when jobs are updated">
+      <created>1464168478645</created>
+      <updated>1464168478645</updated>
+    </task>
+    <task id="LOCAL-00170" summary="added sortable PMPCS">
+      <created>1464192369103</created>
+      <updated>1464192369103</updated>
+    </task>
+    <task id="LOCAL-00171" summary="fix sort">
+      <created>1464193390461</created>
+      <updated>1464193390461</updated>
+    </task>
+    <task id="LOCAL-00172" summary="styles">
+      <created>1464194601015</created>
+      <updated>1464194601015</updated>
+    </task>
+    <task id="LOCAL-00173" summary="translations backend">
+      <created>1464249020346</created>
+      <updated>1464249020346</updated>
+    </task>
+    <task id="LOCAL-00174" summary="pending">
+      <created>1464853636064</created>
+      <updated>1464853636064</updated>
+    </task>
+    <task id="LOCAL-00175" summary="pending">
+      <created>1465374381560</created>
+      <updated>1465374381560</updated>
+    </task>
+    <task id="LOCAL-00176" summary="early access design">
+      <created>1465467135769</created>
+      <updated>1465467135769</updated>
+    </task>
+    <task id="LOCAL-00177" summary="pending">
+      <created>1465490251691</created>
+      <updated>1465490251691</updated>
+    </task>
+    <task id="LOCAL-00178" summary="fix theme">
+      <created>1465492059933</created>
+      <updated>1465492059933</updated>
+    </task>
+    <task id="LOCAL-00179" summary="pending">
+      <created>1465492930331</created>
+      <updated>1465492930331</updated>
+    </task>
+    <task id="LOCAL-00180" summary="Gacha fix&#10;+ early access changes">
+      <created>1465552250125</created>
+      <updated>1465552250125</updated>
+    </task>
+    <task id="LOCAL-00181" summary="pending">
+      <created>1465554072517</created>
+      <updated>1465554072517</updated>
+    </task>
+    <task id="LOCAL-00182" summary="pending">
+      <created>1465554529609</created>
+      <updated>1465554529609</updated>
+    </task>
+    <task id="LOCAL-00183" summary="pending">
+      <created>1465554604667</created>
+      <updated>1465554604667</updated>
+    </task>
+    <task id="LOCAL-00184" summary="fix size early access products..">
+      <created>1465555755552</created>
+      <updated>1465555755552</updated>
+    </task>
+    <task id="LOCAL-00185" summary="tooltip collision with bootstrap">
+      <created>1465556854061</created>
+      <updated>1465556854061</updated>
+    </task>
+    <task id="LOCAL-00186" summary="tooltip position">
+      <created>1465559143127</created>
+      <updated>1465559143127</updated>
+    </task>
+    <task id="LOCAL-00187" summary="tooltip position">
+      <created>1465568860805</created>
+      <updated>1465568860805</updated>
+    </task>
+    <task id="LOCAL-00188" summary="tooltip position">
+      <created>1465569250962</created>
+      <updated>1465569250962</updated>
+    </task>
+    <task id="LOCAL-00189" summary="early access">
+      <created>1465572636976</created>
+      <updated>1465572636976</updated>
+    </task>
+    <task id="LOCAL-00190" summary="early access&#10;fix promo_list (articles) on change app">
+      <created>1465573666181</created>
+      <updated>1465573666181</updated>
+    </task>
+    <task id="LOCAL-00191" summary="early access&#10;fix promo_list (articles) on change app">
+      <created>1465574232239</created>
+      <updated>1465574232239</updated>
+    </task>
+    <task id="LOCAL-00192" summary="early access finiquitao">
+      <created>1465574884084</created>
+      <updated>1465574884084</updated>
+    </task>
+    <task id="LOCAL-00193" summary="early access finiquitao">
+      <created>1465575238088</created>
+      <updated>1465575238088</updated>
+    </task>
+    <task id="LOCAL-00194" summary="early access finiquitao">
+      <created>1465575584038</created>
+      <updated>1465575584038</updated>
+    </task>
+    <task id="LOCAL-00195" summary="early access finiquitao">
+      <created>1465576832366</created>
+      <updated>1465576832366</updated>
+    </task>
+    <task id="LOCAL-00196" summary="pending">
+      <created>1465906073739</created>
+      <updated>1465906073739</updated>
+    </task>
+    <task id="LOCAL-00197" summary="remove cache only affect to get requests">
+      <created>1465912184069</created>
+      <updated>1465912184069</updated>
+    </task>
+    <task id="LOCAL-00198" summary="pending">
+      <created>1465917571346</created>
+      <updated>1465917571346</updated>
+    </task>
+    <task id="LOCAL-00199" summary="fix img position">
+      <created>1465917787931</created>
+      <updated>1465917787931</updated>
+    </task>
+    <task id="LOCAL-00200" summary="img">
+      <created>1465918294242</created>
+      <updated>1465918294242</updated>
+    </task>
+    <task id="LOCAL-00201" summary="fix img position">
+      <created>1465918363718</created>
+      <updated>1465918363718</updated>
+    </task>
+    <task id="LOCAL-00202" summary="wallet unfinished">
+      <created>1466164446109</created>
+      <updated>1466164446109</updated>
+    </task>
+    <task id="LOCAL-00203" summary="improve doc">
+      <created>1466178953238</created>
+      <updated>1466178953238</updated>
+    </task>
+    <task id="LOCAL-00204" summary="improve doc">
+      <created>1466179707710</created>
+      <updated>1466179707710</updated>
+    </task>
+    <option name="localTasksCounter" value="205" />
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1920" y="24" width="1920" height="1056" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12327311" sideWeight="0.49863014" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.50584483" sideWeight="0.49972603" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.49972603" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Symfony2" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329863" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35889244" sideWeight="0.3358904" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22191781" sideWeight="0.39487872" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18743344" sideWeight="0.49863014" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32800853" sideWeight="0.49972603" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17260274" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329863" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22949947" sideWeight="0.6051213" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31842387" sideWeight="0.72" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25772098" sideWeight="0.4969863" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.49972603" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28328007" sideWeight="0.6641096" order="7" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.Settings">
+    <option name="SHOW_BRANCHES_PANEL" value="true" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <option name="SHOW_FILE_HISTORY_DETAILS" value="false" />
+    <MESSAGE value="fix faq shop" />
+    <MESSAGE value="fix faq" />
+    <MESSAGE value="add all pmpcs from provider" />
+    <MESSAGE value="jobs in home" />
+    <MESSAGE value="migration added" />
+    <MESSAGE value="clear cache when jobs are updated" />
+    <MESSAGE value="added sortable PMPCS" />
+    <MESSAGE value="fix sort" />
+    <MESSAGE value="styles" />
+    <MESSAGE value="translations backend" />
+    <MESSAGE value="early access design" />
+    <MESSAGE value="fix theme" />
+    <MESSAGE value="Gacha fix&#10;+ early access changes" />
+    <MESSAGE value="fix size early access products.." />
+    <MESSAGE value="tooltip collision with bootstrap" />
+    <MESSAGE value="tooltip position" />
+    <MESSAGE value="early access" />
+    <MESSAGE value="early access&#10;fix promo_list (articles) on change app" />
+    <MESSAGE value="early access finiquitao" />
+    <MESSAGE value="remove cache only affect to get requests" />
+    <MESSAGE value="pending" />
+    <MESSAGE value="img" />
+    <MESSAGE value="fix img position" />
+    <MESSAGE value="wallet unfinished" />
+    <MESSAGE value="improve doc" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve doc" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Payment/PayMethod/Exceptions/SteamIdRequiredPayMethodException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="57" selection-start="269" selection-end="299" vertical-scroll-proportion="-7.7777777" vertical-offset="0" max-vertical-offset="378" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Util/SteamSignIn.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="27" selection-start="1570" selection-end="1570" vertical-scroll-proportion="0.037037037" vertical-offset="925" max-vertical-offset="1953" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Payment/PayMethod/Steam/SteamWebIpnPayMethod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="7" selection-start="2273" selection-end="2273" vertical-scroll-proportion="-4.5555553" vertical-offset="720" max-vertical-offset="4809" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Gamer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="39" selection-start="1400" selection-end="1408" vertical-scroll-proportion="10.888889" vertical-offset="1176" max-vertical-offset="13545" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Payment/PayMethod/Tigo/TigoIpnPayMethod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="35" selection-start="3478" selection-end="3478" vertical-scroll-proportion="-14.777778" vertical-offset="1008" max-vertical-offset="6153" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Payment/PayMethod/Exceptions/DynamicRequiredPayMethodException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="27" selection-start="362" selection-end="362" vertical-scroll-proportion="-10.888889" vertical-offset="0" max-vertical-offset="525" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Service/FormHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="20" selection-start="845" selection-end="845" vertical-scroll-proportion="15.777778" vertical-offset="1056" max-vertical-offset="3255" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/AppShop/PaymentRequirements/genericRequirements.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="24" selection-start="335" selection-end="602" vertical-scroll-proportion="-14.0" vertical-offset="0" max-vertical-offset="588" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AppShop/PaymentRequirementsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="30" selection-start="1249" selection-end="1249" vertical-scroll-proportion="0.0" vertical-offset="798" max-vertical-offset="3948" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/public/app_shop/themes/berserk_modular/theme_berserk_modular.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="13" selection-start="83" selection-end="96" vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1092" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/AppShop/Shop/partials/load_theme_available.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="353" column="4" selection-start="13167" selection-end="13228" vertical-scroll-proportion="0.0" vertical-offset="7289" max-vertical-offset="7875" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/ShopCss.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="28" selection-start="1910" selection-end="1927" vertical-scroll-proportion="0.0" vertical-offset="1589" max-vertical-offset="7329" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20141104115120.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="36" selection-start="4841" selection-end="4841" vertical-scroll-proportion="0.0" vertical-offset="525" max-vertical-offset="12138" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20160419151829.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="73" selection-start="597" selection-end="824" vertical-scroll-proportion="0.0" vertical-offset="504" max-vertical-offset="882" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadShopCss.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="36" selection-start="17" selection-end="43" vertical-scroll-proportion="0.0" vertical-offset="42" max-vertical-offset="2499" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/img/logo_113x25.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/img/logo.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/img/logo_500x100.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Payment/PayMethod/Interfaces/PayMethodIpnExecutionInterface.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="521" selection-end="754" vertical-scroll-proportion="0.4498309" vertical-offset="0" max-vertical-offset="887" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20160429074517.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="36" selection-start="597" selection-end="597" vertical-scroll-proportion="0.029312288" vertical-offset="394" max-vertical-offset="1281" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20160218164338.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="136" selection-start="938" selection-end="1051" vertical-scroll-proportion="0.49542335" vertical-offset="50" max-vertical-offset="924" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Enum/PaymentServiceCategoryEnum.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="47" selection-end="73" vertical-scroll-proportion="0.0" vertical-offset="63" max-vertical-offset="1071">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Provider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6048">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/AppShop/PaymentController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="618" column="35" selection-start="27149" selection-end="27168" vertical-scroll-proportion="0.0" vertical-offset="12978" max-vertical-offset="19404" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Payment/PayMethod/PayPal/PayPalIpnApiRestPayMethod.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="10" selection-start="1819" selection-end="1819" vertical-scroll-proportion="-0.8" vertical-offset="966" max-vertical-offset="10878" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/ClientAdmin/Default/includes/left-panel.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="26" selection-start="2205" selection-end="2205" vertical-scroll-proportion="0.4495305" vertical-offset="394" max-vertical-offset="1302" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="24" selection-start="254" selection-end="254" vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="1155">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Capfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="100">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/autoload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="914">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/AppCache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="914">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Transaction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="14" selection-start="2859" selection-end="2859" vertical-scroll-proportion="0.0" vertical-offset="1953" max-vertical-offset="33222">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/translations/shop.es.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="11" selection-start="18" selection-end="18" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="651">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config_dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="37" selection-start="1138" selection-end="1138" vertical-scroll-proportion="0.0" vertical-offset="284" max-vertical-offset="1176">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config_prod.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="18" selection-start="86" selection-end="86" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1407">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Serializer/GenericSerializerListener.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="148" column="40" selection-start="4337" selection-end="4337" vertical-scroll-proportion="2.1851852" vertical-offset="2894" max-vertical-offset="4011">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Listener/GamerListener.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="9" selection-start="1438" selection-end="1438" vertical-scroll-proportion="-24.11111" vertical-offset="189" max-vertical-offset="1092">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Checkout/Checkout.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="3" selection-start="251" selection-end="251" vertical-scroll-proportion="63.0" vertical-offset="1890" max-vertical-offset="4158">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Component/HttpFoundation/CsvResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="22" selection-start="962" selection-end="962" vertical-scroll-proportion="-14.148149" vertical-offset="143" max-vertical-offset="1008">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadApp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="67" column="0" selection-start="2467" selection-end="2467" vertical-scroll-proportion="85.55556" vertical-offset="3297" max-vertical-offset="4242">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/DependencyInjection/Compiler/LazyServiceCompilerPass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.7777778" vertical-offset="0" max-vertical-offset="1218">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/DependencyInjection/Compiler/OverrideServiceCompilerPass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="54" selection-start="469" selection-end="469" vertical-scroll-proportion="-10.111111" vertical-offset="0" max-vertical-offset="462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="53" selection-start="1833" selection-end="1847" vertical-scroll-proportion="0.0" vertical-offset="674" max-vertical-offset="2793">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/services_form.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="27" selection-start="37" selection-end="37" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="231">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/services.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="0" selection-start="3920" selection-end="3920" vertical-scroll-proportion="0.0" vertical-offset="1799" max-vertical-offset="2562">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/services_sonata.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="0" selection-start="2292" selection-end="2292" vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="5439">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/services_security.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="63" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="273">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/AppKernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="89" column="21" selection-start="2919" selection-end="2941" vertical-scroll-proportion="-2.3333333" vertical-offset="1701" max-vertical-offset="2919">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="16" selection-start="567" selection-end="567" vertical-scroll-proportion="-14.777778" vertical-offset="0" max-vertical-offset="2961">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="205" column="21" selection-start="6943" selection-end="6986" vertical-scroll-proportion="0.0" vertical-offset="3676" max-vertical-offset="4452">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="28" selection-start="230" selection-end="239" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1764">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20160912105927.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="46" selection-start="682" selection-end="694" vertical-scroll-proportion="0.5706522" vertical-offset="0" max-vertical-offset="1113">
+          <folding>
+            <marker date="1473677967454" expanded="true" signature="584:608" placeholder="ALTER TABLE app_document..." />
+            <marker date="1473677967454" expanded="true" signature="671:694" placeholder="DROP TABLE a..." />
+            <marker date="1473677967454" expanded="true" signature="721:750" placeholder="DROP TABLE m..." />
+            <marker date="1473677967454" expanded="true" signature="777:892" placeholder="ALTER TABLE client_api_credential..." />
+            <marker date="1473677967454" expanded="true" signature="919:1225" placeholder="ALTER TABLE app..." />
+            <marker date="1473677967454" expanded="true" signature="1252:1344" placeholder="ALTER TABLE article..." />
+            <marker date="1473677967454" expanded="true" signature="1697:2263" placeholder="CREATE TABLE..app_document..." />
+            <marker date="1473677967454" expanded="true" signature="2290:3098" placeholder="CREATE TABLE..monthly_app_report..." />
+            <marker date="1473677967454" expanded="true" signature="3125:3272" placeholder="ALTER TABLE app_document..." />
+            <marker date="1473677967454" expanded="true" signature="3299:3399" placeholder="ALTER TABLE app_document..." />
+            <marker date="1473677967454" expanded="true" signature="3426:3537" placeholder="ALTER TABLE app_document..." />
+            <marker date="1473677967454" expanded="true" signature="3564:3681" placeholder="ALTER TABLE monthly_app_report..." />
+            <marker date="1473677967454" expanded="true" signature="3708:3824" placeholder="ALTER TABLE monthly_app_report..." />
+            <marker date="1473677967454" expanded="true" signature="3851:4193" placeholder="ALTER TABLE app..." />
+            <marker date="1473677967454" expanded="true" signature="4220:4335" placeholder="ALTER TABLE article..." />
+            <marker date="1473677967454" expanded="true" signature="4362:4395" placeholder="ALTER TABLE client_api_credential..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

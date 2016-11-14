@@ -1,0 +1,155 @@
+{# client \AppBundle\Entity\Client #}
+{# finInvoice \AppBundle\Entity\FinInvoice #}
+{# storageCurrencies \AppBundle\Entity\NotPersisted\StorageCurrencyMoney #}
+{# money \AppBundle\Entity\NotPersisted\Money #}
+
+{% extends finInvoice.amountTotal|round == 0 ? '@App/PDF/summary_layout.html.twig' : '@App/PDF/invoice_layout.html.twig' %}
+
+{% block page %}
+
+    <div class="h2">Summary (overview of final calculation)</div>
+    <table style="width: 70%;" cellspacing="0" cellpadding="2">
+
+        <tr>
+            <th style="text-align: left">
+                Concept
+            </th>
+            <th style="text-align: left">
+                Currency
+            </th>
+            <th style="text-align: right">
+                Total
+            </th>
+        </tr>
+        <tr>
+            <td>
+                Generated Turnover
+            </td>
+            <td>
+                {{ client.currencyEarnings.id }}
+            </td>
+            <td class="num">
+                {{ profit4apps | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}
+            </td>
+        </tr>
+
+        {% include '@App/PDF/partials/extra_concepts.html.twig' %}
+
+        {% if profitIva %}
+            <tr>
+                <td>
+                    VAT {{ client.country.vat }}% over {{ profitTotal | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}
+                </td>
+                <td>
+                    {{ client.currencyEarnings.id }}
+                </td>
+                <td class="num">
+                    {{ profitIva  | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}
+                </td>
+            </tr>
+        {% endif %}
+
+        <tr>
+            <td class="borderTop">
+                Invoice Total Including VAT
+            </td>
+            <td class="borderTop">
+                {{ finInvoice.currency.id }}
+            </td>
+            <td class="num borderTop">
+                {{ finInvoice.amountTotal  | number_format(2,'.', ',') }} {{ finInvoice.currency.symbol }}
+            </td>
+        </tr>
+    </table>
+
+    <div style="padding-top: 100px">
+        {% include '@App/PDF/partials/deposit_details.html.twig' %}
+    </div>
+
+
+    <div style="padding-top: 100px">
+        <em>Contact us at {{ email_finance }} for any inquiries regarding this invoice.</em>
+    </div>
+
+<div class="page">
+    <div style="padding-top: 100px">
+        <div class="h3">
+            Generated Turnover DETAIL
+        </div>
+        <div>
+            <table style="font-size: 0.8em; width: 100%" cellspacing="0" cellpadding="4">
+                <tr>
+                    <th>
+                        Currency
+                   </th>
+                    <th>
+                        Transactions
+                    </th>
+                    <th>
+                        Gross
+                    </th>
+                    <th>
+                        Currency
+                    </th>
+                    <th>
+                        Exchange Rate
+                    </th>
+                    <th>
+                        Gross in EUR
+                    </th>
+                    <th>
+                        VAT
+                    </th>
+                    <th>
+                        PayMethods
+                    </th>
+                    <th>
+                        Wolopay
+                    </th>
+                    <th>
+                        Net turnover
+                    </th>
+                </tr>
+                {% set grossTotal = 0 %}
+                {% set vatTotal = 0 %}
+                {% set payMethodsTotal = 0 %}
+                {% set wolopayTotal = 0 %}
+                {% set transactionTotal = 0 %}
+
+                {% for money in storageCurrencies %}
+                    {% set grossTotal = grossTotal + money.extraData['amount_total_in_client_currency'] %}
+                    {% set vatTotal = vatTotal + money.extraData['amount_tax_in_client_currency'] %}
+                    {% set payMethodsTotal = payMethodsTotal + money.extraData['amount_provider_in_client_currency'] %}
+                    {% set wolopayTotal = wolopayTotal + money.extraData['amount_wolo_in_client_currency'] %}
+                    {% set transactionTotal = transactionTotal + money.extraData['n_transactions'] %}
+                <tr >
+                    <td>Transactions in {{ money.currency.id }}</td>
+                    <td class="num">{{ money.extraData['n_transactions'] | number_format(0,'.', ',') }}</td>
+                    <td class="num">{{ money.extraData['amount_total'] | number_format(2,'.', ',') }}</td>
+                    <td>{{ money.currency.id }}</td>
+                    <td class="num">{{ money.extraData['exchange_ratio'] | number_format(4,'.', ',') }}</td>
+                    <td class="num">{{ money.extraData['amount_total_in_client_currency'] | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</td>
+                    <td class="num">{{ money.extraData['amount_tax_in_client_currency'] | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</td>
+                    <td class="num">{{ money.extraData['amount_provider_in_client_currency'] | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</td>
+                    <td class="num">{{ money.extraData['amount_wolo_in_client_currency'] | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</td>
+                    <td class="num">{{ money.extraData['amount_game_in_client_currency'] | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <th class="borderTop"></th>
+                    <th class="borderTop num">{{ transactionTotal | number_format(2,'.', ',') }}</th>
+                    <th class="borderTop"></th>
+                    <th class="borderTop"></th>
+                    <th class="borderTop"></th>
+                    <th class="num borderTop">{{ grossTotal | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</th>
+                    <th class="num borderTop">{{ vatTotal | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</th>
+                    <th class="num borderTop">{{ payMethodsTotal | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</th>
+                    <th class="num borderTop">{{ wolopayTotal | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</th>
+                    <th class="num borderTop">{{ profit4apps | number_format(2,'.', ',') }} {{ client.currencyEarnings.symbol }}</th>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

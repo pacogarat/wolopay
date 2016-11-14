@@ -1,0 +1,319 @@
+<!-- row -->
+<div class="row" ng-controller="PromoListCtrl">
+    <!-- NEW WIDGET START -->
+    <article class="col-sm-12 col-md-12 col-lg-12">
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+            <!-- widget options:
+            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+            data-widget-colorbutton="false"
+            data-widget-editbutton="false"
+            data-widget-togglebutton="false"
+            data-widget-deletebutton="false"
+            data-widget-fullscreenbutton="false"
+            data-widget-custombutton="false"
+            data-widget-collapsed="true"
+            data-widget-sortable="false"
+
+            -->
+            <header>
+                <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                <h2>{[{ 'promo_code.title' | translate }]}</h2>
+
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body">
+                    <form class="form-horizontal">
+
+                        <fieldset>
+                            <legend>
+                                {[{ 'promo_code.title' | translate }]}
+                                <a class="btn btn-info pull-right" style="margin-top: -10px" ng-click="createOrUpdatePromo({}, true)">
+                                    {[{ 'create' | translate }]} <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                </a>
+                            </legend>
+                            <div style="margin-bottom: 20px">
+                                {[{ 'promo_code.desc' | translate }]}
+                            </div>
+                        </fieldset>
+                    </form>
+
+
+                    <div class="alert alert-warning" ng-if="promos.length == 0" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        {[{ 'no_data' | translate }]}
+                    </div>
+
+                    <table class="table table-bordered" ng-if="promos.length > 0">
+                        <thead>
+                            <tr>
+                                <td colspan="100%">
+                                    <input ng-model-options="{debounce: 100}" ng-model="searchText.$" placeholder="{[{ 'search' | translate }]}" class="form-control">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <div class="btn-group btn-group-xs">
+                                        <button class="btn btn-default" type="submit" ng-click="collapseAll(false)">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                        <button class="btn btn-default" type="submit" ng-click="collapseAll(true)">
+                                            <i class="fa fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </th>
+                                <th>{[{ 'promo_code.name' | translate }]}</th>
+                                <th>{[{ 'promo_code.times_used' | translate }]}</th>
+                                <th>{[{ 'promo_code.n_uses_per_user' | translate }]}</th>
+                                <th>{[{ 'promo_code.n_total_uses' | translate }]}</th>
+                                <th>{[{ 'created' | translate }]}</th>
+                                <th>{[{ 'offer.offer_from' | translate }]}</th>
+                                <th>{[{ 'offer.offer_to' | translate }]}</th>
+                                <th>{[{ 'actions' | translate }]}</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="promo in promos | filter:searchText ">
+                            <tr class="td-grouped">
+                                <td>
+                                    <button class="btn btn-default btn-sm" type="submit" ng-if="promo.collapsed" data-ng-click="promo.collapsed = false">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                    <button class="btn btn-default btn-sm" type="submit" ng-if="!promo.collapsed" data-ng-click="promo.collapsed = true">
+                                        <i class="fa fa-minus" ></i>
+                                    </button>
+                                </td>
+                                <td>{[{ promo.name }]}</td>
+                                <td>{[{ promo.count_n_time_used}]}</td>
+                                <td>{[{ promo.n_uses_per_user}]}</td>
+                                <td>{[{ promo.n_total_uses}]}</td>
+                                <td>{[{ (promo.created_at | date) || ('now' | translate) }]}</td>
+                                <td>{[{ (promo.begin_at | date) || ('now' | translate) }]}</td>
+                                <td>{[{ (promo.end_at | date) || ('now' | translate) }]}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a ng-click="createOrUpdatePromoCode({}, promo, true)" class="btn btn-default btn-sm" >
+                                            <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                                        </a>
+                                        <a ng-click="createOrUpdatePromo(promo)" class="btn btn-default btn-sm" >
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        </a>
+                                        <a data-dialog-confirmation data-callback="deletePromo(promo)"  class="btn btn-default btn-sm">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </a>
+                                        <a href="/admin/api/app/{[{$root.app.id}]}/promo/{[{promo.id}]}/codes/toCsv/" download>
+                                            <button type="button" class="btn btn-success">
+                                                <i class="fa fa-file-excel-o"></i>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-if="!promo.collapsed && promo.promo_codes.length < 1">
+                                <td colspan="100%">
+                                    <div style="padding: 6px 0 6px 100px">
+                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                        <span translate="no_data"></span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-repeat="promoCode in promo.promo_codes | filter:searchText " ng-if="!promo.collapsed">
+                                <td></td>
+                                <td style="padding-left: 20px">
+                                    <span class="glyphicon glyphicon-tag" ></span>
+                                    <span style="padding-left: 10px">{[{ promoCode.code }]}</span>
+                                </td>
+                                <td>{[{ promoCode.count_n_time_used }]}</td>
+                                <td>{[{ promoCode.n_uses_per_user}]}</td>
+                                <td>{[{ promoCode.n_total_uses}]}</td>
+                                <td>{[{ promoCode.created_at | date }]}</td>
+                                <td>{[{ promoCode.begin_at | date }]}</td>
+                                <td>{[{ promoCode.end_at | date }]}</td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a ng-click="copy(promoCode)" class="btn btn-default btn-sm" >
+                                            <span class="fa fa-copy" aria-hidden="true"></span>
+                                        </a>
+                                        <a ng-click="createOrUpdatePromoCode(promoCode, promo, false)" class="btn btn-default btn-sm" >
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        </a>
+                                        <a data-dialog-confirmation data-callback="deletePromoCode(promoCode, promo)"  class="btn btn-default btn-sm">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div ng-include="'/bundles/app/client_admin/views/partials/load_more.html?v='+v" style="margin: 20px 0"></div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="create_or_update_promo.html">
+    <form name="form_create_or_update_promo" class="validation" role="form" novalidate>
+        <div class="modal-header">
+            <h3 class="modal-title">{[{ 'promo_code.promo_form.title' | translate }]}</h3>
+        </div>
+        <div class="modal-body">
+
+            <table class="table no-border" style="width: auto; border-top: 0px !important">
+                <tr>
+                    <td>
+                        <label class="control-label" translate="promo_code.promo_form.name" style="width: auto"> *</label>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" required ng-model="promo.name" style="width: 200px;display: inline-block">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="promo_code.promo_form.n_uses_per_user" style="width: auto"></label>
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" min="0" ng-model="promo.n_uses_per_user" style="width: 100px;display: inline-block">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="promo_code.promo_form.n_total_uses" style="width: auto"></label>
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" min="0" ng-model="promo.n_total_uses" style="width: 100px;display: inline-block">
+                    </td>
+                </tr>
+            </table>
+
+            <div class="form-group">
+                <div>
+                    <div style="display: inline-block;margin-right: 50px">
+                        <h3 class="text-center">{[{ 'offer.offer_from' | translate }]}</h3>
+                        <datetimepicker max-date="promo.end_at" ng-required="false" show-weeks="false" hour-step="1" minute-step="15" ng-model="promo.begin_at" show-meridian="false" date-format="dd-MMM-yyyy" readonly-time="false" ></datetimepicker>
+                    </div>
+
+                    <div style="display: inline-block;">
+                        <h3 class="text-center">{[{ 'offer.offer_to' | translate }]}</h3>
+                        <datetimepicker min-date="promo.begin_at" ng-required="false" show-weeks="false" hour-step="1" minute-step="15" ng-model="promo.end_at" show-meridian="false" date-format="dd-MMM-yyyy" readonly-time="false"></datetimepicker>
+                    </div>
+
+                    <div style="display: inline-block;">
+                        <div class="btn-group">
+                            <a ng-if="promo.end_at" ng-click="promo.begin_at = null; promo.end_at = null" class="btn btn-default">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()" ng-disabled="form_create_or_update_promo.$invalid">{[{ 'ok' | translate }]}</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">{[{ 'cancel' | translate }]}</button>
+        </div>
+    </form>
+</script>
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="create_or_update_promo_code.html">
+    <form name="form_create_or_update_promo_code" class="validation" role="form" novalidate>
+        <div class="modal-header">
+            <h3 class="modal-title">{[{ 'promo_code.promo_code_form.title' | translate }]}</h3>
+        </div>
+        <div class="modal-body">
+
+            <table class="table no-border" style="width: auto; border-top: 0px !important">
+                <tr>
+                    <td>
+                        <label class="control-label" translate="promo_code.promo_code_form.code" style="width: auto"> *</label>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" required ng-minlength="4" ng-model="promoCode.code" style="width: 200px;display: inline-block">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="promo_code.promo_form.n_uses_per_user" style="width: auto"></label>
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" min="0" ng-model="promoCode.n_uses_per_user" style="width: 100px;display: inline-block">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="promo_code.promo_form.n_total_uses" style="width: auto"></label>
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" min="0" ng-model="promoCode.n_total_uses" style="width: 100px;display: inline-block">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="promo_code.promo_code_form.article" style="width: auto"></label>
+                    </td>
+                    <td>
+                        <select required ng-model="promoCode.article" class="form-control">
+                            <option ng-repeat="article in articles" value="{[{ article.id }]}">{[{ article.name_label | api_translation: article.items_quantity }]}</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="promo_code.promo_code_form.gamers" style="width: auto"></label>
+                    </td>
+                    <td>
+                        <ui-select multiple tagging='true' tagging-label="" theme="select2" ng-model="promoCode.gamers">
+                            <ui-select-match>{[{$item}]}</ui-select-match>
+                            <ui-select-choices repeat="n in []">
+                                {[{n}]}
+                            </ui-select-choices>
+                        </ui-select>
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="form-group">
+                <div>
+                    <div style="display: inline-block;margin-right: 50px">
+                        <h3 class="text-center">{[{ 'offer.offer_from' | translate }]}</h3>
+                        <datetimepicker max-date="promoCode.end_at" ng-required="false" show-weeks="false" hour-step="1" minute-step="15" ng-model="promoCode.begin_at" show-meridian="false" date-format="dd-MMM-yyyy" readonly-time="false" ></datetimepicker>
+                    </div>
+
+                    <div style="display: inline-block;">
+                        <h3 class="text-center">{[{ 'offer.offer_to' | translate }]}</h3>
+                        <datetimepicker min-date="promoCode.begin_at" ng-required="false" show-weeks="false" hour-step="1" minute-step="15" ng-model="promoCode.end_at" show-meridian="false" date-format="dd-MMM-yyyy" readonly-time="false"></datetimepicker>
+                    </div>
+
+                    <div style="display: inline-block;">
+                        <div class="btn-group">
+                            <a ng-if="promoCode.end_at" ng-click="promoCode.begin_at = null; promoCode.end_at = null" class="btn btn-default">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()" ng-disabled="form_create_or_update_promo_code.$invalid">{[{ 'ok' | translate }]}</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">{[{ 'cancel' | translate }]}</button>
+        </div>
+    </form>
+</script>

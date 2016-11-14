@@ -1,0 +1,7 @@
+services:
+    test.client_without_shutdown:
+        scope: 'prototype'
+        class: AppBundle\Service\ClientWrapped
+        arguments: ['@kernel', "%test.client.parameters%", '@test.client.history', '@test.client.cookiejar']
+
+

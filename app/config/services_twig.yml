@@ -1,0 +1,26 @@
+services:
+
+    app.twig.print_r:
+        class: AppBundle\Twig\PrintRExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    app.twig.evaluate:
+        class: AppBundle\Twig\EvaluateExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    app.twig.inject:
+        class: AppBundle\Twig\InjectExtension
+        public: false
+        arguments: [%kernel.root_dir%]
+        tags:
+            - { name: twig.extension }
+
+    app.twig.inject_external_content:
+        class: AppBundle\Twig\InjectExternalContentExtension
+        public: false
+        tags:
+            - { name: twig.extension }

@@ -1,0 +1,99 @@
+<div ng-controller="OfferContainerCtrl">
+    <!-- widget grid -->
+    <section id="widget-grid" >
+        <div class="well">
+
+            <div class="widget-body fuelux">
+
+                <div class="wizard">
+                    <ul class="steps">
+                        <li ng-class="{ 'active': offerCurrent.step == 1, 'complete': offerCurrent.step > 1}" data-ng-click="goBack(1)" >
+                            <span class="badge badge-info">1</span>{[{ 'offer.step_1' | translate }]}<span class="chevron"></span>
+                        </li>
+                        <li ng-class="{ 'active': offerCurrent.step == 2, 'complete': offerCurrent.step > 2}" data-ng-click="goBack(2)">
+                            <span class="badge">2</span>{[{ 'offer.step_2' | translate }]}<span class="chevron"></span>
+                        </li>
+                        <li ng-class="{ 'active': offerCurrent.step == 3, 'complete': offerCurrent.step > 3}" data-ng-click="goBack(3)">
+                            <span class="badge">3</span>{[{ 'offer.step_3' | translate }]}<span class="chevron"></span>
+                        </li>
+                        <li ng-class="{ 'active': offerCurrent.step == 4, 'complete': offerCurrent.step > 4}" data-ng-click="goBack(4)">
+                            <span class="badge">4</span>{[{ 'offer.step_4' | translate }]}<span class="chevron"></span>
+                        </li>
+                        <li ng-class="{ 'active': offerCurrent.step == 5 }">
+                            <span class="badge">5</span>{[{ 'offer.step_5' | translate }]}<span class="chevron"></span>
+                        </li>
+
+                    </ul>
+                    <!--<div class="actions">-->
+                        <!--<button type="button" class="btn btn-sm btn-primary btn-prev">-->
+                            <!--<i class="fa fa-arrow-left"></i>Prev-->
+                        <!--</button>-->
+                        <!--<button type="button" class="btn btn-sm btn-success btn-next" data-last="Finish">-->
+                            <!--Next<i class="fa fa-arrow-right"></i>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- row -->
+    <div class="row">
+
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+                <!-- widget options:
+                usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+                data-widget-colorbutton="false"
+                data-widget-editbutton="false"
+                data-widget-togglebutton="false"
+                data-widget-deletebutton="false"
+                data-widget-fullscreenbutton="false"
+                data-widget-custombutton="false"
+                data-widget-collapsed="true"
+                data-widget-sortable="false"
+
+                -->
+                <header>
+                    <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                    <h2>{[{ 'offer.wizard' | translate }]} {[{app.name}]}</h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+
+                    <!-- widget content -->
+                    <div class="widget-body" style="padding: 10px 20px 40px ">
+
+                        <div ng-if="offerCurrent.step == 1" ng-include="'/bundles/app/client_admin/views/configuration/offers/steps/select_1_app.html?'+v"></div>
+                        <div ng-if="offerCurrent.step == 2" ng-include="'/bundles/app/client_admin/views/configuration/offers/steps/select_2_countries.html?'+v"></div>
+                        <div ng-if="offerCurrent.step == 3" ng-include="'/bundles/app/client_admin/views/configuration/offers/steps/select_3_articles.html?v='+v"></div>
+                        <div ng-if="offerCurrent.step == 4" ng-include="'/bundles/app/client_admin/views/configuration/offers/steps/select_4_time.html?v='+v"></div>
+                        <div ng-if="offerCurrent.step == 5" ng-include="'/bundles/app/client_admin/views/configuration/offers/steps/select_5_offer.html?v='+v"></div>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="col-sm-0 col-md-0 col-lg-6">
+        </article>
+    </div>
+
+    <div class="well">
+        <a href="#/configuration/offers/list" class="btn btn-default">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> {[{ 'offer.go_back_to_offer_list' | translate }]}
+        </a>
+    </div>
+</div>

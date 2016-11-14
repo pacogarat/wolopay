@@ -1,0 +1,21 @@
+{# client \AppBundle\Entity\Client #}
+{# finInvoice \AppBundle\Entity\FinInvoice #}
+{# storageCurrencies \AppBundle\Entity\NotPersisted\StorageCurrencyMoney #}
+{# money \AppBundle\Entity\NotPersisted\Money #}
+{% extends 'base_pdf.html.twig' %}
+{% block body %}
+<div>
+    <div style="clear: both;">
+        <table style="width: 100%;">
+            <tr>
+                <td style="text-align: center; padding-right: 50px">
+                    <img src="{{kernel_root_dir}}/../web{% path finInvoice.companyFrom.logo, 'pdf' %}" style="clear: both;">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="padding: 10px 0 100px 0">
+
+    </div>
+    {% block page '' %}
+{% endblock %}

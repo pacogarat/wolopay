@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="pg_miguel" persistUploadOnCheckin="false">
+    <serverData>
+      <paths name="pg_miguel">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/var" />
+            <excludedPath local="true" path="$PROJECT_DIR$/app/config/parameters.yml" />
+            <excludedPath local="true" path="$PROJECT_DIR$/web/uploads" />
+            <excludedPath local="true" path="$PROJECT_DIR$/vendor" />
+            <excludedPath local="true" path="$PROJECT_DIR$/web/bower_components" />
+            <excludedPath local="true" path="$PROJECT_DIR$/web/bundles/" />
+            <excludedPath local="true" path="$PROJECT_DIR$/app/config/parameters__test.yml" />
+            <excludedPath local="true" path="$PROJECT_DIR$/bin" />
+            <excludedPath local="true" path="$PROJECT_DIR$/node_app/node_modules" />
+            <excludedPath local="true" path="$PROJECT_DIR$/web/js" />
+            <excludedPath local="true" path="$PROJECT_DIR$/web/css" />
+            <excludedPath local="true" path="$PROJECT_DIR$/.rsync_cache" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
+

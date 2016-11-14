@@ -1,0 +1,32 @@
+<div ng-if="$root.gacha && hasCategories && !firstPayMethods" ng-include="asset('/bundles/app/app_shop/js/views/partials/gacha.html')" class="gacha"></div>
+<div class="pay-methods" ng-if="$root.options.hasPayMethodsSection">
+    <div class="arrow-left"><span><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset('/img/1x1.png') }]}"></span></div>
+    <div class="arrow-right"><span><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset('/img/1x1.png') }]}"></span></div>
+
+    <div class="gradient-left"></div>
+    <div class="gradient-right"></div>
+
+    <div class="outer-wrapper">
+
+        <div class="inner-wrapper" data-ng-controller="ArticlesPMPCAListCtrl">
+            <div data-ng-repeat="n in [] | range:payMethodsRows" class="separator separator_{[{n}]}">
+
+                <div data-ng-repeat="articlePMPCA in current.articlePMPCAs" ng-if="$index % payMethodsRows === n"  id="paymethod-{[{articlePMPCA.id}]}" class="item pay-box" ng-class="{'selected': current.articlePMPCA.id == articlePMPCA.id}" data-ng-click="activate(articlePMPCA)" id="paymethod_{[{ articlePMPCA.id }]}">
+                    <div class="pay-box_inner" >
+                        <div class="description">{[{ articlePMPCA.name }]}</div>
+                        <div class="pay-icon" style="background-image: url('{[{ asset((articlePMPCA.img | replace: '_shop': $root.options.payMethodsImgFormat), true) }]}')">
+                        </div>
+                        <div class="extra-pay" ng-if="articlePMPCA.temp_force_price_diff">
+                            +{[{ articlePMPCA.temp_force_price_diff | currency: articlePMPCA.temp_force_price_currency.symbol }]}
+                        </div>
+                        <div class="tooltip" tooltip ng-if="articlePMPCA.description_label.key">
+                            <span class="tooltip-pay-method" translate="{[{ articlePMPCA.description_label.key }]}"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

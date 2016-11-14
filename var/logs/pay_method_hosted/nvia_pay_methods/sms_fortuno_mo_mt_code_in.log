@@ -1,0 +1,8 @@
+[2016-05-25 15:00:33] app.INFO: NEW payment with params: Array (     [billing_type] => MO     [country] => ES     [currency] => EUR     [keyword] => WOLOPAY     [message] => WOLOPAY ASD asd asd      [message_id] => 333     [operator] => Movistar     [price] => 2     [price_wo_vat] => 1.5     [sender] => 915426688     [service_id] => f7fa12b381d290e268f99e382578d64a     [shortcode] => 7753     [status] => OK     [sig] => 89b4b1a3f2574a4412da8521a960b091 )  [] []
+[2016-05-25 15:00:33] app.INFO: Saved 291819 with amount 2 [] []
+[2016-05-25 15:00:33] app.ERROR: Response message of sms is empty, translate it! domain: sms.mobile_text_sing_up.write_pin [] []
+[2016-05-25 15:00:33] app.INFO: Message was responded sms.logic_mo_mt_code.sing_up_text [] []
+[2016-06-10 09:53:11] app.INFO: NEW payment with params: Array (     [billing_type] => MO     [country] => ES     [currency] => EUR     [keyword] => WOLOPAY     [message] => WOLOPAY ASD asd asd      [message_id] => 333     [operator] => Movistar     [price] => 2     [price_wo_vat] => 1.5     [sender] => 915426688     [service_id] => f7fa12b381d290e268f99e382578d64a     [shortcode] => 7753     [status] => OK     [sig] => 89b4b1a3f2574a4412da8521a960b091 )  [] []
+[2016-06-10 09:53:11] app.INFO: Saved 63411 with amount 2 [] []
+[2016-06-10 09:53:11] app.ERROR: Response message of sms is empty, translate it! domain: sms.mobile_text_sing_up.write_pin [] []
+[2016-06-10 09:53:11] app.INFO: Message was responded sms.logic_mo_mt_code.sing_up_text [] []

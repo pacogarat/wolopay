@@ -1,0 +1,86 @@
+<!-- row -->
+<div class="row" ng-controller="ProjectsListController">
+    <!-- NEW WIDGET START -->
+    <article class="col-sm-12 col-md-12 col-lg-12">
+
+        <!-- Widget ID (each widget will need unique ID)-->
+        <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+            <!-- widget options:
+            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+            data-widget-colorbutton="false"
+            data-widget-editbutton="false"
+            data-widget-togglebutton="false"
+            data-widget-deletebutton="false"
+            data-widget-fullscreenbutton="false"
+            data-widget-custombutton="false"
+            data-widget-collapsed="true"
+            data-widget-sortable="false"
+
+            -->
+            <header>
+                <span class="widget-icon"> <i class="fa fa-eye"></i> </span>
+                <h2>{[{ 'project.list.title' | translate }]}</h2>
+            </header>
+
+            <!-- widget div-->
+            <div>
+
+                <!-- widget edit box -->
+                <div class="jarviswidget-editbox">
+                    <!-- This area used as dropdown edit box -->
+
+                </div>
+                <!-- end widget edit box -->
+
+                <!-- widget content -->
+                <div class="widget-body">
+                    <form class="form-horizontal">
+
+                        <fieldset>
+                            <legend>{[{ 'project.list.title' | translate }]} <a class="btn btn-info pull-right" style="margin-top: -10px" href="#/projects/configure">{[{ 'create' | translate }]} <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></a></legend>
+                            <p class="newlines"></p>
+                        </fieldset>
+                    </form>
+
+
+                    <div class="alert alert-warning" ng-if="proyect_apps.length == 0" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        {[{ 'no_data' | translate }]}
+                    </div>
+
+                    <table class="table" ng-if="proyect_apps.length > 0">
+                        <thead>
+                        <tr><th>{[{ 'project.list.app_name' | translate }]}</th>
+                            <th>{[{ 'project.list.url_notification_payment' | translate }]}</th>
+                            <th>{[{ 'project.list.url_notification_subscription' | translate }]}</th>
+                            <th>{[{ 'project.list.active' | translate }]}</th>
+                            <th>{[{ 'actions' | translate }]}</th></tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="project in proyect_apps">
+                            <td>{[{ project.name }]}</td>
+                            <td>{[{ project.url_notification_payment }]}</td>
+                            <td>{[{ project.url_notification_subscription }]}</td>
+                            <td ng-bind-html="project.active | true_false:'bootstrap'"></td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="#/projects/{[{project.id}]}/configure" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                    </a>
+                                    <!--<a ng-click="delete(project)" class="btn btn-default">-->
+                                        <!--<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>-->
+                                    <!--</a>-->
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    </article>
+</div>

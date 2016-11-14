@@ -1,0 +1,23 @@
+{# concept \AppBundle\Command\Billing\BillingClientOwesInjectConcept #}
+
+{% set extraConceptsN = 0 %}
+{% for concept in extraConcepts %}
+    <tr>
+        <td>
+            {{ concept.name }}
+            {% if concept.description %}
+                {% set extraConceptsN = extraConceptsN + 1 %}
+                {% spaceless %}
+                    ({% for i in 1..extraConceptsN %}*{% endfor %})
+                {% endspaceless %}
+
+            {% endif %}
+        </td>
+        <td>
+            {{ concept.moneyInClientCurrency.currency.id }}
+        </td>
+        <td class="num">
+            {{ concept.moneyInClientCurrency.amount | number_format(2,'.', ',') }} {{ concept.moneyInClientCurrency.currency.symbol }}
+        </td>
+    </tr>
+{% endfor %}

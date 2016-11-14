@@ -1,0 +1,428 @@
+<div class="well well-small-padding">
+    <div ng-controller="PurchasesController">
+        <div>
+            <form name="purchases_search" ng-submit="loadSearch()">
+                <div class="search-container">
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'purchase' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.purchase_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'transaction' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.transaction_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'shop_country' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.country_shop_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'country_detected' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.country_client_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'gamer' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.gamer_external_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'was_canceled' | translate }]}</label>
+                        <div class="input-group">
+                            <select ng-model="search.was_canceled" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                                <option value=""></option>
+                                <option value="0" translate="no"></option>
+                                <option value="1" translate="yes"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label><i class="fa fa-search"></i> {[{ 'subscription' | translate }]}</label>
+                        <div class="input-group">
+                            <input type="text" ng-model="search.subscription_id" class="form-control" placeholder="{[{ 'search' | translate }]}">
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <button type="submit" class="btn btn-info btn-search" ng-disabled="purchases_search.$invalid">{[{ 'search' | translate }]} <i class="fa fa-search"></i></button>
+                        <button type="button" class="btn btn-warning btn-search" ng-click="search = {}" style="margin-left: 10px">
+                            {[{ 'clear' | translate }]} <i class="glyphicon glyphicon-remove"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div ng-if="thereAreData === false">
+            <div class="alert alert-warning">
+                <span class="glyphicon glyphicon-exclamation-sign"></span>
+                {[{ 'no_data' | translate }]}
+            </div>
+        </div>
+        <div ng-if="thereAreData === true" >
+            <div class="table-responsive">
+                <table class="table table-hover table-striped-inv table-bordered">
+                    <thead>
+
+                    <tr>
+                        <td colspan="100%">
+                            <input ng-model="searchText.$" placeholder="{[{ 'search_from_current_data' | translate}]}" class="form-control" ng-model-options="{debounce: 1000}">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <th ng-click="orderBy('id')" style="cursor: pointer;" data-translate="id"></th>
+                        <!--<th ng-click="orderBy('transaction_id')" style="cursor: pointer;" data-translate="transaction" ></th>-->
+                        <th ng-click="orderBy('created_at')" style="cursor: pointer;" data-translate="created"></th>
+                        <th ng-click="orderBy('country_configured.id')"  style="cursor: pointer;" data-translate="shop_country"></th>
+                        <th ng-click="orderBy('transaction.country_detected.id')"  style="cursor: pointer;" data-translate="country_detected"></th>
+                        <!--<th ng-click="orderBy('vat')"  style="cursor: pointer;" data-translate="country_vat"></th>-->
+                        <th ng-click="orderBy('gamer.gamer_external_id')" style="cursor: pointer;" data-translate="gamer"></th>
+                        <th ng-click="orderBy('transaction.level_category.name')" style="cursor: pointer;" data-translate="shop"></th>
+                        <th ng-click="orderBy('payment.payment_detail.payment_detail_has_articles.offer_programmer.name')" style="cursor: pointer;" data-translate="offer"></th>
+
+                        <th ng-click="" style="cursor: pointer;" data-translate="article"></th>
+                        <th ng-click="orderBy('real_amount_total_from_parent_purchase')"  style="cursor: pointer;" data-translate="total_amount"></th>
+                        <th ng-click="orderBy('real_amount_tax_from_parent_purchase')"  style="cursor: pointer;" data-translate="total_amount_vat"></th>
+                        <!--<th ng-click="orderBy('amount_provider')"  style="cursor: pointer;" data-translate="provider_amount"></th>-->
+                        <!--<th ng-click="orderBy('amount_p_g')"  style="cursor: pointer;"  data-translate="wolopay_amount"></th>-->
+                        <th ng-click="orderBy('real_amount_game_from_parent_purchase')"  style="cursor: pointer;" data-translate="game_amount"></th>
+                        <th ng-click="orderBy('payment.pay_method.name')"  style="cursor: pointer;" data-translate="provider"></th>
+                        <!--<th ng-click="orderBy('payment.type')"  style="cursor: pointer;" data-translate="detailed_payment_types"></th>-->
+                        <th ng-click="orderBy('was_canceled')"  style="cursor: pointer;" data-translate="was_canceled"></th>
+                        <th><a href="/admin/api/purchases/toCsv/{[{$root.app.id+'/'+$root.dateFrom.toISOString()+'/'+$root.dateTo.toISOString()+'/'+$root.currency.id}]}" download>
+                            <button type="button" class="btn btn-success">
+                                <i class="fa fa-file-excel-o"></i>
+                            </button>
+                        </a>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="filter-table-selects-xxs">
+                        <td><!-- count --></td>
+                        <td><!-- purchase Id --></td>
+                        <!--<td>&lt;!&ndash; transactionId &ndash;&gt;</td>-->
+                        <td><!-- created_at  --></td>
+                        <td style="text-align: center;">
+                            <select ng-model="searchText.country_configured.name" class="form-control" style="width: auto">
+                                <option></option>
+                                <option ng-repeat="purchase in purchases_country">{[{ purchase.country_configured.name }]}</option>
+                            </select>
+                        </td>
+                        <td style="text-align: center;">
+                            <select ng-model="searchText.transaction.country_detected.name" class="form-control" style="width: auto;">
+                                <option></option>
+                                <option ng-repeat="purchase in purchases_country_detected" >{[{ purchase.transaction.country_detected.name }]}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select ng-model="searchText.gamer.gamer_external_id" class="form-control" >
+                                <option></option>
+                                <option ng-repeat="purchase in purchases_gamer">{[{ purchase.gamer.gamer_external_id }]}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!-- level_category (shop) -->
+                            <select ng-model="searchText.transaction.level_category.id" class="form-control" >
+                                <option></option>
+                                <option ng-repeat="purchase in purchases_level_categories" ng-value="purchase.transaction.level_category.id">{[{ purchase.transaction.level_category.name }]}</option>
+                            </select>
+                        </td>
+                        <td>
+                            <!-- offer_programmer -->
+                            <select ng-model="searchText.payment.payment_detail.payment_detail_has_articles.offer_programmer.id" class="form-control input-xxsm" >
+                                <option></option>
+                                <option ng-repeat="offer_programmer in offer_programmers" ng-value="{[{ offer_programmer.id }]}">
+                                    {[{ offer_programmer.name }]}
+                                </option>
+                            </select>
+                        </td>
+                        <td>
+                            <!-- article -->
+                            <select ng-model="searchText.payment.payment_detail.payment_detail_has_articles.id" class="form-control" >
+                                <option></option>
+                                <option ng-repeat="article in articles" ng-value="article.id">
+                                    {[{ article.name | api_translation | replace_our_vars: article.items_quantity}]}
+                                </option>
+                            </select>
+                        </td>
+                        <td><!-- total_paid --></td>
+                        <td><!-- amount_vat  --></td>
+                        <!--<td>&lt;!&ndash; amount_provider  &ndash;&gt;</td>-->
+                        <!--<td>&lt;!&ndash; amount_wolo  &ndash;&gt;</td>-->
+                        <td><!-- amount_game  --></td>
+                        <td>
+                            <select ng-model="searchText.pay_method.name" class="form-control" style="width: auto;">
+                                <option></option>
+                                <option ng-repeat="purchase in purchases_pay_method">{[{ purchase.pay_method.name }]}</option>
+                            </select>
+                        </td>
+                        <!--<td>-->
+                            <!--&lt;!&ndash; Payment type &ndash;&gt;-->
+                            <!--<select ng-model="searchText.detailed_payment_type" class="form-control" style="width: auto;">-->
+                                <!--<option></option>-->
+                                <!--<option ng-repeat="payment_type in payment_types ">{[{ ("purchase_status."+ payment_type.detailed_payment_type) | translate }]}-->
+                                <!--</option>-->
+                            <!--</select>-->
+                        <!--</td>-->
+                        <td style="text-align: center;">
+                            <select ng-model="searchText.was_canceled" class="form-control" style="width: auto; display:inline-block;">
+                                <option></option>
+                                <option data-translate="no" value="{[{ false }]}"></option>
+                                <option data-translate="yes" value="{[{ true }]}"></option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr ng-repeat="purchase in purchases | filter: searchText : ignoreNullComparator | orderBy:predicate:reverse ">
+                        <td>{[{ $index + 1 }]}</td>
+                        <td>{[{ purchase.id}]}</td>
+                        <!--<td>{[{ purchase.transaction_id}]}</td>-->
+                        <td style="text-align: center; font-size: 10px">{[{ purchase.created_at | date:'yyyy-MM-dd HH:mm:ss' }]}</td>
+
+                        <td style="text-align: center;"><country-flag data-name="{[{ purchase.country_configured.name }]}" data-state="{[{ purchase.country_configured.id }]}"></country-flag></td>
+                        <td style="text-align: center;"><country-flag data-name="{[{ purchase.transaction.country_detected.name }]}" data-state="{[{ purchase.transaction.country_detected.id }]}"></country-flag></td>
+                        <!--<td>{[{ purchase.vat || "0" }]}%</td>-->
+                        <td>{[{ purchase.gamer.gamer_external_id }]}</td>
+
+                        <td>{[{ purchase.transaction.level_category.name }]}</td>
+                        <td>
+                            <span ng-if="getOffersFromPaymentDetailHasArticles(purchase.payment.payment_detail.payment_detail_has_articles).length <= 1">
+                                {[{ purchase.payment.payment_detail.payment_detail_has_articles[0].offer_programmer.name }]}
+                            </span>
+                            <span ng-if="getOffersFromPaymentDetailHasArticles(purchase.payment.payment_detail.payment_detail_has_articles).length > 1">
+                                <i class="fa fa-shopping-cart"></i> <span translate="n_offers" translate-values="{[{ { quantity: (getOffersFromPaymentDetailHasArticles(purchase.payment.payment_detail.payment_detail_has_articles).length  | number) } }]}" ></span>
+                            </span>
+                        </td>
+                        <td>
+                            <span ng-if="purchase.payment.payment_detail.payment_detail_has_articles.length == 1">
+                                 <span ng-if="purchase.payment.payment_detail.count_all_articles_quantities > 1">
+                                    <i class="fa fa-cubes"></i> {[{ purchase.payment.payment_detail.count_all_articles_quantities }]} x
+                                </span>
+                                {[{ purchase.payment.payment_detail.payment_detail_has_articles[0].name | api_translation | replace_our_vars: purchase.payment.payment_detail.payment_detail_has_articles[0].items_quantity}]}
+                            </span>
+                            <span ng-if="purchase.payment.payment_detail.payment_detail_has_articles.length > 1" style="display: inline-block;">
+                                <i class="fa fa-shopping-cart"></i> <span translate="n_articles" translate-values="{[{ { quantity: (purchase.payment.payment_detail.payment_detail_has_articles.length | number) } }]}" ></span>
+                                <span ng-if="purchase.payment.payment_detail.count_all_articles_quantities > 1" style="padding-left: 10px">
+                                    <i class="fa fa-cubes"></i> <b translate="n_units" translate-values="{[{ { quantity: (purchase.payment.payment_detail.count_all_articles_quantities | number) } }]}" ></b>
+                                </span>
+                            </span>
+                        </td>
+                        <td style="text-align: center;">{[{ purchase.real_amount_total_from_parent_purchase| currency:currency.symbol }]}</td>
+                        <td style="text-align: center;">{[{ purchase.real_amount_tax | currency:currency.symbol }]}</td>
+                        <!--<td>{[{ purchase.amount_provider| number:2}]} {[{ currency.symbol }]}</td>-->
+                        <!--<td>{[{ purchase.amount_wolo | number:2}]} {[{ currency.symbol }]}</td>-->
+                        <td style="text-align: center; font-weight: bold" data-currency="{[{ purchase.real_amount_game_from_parent_purchase }]}"></td>
+
+                        <td><purchase-status data-state="{[{ purchase.detailed_payment_type }]}"></purchase-status>  {[{ purchase.pay_method.name }]}</td>
+                        <!--<td><purchase-status data-state="{[{ purchase.detailed_payment_type }]}"></purchase-status></td>-->
+                        <td style="text-align: center" ng-bind-html="purchase.was_canceled | true_false:'bootstrap'"></td>
+                        <td style="width: 120px;">
+
+                            <div class="btn-group btn-group-xs">
+
+                                <div class="btn btn-default" ng-click="open(purchase)" data-tooltip="{[{ 'more_info' | translate }]}">
+                                    <i class="fa  fa-info-circle"></i>
+                                </div>
+                                <a href="#transactions?transaction_id={[{purchase.transaction_id}]}" has-permission="ROLE_ADMIN_TRANSACTIONS"  data-tooltip="{[{ 'link_to_transaction' | translate }]}" class="btn btn-default">
+                                    <i class="fa fa-list-alt"></i>
+                                </a>
+                                <a href="#notifications?purchase_id={[{purchase.id}]}" has-permission="ROLE_ADMIN_NOTIFICATIONS"  data-tooltip="{[{ 'link_to_notification' | translate }]}" class="btn btn-default">
+                                    <i class="fa fa-bell-o"></i>
+                                </a>
+                                <a ng-if="purchase.payment.subscription_eventuality.subscription.status_category.id == 201" href="#active-subscriptions?purchase_id={[{purchase.id}]}" has-permission="ROLE_ADMIN_NOTIFICATIONS" tooltip="{[{ 'link_to_active_subscriptions' | translate }]}" class="btn btn-default">
+                                    <i class="fa fa-recycle"></i>
+                                </a>
+
+                                <button class="btn btn-default" style="color: #de3700" ng-if="purchase.refund_enabled && !purchase.cancel_in_process" has-permission="ROLE_ADMIN_PURCHASES_CANCELLATION" ng-click="cancel(purchase)" data-original-title="{[{ 'purchase_section.cancel' | translate}]}" data-tooltip="{[{ 'purchase.cancel' | translate }]}" rel="tooltip">
+                                    <i class="fa fa-power-off"></i>
+                                </button>
+                                <button class="btn btn-success" ng-if="purchase.can_reactivate && !purchase.was_canceled && purchase.cancel_in_process" has-permission="ROLE_ADMIN_PURCHASES_CANCELLATION" ng-click="reactivate(purchase)" data-original-title="{[{ 'purchase.reactivate' | translate}]}" data-tooltip="{[{ 'purchase_section.reactivate' | translate }]}" rel="tooltip">
+                                    <i class="fa fa-bolt"></i>
+                                </button>
+
+                            </div>
+
+                            <div style="display: inline-block;" data-original-title="{[{ 'cancel_in_process' | translate}]}" data-tooltip="{[{ 'cancel_in_process' | translate }]}" rel="tooltip">
+                                <button class="btn btn-xs btn-default disabled" ng-if="!purchase.was_canceled && purchase.cancel_in_process" has-permission="ROLE_ADMIN_PURCHASES_CANCELLATION" data-original-title="{[{ 'cancel_in_process' | translate}]}" data-tooltip="{[{ 'cancel_in_process' | translate }]}" rel="tooltip">
+                                    <i class="fa fa-clock-o text-danger"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-include="'/bundles/app/client_admin/views/partials/end_pagination.html?v='+v"></div>
+        </div>
+
+    </div>
+</div>
+<script type="text/ng-template" id="popover_dynamic_article_multiple.html">
+
+    <div ng-repeat='article in purchase.payment.payment_detail.payment_detail_has_articles'>
+        {[{ article.name | api_translation | replace_our_vars: article.items_quantity}]}
+    </div>
+</script>
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3><span data-translate="purchase"></span>: {[{ purchase.id }]}</h3>
+    </div>
+    <div class="modal-body">
+        <table class="table table-bordered">
+            <tr><td data-translate="created"></td><td>{[{purchase.created_at | date:'short' }]}</td></tr>
+            <tr><td data-translate="transaction"></td><td>{[{purchase.transaction_id}]}</td></tr>
+            <tr><td data-translate="country"></td><td>{[{purchase.country.name}]}</td></tr>
+            <tr><td data-translate="currency"></td><td>{[{purchase.currency.id}]}</td></tr>
+            <!--<tr><td data-translate="local_amount"></td><td>{[{purchase.payment.payment_detail.payment_detail_has_articles[0].amount}]} {[{ purchase.currency.symbol }]}</td></tr>-->
+            <tr><td data-translate="exchange_rate"></td><td>{[{ purchase.amount_total / purchase.payment.payment_detail.payment_detail_has_articles[0].amount | number:4}]}</td></tr>
+            <tr><td data-translate="gamer"></td><td>{[{ purchase.gamer.gamer_external_id }]}</td></tr>
+            <tr><td data-translate="shop"></td><td>{[{ purchase.transaction.level_category.name }]}</td></tr>
+            <tr><td data-translate="partial_payment"></td><td ng-bind-html="purchase.partial_payment | true_false:'bootstrap'"></td></tr>
+            <tr><td data-translate="is_a_subscription"></td><td ng-bind-html="purchase.payment.type=='subscription' | true_false:'bootstrap'"></td></tr>
+            <tr>
+                <td data-translate="was_canceled"></td><td>
+                <span ng-bind-html="purchase.was_canceled | true_false:'bootstrap'"></span>
+                </td>
+            </tr>
+            <tr>
+                <td data-translate="cancel_in_process"></td><td>
+                    <span ng-bind-html="purchase.cancel_in_process | true_false:'bootstrap'"></span>
+                </td>
+            </tr>
+            <tr><td data-translate="provider"></td><td>{[{ purchase.pay_method.name }]}</td></tr>
+            <tr><td data-translate="pay_category"></td><td>{[{ purchase.pay_method.pay_category.name }]}</td></tr>
+
+            <tr ng-if="purchase.extra_cost_from_children.length > 0"><th colspan="2"  data-translate="purchase_section.initial_payment_info"></th></tr>
+
+            <tr><td data-translate="total_amount"></td><td>{[{purchase.amount_total| currency:currency.symbol  }]}</td></tr>
+            <tr><td data-translate="total_amount_vat"></td><td>{[{purchase.real_amount_tax| currency:currency.symbol }]}</td></tr>
+            <tr><td data-translate="wolopay_amount"></td><td>{[{purchase.amount_wolo| currency:currency.symbol }]}</td></tr>
+            <tr><td data-translate="provider_amount"></td><td>{[{purchase.amount_provider| currency:currency.symbol }]}
+                <span data-ng-if="purchase.amount_tax_paid_by_provider>0">(of which taxes = {[{purchase.amount_tax_paid_by_provider| currency:currency.symbol }]} )</span>
+            </td></tr>
+            <tr><td data-translate="game_amount"></td><td>{[{ purchase.amount_game| currency:currency.symbol }]}</td></tr>
+
+            <tr>
+                <td  colspan="2">
+                    <h3 data-translate="purchase_section.extra_cost"></h3>
+
+                    <table ng-if="purchase.extra_cost_from_children.length > 0" class="table table-bordered">
+                        <tr>
+                            <th></th>
+                            <th data-translate="reason"></th>
+                            <th data-translate="amount"></th>
+                            <th data-translate="created"></th>
+                        </tr>
+                        <tr ng-repeat="purchase_extra_cost in purchase.extra_cost_from_children">
+                            <td>{[{ $index+1 }]}.</td>
+                            <td>{[{ purchase_extra_cost.reason }]}</td>
+                            <td>{[{ purchase_extra_cost.amount_total | currency:currency.symbol }]}</td>
+                            <td>
+                                {[{purchase_extra_cost.created_at | date:'short' }]}
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p class="bg-success" style="padding: 10px" ng-if="purchase.extra_cost_from_children.length == 0" data-translate="purchase_section.no_extra_cost"></p>
+                </td>
+            </tr>
+
+            <tbody ng-if="purchase.extra_cost_from_children.length > 0">
+
+                <tr><th colspan="2" data-translate="purchase_section.actual_payment_info"></th></tr>
+
+                <tr><td data-translate="total_amount"></td><td>{[{purchase.real_amount_total_from_parent_purchase| currency:currency.symbol }]}</td></tr>
+                <tr><td data-translate="total_amount_vat"></td><td>{[{purchase.real_amount_tax_from_parent_purchase | currency:currency.symbol}]}</td></tr>
+                <tr><td data-translate="wolopay_amount"></td><td>{[{purchase.real_amount_wolo_from_parent_purchase | currency:currency.symbol}]}</td></tr>
+                <tr><td data-translate="provider_amount"></td><td>{[{purchase.real_amount_provider_from_parent_purchase | currency:currency.symbol}]}
+                    <span data-ng-if="purchase.amount_tax_paid_by_provider>0">(of which taxes = {[{purchase.amount_tax_paid_by_provider | currency:currency.symbol}]} )</span>
+                </td></tr>
+                <tr><td data-translate="game_amount"></td><td>{[{ purchase.real_amount_game_from_parent_purchase}]}</td></tr>
+
+            </tbody>
+
+            <tr><td data-translate="articles"></td>
+                <td>
+                    <table class="table table-bordered">
+                        <tbody ng-repeat="article in purchase.payment.payment_detail.payment_detail_has_articles">
+                        <tr><th data-translate="id"></th><td>{[{ article.id}]}</td></tr>
+                        <tr><th data-translate="quantity"></th><td>{[{ article.articles_quantity }]}</td></tr>
+                        <tr><th data-translate="article"></th><td>{[{ article.name | api_translation | replace_our_vars: article.items_quantity }]}</td></tr>
+                        <tr><th data-translate="offer"></th><td>{[{ article.offer_programmer.name}]}</td></tr>
+                        <tr><th data-translate="articles_given"></th>
+                            <td>
+                                <ul>
+                                    <li ng-repeat="articleGiven in article.payment_detail_articles_has_given_articles">
+                                        {[{ articleGiven.article.name_label  | api_translation | replace_our_vars: articleGiven.article.items_quantity }]}
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr><th colspan="2"><img ng-src="{[{ article.img }]}"></th></tr>
+                        </tbody>
+
+                    </table>
+                </td>
+            </tr>
+            <tr><td data-translate="notifications"></td>
+                <td>
+                    <table class="table table-bordered">
+                        <tbody ng-repeat="notification in purchase.purchase_notification">
+                        <tr><td>{[{ notification.id }]}</td><td> <span data-translate="received"></span>: <span ng-bind-html="notification.was_received | true_false:'bootstrap'"></span></td></tr>
+                        <tr><td colspan="2">
+                            <table class="table table-bordered" ng-repeat="request in notification.requests">
+                                <tr><th data-translate="code"></th><td ng-bind-html="request.response.http_code | http_code"></td></tr>
+                                <tr><th data-translate="content"></th><td><pre style="width: 200px; word-wrap:break-word">{[{ request.response.content }]}</pre></td></tr>
+                                <tr><th data-translate="request"></th><td><div style="width: 200px; font-size: 0.7em; word-wrap:break-word">{[{ request.request.url }]}</div></td></tr>
+                            </table>
+
+                        </td></tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</script>
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="purchaseCancel.html">
+    <form name="cancel_purchase">
+        <div class="modal-header">
+            <h3 class="modal-title">{[{ 'purchase_section.cancel_this_purchase' | translate}]}, {[{ purchase.id }]}</h3>
+        </div>
+        <div class="modal-body">
+            <textarea ng-model="reason" required name="reason" id="reason-textarea" class="form-control" placeholder="{[{ 'purchase_section.reason' | translate}]}" rows="3"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok(reason)" ng-disabled="cancel_purchase.$invalid" data-translate="ok"></button>
+            <button class="btn btn-warning" ng-click="cancel()" data-translate="cancel"></button>
+        </div>
+    </form>
+</script>
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="purchaseReactivate.html">
+    <form name="cancel_purchase">
+        <div class="modal-header">
+            <h3 class="modal-title">{[{ 'purchase_section.reactivate_this_purchase' | translate}]}, {[{ purchase.id }]}</h3>
+        </div>
+        <div class="modal-body">
+            <textarea ng-model="reason" required name="reason" id="reason-textarea" class="form-control" placeholder="{[{ 'purchase_section.reason' | translate}]}" rows="3"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok(reason)" ng-disabled="cancel_purchase.$invalid" data-translate="ok"></button>
+            <button class="btn btn-warning" ng-click="cancel()" data-translate="cancel"></button>
+        </div>
+    </form>
+</script>

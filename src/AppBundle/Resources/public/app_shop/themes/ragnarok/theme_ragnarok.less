@@ -1,0 +1,33 @@
+// import default vars
+@import "../default_1_vars_ini";
+
+// override default vars
+@THEME_FOLDER: "ragnarok";
+
+// get final vars, concatenate vars
+@import "../default_2_vars_second";
+
+@BODY_BACKGROUND: 'none';
+@TOOLTIP_BORDER: 2px solid #6a8ccc;
+@TOOLTIP_BACKGROUND: #00040B;
+@TOOLTIP_LEFT_BORDER: 1px dashed #6a8ccc;
+@MOBILE_BACKGROUND_COLOR: #010306;
+
+// get default css
+@import "../default_3_style";
+
+@import "../default_chosen";
+@import "../default_animation";
+
+// If you want override css below
+
+@font-face {
+    font-family: ~"@{FONT}";
+    src: url('@{FILES_PATH}/fonts/Vera-webfont.eot');
+    src: url('@{FILES_PATH}/fonts/Vera-webfont.eot?#iefix') format('embedded-opentype'),
+    url('@{FILES_PATH}/fonts/Vera-webfont.woff') format('woff'),
+    url('@{FILES_PATH}/fonts/Vera-webfont.ttf') format('truetype'),
+    url('@{FILES_PATH}/fonts/Vera-webfont.svg#bitstream_vera_sansroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

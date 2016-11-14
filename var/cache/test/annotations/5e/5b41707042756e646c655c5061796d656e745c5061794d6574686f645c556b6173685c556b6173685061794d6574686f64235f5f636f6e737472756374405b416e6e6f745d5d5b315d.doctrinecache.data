@@ -1,0 +1,2 @@
+0
+a:1:{i:0;O:41:"JMS\DiExtraBundle\Annotation\InjectParams":1:{s:6:"params";a:3:{s:4:"live";O:35:"JMS\DiExtraBundle\Annotation\Inject":3:{s:5:"value";s:21:"%payments.ukash.live%";s:8:"required";N;s:6:"strict";b:1;}s:4:"user";O:35:"JMS\DiExtraBundle\Annotation\Inject":3:{s:5:"value";s:21:"%payments.ukash.user%";s:8:"required";N;s:6:"strict";b:1;}s:8:"password";O:35:"JMS\DiExtraBundle\Annotation\Inject":3:{s:5:"value";s:25:"%payments.ukash.password%";s:8:"required";N;s:6:"strict";b:1;}}}}

@@ -1,0 +1,16 @@
+{% extends '@App/AppShop/layout_shop.html.twig' %}
+
+{% block javascript_end_body_before_exe %}
+
+    <script>
+        propertiesDefault.appId= '{{ app.user.app.id }}';
+    </script>
+
+{% endblock %}
+
+{% block page %}
+
+    <div data-ng-controller="FinishedCtrl">
+    </div>
+
+{% endblock %}

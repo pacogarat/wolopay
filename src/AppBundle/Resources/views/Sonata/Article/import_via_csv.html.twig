@@ -1,0 +1,33 @@
+{% extends 'SonataAdminBundle:CRUD:action.html.twig' %}
+
+{% block content %}
+
+{{ form(form) }}
+    <br><br>
+<p>
+    Before execute this query, (<b>Replace idJuego, IdItem values, m.IdCategoria = 1 Simple payment , 2 subscription, 3 promotional code</b>)
+    <br>If it is SMS or voice it won't be inserted his paymethods
+</p>
+<code>
+    <pre>
+SELECT
+    a.cantidad, ',', apc.Precio, ',', apc.MonedaReal, ',', p.ShortName, ',', replace(m.descripcion, ',',' '), ',', p.Name, ','
+    , m.IdCategoria, ',', i.description, ',', SMS.ShortCode, ',', SMS.Precio, ',', SMS.Moneda, ',', Operadora.ShortName
+FROM
+    MedioPago m
+    inner join MedioPagoConcreto mpc on (m.idMedioPago = mpc.idMedioPago)
+    inner join ArticuloMedioPagoConcreto apc on (apc.idMedioConcreto = mpc.idMedioConcreto)
+    inner join Articulo a on (a.IdArticulo = apc.IdArticulo)
+    inner join Item i on (i.IdItem= a.IdItem)
+    inner join Pais p on (p.CodigoPais = m.CodigoPais)
+    left join SMS on (SMS.idMedioPago = m.idMedioPago)
+    left join SMS_Operadora on (SMS_Operadora.idMedioPago = SMS.idMedioPago)
+    left join Operadora on (Operadora.IdOperadora = SMS_Operadora.IdOperadora)
+where
+    mpc.IdJuego=<b>22</b> And a.IdItem=<b>38</b> And m.IdCategoria=<b>1</b>
+
+    order by cantidad;
+    </pre>
+</code>
+
+{% endblock %}

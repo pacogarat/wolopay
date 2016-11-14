@@ -1,0 +1,5 @@
+--------------------- app.HEADER: New Request http://sym2_pay_gateway.dev/shop/payment/begin/WOT_575aa4bb5cf3b/en/158-subscription/4877c6c1-2ef8-11e6-bdad-902b3456f033/ES, GET: , POST: 
+[2016-06-10 15:29:57] app.ERROR: AppBundle\Payment\PayMethod\Exceptions\PayMethodOnlyAvailableWithProviderClientCredentialsException(73):  [] []
+[2016-06-10 15:29:57] app.DEBUG: Exception in Kernel exception listener: AppBundle\Payment\PayMethod\Exceptions\PayMethodOnlyAvailableWithProviderClientCredentialsException [] []
+[2016-06-10 15:29:57] app.INFO: --- Request info PATH: /shop/payment/begin/WOT_575aa4bb5cf3b/en/158-subscription/4877c6c1-2ef8-11e6-bdad-902b3456f033/ES, GET: , POST:  [] []
+[2016-06-10 15:29:57] app.INFO: --- Summary User info, ip:127.0.0.1, Browser: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36 --- [] []

@@ -1,0 +1,2 @@
+0
+a:2:{i:0;O:37:"Doctrine\ORM\Mapping\MappedSuperclass":1:{s:15:"repositoryClass";N;}i:1;O:41:"JMS\Serializer\Annotation\ExclusionPolicy":1:{s:6:"policy";s:3:"ALL";}}

@@ -1,0 +1,7 @@
+<div style="text-align: center;margin: 60px">
+    <div class="btn btn-primary btn-lg" ng-click="loadMore()" ng-disabled="maxCurrentPage">
+        <span ng-if="!maxCurrentPage" data-translate="load_more_data"></span>
+        <span ng-if="maxCurrentPage" data-translate="no_more_data_available"></span>
+        <i class="fa fa-bolt" style="margin-left: 10px"></i>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{% extends "::base_form_full_screen.html.twig" %}
+{% block title %}{{ 'form.generic_requirements.title' | trans }}{% endblock %}
+{% block header_right %}
+    <img src="{% path pmpc.payMethod.imgIcon, 'shop' %}">
+{% endblock %}
+{% block page_container %}
+
+    <h1>
+        {{ 'form.gamer_email_type.title' | trans }}
+    </h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <div class="form-group text-right voffset4">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">{{'form.gamer_email_type.submit.label' | trans }}</button>
+    </div>
+
+    {{ form_end(form) }}
+
+    <div style="padding-top: 20px">{{ 'form.gamer_email_type.desc' | trans }}</div>
+
+{% endblock %}

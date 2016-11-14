@@ -1,0 +1,73 @@
+<div tooltip class="tooltip" data-is-article="true" data-gacha="appShopHasArticle.article.articles_gacha.length > 0 ? appShopHasArticle : null" data-auto-refresh="( showTimerArticle(appShopHasArticle.article) || showTimerOffer(appShopHasArticle.offer))">
+    <img class="img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset((appShopHasArticle.img | replace: '_shop':'_shop_tooltip'), false) }]}">
+    <div class="tooltip-content">
+        <h3 class="title" translate="{[{ appShopHasArticle.name_label.key }]}" translate-values="{[{ {number: (appShopHasArticle.current_items_quantity | number)} }]}"></h3>
+        <div translate="{[{ appShopHasArticle.description_label.key }]}"  translate-values="{[{ { number: (appShopHasArticle.items_quantity | number) } }]}"></div>
+        <table class="legend">
+            <tbody ng-if="appShopHasArticle.offer">
+                <tr ng-if="appShopHasArticle.offer && appShopHasArticle.current_items_quantity != appShopHasArticle.article.items_quantity">
+                    <td><div class="color" style="background: #D42F23"></div></td>
+                    <th translate="items_increase"></th>
+                    <td class="remark">+{[{ ((100 * appShopHasArticle.current_items_quantity) / appShopHasArticle.article.items_quantity) - 100 | number:0 }]}%</td>
+                </tr>
+                <tr ng-if="appShopHasArticle.offer && appShopHasArticle.amount != appShopHasArticle.current_amount_without_offer && appShopHasArticle.current_amount_without_offer" >
+                    <td><div class="color" style="background: #D42F23"></div></td>
+                    <th translate="amount_discount"></th>
+                    <td class="remark">{[{ ((100 * appShopHasArticle.amount) / appShopHasArticle.current_amount_without_offer) - 100 | number:0 }]}%</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr ng-if="showRemainingUnits(appShopHasArticle.article) || showRemainingUnitsOffer(appShopHasArticle.offer)">
+                    <td><div class="color" style="background: #1A72AF"></div></td>
+                    <th translate="articles_remaining"></th>
+                    <td class="remark">
+                        {[{ getLowerNum(showRemainingUnits(appShopHasArticle.article), showRemainingUnitsOffer(appShopHasArticle.offer)) }]}
+                    </td>
+                </tr>
+                <tr ng-if="showTimerArticle(appShopHasArticle.article) || showTimerOffer(appShopHasArticle.offer)">
+                    <td><div class="color" style="background: #721291"></div></td>
+                    <th translate="time_left"></th>
+                    <td style="font-weight: bold">
+                        <timer end-time="calculateTime(getTimeLower(appShopHasArticle.offer.offer_to, appShopHasArticle.article.valid_to))">
+                            {[{days}]} <span translate="days"></span>, {[{hhours}]}:{[{mminutes}]}:{[{sseconds}]}
+                        </timer>
+                    </td>
+                </tr>
+                <tr ng-if="appShopHasArticle.article.periodicity > 0">
+                    <td><div class="color" style="background: #721291"></div></td>
+                    <th translate="subscription_periodicity"></th>
+                    <td style="font-weight: bold">
+                        <span ng-include="asset('/bundles/app/app_shop/js/views/partials/article_periodicity.html')" ng-init="periodicity = appShopHasArticle.article.periodicity"></span>
+                    </td>
+                </tr>
+
+            </tbody>
+            <!--
+            <tbody ng-if="appShopHasArticle.articles_extra.length > 0">
+                <tr >
+                    <td><div class="color" style="background: #720438; "></div></td>
+                    <th translate="article_extra" translate-values="{[{ {quantity : ((appShopHasArticle.articles_extra.length) | number) } }]}" colspan="2"></th>
+                </tr>
+                <tr>
+                    <td colspan="3" style="padding: 4px"></td>
+                </tr>
+            </tbody>
+            <tbody ng-repeat="article in appShopHasArticle.articles_extra ">
+                <tr>
+                    <th colspan="3" style="padding: 10px 0 10px 0; font-size: 1.2em; font-weight: bold; border-top: 1px dashed #666 ">
+                        + <span translate="{[{ article.name_label.key }]}" translate-values="{[{ {number : (article.items_quantity | number) } }]}"></span>
+                    </th>
+                </tr>
+                <tr ng-if="appShopHasArticle.articles_extra.length < 6">
+                    <td colspan="3">
+                        <img class="img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ng-src="{[{ asset(article.img, false) }]}">
+                    </td>
+                </tr>
+                <tr ng-if="appShopHasArticle.articles_extra.length < 6" >
+                    <td colspan="3" translate="{[{ article.description_label.key }]}"  translate-values="{[{ { number: (article.items_quantity| number) } }]}" style="padding-bottom: 8px"></td>
+                </tr>
+            </tbody>
+            -->
+        </table>
+    </div>
+</div>

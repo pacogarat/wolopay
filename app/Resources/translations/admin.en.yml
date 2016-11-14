@@ -1,0 +1,772 @@
+n_units: "{[{quantity}]} units"
+n_articles: "{[{quantity}]} articles"
+n_offers: "{[{quantity}]} offers"
+add: Add
+remove: Remove
+title: Title
+file: File
+TOTAL: TOTAL
+only_numbers: Only numbers
+unknown: Unknown
+now: Now
+data_not_valid: Data not valid
+link_to_purchase: Link to purchase
+link_to_notification: Link to notification
+link_to_transaction: Link to transaction
+link_to_active_subscriptions: Link to active-subscriptions
+client:
+    configure:
+        projects: Configure Projects
+        paymethods_credentials: Use your credentials (Pay Methods)
+        documents: Documents
+
+more_info: More info
+less_info: Less info
+load_more_data: Load more data
+no_more_data_available: No more data available
+loading: Loading...
+search: Search
+search_from_current_data: Search from current data
+name: Name
+reason: Reason
+no: No
+yes: Yes
+ok: OK
+clear: Clear
+cr: CR
+cancel: Cancel
+logout: Logout
+logout_extra: If you haven problems can ask to us.
+action_completed: Action completed successfully
+revenue_subscriptions: Revenue Subscriptions
+revenue_single_payments: Revenue Single Payments
+revenue: Revenue
+subscription: Subscription
+single_payments: DEPRECATED
+free_payments: DEPRECATED
+local_amount: Local price
+exchange_rate: Exchange Rate
+shop_country: Shop
+country_detected: IP
+refresh_page: Refresh page
+last_renewal: Last renewal
+detailed_payment_types: Payment Type
+
+
+partials:
+    localization_generic:
+        title: Translations
+        desc: Write your translations
+
+
+article_category:
+    single_payment: Single Payments
+    subscription: Subscription
+    free: Free
+
+plus_extra_options: "+ extra options"
+id: Id
+created: Created
+gamer: Gamer
+amount: Amount
+country: Country
+country_vat: Country Vat
+total_amount: Amount
+total_amount_vat: VAT
+game_amount: Game Amount
+provider_amount: Provider Amount
+wolopay_amount: Wolopay Amount
+attempts: Attempts
+attempts_log: Attempts Log
+purchase: Purchase
+purchases: Purchases
+is_a_subscription: Is a subscription
+ready_to_notify: Ready to notify
+partial_payment: Partial Payment
+was_received: Was received
+notification: Notification
+notifications: Notifications
+code: Code
+content: Content
+request: Request
+received: Received
+article: Article
+articles: Articles
+n_items: Nº Items
+quantity: Quantity
+provider: Provider
+was_canceled: Was canceled
+pay_category: Pay category
+begin: Begin
+end: End
+state: State
+shop: Shop
+transaction: Transaction
+transactions: Transactions
+last_account_activity: Last login
+app: Applications
+date: Date
+others: Others
+clear_storage: Clear Storage
+clear_storage_extra: Would you like to RESET all your saved widgets and clear LocalStorage?
+reset_widgets_title: Warning! This will reset all your widget settings.
+actions: Actions
+send: Send
+create: Create
+update: Update
+no_data: No data found
+next: Next
+internal_server_error: Internal server error
+image_size_exceed: Image size exceed
+image_invalid_format: Image invalid format
+cancel_in_process: Cancel in process
+n_unique_users_by_purchase: Purchase unique users
+refunds: Refunds
+
+alerts:
+    info: Information message
+    warning: Warning message
+    error: Error message
+
+menu:
+    dashboard: Dashboard
+    purchases: Purchases
+    transactions: Transactions
+    notifications: Notifications
+    analitycs: Analitycs
+    credentials: Crendentials
+    documentation: Documentation
+    active_subscriptions: Active Subscriptions
+    configuration: Configuration
+    pay_methods: Pay Methods
+    projects: Projects
+    analytics:
+        transactions_purchases: Transactions & Purchases
+        users_levels: User Levels
+        payment_methods: Payment Methods
+        continents_countries: Continents & countries
+        articles_shops: Articles & Shops
+
+    config:
+        offers: Offers
+        configurator: Configurator
+        shop_test: Test your shop
+        promo_codes: Promo Codes
+        blacklist: Blacklist
+
+dashboard:
+    pay_method_stats: Paymethod stats
+    pay_method_stats_tooltip: Paymethod stats tooltip
+    total: TOTAL
+    my_income: MY INCOME
+    transactions: TRANSACTIONS
+    purchases: PURCHASES
+    game_amount_by_game: Game amount
+    number_of_gifts: Nº of Gifts
+    number_of_transactions: Nº of Transactions
+    number_of_purchases: Nº of Purchases
+    amount_by_application: Amount by game
+    map_title: Purchases by country
+    welcome_to_wolopay: Welcome to wolopay
+    add_pay_method: Add pay methods
+    game_amount_by_affiliate: Transactions and revenue per affiliate
+    pay_method_stats_bugs: |
+        * Its possible that some transactions begin a date and his purchase is completed two days later, for this case
+        (in this table) we'll take the date when transaction was started
+    refunds: Refunds
+    table:
+        app: App
+        country: Country
+        pay_method: Pay method
+        n_transactions: Transactions
+        n_unique_users: Unique users
+
+        n_clicked: Clicked
+        n_purchases: Purchases
+        ctr: CTR
+        total: Total paid
+        game_total: Game Payout
+
+        payout_vs_purchases: CR vs purchases
+        payout_vs_transactions: eCPM x1000
+
+        tax_total: taxes
+
+analitycs:
+
+    revenue_by_single_payments: Revenue Single payments
+    revenue_by_subscriptions: Revenue subscriptions
+    unique_users_by_purchase: Unique user by purchase
+
+    user_levels:
+        revenue_by_level: Revenue by shop
+        revenue_by_level_tooltip: Revenue by shop tooltip
+        transactions_by_level: Transaction by shop
+
+        active_players: Active players
+        active_players_tooltip: Active players tooltip
+        user_unique_transactions: User unique Transactions
+        user_unique_transactions_tooltip: User unique Transactions tooltip
+        user_unique_purchases: User unique Purchases
+        user_unique_purchases_tooltip: User unique Purchases tooltip
+        unique_users_by_level: User unique by shop
+        unique_users_by_level_tooltip: User unique by shop tooltip
+
+        unique_users: Unique users
+        unique_users_tooltip: Unique users Tooltip
+        users_repeated_per_range: number of times users repeated entry to the shop
+        users_repeated: Gamer in shop
+        gamer_last_visit: Last visit vs previous
+        gamer_last_visit_tooltip: Last visit vs previous tooltip
+        days_beteween_last_visit_and_before: Days, Last visit vs previous
+        frequency_title: Frequency tooltip
+        frequency_title_tooltip: Frequency tooltip
+
+
+    transaction_purchases:
+        title_revenue: Transactions & Purchases
+        title_revenue_tooltip: Transactions & Purchases
+        title_revenue_by_weekday: Revenue by weekday
+        title_revenue_by_weekday_tooltip: Revenue by weekday
+        title_revenue: Revenue
+        title_revenue_tooltip: Revenue
+        title_revenue_by_hours_admin_local: Revenue by hours
+        title_revenue_by_hours_gamer_local_time: Revenue by hours in gamer country local time
+        title_revenue_by_hours_tooltip: Revenue by hours
+
+        amounts_game_single_payments_without_offer: Revenue single payments without offer
+        amounts_game_single_payments_with_offer: Revenue single payments with offer
+        amounts_game_subscriptions_without_offer: Revenue subscription payments without offer
+        amounts_game_subscriptions_with_offer: Revenue subscription payments with offer
+        purchases_with_gifts_pie: Purchases / Transactions
+        purchases_without_gifts_pie: Purchases without gifts / Transactions
+        unique_users_transaction_pie: Unique users / Transactions
+        unique_users_purchase_pie: Unique users / Purchase
+        gamer_local_time: Gamer local time
+        amount_game_vs_unique_users: ARPPU
+        amount_game_vs_unique_users_desc: Amount Game / Unique users
+
+    payment_methods:
+        title_revenue_by_payment: Revenue by pay method
+        title_revenue_by_payment_tooltip: Revenue by pay method tooltip
+        title_conversions: Conversion by pay Methods
+        title_conversions_tooltip: Conversion by pay Methods tooltip
+        group_country_pay_method: Grouped by country / pay method
+        group_pay_method_country: Grouped by pay method / country
+        attempts_by_date: Attempts by date
+        purchases_by_date: Purchases by date
+        revenue_by_date: Revenue by date
+        purchases_vs_attempt: Purchases vs attempt
+        total_amount_avg: Total amount / Purchases
+        revenue_avg: Revenue / Purchases
+
+    continents_countries:
+        title_map: World map average and his evolution
+        title_map_tooltip: World map average and his evolution
+        title_countries_by_date: Countries by date
+        title_countries_by_date_tooltip: Countries by date Tooltip
+        country_evolution_enabled: Show country evolution
+        table_first_date: 1st group by date
+
+
+    articles_shops:
+        title_articles: Revenue by article
+        title_tabs: Revenue by tab
+        title_shops: Revenue by shop
+        title_articles_tooltip: Click in any article to see it in the first graph
+        title_tabs_tooltip: Click in any tab to see it in the first graph
+        title_shops_tooltip: Click in any shop to see it in the first graph
+        title_articles_by_shop_and_tab: Revenue by article, shop and tab
+        title_articles_by_shop_and_tab_tooltip: Click in the pie and see other pies react
+        title_shop_tooltip: Revenue in this shop
+        total_amount_avg: Total amount / Purchases
+
+
+
+    unique_users: Unique users
+    articles: Articles
+    gamers: Gamers
+    revenue: Revenue
+    providers: Providers
+    purchases_without_gifts: Purchases without gifts
+    no_hit: No hit
+    conversions_per_transaction: Conversions
+    unique_users_purchases: Purchases by unique users
+    unique_users_purchases_without_gifts: Purchases without gifts
+
+credentials:
+    title: Credentials
+    description: >
+        The all new and revolutionary JarvisWidgets v2.0 ($35 value) is now only exclusive to SmartAdmin. JarvisWidgets
+        allows you to do more than your normal widgets. You can now use realtime AJAX loading in a snap with auto refresh.
+        Add Infinite buttons and controls to widget header. All widgets are Sortable across all bootstrap col-spans and
+        uses HTML5 localStorage. Also now supports RTL Support, Crosbrowser Support, Callback functions and More..
+    api_user: Api user
+    api_secret: Api Secret
+    bottom: go documentation secction for more info
+
+status_category:
+    begin: Begin
+    shopping: Shopping
+    processing: Processing
+    pending: Pending
+    completed: Completed
+    subscription_active: Subscription Active
+    failed: Failed
+    blocked: Blocked
+    expired: Expired
+    blacklisted_country: Blacklisted by Country
+    blacklisted_gamer: Blacklisted by Gamer
+    blacklisted_ip: Blacklisted by Ip
+purchase_status:
+    free: Free
+    single_payment: Single payment
+    new_subscription: New subscription
+    subscription_renewal: Subscription renewal
+
+purchase_notification:
+    force_to_resend: Force resend
+    force_to_resend_msg: Ensure that you want to recall this notification
+    resent_info:
+        title: Info request
+    copy_curl_to_clipboard: Copy as bash curl to Clipboard
+
+active_subscription:
+    n_completed_payments: Nº payments
+    amount_for_each_payment_to_complete: Amount each payment
+    cancel: Cancel subscription
+    cancel_this_subscription: Cancel this subscription
+    reason: Reason ...
+    cancel_in_process: This cancel subscription is a manual process and when we cancel this subscription we'll notify to you
+
+purchase_section:
+    initial_payment_info: Initial payment info
+    actual_payment_info: Actual payment info
+    extra_cost: Extra cost from this purchase
+    no_extra_cost: "This purchase hasn't extra cost"
+    cancel: Cancel payment
+    reactivate_this_purchase: Reactivate this purchase
+    reason: Reason
+
+    cancel_in_process: This cancel purchase is a manual process and when we cancel this purchase we'll notify to you
+
+configurator:
+
+    wizard: Configure your application:
+
+    step_0: Pre-configure
+    step_1: Countries
+    step_2: Localizations
+    step_3: Items
+    step_4: Articles
+    step_5: Pay methods
+    step_6: Shops
+    step_7: Prices
+    step_8: Custom
+
+    step0:
+        title: Pre-configure
+        desc: |
+            Pre-configure desc
+
+        table_app:
+            title: Reference your articles
+            pretty_price: Pretty price
+            cost_of_live: Cost of live
+
+        table_final_prices:
+            title: Reference to final prices
+            add_iva: Increase price to offset the tax
+            add_provider_fee: Increase price to offset the pay method fee
+            wolopay: Increase price to offset the wolopay fee
+
+        table_pay_methods:
+            title: Reference to pay methods
+            max_percent: Max fee percent
+            pm_available: 'pay methods {[{available}]} available with this configuration'
+
+    step1:
+        title: Countries available in your app
+        desc: |
+            Here you can define in wich countries your game will be available. The country "other" is a generic country to configure the rest of countries
+        warning_other: If country "other" is not selected and you use option "fixed country" the shop will show a error
+
+    step2:
+        title: Your languages available
+        desc: Select languages. Should add translations of articles
+
+    step3:
+        title: Create your generic Item
+        desc: |
+              Write the name of the "unitary things" (item) that you're going to sell to your users; for example, "coints", "silver", "Mighty Sword", "Starter Pack" ...
+              You'll define as many "articles" as you need (being a "article" a set of items, like "100 coins") in the next step.
+
+        item_tabs:
+            title: Customer can filter articles by item categories
+            desc: Insert your item tab is not mandatory (We recommend using it if you have many items)
+            col_name: Name
+            col_title: Title
+            col_tooltip: Tooltip
+            col_image: Image
+            col_special_type: Special Type
+            add_item_tab: Add Category
+
+            form:
+                recommended: Recommended 58x58 dimensions and optimized size (max size 100kb)
+                upload_photo: Upload photo
+                image: Select your image
+
+
+            item_tab_cant_use_same_name: Cant use same name
+        item:
+            title: Items
+            desc: insert your items
+
+        col_name: Name
+        col_description: Description
+        col_unitary_price: Unitary Price
+        col_image: Image
+        col_actions: Actions
+        col_special_type: Special type
+
+        form:
+            title: Create or edit Item
+            name: Name that will see in shop
+            name_place_holder: '{[{number}]} coins'
+            short_description: Short Description
+            description: Description
+            image: Image
+            replaced: 'Example: {[{number}]} coins will be replaced by "3 coins"'
+            description_replaced: 'Example: {[{number}]} coins will be replaced by "3 coins"'
+            replaced_empty: "Becarefull you don't write {[{number}]} if you have more articles you and client can't distinct it"
+            unitary_price: Unitary price
+            unitary_price_desc: Unitary price is used to auto adjust price in other countries
+            recommended: Recommended 123x123 dimensions and optimized size (max size 100kb)
+            item_tabs: Item Category
+            external_item_id: Game item id
+            external_item_id_desc: If you have this item in your db you can make a easy mapping (It will be sent in the payment notification as 'gameItemId')
+            special_type: Special Type
+
+
+
+    step4:
+        title: Configure your articles
+        desc: |
+            Here you can define the number of items that you'll sell, that is, the "articles". For example: 100, 200 and 500 coins and 10 sword, etc.
+
+            You'll be shown the price that would result from the multiplication of the quantity by the unitary price. Here you can set-up a discount per volume.
+            Nevertheless, you'll be offered to change the price depending on country and "shop type" later. The price set here will help to choose the final price.
+
+        col_item_id: Item id
+        col_name: Name
+        col_articles: Current Articles
+        col_image: Image
+        col_actions: Actions
+
+        form:
+            title: Add "articles" amount for:
+            article_id: Article Id
+            n_items: Number of items
+            price: Price
+            discount: Discount
+            override_image: Override Image
+            periodicity: Periodicity
+            subscription: Subscription
+            single_payment: Single Payment
+            free: Free
+            actions: Actions
+
+        form_extra_opts:
+            title: Extra options
+            override_name_label: Override name
+            override_desc_label: Override description
+            override_desc_short_label: Override description short
+            limit_per_client: Limit per client
+            limit_total: Total limit
+            override_image: Override image
+            extra_articles: Extra articles
+            times_bought: Times bougth {[{ times_bought }]}
+            show_when_stock_under_n: Show when stock under
+            game_article_id: Game's Article Id
+
+        gacha:
+            title: Gacha article
+            hours_to_reset: Hours to reset percentage chance
+            article: Article
+            best_article: Best option article
+            amount_to_give: Amount of articles to each lap (this increases probability!)
+
+
+
+    step5:
+        title: Configure your pay method available
+        desc: |
+            Here you can define wich Payment methods will be available in your "shops" (explained later).
+
+            Please select a country to decide payment methods available per country.
+
+        col_pay_method: Pay Method
+        col_fee: Fee Percent
+        col_pay_category: Pay Category
+        col_active: Active
+        col_minimal: Minimal
+
+
+
+    step6:
+        title: Shops available
+        desc: |
+            Shops are a way to show a different configuration of Articles, prices, offers, etc... depending on a "categorization" of users.
+            Wolopay allows by default to categorize your users into "rookies", "common" and "expert". You could choose tho shop cheap products and offers to rookies, maybe trying that they pay by SMS as a way to break the entry barrier; at the same time, you could show more expresive packs to the "medium" users making offers if they pay by VISA, and the most advanced and expensive products to expert users.
+
+            Shops represennt the existing "groups". During integration time, the way of indicating how to categorize users will be decided.
+
+        col_shop_available: Shop Available
+        col_gamer_level_from: Gamer level From
+        col_gamer_level_to: Gamer level To
+        col_design: Design
+
+        warning_select_a_shop: Select a Shop
+
+        tabs:
+            available: Tabs Available
+            available_desc: Tabs Available desc
+            col_name: Tab Alias
+            col_title: title in shop
+            col_description: Tooltip
+            col_image: Image
+            article_category: Filter by article category
+            pay_method: Filter by pay method
+            add_one_tab_more: Add new tab
+            tab_cant_use_same_name: Tabs can't be created with the same name
+
+    step7:
+        title: Configure price by country
+        desc: |
+            According to the unitary price that you've previously set up in the "items" step, we now suggest and adjust price per country, according to the standard of living, currency strenght, etc...
+
+            We put the prices, but you can change any one by yourself
+
+        remove_article: You can remove article from a country if the price is empty or 0
+
+        article_value: Standard article price
+        update_price_by_article: If you change this values the price by shop and country and his price will be affected according to the standard of living, currency strenght, etc...
+
+        ignore_cost_of_life: Ignore cost of life
+        pretty_price: Pretty price
+
+        restore_by_cost_of_life: Cost of live
+        restore_by_exchange: Exchange
+        restore_by_country_desc: Restore country prices by cost of life or only exchange, it will be affect to all prices from the selected country
+        add_prices_with_vat: Set article price with VAT included
+
+    step8:
+        title: Custom Pay Methods
+        desc: |
+            Some payment methods have preset such as sms depends upon carrier and therefore also cost prices. Each country may have different payment methods and their cost may vary.
+
+            You can activate any of these payment methods by country and shop
+
+        no_special_pay_methods: No special pay methods available
+        no_special_pay_methods_by_country: No special pay methods available for this country
+        col_payment_type: Special payment types
+        col_sms_operator: SMS Operator
+        col_price: Price
+        col_fee: Fee PayMethod
+
+        sms_payments: SMS Payments
+        voice_payments: Voice Payments
+
+    end:
+        title: Configuration finished!
+        desc: You can reconfigure any article prices and all things when you want
+
+
+offer:
+    conflicts_with_other_offer: Error because some articles have different offer at the same time. Offers name: %offer_name%
+    name: Name
+    offer_from: Date From
+    offer_to: Date To
+    actions: Actions
+    list_offers: Offers Created and Active
+    price_discount: Price discount
+    number_extra: Number items extra
+    go_back_to_offer_list: Go back to offer list
+    times_used: Times used
+
+    wizard: Wizard. Create Offer to:
+    step_1: Shop
+    step_2: Areas and Countries
+    step_3: Articles
+    step_4: Dates
+    step_5: End offer
+
+    step1:
+        title: Select the Shops where the offer will be applied
+    step2:
+        title: Select the areas and Countries where you wish to apply the offer
+    step3:
+        title: Select the packs that will have a special offer
+        desc: Note that it'oo be applied to all payments methods if you wish to incentivate one payment method, create a "pack" that can be paid ONLY with that method
+    step4:
+        title: 4. Select the dates between wich the offer will be active
+        time_local_utc_desc: Time is consideted to the global, and UTC (not local)
+        time_local_not_utc_desc: Time is Local to each country
+    step5:
+        title: 5. Finally select the "offer"
+        offer_name: Offer name:
+        price_discount: Price discount:
+        item_extra_amount: Item extra amount:
+        limit_purchases: Limit offer to be valid a specific number of times (globally):
+        limit_purchases_desc: This value will determine the number of times that the offer will be available to be redeemed. For example, "valid to the first 1000".
+        limit_per_user: Limit offer a number of times per user.
+        limit_per_user_desc: Each user will be able to purchase with the offer a certain number of times, after which, the original price will be put. for example, 3 times per user
+        pretty_price: Activate pretty price
+        pretty_price_desc: Automatic rounding according to condition the country and the number of digits
+        add_extra_articles: Add extra articles
+
+dialog:
+    are_u_sure_title_default: Are you sure?
+    are_u_sure_desc_default: Are you sure you want to do this?
+
+blacklist:
+    title_configure: Configure your blacklists
+    tab:
+        countries: Countries
+        ips: Ips
+        users: Users
+
+    ips:
+        title: Black list IPS
+        desc: |
+            You can exclude some ips from your shop
+
+            For example:
+                200.22.3.5/3123 Mask
+                13.2.3.* WildCards
+
+        add_gamer: Add ip
+
+    countries:
+        title: Black list Countries
+        desc: Black list Countries
+        add_country: Add country
+
+    gamers:
+        title: Black list Gamers
+        desc: Black list Gamers
+        add_gamer: Add gamer
+
+shop_test:
+    title_configure: Configure
+    title_view: Shop View
+    title_ignore_users: Ignore users
+    ignore_users_desc: Add users to ignore (auto set parameter test)
+    add_external_user: Add User
+    form:
+        gamer_id: Gamer Id
+        shop: Shop
+        country: Country
+        language: Language
+        selected_tab: Select tab
+        selected_article: Select article
+        advanced_options: Advanced options
+        less_advanced_options: Less advanced options
+
+project:
+    go_back_to_project_list: Go back to the projects list
+    list:
+        title: List of your projects
+        app_name: App
+        url_notification_payment: Url Notification
+        url_notification_subscription: Url Subscription Notification
+        active: Active
+
+    configure:
+        title: Configure your project
+        desc: This request neet to be validated Please be patient.
+
+        form:
+            name: App
+            name_place_holder: App name
+            url_home_site: Url of Your app
+            url_home_site_place_holder: Write a valid url
+            url_notification_payment: Url Notification
+            url_notification_payment_place_holder: Write a valid url
+            url_notification_subscription: Url Subscription Notification
+            url_notification_subscription_place_holder: Write a valid url
+            owner_email: Owner Email
+            end_user_support_email: End user support Email
+            technical_email: Technical Email
+            administration_email: Administration Email
+            logo: Upload a logo
+            countries: Select countries where you want to set a custom shop
+
+promo_code:
+    title: List of promo codes
+    desc: Create your Promos adding promocodes...
+
+    name: Name
+    times_used: Times used
+    n_uses_per_user: N uses per user
+    n_total_uses: N total Uses
+    copy:
+        title: Copy promo code
+        msg: Auto copy n elements max 100
+
+    promo_form:
+        title: Configure Promo
+        name: Name
+        n_uses_per_user: N uses per user
+        n_total_uses: N total uses
+
+    promo_code_form:
+        title: Configure a Promo Code
+        code: Code
+        article: Gift a article
+        gamers: Filter by gamer
+
+date_dropdown:
+    quick_date_selector: Quick date selector
+    today: Today
+    yesterday: Yesterday
+    week: Last Week
+    2weeks: Last 2 weeks
+    only_month_2: Last month
+    month: Last month
+    1month: This month
+    2months: Last 2 months
+    3months: Last 3 months
+    6months: Last 6 months
+    year: Last year
+
+merchant:
+    pay_methods:
+        title: Pay methods
+        desc: Desc
+        forms:
+            apps: "Apps (If it's null apply like default)"
+            errors:
+                apps_null_repeated: Credentials with empty Apps are repeated. Ony one can be exist
+                apps_repeated: App/s are repeated
+
+    documents:
+        title: Documents
+        desc: Documents related with client
+
+    invoices:
+        invoice_number: Invoice Number
+        title: Invoices
+        desc: Each month a bill will be created to notify your profits, If you have any troubles with your invoice write to {[{ email }]}
+
+articles_special:
+    normal: Normal
+    pack: Pack
+    gacha_box: Gacha box
+
+article_value:
+    the_best: Best article
+    second_best: Second best article
+    third_best: Third best article
+
+

@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <style>
+        body{
+            background: #fff;
+        }
+    </style>
+<div style="text-align: center">
+    <h1 style="position: fixed;text-align: center;width: 100%;text-shadow: 1px 2px 0 #ccc;">{{ 'payment.begin.error' | trans  }}</h1>
+    <img src="{{ absolute_url(asset('bundles/app/app_shop/img/errors/payment_begin_error.jpg')) }}" style="margin-top: 40px; max-width: 100%">
+</div>
+{% endblock %}

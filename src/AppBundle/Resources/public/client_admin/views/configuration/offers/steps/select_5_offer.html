@@ -1,0 +1,68 @@
+<div ng-controller="OfferSelectOfferController" >
+
+    <form class="form-horizontal validation" name="form_offer_end" novalidate ng-submit="form_offer_end.$valid && $parent.sendOffer()">
+        <fieldset>
+            <legend>{[{ 'offer.step5.title' | translate }]}</legend>
+            <div class="form-group">
+
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1" >
+
+                        <div class="row">
+
+
+                            <br>
+                            <br>
+                            <span style="width: 150px;display: inline-block;">{[{ 'offer.step5.offer_name' | translate }]}</span> <input name="name" type="text" ng-model="$root.offerCurrent.name" required class="form-control" style="display: inline-block; width: 150px;" placeholder="Spring offers">
+                            <br>
+                            <br>
+                            <span style="width: 150px;display: block;float: left">{[{ 'offer.step5.price_discount' | translate }]}</span>
+                            <div class="input-group" style="width: 100px;">
+                                <input name="price" type="number" min="0" max="100" ng-model="$root.offerCurrent.amount_percent_discount" class="form-control" placeholder="50">
+                                <div class="input-group-addon">%</div>
+                            </div>
+                            <span style="width: 150px;display: block;float: left">{[{ 'offer.step5.item_extra_amount' | translate }]}</span>
+                            <div class="input-group" style="width: 100px;">
+                                <input name="quantity_extra" type="number" min="0" class="form-control"  ng-model="$root.offerCurrent.quantity_extra_percent" required class="form-control" placeholder="10">
+                                <div class="input-group-addon">%</div>
+                            </div>
+                            <br>
+
+                            <span style="width: 150px;display: inline-block;">{[{ 'offer.step5.add_extra_articles' | translate }]}</span>
+
+                            <ui-select multiple  theme="select2"  ng-model="$root.offerCurrent.articles_extra" style="min-width: 200px">
+                                <ui-select-match>{[{$item.name_label | api_translation: $item.items_quantity }]}</ui-select-match>
+                                <ui-select-choices repeat="article in articles | filter: {$: $select.search}" >
+                                    {[{ article.name_label | api_translation:article.items_quantity }]}
+                                </ui-select-choices>
+                            </ui-select>
+                            <br>
+                            <br>
+                            {[{ 'offer.step5.limit_purchases' | translate }]} <input name="limit" type="number" min="0" ng-model="$root.offerCurrent.limit_purchases" required class="form-control" style="display: inline-block;width: 70px;" placeholder="0"> (0 = unlimited)<br>
+                            <em>{[{ 'offer.step5.limit_purchases_desc' | translate }]}</em>
+                            <br>
+                            <br>
+                            {[{ 'offer.step5.limit_per_user' | translate }]} <input name="limit_per_user" type="number" min="0" ng-model="$root.offerCurrent.limit_per_user" required class="form-control" style="display: inline-block;width: 70px;" placeholder="1"> (0 = unlimited)<br>
+                            <em>{[{ 'offer.step5.limit_per_user_desc' | translate }]}</em>
+                            <br>
+                            <br>
+                            <br>
+                            <label style="display: block;">
+
+                                <input type="checkbox" class="checkbox style-0" ng-model="$root.offerCurrent.pretty_price">
+                                <span>{[{ 'offer.step5.pretty_price' | translate }]}</span>
+                            </label>
+                            <em>{[{ 'offer.step5.pretty_price_desc' | translate }]}</em>
+
+                        </div>
+
+                        <div style="margin-top: 40px">
+                            <button type="submit" ng-disabled="form_offer_end.$invalid" class="btn btn-info btn-lg" style="padding: 6px 50px"><span ng-if="$root.offerCurrent.create">{[{ 'create' | translate }]}</span><span ng-if="$root.offerCurrent.update">{[{ 'update' | translate }]}</span></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

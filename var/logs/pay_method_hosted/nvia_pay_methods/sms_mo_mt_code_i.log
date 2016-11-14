@@ -1,0 +1,8 @@
+[2016-05-25 15:05:54] app.INFO: User is trying to use this code: '192330' [] []
+[2016-05-25 15:05:54] app.INFO: Code is valid: '192330' [] []
+[2016-05-25 15:05:55] app.INFO: Response to process this payment (http://sym2_pay_gateway.test/shop/payment/ipn/SINPAY_2016052515055745bf4e7db5a/es/WOT_5745bf3ca68f8/lygQxJY5uBPR7Oo?sms_code_id=192330) was '200' [] []
+[2016-05-25 15:05:55] app.INFO: All was right! redirecting to payment_done [] []
+[2016-06-10 10:18:02] app.INFO: User is trying to use this code: '223993' [] []
+[2016-06-10 10:18:02] app.INFO: Code is valid: '223993' [] []
+[2016-06-10 10:18:03] app.INFO: Response to process this payment (http://sym2_pay_gateway.test/shop/payment/ipn/SINPAY_201606101017575a93d6df2d6/es/WOT_575a93c53ebfe/xjdbHiuqOfNV78t?sms_code_id=223993) was '200' [] []
+[2016-06-10 10:18:03] app.INFO: All was right! redirecting to payment_done [] []

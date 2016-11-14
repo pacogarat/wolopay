@@ -1,0 +1,650 @@
+<div ng-controller="ConfiguratorSelectArticlesController" >
+
+    <form class="form-horizontal validation" name="form_articles_global" novalidate ng-submit="($root.configuratorCurrent.step = $root.configuratorCurrent.step + 1)" novalidate>
+        <fieldset>
+            <legend>
+                {[{ 'configurator.step4.title' | translate }]}
+                <wizard-next-button form-name="form_articles_global" invalid="!hasSomeArticleConfigured()"></wizard-next-button>
+            </legend>
+            <p class="newlines">{[{ 'configurator.step4.desc' | translate }]}</p>
+            <div>
+
+                <div class="row" style="margin-top: 30px">
+                    <div class="col-md-10 col-md-offset-1" >
+
+                        <ul class="nav nav-tabs" style="margin: 15px 0 26px 0;" >
+                            <li role="presentation" style="cursor: pointer;"  ng-class="{'active': tabSelected == 1}" ng-click="tabSelected = 1"><a data-translate="articles_special.normal"></a></li>
+                            <!--<li role="presentation" style="cursor: pointer;"  ng-class="{'active': tabSelected == 2}" ng-click="tabSelected = 2"><a data-translate="articles_special.pack"></a></li>-->
+                            <li role="presentation" style="cursor: pointer;"  ng-class="{'active': tabSelected == 3}" ng-click="tabSelected = 3"><a data-translate="articles_special.gacha_box"></a></li>
+                        </ul>
+
+                        <div ng-if="tabSelected == 1">
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <td colspan="100%">
+                                        <input ng-model-options="{debounce: 100}" ng-model="searchText.$" placeholder="{[{ 'search' | translate }]}" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{[{ 'configurator.step4.col_item_id' | translate }]}</td>
+                                    <td>{[{ 'configurator.step4.col_name' | translate }]}</td>
+                                    <td>{[{ 'configurator.step4.col_articles' | translate }]}</td>
+                                    <td>{[{ 'configurator.step4.col_image' | translate }]}</td>
+                                    <td>{[{ 'configurator.step4.col_actions' | translate }]}</td>
+                                </tr>
+                                </thead>
+                                <tr ng-repeat="item in configuratorCurrent.items | filter: searchText" ng-if="!item.special_type.id">
+                                    <td>{[{ item.id }]}</td>
+                                    <td>{[{ item.name_label | api_translation | replace_our_vars}]}</td>
+                                    <td><span ng-repeat="article in item.articles" ng-class="{'extra-options' : hasExtraOptions(article)}" class="btn btn-xs article-category-{[{ article.article_category.id }]}" style="margin: 0 3px 10px 3px;display: inline-block;">{[{ article.items_quantity }]}</span></td>
+                                    <td><img ng-src="{[{ item.image.img }]}" style="max-height: 60px"> </td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a ng-click="loadModal(item)"  class="btn btn-default btn-md">
+                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+                            <div class="row" style="margin-bottom: 10px">
+                                <div class="col-md-3">
+                                    <div>
+                                        <span class="article-category-single_payment square-color"></span><span translate="article_category.single_payment"></span>
+                                    </div>
+                                    <div>
+                                        <span class="article-category-single_payment square-color extra-options"></span><span translate="plus_extra_options"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <span class="article-category-subscription square-color"></span><span translate="article_category.subscription"></span>
+                                    </div>
+                                    <div>
+                                        <span class="article-category-subscription square-color extra-options"></span><span translate="plus_extra_options"></span>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-3">
+                                    <div>
+                                        <span class="article-category-free square-color"></span><span translate="article_category.free"></span>
+                                    </div>
+                                    <div>
+                                        <span class="article-category-free square-color extra-options"></span><span translate="plus_extra_options"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-if="tabSelected == 3">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <td colspan="100%">
+                                        <input ng-model-options="{debounce: 100}" ng-model="searchTextGacha.$" placeholder="{[{ 'search' | translate }]}" class="form-control">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>{[{ 'configurator.step4.col_item_id' | translate }]}</td>
+                                    <td>{[{ 'configurator.step4.col_name' | translate }]}</td>
+                                    <td>{[{ 'configurator.step4.col_image' | translate }]}</td>
+                                    <td>{[{ 'configurator.step4.col_articles' | translate }]}</td>
+                                    <td>{[{ 'configurator.step4.col_actions' | translate }]}</td>
+                                </tr>
+                                </thead>
+                                <tr ng-repeat="item in configuratorCurrent.items | filter: searchTextGacha" ng-if="item.special_type.id == 'gacha_box'">
+                                    <td>{[{ item.id }]}</td>
+                                    <td>{[{ item.name_label | api_translation | replace_our_vars}]}</td>
+                                    <td><img src="/img/1x1.png" ng-src="{[{ item.image.img }]}" style="max-height: 60px"> </td>
+                                    <td>
+                                        <div style="margin: 0 3px 10px 3px;display: inline-block;">
+                                            <table style="border-spacing: 10px;border-collapse: separate;">
+                                                <tr ng-repeat="article in item.articles" >
+                                                    <td>{[{ article.name_label | api_translation | replace_our_vars}]}</td>
+                                                    <td style="padding-left: 10px">
+
+                                                        <div class="btn-group ">
+                                                            <a popover-placement="right" class="btn btn-default btn-sm" popover="{[{ article.id || 'Pending' }]}">
+                                                                <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
+                                                            </a>
+                                                            <a ng-click="addGacha(item, article)"  class="btn btn-default btn-sm">
+                                                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                                            </a>
+                                                            <a data-dialog-confirmation data-callback="deleteArticle(item, article)" class="btn btn-default btn-sm">
+                                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        <div class="btn-group ">
+
+                                            <a ng-click="addGacha(item)"  class="btn btn-default btn-sm">
+                                                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                                {[{ 'add' | translate }]}
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="article_gacha_mod.html">
+    <form name="form_article_gacha_mod" class="validation" role="form" novalidate action="{[{ '/admin/api/app/' + $root.app.id + '/article_gacha/' + article.id }]}" ng-upload="uploadComplete(content)">
+
+        <input type="hidden" name="item_id" value="{[{ article.item.id }]}">
+
+        <div class="modal-header">
+            <h3 class="modal-title">{[{ 'configurator.step4.gacha.title' | translate }]}</h3>
+        </div>
+        <div class="modal-body">
+
+
+            <table class="table no-border" style="width: auto; border-top: 0px !important">
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.override_name_label"></label>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a label-edit class="btn btn-sm  btn-default" label="article.name_label" languages="languages">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </a>
+                            <a class="btn btn-sm btn-default" ng-if="article.name_label" ng-click="article.name_label = null">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <div ng-repeat="(key, label) in article.name_label">
+                            <input type="hidden" name="name_label_{[{ key }]}" value="{[{ label }]}">
+                        </div>
+                    </td>
+                    <td rowspan="3">
+                        <img src="/img/1x1.png" ng-if="article.image_original.img" ng-src="{[{ article.image_original.img }]}">
+                        <img src="/img/1x1.png" ng-if="!article.image_original" ng-src="{[{ item.image.img }]}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.override_desc_label"></label>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a label-edit class="btn btn-sm btn-default" label="article.description_label" languages="languages">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </a>
+                            <a class="btn btn-sm btn-default" ng-if="article.description_label.translation_en" ng-click="article.description_label = null">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <div ng-repeat="(key, label) in article.description_label">
+                            <input type="hidden" name="description_label_{[{ key }]}" value="{[{ label }]}">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.override_desc_short_label"></label>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a label-edit class="btn btn-sm btn-default" label="article.description_short_label" languages="languages">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </a>
+                            <a class="btn btn-sm btn-default" ng-if="article.description_short_label.translation_en" ng-click="article.description_short_label = null">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <div ng-repeat="(key, label) in article.description_short_label">
+                            <input type="hidden" name="description_short_label_{[{ key }]}" value="{[{ label }]}">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form.price"></label>
+                    </td>
+                    <td>
+
+                        <div class="input-group" style="width: 100px;">
+                            <input type="number" min="0" step="1" maxlength="12" max="999999" name="amount_standard" ng-model="article.amount_standard"  class="form-control" required>
+                            <span class="input-group-addon">{[{item.unitary_price_country.currency.symbol}]}</span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.override_image" style="width: auto"></label>
+                    </td>
+                    <td colspan="2">
+                        <input id="file_img_override" type="file" name="file" class="form-control" onchange="angular.element(this).scope().fileChanged()" style="max-width: 150px; display: inline-block;" name="image_{[{ $index }]}">
+                        <div class="btn-group">
+                            <a class="btn btn-xs btn-default" ng-if="article.image_original" ng-click="imageRemoved()">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                            <input ng-if="file_deleted" type="hidden" name="file_deleted" value="1">
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.limit_per_client" style="width: auto"></label>
+                    </td>
+                    <td colspan="2">
+                        <input class="form-control" type="number" min="0" name="n_purchases_per_client" ng-model="article.n_purchases_per_client" style="width: 100px;display: inline-block">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.limit_total" style="width: auto"></label>
+                    </td>
+                    <td colspan="2">
+                        <input class="form-control" type="number" min="0" name="n_purchases_total" ng-model="article.n_purchases_total" style="width: 100px;display: inline-block">
+                        <span ng-if="article.times_bought" translate="configurator.step4.form_extra_opts.times_bought" translate-values="{ times_bought: article.times_bought }"></span>
+                    </td>
+                </tr>
+                <tr ng-if="article.n_purchases_total > 0">
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.show_when_stock_under_n" style="width: auto"></label>
+                    </td>
+                    <td colspan="2">
+                        <input class="form-control" type="number" min="0" name="show_when_stock_under_n" ng-model="article.show_when_stock_under_n" style="width: 100px;display: inline-block">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.gacha.hours_to_reset" style="width: auto"></label>
+                    </td>
+                    <td colspan="2">
+                        <input type="number" name="hours_to_reset_gacha" ng-model="article.hours_to_reset_gacha" class="form-control">
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="form-group">
+                <div>
+                    <div style="display: inline-block; margin-right: 20px" >
+                        <h3 class="text-center">{[{ 'offer.offer_from' | translate }]}</h3>
+                        <datetimepicker max-date="article.valid_to" name="valid_from" ng-required="false" show-weeks="false" hour-step="1" minute-step="15" ng-model="article.valid_from" show-meridian="false" date-format="dd-MMM-yyyy" readonly-time="false" ></datetimepicker>
+                        <input type="hidden" value="{[{ article.valid_to.toISOString() }]}" name="valid_to">
+                    </div>
+
+                    <div style="display: inline-block" >
+                        <h3 class="text-center">{[{ 'offer.offer_to' | translate }]}</h3>
+                        <datetimepicker min-date="article.valid_from" name="valid_to" ng-required="false" show-weeks="false" hour-step="1" minute-step="15" ng-model="article.valid_to" show-meridian="false" date-format="dd-MMM-yyyy" readonly-time="false"></datetimepicker>
+                        <input type="hidden" value="{[{ article.valid_from.toISOString() }]}" name="valid_from">
+
+
+                    </div>
+
+                    <div class="btn-group" style="margin-left: 20px">
+                        <a ng-if="article.valid_to" ng-click="article.valid_from = null; article.valid_to = null" class="btn btn-default">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: right; margin: 4px 0 20px">
+                <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="addArticleToGacha()" ng-if="article.articles_gacha.length < 8">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    {[{ 'add' | translate }]}
+                </button>
+            </div>
+
+            <ul ui-sortable="sortableOptions" ng-model="article.articles_gacha" style="list-style-type: none; padding: 0px">
+                <li ng-repeat="gacha in article.articles_gacha" style="padding: 20px; border-top: 1px dashed #ccc; margin-top: 20px">
+                    <div class="row">
+                        <div class="col-xs-9">
+
+                            <div class="form-group">
+                                <label>{[{ 'configurator.step4.gacha.article' | translate }]}</label>
+                                <ui-select ng-model="gacha.possible_article" required theme="select2" style="display: block;">
+                                    <ui-select-match>{[{ gacha.possible_article.name_label | api_translation: gacha.possible_article.items_quantity }]}</ui-select-match>
+                                    <ui-select-choices repeat="article in articlesNotUsed(gacha.possible_article) | filter: {$: $select.search}"  group-by="'articlesNotUsed'">
+                                        {[{ article.name_label | api_translation:article.items_quantity }]}
+                                    </ui-select-choices>
+                                </ui-select>
+
+                                <input name="possible_article_{[{ $index }]}" type="hidden" value="{[{ gacha.possible_article.id }]}">
+                            </div>
+                            <div class="form-group">
+                                <label>{[{ 'configurator.step4.gacha.best_article' | translate }]}</label>
+                                <select name="best_article_{[{ $index }]}" ng-model="gacha.best_article" class="form-control">
+                                    <option value="1" data-translate="article_value.the_best"></option>
+                                    <option value="2" data-translate="article_value.second_best"></option>
+                                    <option value="3" data-translate="article_value.third_best"></option>
+                                    <option></option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{[{ 'configurator.step4.gacha.amount_to_give' | translate }]}</label>
+                                <input required type="number" name="amount_to_give_{[{ $index }]}" ng-model="gacha.amount_to_give" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div style="text-align: right; padding: 20px 10px">
+                                <div class="btn-group">
+                                    <a class="btn btn-default move">
+                                        <span class="glyphicon glyphicon-move" aria-hidden="true"></span>
+                                    </a>
+                                    <a class="btn btn-default" ng-click="removeItemFromCollection(gacha, article.articles_gacha)" ng-if="article.articles_gacha.length > 1">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                </li>
+            </ul>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit" ng-disabled="form_article_gacha_mod.$invalid">{[{ 'ok' | translate }]}</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">{[{ 'cancel' | translate }]}</button>
+            </div>
+                
+        </div>
+
+    </form>
+</script>
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="article_extra_options_mod.html">
+    <form name="form_edit_article_extra_opts" class="validation" role="form" novalidate>
+        <div class="modal-header">
+            <h3 class="modal-title">{[{ 'configurator.step4.form_extra_opts.title' | translate }]}, {[{ item.name_label | api_translation:article.items_quantity }]}</h3>
+        </div>
+        <div class="modal-body">
+
+            <div style="position: absolute;margin-left: 350px;">
+                <img ng-if="article.image_original.img && article.image_original.img != 'changed'" ng-src="{[{ article.image_original.img }]}" src="/img/1x1.png" style="padding: 4px;border: 1px solid #ccc;background-color: #fff;">
+                <img ng-if="!article.image_original.img || article.image_original.img == 'changed'" ng-src="{[{ item.image.img }]}" src="/img/1x1.png" style="padding: 4px;border: 1px solid #ccc;background-color: #fff;">
+            </div>
+
+
+            <table class="table no-border" style="width: auto; border-top: 0px !important">
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.override_name_label"></label>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a label-edit class="btn btn-sm  btn-default" label="article.name_label_original" languages="languages">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </a>
+                            <a class="btn btn-sm btn-default" ng-if="article.name_label_original.translation_en" ng-click="article.name_label_original = null">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.override_desc_label"></label>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a label-edit ckeditor-availble="true" class="btn btn-sm btn-default" label="article.description_label_original" languages="languages">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </a>
+                            <a class="btn btn-sm btn-default" ng-if="article.description_label_original.translation_en" ng-click="article.description_label_original = null">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.override_desc_short_label"></label>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a label-edit ckeditor-availble="true" class="btn btn-sm btn-default" label="article.description_short_label_original" languages="languages">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </a>
+                            <a class="btn btn-sm btn-default" ng-if="article.description_short_label_original.translation_en" ng-click="article.description_short_label_original = null">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.limit_per_client" style="width: auto"></label>
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" min="0" ng-model="article.n_purchases_per_client" style="width: 100px;display: inline-block">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.limit_total" style="width: auto"></label>
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" min="0" ng-model="article.n_purchases_total" style="width: 100px;display: inline-block">
+                        <span ng-if="article.times_bought" translate="configurator.step4.form_extra_opts.times_bought" translate-values="{ times_bought: article.times_bought }"></span>
+                    </td>
+                </tr>
+                <tr ng-if="article.n_purchases_total > 0">
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.show_when_stock_under_n" style="width: auto"></label>
+                    </td>
+                    <td>
+                        <input class="form-control" type="number" min="0" ng-model="article.show_when_stock_under_n" style="width: 100px;display: inline-block">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.override_image" style="width: auto"></label>
+                    </td>
+                    <td>
+                        <input id="file_img_override" type="file" name="file_{[{ $index }]}" class="form-control" onchange="angular.element(this).scope().fileChanged()" style="max-width: 150px; display: inline-block;" name="image_{[{ $index }]}">
+                        <div class="btn-group">
+                            <a class="btn btn-xs btn-default" ng-if="article.image_original.img" ng-click="imageRemoved()">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.extra_articles"></label>
+                    </td>
+                    <td>
+                        <ui-select multiple ng-model="article.articles_extra" theme="select2" style="width: 150px;">
+                            <ui-select-match>
+                                <div ng-bind-html="$item.name_label | api_translation:$item.items_quantity "></div>
+                            </ui-select-match>
+                            <ui-select-choices repeat="artic in articles | filter:$select.search">
+                                <div ng-bind-html="artic.name_label | api_translation:artic.items_quantity "></div>
+                            </ui-select-choices>
+                        </ui-select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label class="control-label" translate="configurator.step4.form_extra_opts.game_article_id" style="width: auto"></label>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" ng-model="article.external_article_id" style="width: 150px;display: inline-block">
+                    </td>
+                </tr>
+            </table>
+
+
+            <div class="form-group">
+                <div>
+                    <div style="display: inline-block;margin-right: 50px">
+                        <h3 class="text-center">{[{ 'offer.offer_from' | translate }]}</h3>
+                        <datetimepicker max-date="article.valid_to" ng-required="false" show-weeks="false" hour-step="1" minute-step="15" ng-model="article.valid_from" show-meridian="false" date-format="dd-MMM-yyyy" readonly-time="false" ></datetimepicker>
+                    </div>
+
+                    <div style="display: inline-block;">
+                        <h3 class="text-center">{[{ 'offer.offer_to' | translate }]}</h3>
+                        <datetimepicker min-date="article.valid_from" ng-required="false" show-weeks="false" hour-step="1" minute-step="15" ng-model="article.valid_to" show-meridian="false" date-format="dd-MMM-yyyy" readonly-time="false"></datetimepicker>
+                    </div>
+
+                    <div style="display: inline-block;">
+                        <div class="btn-group">
+                            <a ng-if="article.valid_to" ng-click="article.valid_from = null; article.valid_to = null" class="btn btn-default">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()" ng-disabled="form_edit_article_extra_opts.$invalid">{[{ 'ok' | translate }]}</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">{[{ 'cancel' | translate }]}</button>
+        </div>
+    </form>
+</script>
+
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="article_mod.html">
+    <form name="form_edit_article" class="validation" role="form" novalidate="novalidate" action="{[{ '/admin/api/article/sync_amounts/' + item.id }]}" ng-upload="uploadComplete(content)" enctype="multipart/form-data">
+
+        <div class="modal-header">
+            <h3 class="modal-title">{[{ 'configurator.step4.form.title' | translate }]} {[{ item.name_label | api_translation | replace_our_vars }]}</h3>
+        </div>
+        <div class="modal-body">
+
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <td>{[{ 'configurator.step4.form.article_id' | translate }]}</td>
+                    <td>{[{ 'configurator.step4.form.n_items' | translate }]}</td>
+                    <td>{[{ 'configurator.step4.form.price' | translate }]}</td>
+                    <td>{[{ 'configurator.step4.form.discount' | translate }]}</td>
+                    <td style="text-align: center">{[{ 'configurator.step4.form.subscription' | translate }]} <span class="square-color article-category-subscription"></span></td>
+                    <td style="text-align: center">{[{ 'configurator.step4.form.single_payment' | translate }]} <span class="square-color article-category-single_payment"></span></td>
+                    <td style="text-align: center">{[{ 'configurator.step4.form.free' | translate }]} <span class="square-color article-category-free"></span></td>
+                    <td>{[{ 'configurator.step4.form.periodicity' | translate }]}</td>
+                    <td>{[{ 'configurator.step4.form.actions' | translate }]}</td>
+                </tr>
+                </thead>
+                <tr ng-repeat="article in item.articles">
+                    <td>
+                        <a popover-placement="right" class="btn btn-default btn-sm" popover="{[{ article.id || 'Pending' }]}">
+                            <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
+                        </a>
+
+                        <input type="hidden" name="id_{[{ $index }]}" value="{[{ article.id }]}">
+                        <span ng-repeat="language in languages" ng-if="article.name_label_original.translation_en">
+                            <input type="hidden" name="name_label_original_{[{ $parent.$parent.$index }]}_{[{language.id}]}" value="{[{ article.name_label_original['translation_'+language.id] }]}">
+                        </span>
+                        <input ng-if="!article.name_label_original" type="hidden" name="name_label_original_deleted" value="1">
+
+                        <span ng-repeat="language in languages" ng-if="article.description_label_original.translation_en">
+                            <input type="hidden" name="description_label_original_{[{ $parent.$parent.$index }]}_{[{language.id}]}" value="{[{ article.description_label_original['translation_'+language.id] }]}">
+                        </span>
+                        <input ng-if="!article.description_label_original" type="hidden" name="description_label_original_deleted" value="1">
+
+                        <span ng-repeat="language in languages" ng-if="article.description_short_label_original.translation_en">
+                            <input type="hidden" name="description_short_label_original_{[{ $parent.$parent.$index }]}_{[{language.id}]}" value="{[{ article.description_short_label_original['translation_'+language.id] }]}">
+                        </span>
+                        <input ng-if="!article.description_short_label_original" type="hidden" name="description_short_label_original_deleted" value="1">
+
+                        <input type="hidden" name="valid_from_{[{ $index }]}" value="{[{ article.valid_from.toISOString() }]}">
+                        <input type="hidden" name="valid_to_{[{ $index }]}" value="{[{ article.valid_to.toISOString() }]}">
+                        <input type="hidden" name="n_purchases_per_client_{[{ $index }]}" value="{[{ article.n_purchases_per_client }]}">
+                        <input type="hidden" name="n_purchases_total_{[{ $index }]}" value="{[{ article.n_purchases_total }]}">
+                        <input type="hidden" name="show_when_stock_under_n_{[{ $index }]}" value="{[{ article.show_when_stock_under_n }]}">
+                        <span id="file_container_{[{ $index }]}" style="display: none;"></span>
+                        <input ng-if="article.file_deleted" type="hidden" name="file_deleted_{[{ $index }]}" value="1">
+                        <input type="hidden" name="articles_extra_{[{ $index }]}" value="{[{ article.articles_extra | csv }]}">
+
+                        <input type="hidden" name="external_article_id_{[{ $index }]}" value="{[{ article.external_article_id }]}">
+
+                        <input class="form-control" type="text" ng-model="article.external_article_id" style="width: 150px;display: inline-block">
+                        <!--
+                        will be added with javascript
+                        <input type="file" name="file_{[{ $index }]}" id="file_{[{ $index }]}" class="form-control" style="display: none;">-->
+
+                    </td>
+                    <td>
+                        <input type="number" min="0" name="items_quantity_{[{ $index }]}" ng-model="article.items_quantity" min="1" class="form-control" ng-change="calculatePriceInit(item, article)" style="width: 120px;" required>
+                    </td>
+                    <td>
+                        <div class="input-group" style="width: 100px;">
+                            <input type="number" min="0" step="1" maxlength="12" max="999999" name="amount_standard_{[{ $index }]}" ng-model="article.amount_standard"  class="form-control" ng-required="article.article_category.id != 'free'" ng-change="calculateDiscount(item, article)" ng-disabled="article.article_category.id == 'free'">
+                            <span class="input-group-addon">{[{item.unitary_price_country.currency.symbol}]}</span>
+                        </div>
+                    </td>
+                    <td ng-init="calculateDiscount(item, article)">
+                        <span class="btn btn-sm" ng-class="{'btn-danger': article.discount > 0, 'btn-success':  article.discount <= 0}" style="width: 80px;">
+                            {[{ article.discount |number:2 }]}%
+                        </span>
+                    </td>
+
+                    <td class="text-center">
+                        <label class="radio radio-inline">
+                            <input type="radio" class="radiobox" name="type_{[{ $index }]}" ng-model="article.article_category.id" required ng-value="'subscription'">
+                            <span></span>
+                        </label>
+                    </td>
+                    <td class="text-center">
+                        <label class="radio radio-inline">
+                            <input type="radio" class="radiobox" name="type_{[{ $index }]}"  ng-model="article.article_category.id" required ng-value="'single_payment'" ng-click="article.periodicity = null">
+                            <span></span>
+                        </label>
+                    </td>
+                    <td class="text-center">
+                        <label class="radio radio-inline">
+                            <input type="radio" class="radiobox" name="type_{[{ $index }]}"  ng-model="article.article_category.id" required ng-value="'free'" ng-click="article.amount = null; article.periodicity = null">
+                            <span></span>
+                        </label>
+                    </td>
+                    <td>
+                        <div class="input-group" style="width: 130px;">
+                            <input type="number" min="0." name="periodicity_{[{ $index }]}" ng-model="article.periodicity"  class="form-control" ng-disabled="article.article_category.id != 'subscription'" ng-required="article.article_category.id == 'subscription'">
+                            <span class="input-group-addon">days</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a ng-click="loadModalExtraOpts(item, article, $index)" ng-class="{'modified' : hasExtraOptions(article)}" class="btn btn-default">
+                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            </a>
+                            <a ng-click="delete(article)" class="btn btn-default">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+            <div style="text-align: right">
+                <button type="button" class="btn btn-success" ng-click="addArticle()" style="margin: 30px 0 30px">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <span translate="add"></span>
+                </button>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-click-once type="submit" ng-disabled="form_edit_article.$invalid">{[{ 'ok' | translate }]}</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">{[{ 'cancel' | translate }]}</button>
+        </div>
+    </form>
+</script>

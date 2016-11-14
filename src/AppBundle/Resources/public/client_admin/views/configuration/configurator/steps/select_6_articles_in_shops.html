@@ -1,0 +1,235 @@
+<form class="form-horizontal validation" name="form_articles_in_shop" ng-controller="ConfiguratorSelectArticlesAndShopsController" ng-submit="form_articles_in_shop.$valid && submit()">
+    <fieldset>
+        <legend>
+            {[{ 'configurator.step6.title' | translate }]}
+            <wizard-next-button form-name="form_articles_in_shop" invalid="!nextEnabled || !someSelected()"></wizard-next-button>
+        </legend>
+        <p class="newlines">{[{ 'configurator.step6.desc' | translate }]}</p>
+
+        <div>
+            <div>
+                <div class="row" style="margin-top: 30px ">
+
+                    <div class="col-md-10 col-md-offset-1" >
+
+                        <div>
+                            <h3>{[{ 'configurator.step6.title' | translate }]}</h3>
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <td>{[{ 'configurator.step6.col_shop_available' | translate }]}</td>
+                                    <td>{[{ 'configurator.step6.col_gamer_level_from' | translate }]}</td>
+                                    <td>{[{ 'configurator.step6.col_gamer_level_to' | translate }]}</td>
+                                    <td>{[{ 'configurator.step6.col_design' | translate }]}</td>
+                                </tr>
+                                </thead>
+
+
+                                <tr ng-repeat="category in categories">
+                                    <td>
+                                        <label>
+                                            <input type="checkbox" class="checkbox style-0" checked="checked" ng-model="category.selected" ng-required="!someCategorySelected()" ng-change="updateShop(category)" >
+                                            <span>{[{ category.name }]}</span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <input ng-if="category.selected" type="number" disabled min="0" ng-model="category.value_lower" class="form-control" style="width: 100px;" ng-required="category.selected">
+                                    </td>
+                                    <td>
+                                        <input ng-if="category.selected" type="number" min="{[{ category.value_lower }]}" ng-model="category.value_higher" ng-change="valueHigherChanged(category)" style="width: 100px;" class="form-control" ng-required="category.selected">
+                                    </td>
+                                    <td>
+                                        <select ng-if="category.selected" ng-model="category.css.id" class="form-control" required>
+                                            <option ng-repeat="template in templates" ng-value="template.id" ng-selected="template.id == category.css.id">{[{ template.name }]}</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div ng-if="someCategorySelected()">
+
+                                <div ng-if="$root.app.can_customize_app_tabs" style="margin: 35px 0 65px 0;">
+                                    <h3>{[{ 'configurator.step6.tabs.available' | translate }]}</h3>
+                                    <div style="margin-bottom: 15px">{[{ 'configurator.step6.tabs.available_desc' | translate }]}</div>
+                                    <table class="table" >
+                                        <thead>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td>{[{ 'configurator.step6.tabs.col_name' | translate }]}</td>
+                                            <td>{[{ 'configurator.step6.tabs.col_title' | translate }]}</td>
+                                            <td>{[{ 'configurator.step6.tabs.col_description' | translate }]}</td>
+                                            <td>{[{ 'configurator.step6.tabs.col_image' | translate }]}</td>
+                                            <td>{[{ 'configurator.step6.tabs.article_category' | translate }]}</td>
+                                            <td>{[{ 'configurator.step6.tabs.pay_method' | translate }]}</td>
+
+                                            <td></td>
+                                        </tr>
+                                        </thead>
+                                        <tbody ui-sortable="sortableOptions" ng-model="appTabs">
+                                            <tr ng-repeat="appTab in appTabs">
+                                                <td class="move" style="cursor: move">
+                                                    <span class="glyphicon glyphicon-move" aria-hidden="true"></span>
+                                                </td>
+                                                <td>
+                                                    <a popover-placement="top" class="btn btn-default btn-sm" popover="Id: {[{ appTab.name_unique }]}" ng-if="appTab.name_unique">
+                                                        <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
+                                                    </a>
+                                                </td>
+                                                <td>
+
+
+                                                    <input ng-model="appTab.name" class="form-control">
+                                                    <div ng-show="!validateIsUniqueName(appTab)" role="alert" style="margin-top: 10px" class="alert alert-danger">
+                                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                                        <span class="sr-only">Error:</span>
+                                                        {[{ 'configurator.step6.tabs.tab_cant_use_same_name' | translate }]}
+                                                    </div>
+
+
+
+                                                </td>
+                                                <td style="text-align: center">
+                                                    <div class="btn-group">
+                                                        <a label-edit class="btn btn-default" label="appTab.name_label" languages="languages">
+                                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                                        </a>
+                                                        <a class="btn btn-default" ng-click="appTab.name_label = null" ng-if="appTab.name_label.translation_en">
+                                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td style="text-align: center">
+                                                    <div class="btn-group">
+                                                        <a label-edit ckeditor-availble="true"  class="btn btn-default" label="appTab.description_label" languages="languages">
+                                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                                        </a>
+                                                        <a class="btn btn-default" ng-click="appTab.description_label = null" ng-if="appTab.description_label.translation_en">
+                                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <a class="btn btn-default" ng-click="uploadImage(appTab)">
+                                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                                        </a>
+                                                        <a class="btn btn-default" ng-click="deleteImage(appTab)" ng-if="appTab.image.img">
+                                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                        </a>
+                                                    </div>
+                                                    <img src="/img/1x1.png" ng-src="{[{ appTab.image.img }]}" ng-if="appTab.image.img">
+                                                </td>
+                                                <td>
+                                                    <ui-select multiple ng-model="appTab.article_categories" theme="select2" id="article_categories_choice" ng-change="onChangeArticleCategory()">
+                                                        <ui-select-match>{[{$item.name}]}</ui-select-match>
+                                                        <ui-select-choices repeat="articleCategory in articleCategories | filter: {$: $select.search}">
+                                                            {[{ articleCategory.name }]}
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </td>
+                                                <td>
+                                                    <ui-select multiple ng-model="appTab.pay_categories" theme="select2" id="pay_categories_choice" >
+                                                        <ui-select-match>{[{$item.name}]}</ui-select-match>
+                                                        <ui-select-choices repeat="payCategory in payCategories | filter: {$: $select.search}">
+                                                            {[{ payCategory.name }]}
+                                                        </ui-select-choices>
+                                                    </ui-select>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-default ng-scope" ng-if="appTabs.length > 1" ng-click="removeAppTab(appTab)">
+                                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="9" style="padding-top: 20px" >
+                                                    <button type="button" class="btn btn-default" aria-label="Left Align" ng-click="addOneTab()" ng-if="appTabs.length < 10">
+                                                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                                                        {[{ 'configurator.step6.tabs.add_one_tab_more' | translate }]}
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div>
+
+                                    <ul class="nav nav-tabs" style="margin: 35px 0 20px 0" >
+                                        <li role="presentation" style="cursor: pointer;"  ng-repeat="category in categories" ng-if="category.selected" ng-class="{'active': category.id == tab.id}" ng-click="$parent.$parent.$parent.tab = category"><a>{[{ category.name }]}</a></li>
+                                    </ul>
+
+                                    <div ng-repeat="category in categories">
+                                        <div ng-if="$parent.tab.id == category.id">
+                                            <div class="row">
+                                                <div class="col-md-3" ng-repeat="appShopHasAppTab in category.app_shop_has_app_tabs"  ng-class="{'clear-left': ((($index+1)%5) == 0) }">
+
+                                                    <h3>{[{ appShopHasAppTab.app_tab.name }]}</h3>
+
+                                                    <ul ui-sortable="sortableOptions" id="items-sort" ng-model="appShopHasAppTab.articles" style="list-style: none">
+                                                        <li id="{[{ category.name_unique }]}-{[{article.id}]}-{[{$index}]}" ng-class="{'hidden': !article.visible}" ng-repeat="article in appShopHasAppTab.articles">
+
+                                                            <label class="alert alert-block" ng-class="{'alert-info': article['selected_'+category.id]}" style="margin: 0; display:block; background: none">
+                                                                <span class="glyphicon glyphicon-move move" aria-hidden="true" style="cursor: move;width: 20px;margin-left: -5px;text-align: center;"></span>
+                                                                <input type="checkbox" class="checkbox style-0"  checked="checked" ng-model="article['selected_'+category.id]" ng-change="onlySelectOneArticlePerTab(article, appShopHasAppTab.app_tab, category)" ng-required="!someSelected()">
+                                                                <span>
+                                                                    {[{ article.name_label | api_translation:article.items_quantity }]}
+                                                                    <span style="font-size: 0.8em;font-style: italic">({[{ ('article_category.'+article.article_category.id) | translate }]})</span>
+                                                                </span>
+                                                            </label>
+
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div ng-if="!someCategorySelected()" style="margin-top: 30px" class="alert adjusted alert-warning fade in">
+                            <i class="fa fa-fw fa-lg fa-exclamation"></i> {[{ 'configurator.step6.warning_select_a_shop' | translate }]}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="select_6_z1_articles_in_shops.html">
+    <label class="alert alert-block" ng-class="{'alert-info': article['selected_'+category.id]}" style="margin: 0; display:block; background: none">
+        <span class="glyphicon glyphicon-move move" aria-hidden="true" style="cursor: move;width: 20px;margin-left: -5px;text-align: center;"></span>
+        <input type="checkbox" class="checkbox style-0"  checked="checked" ng-model="article['selected_'+category.id]" ng-change="onlySelectOneArticlePerTab(article, appShopHasAppTab.app_tab, category)" ng-required="!someSelected()">
+        <span>
+        {[{ article.name_label | api_translation:article.items_quantity }]}
+        <span style="font-size: 0.8em;font-style: italic">({[{ ('article_category.'+article.article_category.id) | translate }]})</span>
+    </span>
+    </label>
+</script>
+
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="app_tab_image.html">
+    <form name="form_edit_item" class="validation" id="form_edit_item" role="form" method="post" action="{[{ '/admin/api/app_tab/app/'+ $root.app.id +'/photo/' + appTab.id}]}" ng-upload="uploadComplete(content)" enctype="multipart/form-data">
+        <div class="modal-header">
+            <h3 class="modal-title">{[{ 'configurator.step6.form.upload_photo' | translate }]}</h3>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>{[{ 'configurator.step6.form.image' | translate }]}</label>
+                <input type="file" name="file" class="form-control"  ng-model="item.image.img"  valid-file ng-required="!item.id" ng-class="{'ng-invalid-force': !item.id && !item.image.img}" accept="image/x-png, image/gif, image/jpeg">
+                <em style="display: block;margin-top: 7px">{[{ 'configurator.step3.form.recommended' | translate }]}</em>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="submit" data-click-once ng-disabled="form_edit_item.$invalid">{[{ 'ok' | translate }]}</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">{[{ 'cancel' | translate }]}</button>
+        </div>
+    </form>
+</script>

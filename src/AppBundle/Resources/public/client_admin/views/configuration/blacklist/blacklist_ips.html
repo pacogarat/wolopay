@@ -1,0 +1,26 @@
+<div ng-controller="BlackListedIpsCtrl">
+
+    <h3 translate="blacklist.ips.title"></h3>
+    <p ng-bind-html="'blacklist.ips.desc' | translate | nl2br "></p>
+
+    <form name="form_shop_blacklisted_external_users" class="form-horizontal validation" ng-submit="formValid() && setBlackListed(true, add_ip)">
+        <div class="input-group" style="margin-top: 20px; max-width: 330px">
+            <input ng-model="add_ip" required type="text" class="form-control" pattern="^((^|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d)|\*)){4}(?:(\/|\-)((|\.)((25[0-5])|(2[0-4]\d)|(1\d\d)|([1-9]?\d))){1,4})?$">
+            <span class="input-group-btn">
+                <button class="btn btn-info" type="submit" ng-disabled="!formValid()" translate="blacklist.ips.add_gamer"></button>
+            </span>
+        </div>
+        <div style="margin: 15px 0 5px; padding-top: 15px; border-top: 1px dashed #aaa">
+            <div ng-if="ipsBlacklisted.length == 0" class="alert alert-warning" translate="no_data">
+            </div>
+            <input type="text" class="form-control" ng-if="ipsBlacklisted.length > 0" ng-model="searchText.$" placeholder="{[{ 'search' | translate }]}" >
+            <div style="margin-top: 10px">
+                <button type="button" ng-repeat="ip in ipsBlacklisted | filter: searchText" class="btn btn-default" style="margin: 3px">
+                    {[{ ip }]}
+                    <i class="glyphicon glyphicon-remove" style="color: rgb(181, 0, 0)" ng-click="setBlackListed(false, ip)"></i>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</div>

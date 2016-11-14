@@ -1,0 +1,13 @@
+.wolo-container .pay-box:hover,
+.wolo-container .product:hover,
+.wolo-container .tab:hover,
+.wolo-container .search:hover,
+.wolo-container .arrow-left:hover,
+.wolo-container .arrow-right:hover,
+.wolo-container .pay-button:hover,
+.wolo-container .cart img:hover {
+  -webkit-filter: brightness(115%);
+  -moz-filter: brightness(115%);
+  -o-filter: brightness(115%);
+  filter: brightness(115%);
+}

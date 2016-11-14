@@ -1,0 +1,51 @@
+{% extends '@LexikTranslation/Translation/grid.html.twig' %}
+{% block toolbar %}
+
+
+    {{ parent() }}
+    <label for="toggle-all-columns" class="locale ng-binding">
+        <input type="checkbox" id="toggle-all-columns" ng-model="onlyEmptyValues" checked="checked"> Show only empty values
+    </label>
+{% endblock %}
+
+{% block javascript_footer %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.min.js"></script>
+    <script src="{{ asset('bundles/lexiktranslation/ng-table/ng-table.min.js') }}"></script>
+
+    <script>
+        var translationCfg = {
+            locales: {{ locales | json_encode | raw }},
+            inputType: '{{ inputType }}',
+            autoCacheClean: {{ autoCacheClean ? 'true' : 'false' }},
+            profilerTokens: {{ tokens is not null ? (tokens | json_encode | raw) : 'null' }},
+            toggleSimilar: '{{ toggleSimilar }}',
+            url: {
+                list: '{{ path('lexik_translation_list') }}',
+                listByToken: '{{ path('lexik_translation_profiler', {'token': '-token-'}) }}',
+                update: '{{ path('lexik_translation_update', {'id': '-id-'}) }}',
+                invalidateCache: '{{ path('lexik_translation_invalidate_cache') }}'
+            },
+            label: {
+                hideCol: '{{ 'translations.show_hide_columns'|trans }}',
+                toggleAllCol: '{{ 'translations.toggle_all_columns'|trans }}',
+                invalidateCache: '{{ 'translations.invalidate_cache'|trans }}',
+                allTranslations: '{{ 'translations.all_translations'|trans }}',
+                profiler: '{{ 'translations.profiler'|trans }}',
+                dataSource: '{{ 'translations.data_source'|trans }}',
+                latestProfiles: '{{ 'translations.latest_profiles'|trans }}',
+                profile: '{{ 'translations.profile'|trans }}',
+                saveRow: '{{ 'translations.save_row'|trans }}',
+                domain: '{{ 'translations.domain'|trans }}',
+                key: '{{ 'translations.key'|trans }}',
+                save: '{{ 'translations.save'|trans }}',
+                successMsg: '{{ 'translations.succesfully_updated'|trans }}',
+                errorMsg: '{{ 'translations.update_failed'|trans }}',
+                noTranslations: '{{ 'translations.no_translations'|trans }}'
+            }
+        };
+    </script>
+    <script src="{{ asset('bundles/lexiktranslation/js/translation.js') }}"></script>
+    <script src="{{ asset('bundles/app/translationInHouse/js/lexik.js') }}"></script>
+
+{% endblock %}

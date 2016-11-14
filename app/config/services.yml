@@ -1,0 +1,116 @@
+imports:
+    - { resource: services_sonata.yml }
+    - { resource: services_security.yml }
+    - { resource: services_form.yml }
+    - { resource: services_twig.yml }
+
+# Allmost services are declared with JMS DIExtra
+
+services:
+    # bug https://github.com/FriendsOfSymfony/FOSUserBundle/issues/2048
+    fos_user.doctrine_registry:
+        alias: doctrine
+
+    # metadata_cache_driver add cache prefix
+    app.doctrine.apc_cache:
+        class: Doctrine\Common\Cache\ApcCache
+        calls:
+            - [setNamespace, ["%domain_main%"]]
+
+    nvia_api.command.request:
+        class: AppBundle\Command\ApiRequestCommand
+        arguments: ['@api.make_request']
+        tags:
+            - { name: console.command }
+
+    nvia_api.securiy.authentication.listener:
+        class: AppBundle\Security\Factory\GetJWTListener
+        arguments: ['@security.context', '@security.authentication.manager', '@lexik_jwt_authentication.handler.authentication_success', '@lexik_jwt_authentication.handler.authentication_failure', '@logger']
+        tags:
+            - {name: monolog.logger }
+
+    shop.logger.transaction_handler:
+        class: AppBundle\Logger\StreamHandlerDynamicFileTransaction
+        # 200 = INFO, see Monolog::Logger for the values of log levels
+        arguments: ['%kernel.logs_dir%', '%monolog.level%']
+
+    shop.logger.dynamic_handler:
+        class: AppBundle\Logger\StreamHandlerDynamicFile
+        # 200 = INFO, see Monolog::Logger for the values of log levels
+        arguments: ['%kernel.logs_dir%', '%monolog.level%']
+
+    app.twig.print_r:
+        class: AppBundle\Twig\PrintRExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    app.twig.evaluate:
+        class: AppBundle\Twig\EvaluateExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    app.twig.inject:
+        class: AppBundle\Twig\InjectExtension
+        public: false
+        arguments: [%kernel.root_dir%]
+        tags:
+            - { name: twig.extension }
+
+    app.twig.inject_external_content:
+        class: AppBundle\Twig\InjectExternalContentExtension
+        public: false
+        tags:
+            - { name: twig.extension }
+
+    matthias_symfony_console_form.check_box_transformer:
+        class: AppBundle\Service\ConsoleForm\CheckboxTransformer
+        public: false
+        tags:
+            - { name: form_to_question_transformer, form_type: Symfony\Component\Form\Extension\Core\Type\CheckboxType }
+
+    matthias_symfony_console_form.integer_transformer:
+        class: AppBundle\Service\ConsoleForm\IntegerTransformer
+        public: false
+        tags:
+            - { name: form_to_question_transformer, form_type: Symfony\Component\Form\Extension\Core\Type\IntegerType }
+
+    matthias_symfony_console_form.number_transformer:
+        class: AppBundle\Service\ConsoleForm\NumberTransformer
+        public: false
+        tags:
+            - { name: form_to_question_transformer, form_type: Symfony\Component\Form\Extension\Core\Type\NumberType }
+
+    doctrine.orm.container_aware_entity_listener_resolver:
+        class: AppBundle\Doctrine\ContainerAwareEntityListenerResolver
+        arguments: [ "@service_container" ]
+
+    entity_listener.gamer:
+        class: AppBundle\Entity\Listener\GamerListener
+        arguments: [ "@service_container" ]
+        tags:
+            -  { name: doctrine.entity_listener }
+
+# MEMORY PROCESSOR
+#    my_processor:
+#        class: Monolog\Processor\MemoryUsageProcessor
+#        tags:
+#            - { name: monolog.processor }
+#
+# DUMP TWIG
+#    twig.extension.debug:
+#        class: Twig_Extension_Debug
+#        tags: [{ name: 'twig.extension' }]
+
+# Override
+parameters:
+#    lexik_translation.data_grid.request_handler.class: AppBundle\Service\OverrideThirdBundles\LexikDataGridRequestHandler
+    jms_serializer.json_serialization_visitor.class: AppBundle\Service\OverrideThirdBundles\JsonSerializationVisitor
+
+escape_wsse_authentication:
+    authentication_provider_class: AppBundle\Security\Authentication\Provider\ProviderWSSEOverride
+
+
+
+

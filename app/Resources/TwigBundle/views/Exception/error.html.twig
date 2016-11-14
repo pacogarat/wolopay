@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title></title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"/>
+        <link href='//fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+        <title>An Error Occurred: {{ status_text }}</title>
+        <style>
+            body{
+                font-family: 'Lobster', cursive;
+                color: #eee;
+                text-shadow: 2px 2px 1px #333;
+
+                background: url('{{ asset('img/bg_error.jpg') }}') no-repeat center center fixed;
+                background-size: 100% 100%;
+            }
+            h1{
+                font-size: 100px;
+                text-align: center;
+                margin-top: 100px;
+            }
+            h2{
+                text-align: center;
+                font-size: 60px;
+                margin: 40px;
+            }
+            #logo{
+                text-align: center;
+            }
+            #logo img{
+                margin-top: 100px ;
+            }
+            html {
+                height: 100%
+            }
+        </style>
+    </head>
+    <body>
+
+
+        <h1>{{ status_code }}</h1>
+        <h2>Oops! Error: {{ status_text }}.</h2>
+
+        <div id="logo">
+            <a href="{{ path('home')}}">
+                <img src="{{ asset('img/logo_500x100.png') }}">
+            </a>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,206 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: config__api.yml }
+    - { resource: sonata/sonata_admin.yml }
+    - { resource: sonata/sonata_media.yml }
+    - { resource: sonata/sonata_others.yml }
+    - { resource: services.yml }
+    - { resource: ../../vendor/symfony/assetic-bundle/Resources/config/filters/uglifyjs2.xml }
+
+parameters:
+    assetic.filter.uglifyjs2.bin: "%node_uglify_exe%"
+    assetic.filter.uglifyjs2.node: "%node_exe_path%"
+
+framework:
+    trusted_proxies:  [127.0.0.1] # Used for reverse proxy (nginx)
+    # open files trace from browser
+    ide: "javascript: var r = new XMLHttpRequest; r.open('get', 'http://localhost:8091?message=%%f:%%l');r.send()"
+    #esi:             ~
+    translator:      { fallback: "%locale%" }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        assets_version: "%assets_version%"
+        assets_base_url: "%domain_main%"
+        assets_base_urls: { http: [ "%domain_main%" ], ssl: [ "%domain_main%" ] }
+
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        name: "WOLOPAY"
+        handler_id: session.handler.native_file
+        save_path: "%kernel.root_dir%/../var/sessions"
+    fragments:       ~
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    exception_controller: 'AppBundle\Exception\TwigException::showAction'
+    form:
+        resources:
+            - 'SonataCoreBundle:Form:datepicker.html.twig'
+            - '::Sonata/media_widgets.html.twig'
+            - '@App/Partials/captcha_horizontal.html.twig'
+            - '@App/Partials/captcha_horizontal.html.twig'
+    globals:
+        analitycs: "%analitycs%"
+        assets_version: "%assets_version%"
+        domain_main: "%domain_main%"
+        kernel_root_dir: "%kernel.root_dir%"
+        email_billing: "%email_billing%"
+        email_finance: "%email_finance%"
+        shopping_cart_max_items: "%shopping_cart_max_items%"
+        shopping_cart_max_price_eur: "%shopping_cart_max_price_eur%"
+
+
+# Assetic Configuration
+assetic:
+    debug:          "%kernel.debug%"
+    use_controller: false
+    bundles:        [ 'FOSUserBundle', 'AppBundle' ]
+    #java: /usr/bin/java
+    node: "%node_exe_path%"
+    filters:
+        less:
+            compress:   true
+            node: "%node_exe_path%"
+            node_paths: ["%node_modules_path%"]
+            apply_to: "\.less$"
+
+        cssrewrite: ~
+#        uglifyjs2:
+#            # the path to the uglifyjs executable
+#            bin: "%node_uglify_exe%"
+#            apply_to: "\.js$"
+        #closure:
+        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
+        #yui_css:
+        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   "%database_driver%"
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+                wrapper_class: 'AppBundle\Doctrine\Connection'
+                server_version: 5.6
+
+        types:
+            json: Sonata\Doctrine\Types\JsonType
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        default_entity_manager: default
+        entity_managers:
+            default:
+                entity_listener_resolver: doctrine.orm.container_aware_entity_listener_resolver
+                auto_mapping: true
+#                mappings:
+#                    gedmo_translatable:
+#                        type: annotation
+#                        prefix: Gedmo\Translatable\Entity
+#                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+#                        alias: GedmoTranslatable # this one is optional and will default to the name set for the mapping
+#                        is_bundle: false
+#                    gedmo_translator:
+#                        type: annotation
+#                        prefix: Gedmo\Translator\Entity
+#                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translator/Entity"
+#                        alias: GedmoTranslator # this one is optional and will default to the name set for the mapping
+#                        is_bundle: false
+
+                second_level_cache:
+                    region_cache_driver: apc
+
+                dql:
+                    datetime_functions:
+                        date_format: AppBundle\Doctrine\CustomFunctions\Mysql\DateFormatFunction
+                    numeric_functions:
+                        rand: AppBundle\Doctrine\CustomFunctions\Mysql\RandFunction
+                        round: AppBundle\Doctrine\CustomFunctions\Mysql\RoundFunction
+                        floor: AppBundle\Doctrine\CustomFunctions\Mysql\FloorFunction
+                        myconcat: AppBundle\Doctrine\CustomFunctions\Mysql\MyConcatFunction
+                    string_functions:
+                      group_concat: AppBundle\Doctrine\CustomFunctions\Mysql\GroupConcatFunction
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AppBundle\Entity\ClientUser
+
+jms_di_extra:
+    locations:
+        all_bundles: false
+        bundles: [AppBundle]
+        directories: ["%kernel.root_dir%/../src"]
+
+stof_doctrine_extensions:
+    default_locale: "%locale%"
+    orm:
+        default:
+            timestampable: true
+            sortable: true
+            translatable: true
+            sluggable: true
+
+
+
+gregwar_captcha: ~
+
+braincrafted_bootstrap:
+    jquery_path: "%kernel.root_dir%/../web/bower_components/jquery/dist/jquery.min.js"
+swiftmailer:
+    delivery_address: "%email_app%"
+
+be_simple_soap:
+    services:
+        StatsApi:
+            namespace:     "%domain_main%/ws/StatsApi"
+            binding:       rpc-literal
+            resource:      "@AppBundle/Controller/Soap/StatsController.php"
+            resource_type: annotation
+
+# Faker to load fake data; for example, for demos
+bazinga_faker:
+    orm: doctrine
+
+
+misd_guzzle:
+    log:
+        enabled: false
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     "%snappy_binary_path%"
+        options:    []
+
+pix_sortable_behavior:
+    position_field:
+        default: order

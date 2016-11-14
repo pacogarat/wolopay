@@ -1,0 +1,37 @@
+email_was_sent: El email fue enviado
+
+payment:
+    done:
+        standard:
+            title: ¡¡Disfruta de tu producto!!
+            description: |
+                            ¡Enhorabuena! has terminado la compra correctamente.
+                            El producto será añadido automáticamente a tu cuenta en el juego.
+
+    cancel:
+        standard:
+            title: La compra fue cancelada por el usuario
+            description: |
+                            Puedes seguir comprando en la tienda.
+
+    gamer_email:
+        date: Fecha:
+        subject: Nueva notificaión de compra
+        web_page: Página web:
+        merchant: Cliente:
+        transaction_id: Nº Factura:
+        payment_type: Tipo de pago:
+        product: Producto:
+
+        your_ip: Tu ip:
+        payment_status: Estado:
+
+        n_articles: Nº Articulos:
+        pay_method: Methodo de pago:
+        completed: Completado
+
+        price_before_tax: Precio sin impuestos:
+        taxes: Impuestos:
+
+        any_troubles: ¿Tienes algun problema con este pago?
+        dont_read_well: Si no lees bien este mail, por favor haz click

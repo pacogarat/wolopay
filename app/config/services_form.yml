@@ -1,0 +1,5 @@
+services:
+    app_shop_form_type_app:
+        class: AppBundle\Form\Type\AppType
+        tags:
+            - {name: form.type, alias: 'app_shop_form_type_app'}

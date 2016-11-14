@@ -1,0 +1,117 @@
+search: Search
+no: No
+yes: Yes
+logout: Logout
+logout_extra: If you haven problems can ask to us.
+
+id: Id
+created: Created
+gamer: Gamer
+amount: Amount
+country: Country
+total_amount: Total amount
+game_amount: Game Amount
+provider_amount: Provider Amount
+wolopay_amount: Wolopay Amount
+attempts: Attempts
+attempts_log: Attempts Log
+purchase: Purchase
+purchases: Purchases
+is_a_subscription: Is a subscription
+ready_to_notify: Ready to notify
+partial_payment: Partial Payment
+was_received: Was received
+notification: Notification
+notifications: Notifications
+code: Code
+content: Content
+request: Request
+received: Received
+article: Article
+articles: Articles
+n_items: Nº Items
+quantity: Quantity
+provider: Provider
+was_canceled: Was canceled
+pay_category: Pay category
+begin: Begin
+end: End
+state: State
+shop: Shop
+transaction: Transaction
+transactions: Transactions
+last_account_activity: Last login
+app: Applications
+date: Date
+others: Others
+clear_storage: Clear Storage
+clear_storage_extra: Would you like to RESET all your saved widgets and clear LocalStorage?
+reset_widgets_title: Warning! This will reset all your widget settings.
+actions: Actions
+refunds: Devoluciones
+
+menu:
+    dashboard: Dashboard
+    purchases: Purchases
+    transactions: Transactions
+    notifications: Notifications
+    analitycs: Analitycs
+    credentials: Crendentials
+    documentation: Documentation
+    active_subscriptions: Active Subscriptions
+
+dashboard:
+    my_income: MY INCOME
+    transactions: TRANSACTIONS
+    purchases: PURCHASES
+    game_amount_by_game: Game amount
+    number_of_gifts: Nº of Gifts
+    number_of_transactions: Nº of Transactions
+    number_of_purchases: Nº of Purchases
+    amount_by_application: Amount by game
+    map_title: Purchases by country
+    welcome_to_wolopay: Welcome to wolopay
+    refunds: Devoluciones
+
+analitycs:
+    revenue: Revenue
+    unique_users: Unique users
+    articles: Articles
+    gamers: Gamers
+    revenue: Revenue
+    providers: Providers
+    purchases_without_gifts: Purchases without gifts
+    no_hit: No hit
+    conversions_per_transaction: Conversions
+    unique_users_purchases: Purchases by unique users
+    unique_users_purchases_without_gifts: Purchases without gifts
+
+credentials:
+    title: Credentials
+    description: >
+        The all new and revolutionary JarvisWidgets v2.0 ($35 value) is now only exclusive to SmartAdmin. JarvisWidgets
+        allows you to do more than your normal widgets. You can now use realtime AJAX loading in a snap with auto refresh.
+        Add Infinite buttons and controls to widget header. All widgets are Sortable across all bootstrap col-spans and
+        uses HTML5 localStorage. Also now supports RTL Support, Crosbrowser Support, Callback functions and More..
+    api_user: Api user
+    api_secret: Api Secret
+    bottom: go documentation secction for more info
+
+status_category:
+    begin: Begin
+    shopping: Shopping
+    processing: Processing Payment
+    pending: Pending Payment
+    completed: Completed
+    subscription_active: Subscription Active
+    failed: Failed
+    blocked: Blocked
+    expired: Expired
+
+active_subscription:
+    n_completed_payments: Nº payments
+    amount_for_each_payment_to_complete: Amount each payment
+    cancel: Cancel subscription
+    cancel_this_subscription: Cancel this subscription
+    reason: Reason ...
+    cancel_in_process: Cancel subscription is a manual process and when we cancel this subscription we'll notify to you

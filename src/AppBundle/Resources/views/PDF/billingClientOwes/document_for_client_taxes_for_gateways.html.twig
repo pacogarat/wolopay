@@ -1,0 +1,26 @@
+{# client \AppBundle\Entity\Client #}
+{# wolopay \AppBundle\Entity\Client #}
+{# referenceDate \DateTime #}
+{% extends 'base_pdf.html.twig' %}
+{% block body %}
+
+    <div style="margin-bottom: 20px">
+        <table style="clear: both;" cellspacing="0" cellpadding="2">
+            <tr>
+                <td>
+                    You can find below the approximate amounts that  you have to pay as “taxes” to the corresponding authorities, for the sales have been collected and not paid by Wolopay.
+                    It’s your responsibility to pay these taxes in time.
+                </td>
+                <td>
+                    <img src="{{kernel_root_dir}}/../web/img/logo_200x50.png" style="clear: both;">
+                </td>
+            </tr>
+        </table>
+
+
+        <div class="h3" style="margin-top: 30px">You must pay this taxes for month: {{ referenceDate | date("F Y") }} </div>
+
+    </div>
+
+    {% include '@App/PDF/partials/taxes_for_gateways.html.twig' %}
+{% endblock %}

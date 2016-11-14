@@ -1,0 +1,19 @@
+{% extends "::base_bootstrap.html.twig" %}
+{% block page_container %}
+        <div class="container">
+
+            <div class="row voffset2">
+                <div class="col-sm-6" >
+                    <h2>{% block title '' %}</h2>
+                </div>
+                <div class="col-sm-3 col-sm-offset-2" >
+                    <img src="{{ absolute_url(asset('img/logo_180x40.png')) }}" style="margin: 17px 0 0 0">
+                </div>
+            </div>
+            <div class="row voffset3">
+                {% include '@App/Partials/flash_msgs.html.twig' %}
+            </div>
+            {% block page '' %}
+        </div>
+
+{% endblock %}

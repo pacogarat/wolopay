@@ -1,0 +1,217 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use AppBundle\Validator\Constraints as AppBundleAsserts;
+use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\XmlRoot;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Transaction
+ *
+ * @ORM\Table(name="transaction_multi_app")
+ * @ORM\Entity
+ * @ExclusionPolicy("all")
+ * @XmlRoot("transaction_multi_app")
+ */
+class TransactionMultiApp
+{
+    const PREFIX = 'WOM_';
+
+    /**
+     * @var string
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\Column(name="id", type="string", length=100)
+     * @Expose()
+     * @Groups({"Default", "Public"})
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Client
+     *
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\Client")
+     * @ORM\JoinColumn(name="client_id", referencedColumnName="id", nullable=false)
+     */
+    private $client;
+
+    /**
+     * @var \AppBundle\Entity\Transaction
+     *
+     * @ORM\OneToMany(targetEntity="\AppBundle\Entity\TransactionMultiAppConfByApp", mappedBy="transactionMultiApp")
+     * @AppBundleAsserts\SameClient()
+     * @AppBundleAsserts\DifferentApps()
+     * @Expose()
+     * @Groups({"Default", "Public"})
+     */
+    private $transactionMultiAppConfByApps;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_virtual_exchange", type="boolean", nullable=true)
+     * @Expose()
+     * @Groups({"Default", "Public"})
+     */
+    private $isVirtualExchange=false;
+
+    /**
+     * @var \AppBundle\Entity\ClientApiCredential
+     *
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\ClientApiCredential")
+     * @ORM\JoinColumn(name="client_api_crendetials_id", referencedColumnName="id", nullable=false)
+     */
+    private $apiCrendetials;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     * @Expose()
+     * @Groups({"Default", "Public"})
+     */
+    protected $createdAt;
+
+    /**
+     * Constructor
+     */
+    public function __construct(ClientApiCredential $clientApiCredentials = null)
+    {
+        $this->createdAt    = new \DateTime('now');
+        $this->id           = uniqid(self::PREFIX);
+        $this->transactionMultiAppConfByApps = new \Doctrine\Common\Collections\ArrayCollection();
+
+        if ($clientApiCredentials)
+        {
+            $this
+                ->setApiCrendetials($clientApiCredentials)
+                ->setClient($clientApiCredentials->getClient())
+            ;
+        }
+    }
+
+    public function __clone()
+    {
+        $this->id = uniqid(self::PREFIX);
+    }
+
+    public function __toString()
+    {
+        return $this->getId();
+    }
+
+    /**
+     * @param \AppBundle\Entity\ClientApiCredential $apiCrendetials
+     * @return $this
+     */
+    public function setApiCrendetials($apiCrendetials)
+    {
+        $this->apiCrendetials = $apiCrendetials;
+        return $this;
+    }
+
+    /**
+     * @return \AppBundle\Entity\ClientApiCredential
+     */
+    public function getApiCrendetials()
+    {
+        return $this->apiCrendetials;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     * @return $this
+     */
+    private function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param string $id
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param \AppBundle\Entity\Transaction $transactionMultiAppConfByApps
+     * @return $this
+     */
+    public function setTransactionMultiAppConfByApps($transactionMultiAppConfByApps)
+    {
+        $this->transactionMultiAppConfByApps = $transactionMultiAppConfByApps;
+        return $this;
+    }
+
+    /**
+     * @return \AppBundle\Entity\Transaction
+     */
+    public function getTransactionMultiAppConfByApps()
+    {
+        return $this->transactionMultiAppConfByApps;
+    }
+
+    /**
+     * @param boolean $isVirtualExchange
+     * @return $this
+     */
+    public function setIsVirtualExchange($isVirtualExchange)
+    {
+        $this->isVirtualExchange = $isVirtualExchange;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getIsVirtualExchange()
+    {
+        return $this->isVirtualExchange;
+    }
+
+    /**
+     * @param \AppBundle\Entity\Client $client
+     * @return $this
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+        return $this;
+    }
+
+    /**
+     * @return \AppBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+}

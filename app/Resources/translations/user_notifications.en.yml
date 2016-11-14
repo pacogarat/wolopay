@@ -1,0 +1,11 @@
+payment_was_canceled:
+    title: "Payment Was canceled %purchase_id%, %app_name%"
+    desc: |
+        Payment Was canceled %purchase_id%
+
+        article_string %article_string%, app_name %app_name% amount %amount%, currency_symbol %currency_symbol%, transaction %transaction_id%
+
+purchase_notification_was_failed:
+    title: "Payment notification failed %notification_id%, %app_name%"
+    desc: |
+        Payment notification article_string %article_string%, app_name %app_name%, transaction %transaction_id%

@@ -1,0 +1,108 @@
+sonata_media:
+    # if you don't use default namespace configuration
+    #class:
+    #    media: MyVendor\MediaBundle\Entity\Media
+    #    gallery: MyVendor\MediaBundle\Entity\Gallery
+    #    gallery_has_media: MyVendor\MediaBundle\Entity\GalleryHasMedia
+    default_context: default
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                shop:       { width: 123, quality: 99}
+
+
+        image_normal:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                shop:   { width: 123, quality: 90}
+
+        app_tab:
+             providers:
+                 - sonata.media.provider.image
+             formats:
+                 shop:   { width: 100, height: 50, quality: 90}
+
+        client:
+              providers:
+                   - sonata.media.provider.image
+              formats:
+                  pdf: { height: 50 }
+        app:
+             providers:
+                 - sonata.media.provider.image
+             formats:
+                 done:   { height: 26, quality: 90}
+                 email:   { height: 50, quality: 90}
+                 shop:   { width: 150, quality: 90}
+                 shop_done:   { height: 60, quality: 90}
+
+        article:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                shop:   { width: 123, height: 123, quality: 90}
+                shop_modular:   { height: 67, quality: 90}
+                shop_tooltip:   { width: 200, quality: 90}
+
+        offer:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                shop:   { width: 123, quality: 90}
+                shop_modular:   { height: 67, quality: 90}
+                shop_tooltip:   { width: 200, quality: 90}
+
+        item:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                shop:   { width: 123, height: 123, quality: 90}
+                shop_modular:   { height: 67, quality: 90}
+                shop_tooltip:   { width: 200, quality: 90}
+
+        item_tab:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                shop:   { width: 100, height: 50, quality: 90}
+
+        pay_method:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                shop:   { width: 130, quality: 90}
+
+        sms_operator:
+            providers:
+                - sonata.media.provider.image
+            formats:
+                shop:   { height: 60, quality: 90}
+
+        invoice:
+            providers:
+                - sonata.media.provider.file
+            formats:
+                normal:   { width: 32, quality: 99}
+
+        client_document:
+            providers:
+                - sonata.media.provider.file
+            formats:
+                normal:   { width: 32, quality: 99}
+
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  '%kernel.root_dir%/../web/uploads/media'
+            create:     false

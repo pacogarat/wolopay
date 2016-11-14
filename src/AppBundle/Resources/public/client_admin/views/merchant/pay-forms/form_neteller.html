@@ -1,0 +1,44 @@
+<form class="validation" name="form_neteller_credentials" ng-submit="submit('neteller', providers.neteller)">
+
+    <div ng-repeat="credential in providers.neteller" ng-include="'form_neteller.html'">
+    </div>
+
+    <button type="submit" ng-disabled="form_neteller_credentials.$invalid" class="btn btn-info btn-lg" style="padding: 6px 50px">{[{ 'save' | translate }]} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
+
+</form>
+
+<!--MODAL WINDOW-->
+<script type="text/ng-template" id="form_neteller.html">
+    <div class="form-group">
+        <label translate="merchant.pay_methods.forms.apps"></label>
+        <ui-select multiple name="app_mod_{[{credential.$$hashKey}]}" ng-model="credential.apps" theme="select2" style="width: 100%;" ui-validate="{appsRepeated: 'isValidAppsFromProvider(providers.neteller)', appsNullRepeated: 'isValidAppsFromProviderNull(providers.neteller)'}"  >
+            <ui-select-match>
+                <div>{[{ $item.name }]}</div>
+            </ui-select-match>
+            <ui-select-choices repeat="app in apps | filter: {$: $select.search}">
+                <div>{[{ app.name }]}</div>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+
+    <div class="alert alert-danger" role="alert"  ng-if="form_neteller_credentials['app_mod_' + credential.$$hashKey].$error.appsNullRepeated || form_neteller_credentials['app_mod_' + credential.$$hashKey].$error.appsRepeated">
+        <div ng-show="form_neteller_credentials['app_mod_{[{credential.$$hashKey}]}'].$error.appsRepeated" translate="merchant.pay_methods.forms.errors.apps_repeated"></div>
+        <div ng-show="form_neteller_credentials['app_mod_{[{credential.$$hashKey}]}'].$error.appsNullRepeated" translate="merchant.pay_methods.forms.errors.apps_null_repeated"></div>
+    </div>
+
+    <div class="form-group">
+        <label>Api user*</label>
+        <input type="text" name="name" placeholder=""  ng-model="credential.details.api_user" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label>Api password*</label>
+        <input type="text" name="name" placeholder=""  ng-model="credential.details.api_password" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label>Secret Webhook</label>
+        <input type="text" name="name" placeholder=""  ng-model="credential.details.webhook" class="form-control">
+    </div>
+
+    <footer-buttons provider-name="'neteller'" credential="credential" credentials="providers.neteller" delete="delete"></footer-buttons>
+
+</script>

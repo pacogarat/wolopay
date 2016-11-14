@@ -1,0 +1,184 @@
+{% extends "::base_bootstrap.html.twig" %}
+{% block head_extra %}
+    {#{% stylesheets#}
+        {#"bower_components/jquery.tocify.js/src/stylesheets/jquery.tocify.css"#}
+    {#%}#}
+        {#<link rel="stylesheet" href="{{ asset_url }}" media="screen" />#}
+    {#{% endstylesheets %}#}
+    <style>
+        /*html { overflow-y: hidden; }*/
+        body{
+            background: url('{{asset('/bundles/app/documentation/img/background_repeat.png')}}') repeat;
+        }
+        .tocify-container{
+            margin-top: 50px;
+        }
+        .tocify-container li:not(.active)::before, .tocify-container li.active::before{
+            font-family: 'Glyphicons Halflings';
+            font-weight: normal;
+            font-style: normal;
+            text-decoration: inherit;
+            position: absolute;
+            margin-top: 9px;
+            margin-left: -5px;
+        }
+        .tocify-container li:not(.active)::before{
+            content: '\e080';
+            color: #444;
+        }
+
+        .tocify-container li.active::before{
+            content: '\e124';
+            color: #fc9702;
+            text-shadow: 1px 2px 0 #555;
+        }
+
+        .tocify-container li.main::before{
+            content: '\e144';
+            color: #444;
+        }
+
+        .tocify-container li.active{
+            background: rgba(252, 151, 2, 0.1);
+        }
+        .tocify-container li.active a, .tocify-container li:hover a, .tocify-container li:focus a, .tocify-container li a:hover, .tocify-container li a:focus{
+            background: none !important;
+        }
+        .tocify-container li{
+            padding-left: 20px !important;
+        }
+        @media only screen and (min-width : 992px) {
+            .tocify-container{
+                position: fixed;
+            }
+            .col-main{
+                padding-left: 30px;
+                background: rgba(255, 255, 255, 0.55);
+                border-left: 1px dashed #ccc;
+            }
+        }
+
+
+
+        .tocify-subheader, .tocify-like-subheader{
+            padding-left: 20px;
+        }
+        div.generic-doc{
+            font-size: 17px;
+        }
+
+        div.generic-doc h1{
+            color: #FD9800;
+            text-shadow: 1px 1px 1px #000;
+            border-bottom: 1px solid #999;
+            margin: 100px 0 30px;
+            display: inline-block;
+            clear: both;
+        }
+
+        div.generic-doc  h2, div.generic-doc  h3, div.generic-doc  h4, div.generic-doc h5{
+            margin: 70px 0 30px;
+        }
+        .navbar-default {
+            background-color: rgba(255,255,255,0.8);
+            border-color: rgba(35, 35, 35, 0.1) !important;
+        }
+        .navbar-default .nav > li > a{
+            color: #444 !important;
+        }
+        #col-menu a{
+            color: #222;
+            text-decoration: underline;
+        }
+        #toc a{
+            color: #222;
+            text-decoration: none;
+        }
+
+        .lang-btn-group{
+            margin-top: 20px;
+        }
+
+        .lang-btn-group button{
+            -webkit-border-radius: 5px !important;
+            -webkit-border-bottom-right-radius: 0 !important;
+            -webkit-border-bottom-left-radius: 0 !important;
+            -moz-border-radius: 5px !important;
+            -moz-border-radius-bottomright: 0 !important;
+            -moz-border-radius-bottomleft: 0 !important;
+            border-radius: 5px !important;
+            border-bottom-right-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+        }
+
+        pre{
+            border-top-left-radius: 0 !important;
+            border-top-right-radius: 0 !important;
+            margin-bottom: 30px;
+        }
+
+
+    </style>
+{% endblock %}
+{% block javascrips_extra %}
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    {% javascripts
+        'bower_components/jquery.tocify.js/libs/jqueryui/jquery-ui-1.9.1.custom.min.js'
+        'bower_components/jquery.tocify.js/src/javascripts/jquery.tocify.min.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        $(function() {
+
+            $('.generic-doc table').wrap( "<div class='table-responsive'></div>" );
+            $('.generic-doc table').addClass('table table-striped')
+
+            //Calls the tocify method on your HTML div.
+            $('{{injectTocJquerySelector}}').append(
+                '<div id="toc" class="tocify-like-subheader"></div>'
+            );
+
+            function setColMenuWidth()
+            {
+                $("#toc").width($('#col-menu').width()-40);
+            }
+            setColMenuWidth();
+
+            $("#toc").tocify({ selectors: "{{ tocHeaders | default('h1,h2,h3,h4') }}"});
+
+            $( window ).resize(function() {
+                setColMenuWidth();
+            });
+        });
+    </script>
+{% endblock %}
+{% block page_container %}
+
+    <div class="container-fluid">
+        {% include '@App/Others/Default/partials/home_header.html.twig' %}
+        <div class="row" style="margin-top: 30px">
+            <div class="col-md-3" id="col-menu">
+                <div style="overflow: hidden;">
+                    <div class="tocify-container">
+                        <ul class="tocify-header nav nav-list">
+                            <li id="in-short" class="main">
+                                <a href="{{path('documentation_inshort')}}#InShort">In Short (for the impatient)</a>
+                            </li>
+                            <li id="step-by-step" class="main">
+                                <a href="{{path('documentation_index')}}#GettingStarted">Step by step</a>
+                            </li>
+                            <li id="api" class="main">
+                                <a href="{{path('api_doc')}}">Api</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-main">
+                {% block main_content '' %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

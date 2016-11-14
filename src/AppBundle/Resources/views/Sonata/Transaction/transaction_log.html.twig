@@ -1,0 +1,54 @@
+{% extends 'SonataAdminBundle:CRUD:action.html.twig' %}
+
+{% block content %}
+
+
+
+
+    {% if lines is empty %}
+
+        Log is empty or is old
+
+    {% else %}
+
+        <h1>Transaction id: {{ object.id }}</h1>
+        <h2>Status: {{ object.statusCategory.name }}</h2>
+        <style>
+            .sonata-ba-content label{
+                margin: 0 10px;
+
+            }
+        </style>
+        <div style="padding: 15px">
+            <label style="cursor: pointer; font-weight: normal;color: green" onclick="visibleType($('#debug').is(':checked'), 'debug');">Debug <input data-type-log="debug" checked type="checkbox"></label>
+            <label style="cursor: pointer; font-weight: normal;color: blue" onclick="visibleType($('#debug').is(':checked'), 'debug');">Info <input data-type-log="info" checked type="checkbox"></label>
+            <label style="cursor: pointer; font-weight: normal;color: red" onclick="visibleType($('#debug').is(':checked'), 'debug');">Error <input data-type-log="error" checked type="checkbox"></label>
+            <label style="cursor: pointer; font-weight: bold;color: red; " onclick="visibleType($('#debug').is(':checked'), 'debug');">Critical <input data-type-log="critical" checked type="checkbox"></label>
+
+        </div>
+
+        <div style="overflow-x: scroll">
+            {% for line in lines %}
+                <div style="border-bottom: 1px solid #ccc ;padding: 3px 0; width: 100%; white-space: nowrap;">
+                    {{ line | raw }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <script>
+
+        $("input").on('ifChanged', function (event) {
+            visibleType(event.target.checked, event.target.attributes['data-type-log'].textContent);
+        });
+
+        function visibleType(state, className)
+        {
+            if (state)
+                $('.'+className+'').parent().show();
+            else
+                $('.'+className+'').parent().hide();
+        }
+    </script>
+
+{% endblock %}

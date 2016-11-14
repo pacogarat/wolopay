@@ -1,0 +1,308 @@
+// mobile
+@media only screen and (max-width: 960px){
+    .wolo-container{
+
+        .gacha {
+            display: none;
+        }
+
+    }
+}
+
+//high screen
+@media only screen and (min-width: 961px){
+    .wolo-container{
+
+        &.completed{
+            .finished-animation{
+                .top{
+                    height: 50px;
+                }
+            }
+        }
+    }
+}
+
+.wolo-container{
+
+    .gacha{
+        overflow: hidden;
+        height: @GACHA_HEIGHT;
+        z-index: 1;
+
+        .close{
+            position: absolute;
+            width: 40px;
+            height: 41px;
+            background: url("@{FILES_PATH}/img/iframe/close.png") no-repeat;
+            cursor: pointer;
+            margin: 8px 17px;
+        }
+
+        .box{
+            background: url("@{FILES_PATH}/img/gacha/gacha_bg.jpg") repeat-x top center;
+            height: @GACHA_BOX_HEIGHT;
+            .box-sizing(border-box);
+            overflow: hidden;
+            padding: 0 12px 12px;
+
+            .left{
+                float: left;
+                width: 280px;
+                height: 100%;
+                text-align: center;
+                border-right: 1px dashed #333;
+                margin-right: 20px;
+                background: rgba(255, 255, 255, 0.5);
+                overflow: hidden;
+
+                img{
+                    margin: 10px 0;
+                }
+
+                p{
+                    padding: 4px 4px;
+                    font-size: 1.6em;
+                    line-height: 17px;
+                    text-shadow: 1px 1px 0 #fff;
+                }
+            }
+            .right{
+
+                padding: 13px 0 0 0;
+
+                .articles{
+                    ul{
+                        padding: 0;
+                        list-style: none;
+
+                        li{
+                            float: left;
+                            background: url("@{FILES_PATH}/img/gacha/article_bg.png") no-repeat;
+                            width: 128px;
+                            height: 126px;
+                            margin: 10px 15px;
+                            text-align: center;
+
+                            &.empty{
+                                background: url("@{FILES_PATH}/img/gacha/article_off_bg.png") no-repeat;
+                            }
+
+                            .img-box{
+                                width: 100%;
+                                height: 100%;
+                            }
+
+                            .remaining-box{
+
+                                float: right;
+                                height: 0px;
+
+                                div{
+                                    color: #FCC449;
+                                    text-shadow: 1px 2px 0 #222;
+                                    font-size: 2em;
+                                    background: url("@{FILES_PATH}/img/gacha/remaining.png") no-repeat;
+                                    text-align: center;
+                                    width: 40px;
+                                    height: 40px;
+                                    padding-top: 12px;
+                                    margin: -10px 0px 0 -35px;
+                                    font-weight: bold;
+                                    position: relative;
+                                    z-index: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+//    final
+    &.completed{
+        .finished-animation{
+            z-index: 9999;
+            margin: 0 auto;
+            top: 0px;
+            left: 0px;
+            position: absolute;
+            width: 100%;
+            min-height: 80%;
+            background: url("@{FILES_PATH}/img/gacha/final_bg.jpg") center no-repeat rgba(0, 0, 0, 0.85);
+            font-size: 2.1em;
+            text-shadow: 1px 1px 0 #000;
+            color: #fff;
+            text-align: center;
+            margin-top: 5%;
+            border-top: 2px solid #000;
+            border-bottom: 2px solid #000;
+
+            .close{
+                float: right;
+                width: 40px;
+                height: 41px;
+                background: url("@{FILES_PATH}/img/iframe/close.png") no-repeat;
+                cursor: pointer;
+                z-index: 999;
+                margin: 0 10px;
+            }
+
+            .button-box{
+                button{
+                    width: 299px;
+                    height: 100px;
+                    margin: 30px;
+                    background: url("@{FILES_PATH}/img/gacha/final_play_button.png") no-repeat;
+                    border: 0;
+                    font-size: 1.7em;
+                    color: #fff;
+                    cursor: pointer;
+
+                    &.selected{
+                        .opacity(.5);
+                    }
+                }
+            }
+
+            .title{
+                font-weight: bold;
+                padding: 20px 100px;
+                text-align: center;
+                margin: 30px 0 10px 0;
+            }
+
+            .top{
+
+            }
+
+            .attempts{
+                background: url("@{FILES_PATH}/img/gacha/final_attempts.png") no-repeat center;
+                padding: 80px 0 40px;
+                font-weight: bold;
+                font-size: 1.1em;
+            }
+
+            .outer{
+
+                height: 200px;
+                overflow: hidden;
+                max-width: 1000px;
+                margin: 0 auto;
+                text-align: left;
+
+                .selector{
+                    width: 57px;
+                    margin: 0 auto;
+
+                    div{
+                        position: absolute;
+                        z-index: 1;
+                        width: 57px;
+                        height: 97px;
+                        background: url("@{FILES_PATH}/img/gacha/final_separator.png") no-repeat center;
+                    }
+                }
+
+
+                ul{
+                    padding: 0;
+                    list-style: none;
+                    position: relative;
+                    .transition ( left 7.5s  cubic-bezier(.08,.38,.09,1));
+                    width: 10000px;
+
+                    &.backward{
+                        .transition ( left 0.5s  cubic-bezier(.08,.38,.09,1));
+                    }
+
+                    li{
+                        font-size: 0.8em;
+                        line-height: 22px;
+                        display: block;
+                        float: left;
+                        height: 200px;
+                        text-align: center;
+                        padding: 10px;
+                        .box-sizing(border-box);
+                        width: 200px;
+                        clear: none;
+                        background: url("@{FILES_PATH}/img/gacha/final_article_bg.png") no-repeat center;
+
+                        &.the-best-article{
+                            background: url("@{FILES_PATH}/img/gacha/final_article_best_bg.png") no-repeat center;
+                        }
+
+                        &.second-best-article{
+                            background: url("@{FILES_PATH}/img/gacha/final_article_second_bg.png") no-repeat center;
+                        }
+
+                        &.third-best-article{
+                            background: url("@{FILES_PATH}/img/gacha/final_article_third_bg.png") no-repeat center;
+                        }
+
+                        h4{
+                            margin-top: 5px;
+                            font-weight: bold;
+                            color: #000;
+                            text-shadow: 1px 1px 0 #fff;
+                        }
+                        .box-img{
+                            width: 180px;
+                            height: 140px;
+                            margin-top: 10px;
+                        }
+                    }
+                }
+
+
+            }
+        }
+
+        .won{
+
+            margin-bottom: 30px;
+
+            ul{
+                padding: 0;
+                list-style: none;
+
+                li{
+                    display: inline-block;
+                    padding: 10px;
+                    margin-top: 20px;
+                    text-align: center;
+
+                    h3{
+                        margin-bottom: 10px;
+                        display: inline-block;
+                        width: 300px;
+                    }
+
+                    &:first-child{
+                        font-size: 1.5em;
+                        display: block;
+                        background: rgba(0, 0, 0, .5);
+                        border-top: 1px solid #000;
+                        border-bottom: 1px solid #000;
+
+                        img{
+                            background: url("@{FILES_PATH}/img/gacha/articles_won_bg.png") no-repeat center;
+                            -webkit-background-size: cover;
+                            -moz-background-size: cover;
+                            -o-background-size: cover;
+                            background-size: cover;
+                        }
+                    }
+
+                    img{
+                        vertical-align:middle;
+                    }
+
+                }
+            }
+        }
+    }
+}

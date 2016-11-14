@@ -1,0 +1,224 @@
+<div ng-controller="ArticlesShopsController1" >
+    <!-- widget grid -->
+    <section id="widget-grid" >
+        <div class="row">
+            <!-- shop,tab, art -->
+            <article class="col-sm-12 col-md-12 col-lg-6">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-articles-shops-pie" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                        <h2 data-translate="analitycs.articles_shops.title_articles_by_shop_and_tab"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.articles_shops.title_articles_by_shop_and_tab_tooltip' | translate}]}"></i>
+                        </span>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+
+                            <div class="padding-10-v">
+                                <div id="flotcontainer_shops_pie" class="chart-large" style="height: 532px;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- end shop,tab, art -->
+
+            <!--  art -->
+            <article class="col-sm-12 col-md-12 col-lg-6">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-articles-shops-pie_only_articles" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                        <h2 data-translate="analitycs.articles_shops.title_articles"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.articles_shops.title_articles_tooltip' | translate}]}"></i>
+                        </span>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+
+                            <div class="padding-10-v">
+                                <div id="flotcontainer_shops_pie_only_articles" class="chart-large" style="height: 532px;"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- End  art -->
+        </div>
+
+        <div class="row">
+            <!-- tab -->
+            <article class="col-sm-12 col-md-12 col-lg-6">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-articles-shops-pie_only_tabs" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                        <h2 data-translate="analitycs.articles_shops.title_tabs"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.articles_shops.title_tabs_tooltip' | translate}]}"></i>
+                        </span>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+                            <div class="padding-10-v">
+                                <div id="flotcontainer_shops_pie_only_tabs" class="chart-large" style="height: 532px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- End  tab -->
+
+            <!-- shop -->
+            <article class="col-sm-12 col-md-12 col-lg-6">
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-articles-shops-pie_only_shops" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                        <h2 data-translate="analitycs.articles_shops.title_shops"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.articles_shops.title_shops_tooltip' | translate}]}"></i>
+                        </span>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+                            <div class="padding-10-v">
+                                <div id="flotcontainer_shops_pie_only_shops" class="chart-large" style="height: 532px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <!-- End  shop -->
+        </div>
+
+        <div class="row" ng-repeat="shop in shops | orderBy: orderShops">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-articles-shops-{[{ shop.id }]}" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                        <h2>{[{ shop.name }]}</h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.articles_shops.title_shop_tooltip' | translate}]}"></i>
+                        </span>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+
+                            <div class="padding-10-v">
+                                <div id="flotcontainer_shops_{[{ shop.id }]}" class="chart-large" style="height: 232px;"></div>
+                            </div>
+
+                            <div style="text-align: center; margin-bottom: 10px">
+                                <button class="btn btn-default" type="submit" ng-if="shop.collapsedTable" data-ng-click="shop.collapsedTable = false">
+                                    <i class="fa fa-plus"> <span data-translate="more_info"></span></i>
+                                </button>
+                                <button class="btn btn-default" type="submit" ng-if="!shop.collapsedTable" data-ng-click="shop.collapsedTable = true">
+                                    <i class="fa fa-minus" > <span data-translate="less_info"></span></i>
+                                </button>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover" ng-hide="shop.collapsedTable">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="100%">
+                                            <input ng-model-options="{debounce: 100}" ng-model="searchText.$" placeholder="{[{ 'search' | translate }]}" class="form-control">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="btn-group btn-group-xs">
+                                                <button class="btn btn-default" type="submit" ng-click="collapse(shop.table, 'ALL', false)">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                                <button class="btn btn-default" type="submit" ng-click="collapse(shop.table, 'ALL', true)">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <button class="btn btn-default" type="submit" ng-click="chartShowAll(shop.id)">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </th>
+                                        <th ng-click="orderBy('date_format')" style="cursor: pointer;" data-translate="date"></th>
+                                        <th data-translate="article"></th>
+                                        <th ng-click="orderBy('unique_users')" style="cursor: pointer;" data-translate="analitycs.unique_users"></th>
+                                        <th ng-click="orderBy('purchases')" style="cursor: pointer;" data-translate="purchases"></th>
+                                        <th ng-click="orderBy('avg')" style="cursor: pointer;" data-translate="analitycs.articles_shops.total_amount_avg"></th>
+                                        <th ng-click="orderBy('amount_total')"  style="cursor: pointer;" data-translate="total_amount"></th>
+                                        <th ng-click="orderBy('amount_game')"  style="cursor: pointer;" data-translate="game_amount"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody ng-repeat="dateArticle in shop.table | filter:searchText | orderBy:'date_format':true">
+                                    <tr class="td-grouped">
+                                        <td>
+                                            <div class="btn-group btn-group-xs" ng-hide="searchText.$">
+                                                <button ng-if="dateArticle.collapsed" class="btn btn-default" type="submit" ng-click="dateArticle.collapsed = false">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                                <button ng-if="!dateArticle.collapsed" class="btn btn-default" type="submit" ng-click="dateArticle.collapsed = true">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td>{[{dateArticle.date_format}]}</td>
+                                        <td></td>
+                                        <td>{[{dateArticle.unique_users }]}</td>
+                                        <td>{[{dateArticle.purchases}]}</td>
+
+                                        <td>{[{dateArticle.avg | currency:currency.symbol}]}</td>
+                                        <td>{[{dateArticle.amount_total| currency:currency.symbol }]}</td>
+                                        <td>{[{dateArticle.amount_game | currency:currency.symbol }]}</td>
+
+                                    </tr>
+                                    <tr ng-repeat="articleBag in dateArticle.data | filter:searchText | orderBy:predicate:reverse" ng-hide="dateArticle.collapsed && !searchText.$">
+                                        <td>
+                                            <div style="background: {[{articleBag.article.color}]}; width: 30px; height: 30px; border: 1px solid #888"></div>
+                                        </td>
+                                        <td>
+
+                                            <div class="btn-group btn-group-xs">
+                                                <button class="btn btn-default" type="submit" ng-click="chartHideShowSerie(articleBag.article.id, shop.id)">
+                                                    <i class="glyphicon glyphicon-stats txt-color-darken"></i>
+                                                </button>
+
+                                                <button class="btn btn-default" type="submit" ng-click="eyeSlash(articleBag, shop.id)">
+                                                    <i class="fa fa-eye-slash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+
+                                        <td>{[{ articleBag.article.name_label | api_translation : articleBag.article.items_quantity }]}</td>
+                                        <td>{[{ articleBag.unique_users }]}</td>
+                                        <td>{[{ articleBag.purchases}]}</td>
+                                        <td>{[{ articleBag.avg | currency:currency.symbol}]}</td>
+                                        <td>{[{ articleBag.amount_total | currency:currency.symbol }]}</td>
+                                        <td>{[{ articleBag.amount_game | currency:currency.symbol }]}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+</div>

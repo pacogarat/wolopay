@@ -1,0 +1,95 @@
+fos_rest:
+    body_converter:
+
+        enabled: true
+        validate: true
+        validation_errors_argument: validationErrors
+
+    serializer:
+        serialize_null: true
+    view:
+        serialize_null: true
+        formats:
+            rss:  false
+            xml:  true
+            json: true
+            yml:  false
+            html: false
+
+    routing_loader:
+        default_format: json
+
+    format_listener:
+        rules:
+            - { path: '^/api', prefer_extension: true, priorities: [ 'json', 'xml', 'yml' ], fallback_format: json }
+            - { path: '^/', fallback_format: 'html', prefer_extension: true }
+
+    param_fetcher_listener: force
+    exception:
+        codes:
+            'Doctrine\ORM\OptimisticLockException': HTTP_CONFLICT
+        messages:
+            'Symfony\Component\Routing\Exception\ResourceNotFoundException': true
+            'Symfony\Component\HttpKernel\Exception\BadRequestHttpException': true
+            'Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException': true
+            'AppBundle\Exception\NviaApiPublicException': true
+
+lexik_jwt_authentication:
+    private_key_path:   "%kernel.root_dir%/config/jwt/private.pem"   # path to the private key
+    public_key_path:    "%kernel.root_dir%/config/jwt/public.pem"    # path to the public key
+    pass_phrase:        '%api_jwt_pass_phrase%'                    # optional - pass phrase, defaults to ''
+    token_ttl:          86400                                      # optional - token ttl, defaults to 86400
+
+nelmio_api_doc:
+    name: Wolopay Api doc
+# To implement in the future
+    sandbox:
+        authentication:             # default is `~` (`null`), if set, the sandbox automatically
+                                    # send authenticated requests using the configured `delivery`
+
+            name: Authorization      # access token name or query parameter name or header name
+
+            delivery: http         # `query`, `http_basic`, and `header` are supported
+
+            # Required if http delivery is selected.
+            type:     basic         # `basic`, `bearer` are supported
+
+            custom_endpoint: false   # default is `false`, if `true`, your user will be able to
+                                    # specify its own endpoint
+
+        enabled:  true             # default is `true`, you can set this parameter to `false`
+                                    # to disable the sandbox
+
+        #endpoint: https://sandbox.wolopay.com   # default is `/app_dev.php`, use this parameter
+                                                # to define which URL to call through the sandbox
+
+        accept_type: null           # default is `~` (`null`), if set, the value is
+                                                # automatically populated as the `Accept` header
+
+        body_format: form                       # default is `form`, determines whether to send
+                                                # `x-www-form-urlencoded` data or json-encoded
+                                                # data (by setting this parameter to `json`) in
+                                                # sandbox requests
+
+        request_format:
+            formats:                            # default `json` and `xml`,
+                json: application/json          # override to add custom formats or disable
+                xml: application/xml            # default formats
+
+            method: accept_header    # default `format_param`, alternately `accept_header`,
+                                    # decides how to request the response format
+
+            default_format: json    # default `json`,
+                                    # default content format to request (see formats)
+
+
+jms_serializer:
+    metadata:
+        auto_detection: true
+        directories:
+            LexikTranslationBundle:
+                namespace_prefix: "Lexik\\Bundle\\TranslationBundle"
+                path: "%kernel.root_dir%/Resources/LexikTranslationBundle/serializer"
+            SonataMediaBundle:
+                namespace_prefix: "Sonata\\MediaBundle"
+                path: "%kernel.root_dir%/Resources/SonataMediaBundle/serializer"

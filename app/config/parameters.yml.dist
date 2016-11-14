@@ -1,0 +1,87 @@
+# This file is auto-generated during the composer install
+parameters:
+    shopping_cart_max_items: 10
+    shopping_cart_max_price_eur: 300
+    is_production: false
+    database_driver: pdo_mysql
+    database_host: localhost
+    database_port: null
+    database_name: wolopay
+    database_user: root
+    database_password: null
+    mailer_transport: gmail
+    mailer_host: null
+    mailer_user: null
+    mailer_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: true
+    php_exe_path: php
+    node_exe_path: /usr/bin/nodejs
+    node_modules_path: /home/mgarcia/npm/lib/node_modules/
+    node_uglify_exe: /home/mgarcia/npm/lib/node_modules/uglify-js/bin/uglifyjs
+    node_port: 3000
+    domain_main: 'http://wolopay.dev'
+    locale: en
+    locale_available:
+        - en
+        - es
+        - fr
+        - pl
+        - it
+        - de
+        - cz
+        - pt
+    payments.paypal.email: mbrualla@nviasms.com
+    payments.paypal.live: false
+
+
+    payments.paysafecard.user:     'psc_clickgestionsl_test'
+    payments.paysafecard.password: 'MsQc2OT1OwKAy'
+    payments.paysafecard.live:     false
+
+    payments.rixty.user:     '5bab9814-006f-445e-9780-b12b09d53bfa'
+    payments.rixty.password: '4f270d760b3b10'
+    payments.rixty.live:     false
+
+    payments.ukash.user:     'UKASH10082'
+    payments.ukash.password: '12345678901234567890'
+    payments.ukash.live:     false
+    payments.xsolla.live:    false
+    payments.adyen.live:     false
+    payments.neteller.live:  false
+    payments.mol_thailand.live: false
+    payments.g2a.live: false
+    payments.cherry.live: false
+    payments.boa_compra.live: false
+    payments.steam_web.live: false
+    payments.steam_client.live: false
+    payments.facebook.live: false
+    payments.tigo.live: false
+
+    email_developers: miguelgd1985@gmail.com
+    email_app: miguelgd1985@gmail.com
+    email_payment_manager: miguelgd1985@gmail.com
+    email_info_wolopay: miguelgd1985@gmail.com
+    email_support_gamer: miguelgd1985@gmail.com
+    email_billing: miguelgd1985@gmail.com
+    email_invoices: miguelgd1985@gmail.com
+    email_finance: miguelgd1985@gmail.com
+
+    analitycs: null # UA-35586999-3
+    business_intelligence_available: false
+    realtime: false
+
+    transaction.life_time: 3600
+
+    api_version: 1
+    api_wsse_algorithm: sha1
+    api_wsse_encodeHashAsBase64: true
+    api_wsse_iterations: 1
+    api_wsse_realm: "Secured with WSSE" #identifies the set of resources to which the authentication information will apply (WWW-Authenticate)
+    api_wsse_profile: "UsernameToken" #WSSE profile (WWW-Authenticate)
+    api_wsse_lifetime: 300
+    api_jwt_pass_phrase: '1234' #pass phrase to generate password ssl
+    assets_version: 1
+    snappy_binary_path: /usr/local/bin/wkhtmltopdf #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" #for Windows users

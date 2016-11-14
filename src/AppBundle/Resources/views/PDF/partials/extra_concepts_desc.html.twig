@@ -1,0 +1,19 @@
+{# concept \AppBundle\Command\Billing\BillingClientOwesInjectConcept #}
+
+{% set extraConceptsN = 0 %}
+{% for concept in extraConcepts %}
+
+    {% if concept.description %}
+        {% set extraConceptsN = extraConceptsN + 1 %}
+
+        {% spaceless %}
+            {% for i in 1..extraConceptsN %}*{% endfor %}
+        {% endspaceless %}
+        {{ concept.description }}<br>
+    {% endif %}
+
+{% endfor %}
+
+{% if extraConceptsN > 0 %}
+    <br>
+{% endif %}

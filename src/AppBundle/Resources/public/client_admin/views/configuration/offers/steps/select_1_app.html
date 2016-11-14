@@ -1,0 +1,27 @@
+<div ng-controller="OfferSelectShopController as oshop" >
+
+    <form class="form-horizontal validation" name="form_offers" novalidate ng-submit="form_offers.$valid && ($root.offerCurrent.step = 2)">
+        <fieldset>
+            <legend>{[{ 'offer.step1.title' | translate }]}</legend>
+            <div class="form-group">
+
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1" >
+
+                        <div ng-repeat="appShop in $root.offerCurrent.app_shops">
+                            <label>
+                                <input type="checkbox" class="checkbox style-0" ng-model="appShop.selected" ng-required="!someSelected()">
+                                <span>{[{appShop.level_category.name}]}</span>
+                            </label>
+                        </div>
+
+                        <div style="margin-top: 20px">
+                            <button type="submit" ng-disabled="form_offers.$invalid" class="btn btn-info btn-lg" style="padding: 6px 50px">{[{ 'next' | translate }]} <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>

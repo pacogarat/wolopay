@@ -1,0 +1,18 @@
+
+
+{% if loadedByJs %}
+
+    {{ 'https://code.jquery.com/jquery-1.11.0.min.js' | injectExternalContent | raw }}
+    {{ 'https://connect.facebook.net/en_US/sdk.js' | injectExternalContent | raw }}
+    {{ 'https://www.parsecdn.com/js/parse-1.2.18.min.js' | injectExternalContent | raw }}
+
+{% else %}
+
+    loadScript('https://connect.facebook.net/en_US/sdk.js');
+    loadScript('https://www.parsecdn.com/js/parse-1.2.18.min.js');
+
+{% endif %}
+
+propertiesDefault.facebook = { app_id: '{{ facebook_app_id }}' };
+
+

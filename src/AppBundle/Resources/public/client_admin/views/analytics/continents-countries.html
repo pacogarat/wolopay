@@ -1,0 +1,211 @@
+<div ng-controller="ContinentCountriesController" >
+    <!-- widget grid -->
+    <section id="widget-grid" >
+
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-user-levels-2" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                        <h2 data-translate="analitycs.continents_countries.title_map"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.continents_countries.title_map_tooltip' | translate}]}"></i>
+                        </span>
+                        <div style="float: right; padding: 5px 10px 0 0">
+                            <span class="onoffswitch-title" data-translate="analitycs.continents_countries.country_evolution_enabled"></span>
+                            <span class="onoffswitch" >
+                                <input type="checkbox" name="country" ng-model="showEvolution" ng-change="loadMap()" ng-init="showEvolution = false" class="onoffswitch-checkbox" id="start_interval" >
+                                <label class="onoffswitch-label" for="start_interval">
+                                    <span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span>
+                                    <span class="onoffswitch-switch"></span>
+                                </label>
+                            </span>
+                        </div>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body no-padding">
+
+                            <div id="wold_map_over_view" class="chart-large" style="height: 400px;"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="row">
+            <article class="col-sm-12 col-md-12 col-lg-12">
+
+                <!-- Widget ID (each widget will need unique ID)-->
+                <div class="jarviswidget" id="wid-id-user-levels-4" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="glyphicon glyphicon-stats txt-color-darken"></i> </span>
+                        <h2 data-translate="analitycs.continents_countries.title_countries_by_date"></h2>
+                        <span class="widget-icon">
+                            <i class="fa fa-info-circle" data-tooltip="{[{'analitycs.continents_countries.title_countries_by_date_tooltip' | translate}]}"></i>
+                        </span>
+                    </header>
+                    <!-- widget div-->
+                    <div>
+                        <!-- widget content -->
+                        <div class="widget-body">
+
+                            <div class="padding-10">
+                                <div id="flotcontainer_continents_countries_1" class="chart-large" style="height: 332px;"></div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <td colspan="100%">
+                                            <div style="width: 80%; display: inline-block">
+                                                <input ng-model-options="{debounce: 100}" ng-model="searchText.$" data-translate="search" class="form-control">
+                                            </div>
+                                            <div style="width: 15%; display: inline-block; padding-left: 20px; text-align: right">
+
+                                                <span class="onoffswitch-title" data-translate="analitycs.continents_countries.table_first_date"></span>
+                                                <span class="onoffswitch" >
+                                                    <input type="checkbox" name="country" ng-model="showTableObjByDate" ng-change="showTable()" class="onoffswitch-checkbox" id="first_date" >
+                                                    <label class="onoffswitch-label" for="first_date">
+                                                        <span class="onoffswitch-inner" data-swchon-text="ON" data-swchoff-text="OFF"></span>
+                                                        <span class="onoffswitch-switch"></span>
+                                                    </label>
+                                                </span>
+
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <div class="btn-group btn-group-xs">
+                                                <button class="btn btn-default" type="submit" ng-click="collapse('ALL', false)">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                                <button class="btn btn-default" type="submit" ng-click="collapse('ALL', true)">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                                <button class="btn btn-default" type="submit" ng-click="chartShowAll()">
+                                                    <i class="fa fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </th>
+                                        <th ng-if="showTableObjByDate == false"></th>
+                                        <th ng-if="showTableObjByDate == false" ng-click="orderBy('country')" style="cursor: pointer;" data-translate="country"></th>
+                                        <th ng-click="orderBy('date_format')" style="cursor: pointer;" data-translate="date"></th>
+                                        <th ng-if="showTableObjByDate" ng-click="orderBy('country')" style="cursor: pointer;" data-translate="country"></th>
+                                        <th ng-click="orderBy('unique_users')" style="cursor: pointer;" data-translate="analitycs.unique_users"></th>
+                                        <th ng-click="orderBy('purchases')" style="cursor: pointer;" data-translate="purchases"></th>
+                                        <th ng-click="orderBy('transactions')" style="cursor: pointer;" data-translate="transactions"></th>
+                                        <th ng-click="orderBy('cr')" style="cursor: pointer;" data-translate="cr"></th>
+                                        <th ng-click="orderBy('amount_total')"  style="cursor: pointer;" data-translate="total_amount"></th>
+                                        <th ng-click="orderBy('amount_game')"  style="cursor: pointer;" data-translate="game_amount"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody ng-repeat="dateCountry in table | filter:searchText | orderBy:'date_format':true" ng-if="showTableObjByDate == false">
+                                        <tr class="td-grouped">
+                                            <td>
+                                                <div class="btn-group btn-group-xs" ng-hide="searchText.$">
+                                                    <button ng-if="dateCountry.collapsed" class="btn btn-default" type="submit" ng-click="$parent.dateCountry.collapsed = false">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                    <button ng-if="!dateCountry.collapsed" class="btn btn-default" type="submit" ng-click="$parent.dateCountry.collapsed = true">
+                                                        <i class="fa fa-minus"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <span style="background: {[{dateCountry.color}]}" class="square-color"></span>
+                                            </td>
+                                            <td><country-flag data-name="{[{ dateCountry.name }]}" data-state="{[{ dateCountry.country_iso }]}"></country-flag>&nbsp;&nbsp;&nbsp; {[{dateCountry.country}]} ({[{dateCountry.country_iso}]})</td>
+                                            <td>
+                                                <div class="btn-group btn-group-xs">
+                                                    <button class="btn btn-default" type="submit" ng-click="chartHideShowSerie(dateCountry.country_iso)">
+                                                        <i class="glyphicon glyphicon-stats txt-color-darken"></i>
+                                                    </button>
+
+                                                    <button class="btn btn-default" type="submit" ng-click="eyeSlash(dateCountry)">
+                                                        <i class="fa fa-eye-slash"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td>{[{dateCountry.unique_users}]}</td>
+                                            <td>{[{dateCountry.purchases}]}</td>
+                                            <td>{[{dateCountry.transactions }]}</td>
+                                            <td>{[{dateCountry.cr | number:0}]}%</td>
+                                            <td>{[{dateCountry.amount_total | currency:currency.symbol }]}</td>
+                                            <td>{[{dateCountry.amount_game  | currency:currency.symbol }]}</td>
+
+                                        </tr>
+                                        <tr ng-repeat="date in dateCountry.dates | filter:searchText | orderBy:predicate:reverse" ng-hide="dateCountry.collapsed && !searchText.$">
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>{[{date.date_format}]}</td>
+                                            <td>{[{date.unique_users}]}</td>
+                                            <td>{[{date.purchases}]}</td>
+                                            <td>{[{date.transactions }]}</td>
+                                            <td><span ng-if="!date.cr">-</span><span ng-if="date.cr">{[{date.cr | number:2}]}%</span></td>
+                                            <td>{[{date.amount_total | currency:currency.symbol }]}</td>
+                                            <td>{[{date.amount_game | currency:currency.symbol }]}</td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody ng-repeat="dateCountry in table | filter:searchText | orderBy:'date_format':true" ng-if="showTableObjByDate">
+                                    <tr class="td-grouped">
+                                        <td>
+                                            <div class="btn-group btn-group-xs" ng-hide="searchText.$">
+                                                <button ng-if="dateCountry.collapsed" class="btn btn-default" type="submit" ng-click="$parent.dateCountry.collapsed = false">
+                                                    <i class="fa fa-plus"></i>
+                                                </button>
+                                                <button ng-if="!dateCountry.collapsed" class="btn btn-default" type="submit" ng-click="$parent.dateCountry.collapsed = true">
+                                                    <i class="fa fa-minus"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td>{[{dateCountry.date_format}]}</td>
+                                        <td></td>
+                                        <td>{[{dateCountry.unique_users}]}</td>
+                                        <td>{[{dateCountry.purchases}]}</td>
+                                        <td>{[{dateCountry.transactions }]}</td>
+                                        <td>{[{dateCountry.cr | number:0}]}%</td>
+                                        <td>{[{dateCountry.amount_total | currency:currency.symbol }]}</td>
+                                        <td>{[{dateCountry.amount_game  | currency:currency.symbol }]}</td>
+
+                                    </tr>
+                                    <tr ng-repeat="country in dateCountry.countries | filter:searchText | orderBy:predicate:reverse" ng-hide="dateCountry.collapsed && !searchText.$">
+                                        <td>
+                                            <span class="square-color" style="background: {[{country.color}]}"></span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group btn-group-xs">
+                                                <button class="btn btn-default" type="submit" ng-click="chartHideShowSerie(country.country_iso)">
+                                                    <i class="glyphicon glyphicon-stats txt-color-darken"></i>
+                                                </button>
+
+                                                <button class="btn btn-default" type="submit" ng-click="eyeSlash(country)">
+                                                    <i class="fa fa-eye-slash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td><country-flag data-name="{[{ country.name }]}" data-state="{[{ country.country_iso }]}"></country-flag>&nbsp;&nbsp;&nbsp; {[{country.country}]} ({[{country.country_iso}]})</td>
+                                        <td>{[{country.unique_users}]}</td>
+                                        <td>{[{country.purchases}]}</td>
+                                        <td>{[{country.transactions }]}</td>
+                                        <td><span ng-if="!country.cr">-</span><span ng-if="country.cr">{[{country.cr | number:2}]}%</span></td>
+                                        <td>{[{country.amount_total | currency:currency.symbol }]}</td>
+                                        <td>{[{country.amount_game | currency:currency.symbol }]}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+</div>

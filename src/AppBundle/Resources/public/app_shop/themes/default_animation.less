@@ -1,0 +1,286 @@
+.wolo-container{
+    .phantom{
+        &.in-movement{
+            opacity: 1;
+        }
+        transition: all .75s linear, left .75s cubic-bezier(0.13, 0.81, 0.39, 1);
+
+    }
+
+    .products{
+        .search{
+            div{
+
+                input{
+                    .transition (width .4s linear) ;
+                    width: 0;
+                    visibility: hidden;
+                }
+
+                &.active{
+                    input{
+                        visibility: visible;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+    .ng-enter {
+        transition: all 0.5s linear;
+        opacity: 0;
+    }
+    .ng-enter-active {
+        opacity: 1;
+    }
+    .fade{
+        transition: opacity 0.5s linear;
+    }
+    .fade.ng-leave {
+        opacity: 1;
+    }
+    .fade.ng-leave-active {
+        opacity: 0;
+    }
+    .product-inner{
+        .transition (.7s linear) ;
+    }
+
+    .categories {
+        transition: height 0.5s linear;
+        &.ng-enter, &.ng-leave.ng-leave-active{
+            height: 0px;
+        }
+        &.ng-enter.ng-enter-active, &.ng-leave{
+            height: @CATEGORIES_BOX_HEIGHT;
+        }
+    }
+
+    .gacha {
+        &.ng-enter{
+            transition: height 0.5s linear;
+            height: 0px;
+
+            &.ng-enter-active{
+                height: @GACHA_HEIGHT;
+            }
+        }
+
+        &.ng-leave{
+            transition: height 0.5s linear;
+            height: @GACHA_HEIGHT;
+
+            &.ng-leave-active{
+                height: 0px;
+            }
+        }
+    }
+
+    .product, .pay-box{
+
+        .transition (.3s linear);
+        position: relative;
+        margin-bottom: 100px;
+
+        &.ng-enter{
+            left: @WRAPPER_WIDTH;
+
+            &.ng-enter-active{
+                left: 0px;
+            }
+        }
+        &.ng-leave{
+            left: 0px;
+            
+            &.ng-leave-active{
+                left: -100%;
+            }
+        }
+    }
+
+    .arrow-left, .arrow-right {
+        img{
+            .transition (opacity .5s linear);
+        }
+    }
+    .tab{
+        position: relative;
+        .transition (top .5s linear);
+        &.ng-enter{
+            top: 40px;
+        }
+        &.ng-enter-active{
+            top: 0px;
+        }
+        &.ng-leave{
+            top: 0px;
+        }
+        &.ng-leave-active{
+            top: 40px;
+        }
+    }
+}
+
+@-webkit-keyframes opacity_show{
+    from {
+        .opacity(0);
+    }
+    to {
+        .opacity(1);
+    }
+}
+
+@-webkit-keyframes opacity_show{
+    from {
+        .opacity(0);
+    }
+    to {
+        .opacity(1);
+    }
+}
+
+@-webkit-keyframes tab_animation{
+    from {
+        top: 40px;
+    }
+    to {
+        top:0;
+    }
+}
+
+@-webkit-keyframes view_enter{
+    from {
+        left:100%;
+    }
+    to {
+        left:0;
+    }
+}
+
+@keyframes view_enter{
+    from {
+        left:100%;
+    }
+    to {
+        left:0;
+    }
+}
+
+@-webkit-keyframes view_enter{
+    from {
+        left:100%;
+    }
+    to {
+        left:0;
+    }
+}
+
+
+@-webkit-keyframes continue{
+    0%, 100%  {
+        .box-shadow(@CONTINUE_ANIMATION_BOX_SHADOW_START);
+    }
+    40%, 60% {
+        .box-shadow(@CONTINUE_ANIMATION_BOX_SHADOW_END);
+    }
+}
+@keyframes continue{
+    0%, 100%  {
+        .box-shadow(@CONTINUE_ANIMATION_BOX_SHADOW_START);
+    }
+    40%, 60% {
+        .box-shadow(@CONTINUE_ANIMATION_BOX_SHADOW_END);
+    }
+}
+
+#iframe-box-content {
+    .transition (height .7s linear);
+}
+
+/* Options only to higher screens */
+@media only screen and (min-width: 961px){
+    .product-box when (@CONTINUE_ANIMATION_ENABLED){
+        -webkit-perspective: @PRODUCT_PERSPECTIVE;
+        perspective: @PRODUCT_PERSPECTIVE;
+        position: relative;
+
+        .product-inner{
+            -webkit-animation: view_enter_rotate 2s ease-out;
+        }
+    }
+
+    @-webkit-keyframes view_enter_rotate{
+        from {
+            .transform(rotateY(-25deg));
+        }
+        to {
+            .transform(rotateY(0deg));
+        }
+    }
+
+    .cart{
+        span{
+            &.active{
+                animation: cart_added 1s;
+                -webkit-animation: cart_added 1s;
+            }
+        }
+
+
+    }
+
+    #completed-box{
+        animation: finished 4s infinite;
+        -webkit-animation: finished 4s infinite;
+    }
+
+    @keyframes finished{
+        0%, 100%   {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+
+        }
+        30%,70%   {
+            -webkit-box-shadow: -7px -4px 160px 2px rgba(113,189,0,1);
+            -moz-box-shadow: -7px -4px 160px 2px rgba(113,189,0,1);
+            box-shadow: -7px -4px 160px 2px rgba(113,189,0,1);
+
+        }
+    }
+
+    @-webkit-keyframes finished{
+        0%, 100%   {
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+
+        }
+        30%,70%   {
+            -webkit-box-shadow: -7px -4px 160px 2px rgba(113,189,0,1);
+            -moz-box-shadow: -7px -4px 160px 2px rgba(113,189,0,1);
+            box-shadow: -7px -4px 160px 2px rgba(113,189,0,1);
+
+        }
+
+    }
+}
+@-webkit-keyframes cart_added{
+    0%, 100%  {
+        .box-shadow( 0px 0px 0px 0px rgba(255,255,255,0.5));
+    }
+    40%, 60% {
+        .box-shadow( 1px 1px 30px 10px rgba(255,255,255,1));
+    }
+}
+
+@keyframes cart_added{
+    0%, 100%  {
+        .box-shadow( 0px 0px 0px 0px rgba(255,255,255,0.5));
+    }
+    40%, 60% {
+        .box-shadow( 1px 1px 30px 10px rgba(255,255,255,1));
+    }
+}
+

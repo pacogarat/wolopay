@@ -1,0 +1,160 @@
+// import default vars
+@import "../modular_1_vars_ini";
+
+// override default vars
+
+@THEME_FOLDER: "early_access";
+@REMOVE_ALL_IMAGES: true;
+
+@SEARCH_ENABLED: false;
+
+@FONT: '"Myriad Pro", sans-serif;';
+@PRODUCT_NAME_OLD_COLOR: #DDD;
+@PRODUCT_NAME_FONT_SIZE: 1.8em;
+
+@TOOLTIP_BACKGROUND: #606060;
+@TOOLTIP_BORDER: 2px solid #4e4e4e;
+@TOOLTIP_LEFT_BORDER: 1px dotted #3a3a3a;
+@TOOLTIP_TEXT_SHADOW: #fff;
+@TOOLTIP_COLOR: #BDBDBD;
+@TOOLTIP_TITLE_COLOR: #fff;
+@TOOLTIP_FONT_SIZE: 1.4em;
+
+@OFFER_TIMER_COLOR: #FF1414;
+@OFFER_TIMER_TEXT_SHADOW: none;
+@MOBILE_BACKGROUND_COLOR: #A78F69;
+@PRODUCT_WIDTH: 301px;
+@PRODUCT_FOOTER_MARGIN_TOP: 0;
+@PAYMETHOD_WIDTH: 145px;
+@PAYMETHOD_HEIGHT: 92px;
+@PAYMETHOD_IMG_MARGIN: 0 auto 0;
+@PAYMETHODBOX_HEIGHT: 70px;
+@PAYMETHODBOX_BORDER_RADIUS: 0px;
+@PAYMETHOD_OUTER_WRAPPER_MARGIN: 10px auto 0 auto;
+
+@PRODUCT_HEAD_HEIGHT: 45px;
+@PRODUCT_PRICE_HEIGHT: 45px;
+@PRODUCT_IMAGE_HEIGTH: 123px;
+@PRODUCT_BACKGROUND_SELECTED: none;
+
+@ARROWS_PRODUCTS_MARGIN_TOP: 68px;
+@ARROW_PAY_METHOD_MARGIN_TOP: -4px;
+@ARROW_RIGHT_PAYMETHODS_MARGIN_LEFT: 864px;
+@ARROW_RIGHT_PRODUCTS_MARGIN_LEFT: 864px;
+
+@PAY_BUTTON_MARGIN: 20px auto;
+@PAY_BUTTON_HEIGHT: 60px;
+@PAY_BUTTON_TEXT_PADDING: 20px 0 0 0;
+@PAY_BUTTON_TEXT_TEXT_SHADOW: none;
+
+@MOBILE_BACKGROUND_COLOR: #404040;
+@MOBILE_IMAGE_BOX_BG_NAME: '';
+@ARROW_PAY_METHODS_MARGIN_TOP: 25px;
+
+// get final vars, concatenate vars
+@import "../modular_2_vars_second";
+
+@PRODUCT_NAME_TEXT_SHADOW: none;
+@PRODUCT_PRICE_TEXT_SHADOW: none;
+@PRODUCT_INFO_MARGIN: 5px 3px 0 263px;
+
+@CONTINUE_ANIMATION_ENABLED: false;
+
+
+
+
+// get default css
+@import "../modular_3_style";
+
+@import "../default_chosen";
+@import "../default_animation";
+
+
+// If you want override css below
+.wolo-container #tab-menu .tab:not(:first-child){
+    margin-left: -20px;
+}
+
+#footer{
+    display: none !important;
+}
+
+#product-selected{
+  display: none !important;
+}
+
+
+.wolo-container{
+
+    #tab-menu{
+        display: none;
+    }
+
+    color: #333;
+
+    .product{
+        .head{
+            margin-bottom: 0px !important;
+        }
+        .price-box{
+            margin-top: 0px !important;
+        }
+        .head, .price-box{
+            background: #ff6200;
+        }
+
+        &.selected{
+            .head, .price-box{
+                background: #7ba60d;
+            }
+
+            .product-image{
+                border-left: 2px solid #7ba60d;
+                border-right: 2px solid #7ba60d;
+            }
+        }
+
+        .product-prize{
+            padding-top: 10px;
+            box-sizing: border-box;
+        }
+    }
+
+    .pay-box{
+
+        background: #1e1e1e !important;
+        border: 3px solid #555;
+
+        &.selected{
+            border: 3px solid #7ba60d !important;
+        }
+
+        .pay-box_inner{
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+    }
+
+    .box-product-selected{
+        display: none;
+    }
+    .left-pay-methods{
+        max-width: 600px;
+        float: left;
+    }
+
+    .pay-button {
+        color: #ffffff;
+        border: 2px solid #9BCE0F;
+        background: rgba(138,184,13,1);
+        background: -moz-linear-gradient(top, rgba(138,184,13,1) 0%, rgba(123,166,13,1) 100%);
+        background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(138,184,13,1)), color-stop(100%, rgba(123,166,13,1)));
+        background: -webkit-linear-gradient(top, rgba(138,184,13,1) 0%, rgba(123,166,13,1) 100%);
+        background: -o-linear-gradient(top, rgba(138,184,13,1) 0%, rgba(123,166,13,1) 100%);
+        background: -ms-linear-gradient(top, rgba(138,184,13,1) 0%, rgba(123,166,13,1) 100%);
+        background: linear-gradient(to bottom, rgba(138,184,13,1) 0%, rgba(123,166,13,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8ab80d', endColorstr='#7ba60d', GradientType=0 );
+    }
+}
+
+

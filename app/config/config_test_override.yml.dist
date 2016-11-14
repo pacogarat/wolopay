@@ -1,0 +1,9 @@
+doctrine:
+    dbal:
+        driver:   pdo_sqlite
+        memory:   true
+
+#    dbal:
+#        driver:   pdo_sqlite
+#        memory:   false
+#        path:     /ramcache/test.db

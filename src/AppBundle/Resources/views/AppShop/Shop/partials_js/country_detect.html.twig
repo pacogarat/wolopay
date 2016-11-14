@@ -1,0 +1,15 @@
+{% if transaction.countryDetected %}
+
+    {% set lang = transaction.countryDetected.language.id %}
+
+{% else %}
+
+    {% if app.request.preferredLanguage %}
+        {% set lang = app.request.preferredLanguage | slice(0, 2) %}
+    {% else %}
+        {% set lang = 'en' %}
+    {% endif %}
+
+{% endif %}
+
+<script src='//cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.2.15/angular-locale_{{lang}}.js'></script>

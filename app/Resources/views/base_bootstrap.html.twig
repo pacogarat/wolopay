@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+{% block stylesheets %}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    {% stylesheets
+        "css_glob/bootstrap_extra.css"
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" media="screen" />
+    {% endstylesheets %}
+
+    {% block head_extra '' %}
+
+{% endblock %}
+
+{% block body %}
+    {% block page_container '' %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    {% block javascrips_extra '' %}
+{% endblock %}

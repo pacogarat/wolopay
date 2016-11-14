@@ -1,0 +1,384 @@
+{# THEME COMPRESSION #}
+    {% if themeTemplateAdd is not defined %}
+        {% set themeTemplateAdd = '<link rel="stylesheet" href="URL_TO_REPLACE" media="screen" />' %}
+    {% endif %}
+
+    {# shopCss \AppBundle\Entity\ShopCss #}
+{% stylesheets
+'@AppBundle/Resources/public/app_shop/themes/reset.less'
+%}
+    {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+{% endstylesheets %}
+
+    {% set theme = shopCss.cssUrl %}
+
+    {% if theme == 'theme_default.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/default/theme_default.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_wood.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/wood/theme_wood.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_berserk.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/berserk/theme_berserk.less"
+        %}
+
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_berserk_halloween.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/berserk_halloween/theme_berserk_halloween.less"
+        %}
+
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_berserk_christmas.less' %}
+
+        {% stylesheets 'css_glob/reset.css'
+        "@AppBundle/Resources/public/app_shop/themes/berserk_christmas/theme_berserk_christmas.less"
+        %}
+
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_berserk_modular.less' %}
+
+        {% stylesheets 'css_glob/reset.css'
+        "@AppBundle/Resources/public/app_shop/themes/berserk_modular/theme_berserk_modular.less"
+        %}
+
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'berserk_modular_without_background.less' %}
+
+        {% stylesheets 'css_glob/reset.css'
+        "@AppBundle/Resources/public/app_shop/themes/berserk_modular_without_background/berserk_modular_without_background.less"
+        %}
+
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_berserk_valentines_day_modular.less' %}
+
+        {% stylesheets 'css_glob/reset.css'
+        "@AppBundle/Resources/public/app_shop/themes/berserk_valentines_day_modular/theme_berserk_valentines_day_modular.less"
+        %}
+
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+
+    {% elseif theme == 'theme_berserk_black_friday.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/berserk_black_friday/theme_berserk_black_friday.less"
+        %}
+
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+
+    {% elseif theme == 'theme_idc.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/idc/theme_idc.less"
+        %}
+
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_idc_modular.less' %}
+
+        {% stylesheets
+        "@AppBundle/Resources/public/app_shop/themes/idc_modular/theme_idc_modular.less"
+        %}
+
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+
+    {% elseif theme == 'theme_idc_halloween.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/idc_halloween/theme_idc_haloween.less"
+        %}
+
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_idc_black_friday.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/idc_black_friday/theme_idc_black_friday.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_idc_christmas.less' %}
+
+        {% stylesheets 'css_glob/reset.css'
+        "@AppBundle/Resources/public/app_shop/themes/idc_christmas/theme_idc_christmas.less"
+        %}
+
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_idc_valentines_day.less' %}
+
+        {% stylesheets
+        "@AppBundle/Resources/public/app_shop/themes/idc_valentines_day/theme_idc_valentines_day.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_metal_assault_modular.less' %}
+
+        {% stylesheets
+        "@AppBundle/Resources/public/app_shop/themes/metal_assault_modular/theme_metal_assault_modular.less"
+        %}
+
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_tron.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/tron/theme_tron.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_battle_space.less' %}
+
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/battle_space/theme_battle_space.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_battle_space_christmas.less' %}
+
+        {% stylesheets 'css_glob/reset.css'
+            "@AppBundle/Resources/public/app_shop/themes/battle_space_christmas/theme_battle_space_christmas.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_battle_space_halloween.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/battle_space_halloween/theme_battle_space_halloween.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_battle_space_black_friday.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/battle_space_black_friday/theme_battle_space_black_friday.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+
+    {% elseif theme == 'theme_battle_space_valentines_day.less' %}
+
+        {% stylesheets
+        "@AppBundle/Resources/public/app_shop/themes/battle_space_valentines_day/theme_battlespace_valentines_day.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_paper.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/paper/theme_paper.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_ragnarok.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/ragnarok/theme_ragnarok.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_ragnarok_halloween.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/ragnarok_halloween/theme_ragnarok_halloween.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_ragnarok_black_friday.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/ragnarok_black_friday/theme_ragnarok_black_friday.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_ragnarok_christmas.less' %}
+
+        {% stylesheets 'css_glob/reset.css'
+        "@AppBundle/Resources/public/app_shop/themes/ragnarok_christmas/theme_ragnarok_christmas.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_ragnarok_valentines_day.less' %}
+
+        {% stylesheets
+        "@AppBundle/Resources/public/app_shop/themes/ragnarok_valentines_day/theme_ragnarok_valentines_day.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_korner.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/korner/theme_korner.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_korner_halloween.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/korner_halloween/theme_korner_halloween.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_korner_black_friday.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/korner_black_friday/theme_korner_black_friday.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_korner_christmas.less' %}
+
+        {% stylesheets 'css_glob/reset.css'
+        "@AppBundle/Resources/public/app_shop/themes/korner_christmas/theme_korner_christmas.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_korner_valentines_day.less' %}
+
+        {% stylesheets
+        "@AppBundle/Resources/public/app_shop/themes/korner_valentines_day/theme_korner_valentines_day.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_torofun.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/torofun/theme_torofun.less"
+
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_cronix.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/cronix/theme_cronix.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_cronix_halloween.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/cronix_halloween/theme_cronix_halloween.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_cronix_black_friday.less' %}
+
+        {% stylesheets 
+        "@AppBundle/Resources/public/app_shop/themes/cronix_black_friday/theme_cronix_black_friday.less"
+        %}
+            {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_cronix_christmas.less' %}
+
+        {% stylesheets 'css_glob/reset.css'
+        "@AppBundle/Resources/public/app_shop/themes/cronix_christmas/theme_cronix_christmas.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+
+    {% elseif theme == 'theme_cronix_valentines_day.less' %}
+
+        {% stylesheets
+        "@AppBundle/Resources/public/app_shop/themes/cronix_valentines_day/theme_cronix_valentines_day.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_azt_modular.less' %}
+
+        {% stylesheets 'css_glob/reset.css'
+            "@AppBundle/Resources/public/app_shop/themes/azt_modular/theme_azt_modular.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_azt_valentines_day_modular.less' %}
+
+        {% stylesheets 'css_glob/reset.css'
+        "@AppBundle/Resources/public/app_shop/themes/azt_valentines_day_modular/theme_azt_valentines_day_modular.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+
+    {% elseif theme == 'theme_early_access_modular.less' %}
+
+        {% stylesheets
+            "@AppBundle/Resources/public/app_shop/themes/early_access_modular/theme_early_access.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+    {% elseif theme == 'theme_early_access_wom_modular.less' %}
+
+        {% stylesheets
+            "@AppBundle/Resources/public/app_shop/themes/early_access_wom_modular/theme_early_access_wom.less"
+        %}
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+        {% endstylesheets %}
+    {% else %}
+
+        {{ themeTemplateAdd | replace({'URL_TO_REPLACE': absolute_url(asset_url)}) | raw  }}
+
+    {% endif %}
+
+
+
+    {# END THEME COMPRESION #}

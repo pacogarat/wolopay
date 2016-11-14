@@ -1,0 +1,68 @@
+// import default vars
+@import "../modular_1_vars_ini";
+
+// override default vars
+@HEADER_HEIGHT_DESKTOP: 15px;
+@THEME_FOLDER: "idc_modular";
+@PRODUCT_NAME_OLD_COLOR: #DDD;
+@PRODUCT_NAME_FONT_SIZE: 1.3em;
+@TOOLTIP_BACKGROUND: rgba(62, 28, 11, 0.6);
+@TOOLTIP_BORDER: 1px solid #DF960A;
+@TOOLTIP_LEFT_BORDER: 1px dotted #515151;
+@TOOLTIP_TEXT_SHADOW: #000;
+@TOOLTIP_COLOR: #fff;
+@OFFER_TIMER_COLOR: #FF1414;
+@OFFER_TIMER_TEXT_SHADOW: none;
+@MOBILE_BACKGROUND_COLOR: #A78F69;
+@PRODUCTS_HEIGHT: 282px;
+@PRODUCT_PRICE_OLD_MARGIN_TOP: -22px;
+@PAYMETHOD_HEIGHT: 97px;
+@SEARCH_ICON_MARGIN: 16px 0 0 1px;
+@SEARCH_CONTAINER_MARGIN: 16px 0 0 0px;
+@PRODUCT_BACKGROUND_SELECTED: #D8D8D8;
+
+
+@CONTINUE_ANIMATION_BOX_SHADOW_START: inset 0px 0px 5px 8px rgba(255,255,255,0);
+@CONTINUE_ANIMATION_BOX_SHADOW_END: inset 0px 0px 25px 15px rgba(255,255,255,0.48);
+@MOBILE_IMAGE_BOX_BG_NAME: '';
+@TAB_ON_IMG_EXTENSION_MOBILE: '';
+@TAB_ON_BACKGROUND_COLOR: #68361F;
+@MOBILE_BACKGROUND_COLOR: none;
+
+
+// get final vars, concatenate vars
+@import "../modular_2_vars_second";
+
+// u can override final vars
+@BODY_BACKGROUND: 'none';
+@HAS_GACHA: false;
+@CART_BUTTONS_MARGIN: 9px 0 0 8px;
+@CART_BOX_MARGIN: -10px 0 0 0;
+@CART_BOX_WIDTH: 195px;
+@TAB_PADDING_TOP: 17px;
+@TAB_MARGIN_DESKTOP: 0;
+@CART_IMG_HEIGHT: 35px;
+@CART_IMG_WIDTH: 35px;
+@CONTINUE_BORDER_RADIUS: 10px;
+
+@FONT: 'custom_font';
+
+// get default css
+@import "../modular_3_style";
+
+@import "../default_chosen";
+@import "../default_animation";
+
+// If you want override css below
+
+@font-face {
+    font-family: ~"@{FONT}";
+    src: url('@{FILES_PATH}/fonts/pro_light.eot');
+    src: url('@{FILES_PATH}/fonts/pro_light.eot?#iefix') format('embedded-opentype'),
+    url('@{FILES_PATH}/fonts/pro_light.woff2') format('woff2'),
+    url('@{FILES_PATH}/fonts/pro_light.woff') format('woff'),
+    url('@{FILES_PATH}/fonts/pro_light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
